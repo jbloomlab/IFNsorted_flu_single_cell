@@ -1,0 +1,9 @@
+.*
+!.gitignore
+*.pyc
+*.sbatch
+humanplusflu
+results
+_temp*
+*.out
+paper/figures/cellgenecounts.zip
