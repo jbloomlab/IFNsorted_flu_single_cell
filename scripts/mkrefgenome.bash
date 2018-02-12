@@ -1,6 +1,7 @@
 #!/bin/bash 
 
 # Make a cellranger reference genome for human cells with flu reads
+# and canine cells without flu reads.
 
 # entire script exits if error on any command
 set -e
@@ -13,10 +14,12 @@ ftp_site='ftp://ftp.ensembl.org/pub/release-87/'
 # specify where get genomes by FTP
 declare -A genomes
 genomes['human']="${ftp_site}/fasta/homo_sapiens/dna/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz"
+genomes['canine']="${ftp_site}fasta/canis_familiaris/dna/Canis_familiaris.CanFam3.1.dna.toplevel.fa.gz"
 
 # specify where get GTFs by FTP
 declare -A gtfs
 gtfs['human']="${ftp_site}gtf/homo_sapiens/Homo_sapiens.GRCh38.87.gtf.gz"
+gtfs['canine']="${ftp_site}gtf/canis_familiaris/Canis_familiaris.CanFam3.1.87.gtf.gz"
 
 for species in "${!genomes[@]}"; do
     echo "Downloading $species genome..."
@@ -40,11 +43,11 @@ cat human.fasta $flugenome > humanplusflu.fasta
 cat human.gtf $flugtf > humanplusflu.gtf
 
 echo "Using cellranger to make the reference genome..."
-cellranger mkref --genome=humanplusflu --fasta=humanplusflu.fasta --genes=humanplusflu.gtf --nthreads=$ncpus
+cellranger mkref --genome=humanplusflu --fasta=humanplusflu.fasta --genes=humanplusflu.gtf --genome=canine --fasta=canine.fasta --genes=canine.gtf --nthreads=$ncpus
 echo "Reference genome complete."
 
 echo "Removing unneeded files."
-for species in human humanplusflu; do
+for species in human canine humanplusflu; do
     rm "${species}.gtf"
     rm "${species}.fasta"
 done
