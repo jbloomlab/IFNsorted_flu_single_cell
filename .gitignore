@@ -2,7 +2,7 @@
 !.gitignore
 *.pyc
 *.sbatch
-humanplusflu
+humanplusflu_and_canine
 results
 _temp*
 *.out

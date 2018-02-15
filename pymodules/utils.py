@@ -202,18 +202,15 @@ def countSummary(samples, metricfiles, plotfile, celltypes=['']):
     countstats.columns = columns
 
     stats = ['Number of Reads', 'Estimated Number of Cells']
-    if len(celltypes) > 1: 
-        stats += ['GEMs with >1 Cell', 'Fraction GEMs with >1 Cell (%)']
     celltypestats = ['Fraction Reads in Cells (%)', 'Median UMI Counts per Cell', 
             'Median Genes per Cell']
     if len(celltypes) > 1: 
-        stats += ['GEMs with >1 Cell', 'Fraction GEMs with >1 Cell (%)']
         celltypestats += ['Estimated Number of Cell Partitions']
     nplots = len(stats) + len(celltypestats)
     if nplots == 5:
         ncols = 5
     else:
-        ncols = 4
+        ncols = 3
     nrows = int(math.ceil(nplots / float(ncols)))
     (fig, axes) = plt.subplots(ncols=ncols, nrows=nrows, figsize=(11, 3.1 * nrows))
     for (stat, ax) in zip(stats + celltypestats, axes.ravel()):
