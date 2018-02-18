@@ -1,9 +1,9 @@
-LOCUS       pHW185-NP_syn           4526 bp    DNA     circular UNA 22-JUL-2016
+LOCUS       pHW185-NP_double        4526 bp    DNA     circular UNA 18-OCT-2016
 DEFINITION  This plasmid encodes the NP gene from the A/WSN/33 (H1N1) influenza
             virus under control of both PolI and PolII polymerases, and so
             transcribes both mRNA and vRNA.
-ACCESSION   urn.local...1469230516366.148
-VERSION     urn.local...1469230516366.148
+ACCESSION   urn.local...1476586177541.222
+VERSION     urn.local...1476586177541.222
 KEYWORDS    .
 SOURCE      
   ORGANISM  
@@ -17,6 +17,12 @@ FEATURES             Location/Qualifiers
                      /label="U12"
      CDS             91..1587
                      /label="NP"
+     misc_feature    198
+                     /note="Geneious type: Editing History Replacement"
+                     /label="T"
+     misc_feature    201
+                     /note="Geneious type: Editing History Replacement"
+                     /label="A"
      misc_feature    1422
                      /note="Geneious type: Editing History Replacement"
                      /label="C"
@@ -40,7 +46,7 @@ ORIGIN
         1 ctagcagtta accggagtac tggtcgacct ccgaagttgg gggggagcaa aagcagggta
        61 gataatcact cacagagtga catcgaaatc atggcgacca aaggcaccaa acgatcttac
       121 gaacagatgg agactgatgg agaacgccag aatgccactg aaatcagagc atctgtcgga
-      181 aaaatgattg atggaattgg acgattctac atccaaatgt gcaccgaact taaactcagt
+      181 aaaatgattg atggaatcgg gcgattctac atccaaatgt gcaccgaact taaactcagt
       241 gattatgagg gacggctgat tcagaacagc ttaacaatag agagaatggt gctctctgct
       301 tttgacgaga ggaggaataa atatctagaa gaacatccca gtgcggggaa agatcctaag
       361 aaaactggag gacctatata caggagagta gatggaaagt ggaggagaga actcatcctt

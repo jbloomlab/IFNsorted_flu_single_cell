@@ -1,9 +1,9 @@
-LOCUS       pHW184-HA_syn           4736 bp    DNA     circular UNA 22-JUL-2016
+LOCUS       pHW184-HA_double        4736 bp    DNA     circular UNA 18-OCT-2016
 DEFINITION  This plasmid encodes the HA gene from the A/WSN/33 (H1N1) influenza
             virus under control of both PolI and PolII polymerases, and so
             transcribes both mRNA and vRNA.
-ACCESSION   urn.local...1469230516361.145
-VERSION     urn.local...1469230516361.145
+ACCESSION   urn.local...1476586177537.219
+VERSION     urn.local...1476586177537.219
 KEYWORDS    .
 SOURCE      
   ORGANISM  
@@ -19,6 +19,12 @@ FEATURES             Location/Qualifiers
                      /label=73
      CDS             78..1775
                      /label="HA"
+     misc_feature    188
+                     /note="Geneious type: Editing History Replacement"
+                     /label="C"
+     misc_feature    200
+                     /note="Geneious type: Editing History Replacement"
+                     /label="G"
      primer_bind     496..515
                      /label=96
      misc_feature    597..599
@@ -51,7 +57,7 @@ ORIGIN
         1 ctagcagtta accggagtac tggtcgacct ccgaagttgg gggggagcaa aagcagggga
        61 aaataaaaac aaccaaaatg aaggcaaaac tactggtcct gttatatgca tttgtagcta
       121 cagatgcaga cacaatatgt ataggctacc atgcgaacaa ctcaaccgac actgttgaca
-      181 caatactcga gaagaatgtg gcagtgacac attctgttaa cctgctcgaa gacagccaca
+      181 caatactaga gaagaatgta gcagtgacac attctgttaa cctgctcgaa gacagccaca
       241 acgggaaact atgtaaatta aaaggaatag ccccactaca attggggaaa tgtaacatca
       301 ccggatggct cttgggaaat ccagaatgcg actcactgct tccagcgaga tcatggtcct
       361 acattgtaga aacaccaaac tctgagaatg gagcatgtta tccaggagat ctcatcgact

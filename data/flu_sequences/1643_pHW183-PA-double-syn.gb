@@ -1,9 +1,9 @@
-LOCUS       pHW183-PA_syn           5192 bp    DNA     circular UNA 22-JUL-2016
+LOCUS       pHW183-PA_double        5192 bp    DNA     circular UNA 18-OCT-2016
 DEFINITION  This plasmid encodes the PA gene from the A/WSN/33 (H1N1) influenza
             virus under control of both PolI and PolII polymerases, and so
             transcribes both mRNA and vRNA.
-ACCESSION   urn.local...1469230516358.143
-VERSION     urn.local...1469230516358.143
+ACCESSION   urn.local...1476586177532.217
+VERSION     urn.local...1476586177532.217
 KEYWORDS    .
 SOURCE      
   ORGANISM  
@@ -20,6 +20,12 @@ FEATURES             Location/Qualifiers
                      /label="U12"
      CDS             68..2218
                      /label="PA"
+     misc_feature    187
+                     /note="Geneious type: Editing History Replacement"
+                     /label="T"
+     misc_feature    190
+                     /note="Geneious type: Editing History Replacement"
+                     /label="C"
      misc_feature    2080
                      /note="Geneious type: Editing History Replacement"
                      /label="T"
@@ -43,7 +49,7 @@ ORIGIN
         1 ctagcagtta accggagtac tggtcgacct ccgaagttgg gggagcgaaa gcaggtactg
        61 attcaaaatg gaagattttg tgcgacaatg cttcaatccg atgattgtcg agcttgcgga
       121 aaaggcaatg aaagagtatg gagaggacct gaaaatcgaa acaaacaaat ttgcagcaat
-      181 atgcactcac ttggaagtgt gcttcatgta ttcagatttt cacttcatcg atgagcaagg
+      181 atgcacccat ttggaagtgt gcttcatgta ttcagatttt cacttcatcg atgagcaagg
       241 cgagtcaata gtcgtagaac ttggcgatcc aaatgcactt ttgaagcaca gatttgaaat
       301 aatcgaggga agagatcgca caatagcctg gacagtaata aacagtattt gcaacactac
       361 aggggctgag aaaccaaagt ttctaccaga tttgtatgat tacaagaaga atagattcat

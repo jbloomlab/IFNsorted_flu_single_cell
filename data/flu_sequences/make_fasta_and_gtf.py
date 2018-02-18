@@ -17,7 +17,7 @@ def main():
     u13 = 'CCTTGTTTCTACT' # reverse of U13
     segs = ['PB2', 'PB1', 'PA', 'HA', 'NP', 'NA', 'M', 'NS']
 
-    for syntype in ['', '-syn']:
+    for syntype in ['', '-double-syn']:
         vrnas = []
         for seg in segs:
             fplasmid = glob.glob('*_pHW18*-{0}{1}.gb'.format(seg, syntype))

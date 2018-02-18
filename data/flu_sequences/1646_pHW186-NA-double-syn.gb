@@ -1,9 +1,9 @@
-LOCUS       pHW186-NA_syn           4369 bp    DNA     circular UNA 22-JUL-2016
+LOCUS       pHW186-NA_double        4369 bp    DNA     circular UNA 18-OCT-2016
 DEFINITION  This plasmid encodes the NA gene from the A/WSN/33 (H1N1) influenza
             virus under control of both PolI and PolII polymerases, and so
             transcribes both mRNA and vRNA.
-ACCESSION   urn.local...1469230516359.144
-VERSION     urn.local...1469230516359.144
+ACCESSION   urn.local...1476586177534.218
+VERSION     urn.local...1476586177534.218
 KEYWORDS    .
 SOURCE      
   ORGANISM  
@@ -20,6 +20,12 @@ FEATURES             Location/Qualifiers
                      /label="U12"
      CDS             64..1425
                      /label="NA"
+     misc_feature    186
+                     /note="Geneious type: Editing History Replacement"
+                     /label="A"
+     misc_feature    195
+                     /note="Geneious type: Editing History Replacement"
+                     /label="C"
      misc_feature    1290
                      /note="Geneious type: Editing History Replacement"
                      /label="A"
@@ -43,7 +49,7 @@ ORIGIN
         1 ctagcagtta accggagtac tggtcgacct ccgaagttgg ggggagcgaa agcaggagtt
        61 taaatgaatc caaaccagaa aataataacc attgggtcaa tctgtatggt agtcggaata
       121 attagcctaa tattgcaaat aggaaatata atctcaatat ggattagcca ttcaattcaa
-      181 accggaaatc aaaaccatac tggaatatgc aaccaaggca gcattaccta taaagttgtt
+      181 accgggaatc aaaatcatac tggaatatgc aaccaaggca gcattaccta taaagttgtt
       241 gctgggcagg actcaacttc agtgatatta accggcaatt catctctttg tcccatccgt
       301 gggtgggcta tacacagcaa agacaatggc ataagaattg gttccaaagg agacgttttt
       361 gtcataagag agccttttat ttcatgttct cacttggaat gcaggacctt ttttctgact

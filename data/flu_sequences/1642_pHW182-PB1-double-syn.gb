@@ -1,9 +1,9 @@
-LOCUS       pHW182-PB1_syn          5302 bp    DNA     circular UNA 22-JUL-2016
+LOCUS       pHW182-PB1_doubl        5302 bp    DNA     circular UNA 18-OCT-2016
 DEFINITION  This plasmid encodes the PB1 gene from the A/WSN/33 (H1N1)
             influenza virus under control of both PolI and PolII polymerases,
             and so transcribes both mRNA and vRNA.
-ACCESSION   urn.local...1469230516364.147
-VERSION     urn.local...1469230516364.147
+ACCESSION   urn.local...1476586177539.221
+VERSION     urn.local...1476586177539.221
 KEYWORDS    .
 SOURCE      
   ORGANISM  
@@ -17,6 +17,12 @@ FEATURES             Location/Qualifiers
                      /label="U12"
      CDS             70..2343
                      /label="PB1"
+     misc_feature    192
+                     /note="Geneious type: Editing History Replacement"
+                     /label="T"
+     misc_feature    198
+                     /note="Geneious type: Editing History Replacement"
+                     /label="C"
      misc_feature    2205
                      /note="Geneious type: Editing History Replacement"
                      /label="C"
@@ -40,7 +46,7 @@ ORIGIN
         1 ctagcagtta accggagtac tggtcgacct ccgaagttgg gggggagcga aagcaggcaa
        61 accatttgaa tggatgtcaa tccgacttta cttttcttaa aagtgccagc acaaaatgct
       121 ataagcacaa ctttccctta tactggagac cctccttaca gccatgggac aggaacagga
-      181 tacaccatgg atactgtcaa caggacacat cagtactcag aaaggggaag atggacaaca
+      181 tacaccatgg acactgtaaa caggacacat cagtactcag aaaggggaag atggacaaca
       241 aacaccgaaa ctggagcacc gcaactcaac ccgattgatg ggccactgcc agaagacaat
       301 gaaccaagtg gttatgccca aacagattgt gtattggaag caatggcctt ccttgaggaa
       361 tcccatcctg gtatctttga gacctcgtgt cttgaaacga tggaggttgt tcagcaaaca

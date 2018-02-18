@@ -1,9 +1,9 @@
-LOCUS       pHW188-NS_syn           3851 bp    DNA     circular UNA 22-JUL-2016
+LOCUS       pHW188-NS_double        3851 bp    DNA     circular UNA 18-OCT-2016
 DEFINITION  This plasmid encodes the NS gene from the A/WSN/33 (H1N1) influenza
             virus under control of both PolI and PolII polymerases, and so
             transcribes both mRNA and vRNA.
-ACCESSION   urn.local...1469230516362.146
-VERSION     urn.local...1469230516362.146
+ACCESSION   urn.local...1476586177538.220
+VERSION     urn.local...1476586177538.220
 KEYWORDS    .
 SOURCE      
   ORGANISM  
@@ -21,6 +21,9 @@ FEATURES             Location/Qualifiers
                      /label="NS2 exon 1"
      misc_feature    102..103
                      /label="5' splice site"
+     misc_feature    197..198
+                     /note="Geneious type: Editing History Replacement"
+                     /label="CC"
      CDS             514..909
                      /label="NS2 exon 2"
      misc_feature    765
@@ -49,7 +52,7 @@ ORIGIN
         1 ctagcagtta accggagtac tggtcgacct ccgaagttgg gggggagcaa aagcagggtg
        61 acaaagacat aatggatcca aacactgtgt caagctttca ggtagattgc tttctttggc
       121 atgtccgcaa aagagttgca gaccaagaac taggtgatgc cccattcctt gatcggcttc
-      181 gccgagatca gaagtcccta agaggaagag gcagcactct tggtctggac atcgaaacag
+      181 gccgagatca gaagtcttta agaggaagag gcagcactct tggtctggac atcgaaacag
       241 ccacccgtgc tggaaagcaa atagtggagc ggattctgaa ggaagaatct gatgaggcac
       301 tcaaaatgac catggcctct gtacctgcat cgcgctacct aactgacatg actcttgagg
       361 aaatgtcaag gcactggttc atgctcatgc ccaagcagaa agtggcaggc cctctttgta

@@ -1,9 +1,9 @@
-LOCUS       pHW187-M_syn            3988 bp    DNA     circular UNA 23-JUL-2016
+LOCUS       pHW187-M_double-        3988 bp    DNA     circular UNA 18-OCT-2016
 DEFINITION  This plasmid encodes the M gene from the A/WSN/33 (H1N1) influenza
             virus under control of both PolI and PolII polymerases, and so
             transcribes both mRNA and vRNA.
-ACCESSION   urn.local...1469230516371.150
-VERSION     urn.local...1469230516371.150
+ACCESSION   urn.local...1476586177544.224
+VERSION     urn.local...1476586177544.224
 KEYWORDS    .
 SOURCE      
   ORGANISM  
@@ -17,6 +17,12 @@ FEATURES             Location/Qualifiers
                      /label="U12"
      CDS             71..829
                      /label="M1"
+     misc_feature    178
+                     /note="Geneious type: Editing History Replacement"
+                     /label="C"
+     misc_feature    181
+                     /note="Geneious type: Editing History Replacement"
+                     /label="C"
      misc_feature    446
                      /note="Geneious type: mutation"
                      /label="A446T mutation"
@@ -49,8 +55,8 @@ FEATURES             Location/Qualifiers
 ORIGIN      
         1 ctagcagtta accggagtac tggtcgacct ccgaagttgg gggggagcaa aagcaggtag
        61 atattgaaag atgagtcttc taaccgaggt cgaaacgtac gttctctcta tcgtcccgtc
-      121 aggccccctc aaagccgaga tcgcacagag acttgaagat gtctttgcag ggaagaacac
-      181 cgatcttgag gttctcatgg aatggctaaa gacaagacca atcctgtcac ctctgactaa
+      121 aggccccctc aaagccgaga tcgcacagag acttgaagat gtctttgcag ggaagaatac
+      181 agatcttgag gttctcatgg aatggctaaa gacaagacca atcctgtcac ctctgactaa
       241 ggggatttta ggatttgtgt tcacgctcac cgtgcccagt gagcggggac tgcagcgtag
       301 acgctttgtc caaaatgctc ttaatgggaa cggagatcca aataacatgg acaaagcagt
       361 taaactgtat aggaagctta agagggagat aacattccat ggggccaaag aaatagcact
