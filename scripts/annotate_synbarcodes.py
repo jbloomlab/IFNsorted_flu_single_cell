@@ -41,12 +41,22 @@ def parseArgs():
             'by cellranger', required=True)
     parser.add_argument('--outprefix', help='Prefix for output files.',
             required=True)
-    parser.add_argument('--samplename', help='Name of sample, used as title for some plots', required=True)
+    parser.add_argument('--samplename', 
+            help='Name of sample, used as title for plots', required=True)
+    parser.add_argument('--synsuffix', help="Suffix on genes in `--synflugenes`",
+            default='-double-syn')
+    parser.add_argument('--flugeneprefix', help='Prefix on flu gene names.',
+            default='humanplusflu_')
+    parser.add_argument('--dist3', default=400, 
+            help="Only call barcodes within this distance of 3' end of gene.")
     return parser
 
 
 def main():
     """Main body of script."""
+
+    assert sys.version_info[0] >= 3, "must use python3"
+
     parser = parseArgs()
     args = vars(parser.parse_args())
     bamfiles = args['bamfiles']
@@ -54,6 +64,9 @@ def main():
     syngenefile = args['synflugenes']
     cellbarcodesfile = args['cellbarcodes']
     outprefix = args['outprefix']
+    synsuffix = args['synsuffix']
+    flugeneprefix = args['flugeneprefix']
+    dist3 = args['dist3']
 
     print("Annotating synonymously barcoded reads.\n")
 
@@ -64,11 +77,11 @@ def main():
     print("Read {0} genes from {1}".format(len(genes), genefile))
     syngenes = dict([(seq.name, str(seq.seq)) for seq in Bio.SeqIO.parse(
             syngenefile, 'fasta')])
-    assert set(syngenes.keys()) == set([gene + '-syn' for gene in genes]), (
-            "gene names in {0} not the same as in {1} plus '-syn' suffix".format(
-            genefile, syngenefile))
+    assert set(syngenes.keys()) == set([gene + synsuffix for gene in genes]), (
+            "gene names in {0} not the same as in {1} plus '{2}' suffix".format(
+            genefile, syngenefile, synsuffix))
     print("Read matching synonymously barcoded genes from {0}".format(syngenefile))
-    syngenes = dict([(key.replace('-syn', ''), value) for (key, value) in 
+    syngenes = dict([(key.replace(synsuffix, ''), value) for (key, value) in 
             syngenes.items()])
 
     # get valid cell barcodes
@@ -98,20 +111,23 @@ def main():
         print("\nProcessing reads in {0}".format(bamfile))
 
         for gene in genenames:
+
+            fullgene = flugeneprefix + gene
         
             print("\nAnalyzing reads that align to {0}.".format(gene))
 
             samfile = '_{0}.sam'.format(gene)
             with open(samfile, 'w') as f:
                 subprocess.check_call(['samtools', 'view', bamfile, 
-                        gene], stdout=f)
+                        fullgene], stdout=f)
 
             shortgene = gene.replace('flu', '')
-            seq = genes[gene]
-            synseq = syngenes[gene]
+            seq = genes[gene].encode('utf-8')
+            synseq = syngenes[gene].encode('utf-8')
             assert len(seq) == len(synseq)
+            rmin = len(seq) - dist3
             synbarcode = dict([(r, (wt, mut)) for (r, (wt, mut)) in
-                    enumerate(zip(seq, synseq)) if wt != mut])
+                    enumerate(zip(seq, synseq)) if wt != mut and r >= rmin])
             print("This gene has {0} synonymous barcoded sites: {1}".format(
                     len(synbarcode), ', '.join(["{0}{1}{2}".format(wt, r + 1, m)
                     for (r, (wt, m)) in sorted(synbarcode.items())])))
@@ -120,7 +136,7 @@ def main():
             for a in HTSeq.SAM_Reader(samfile):
 
                 # see if we keep the alignment
-                assert a.iv.chrom == gene
+                assert a.iv.chrom == fullgene
                 try:
                     cellbc = a.optional_field('CB')
                 except:
