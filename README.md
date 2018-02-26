@@ -28,22 +28,33 @@ This study differs from [Russell et al (2018)][]:
 None at this time.
 
 ## Authors
-Alistair Russell, [Cole Trapnell](http://cole-trapnell-lab.github.io/), [Jesse Bloom](https://research.fhcrc.org/bloom/en.html).
+Alistair Russell and [Jesse Bloom](https://research.fhcrc.org/bloom/en.html).
 
 ## Organization of analysis
-The analysis is performed by a set of Jupyter notebooks.
+The analysis is performed by a set of Jupyter notebooks that do the following.
 
-1. The Python Jupyter notebook [align_and_annotate.ipynb][] demultiplexes and aligns the reads, annotates the flu synonymous barcodes, and generates the cell-gene matrix. It requires installation of [cellranger](https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/what-is-cell-ranger), which performs the demultiplexing and alignment. It also uses custom Python and bash scripts found in the `./scripts/` subdirectory, and requires installation of a few common Python modules. The notebook describes the software versions used. 
+### 1. Align and annotate 10X single-cell data to create cell-gene matrix
+The Python notebook [align_and_annotate.ipynb][] demultiplexes and aligns the reads, annotates the flu synonymous barcodes, and generates the cell-gene matrix. It requires installation of [cellranger](https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/what-is-cell-ranger), which performs the demultiplexing and alignment. It also uses custom Python and bash scripts found in the `./scripts/` subdirectory, and requires installation of a few common Python modules. The notebook describes the software versions used. The end result of this notebook is an annotated cell-gene matrix that is stored in `./results/cellgenecounts/`. There are separate matrices for the human cells with flu reads (*humanplusflu*) and the canine reads (*canine*):
+
+    results/cellgenecounts//merged_canine_cells.tsv
+    results/cellgenecounts//merged_canine_genes.tsv
+    results/cellgenecounts//merged_canine_matrix.mtx
+    results/cellgenecounts//merged_humanplusflu_cells.tsv
+    results/cellgenecounts//merged_humanplusflu_genes.tsv
+    results/cellgenecounts//merged_humanplusflu_matrix.mtx
+
+### 2. Process annotated cell-gene matrix. 
+The R notebook [monocle_analysis.ipynb][]
 
 ## Input data
-In addition to the notebooks / scripts themselves, the following input data is used:
+The following input data is used by the analyses:
 
 1. The BCL files that contain the deep sequencing data are on the Bloom lab `ngs` directory, and are linked to directly in [align_and_annotate.ipynb][].
 
 2. [./data/flu_sequences/](./data/flu_sequences) contains the influenza genomes for both the wildtype A/WSN/1933 virus and the variants with double synonymous mutations barcoding the end of the mRNAs, as taken from the Bloom lab reverse-genetics plasmids used to grow these viruses.
 
 ## Results and Conclusions
-The Jupyter notebook [align_and_annotate.ipynb][] describes results of the analyses performed therein.
+The results from the analysis in each notebook are displayed and described in that notebook.
 
 All output from the analyses are written to the `./results/` subdirectory.
 
