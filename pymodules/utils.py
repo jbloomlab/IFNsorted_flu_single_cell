@@ -44,7 +44,8 @@ def mergeCellGeneMatrices(mergedgenes, mergedcells, mergedmatrix,
             header, and the first column should give the cell barcode.
         `removeprefix` (str or `None`)
             If not `None`, should specify a prefix associated with each
-            gene. This prefix is removed in `mergedgenes`.
+            gene. This prefix and any underscores that immediately
+            follow it are removed in `mergedgenes`.
 
     Result: 
         Creates the files `mergedgenes`, `mergedcells`, and `mergedmatrix`.
@@ -94,8 +95,9 @@ def mergeCellGeneMatrices(mergedgenes, mergedcells, mergedmatrix,
             cells += sample_barcodes
 
     if removeprefix:
-        assert all([2 == gene.count(removeprefix) for gene in genelist])
-        genelist = [gene.replace(removeprefix, '') for gene in genelist]
+        prefix_match = re.compile('{0}_*'.format(removeprefix))
+        assert all([2 == len(prefix_match.findall(gene)) for gene in genelist])
+        genelist = [prefix_match.sub(gene, '') for gene in genelist]
     
     matrix = scipy.sparse.hstack(matrixlist)
     assert matrix.shape == (len(genelist), len(cells))
