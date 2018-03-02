@@ -5,6 +5,7 @@ Written by Jesse Bloom."""
 
 import math
 import os
+import re
 import json
 import time
 import subprocess
@@ -97,7 +98,7 @@ def mergeCellGeneMatrices(mergedgenes, mergedcells, mergedmatrix,
     if removeprefix:
         prefix_match = re.compile('{0}_*'.format(removeprefix))
         assert all([2 == len(prefix_match.findall(gene)) for gene in genelist])
-        genelist = [prefix_match.sub(gene, '') for gene in genelist]
+        genelist = [prefix_match.sub('', gene) for gene in genelist]
     
     matrix = scipy.sparse.hstack(matrixlist)
     assert matrix.shape == (len(genelist), len(cells))
