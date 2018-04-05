@@ -369,7 +369,8 @@ def main():
     cellannotations = outprefix + 'cellannotations.tsv'
     print("\nWriting cell annotations to {0}".format(cellannotations))
     cellcounts_df[['{0}-{1}'.format(gene, cat) for gene in genenames + ['flu']
-            for cat in ['syn', 'wt']]].to_csv(cellannotations, sep='\t')
+            for cat in ['syn', 'wt']] + ['total-flu']].to_csv(
+            cellannotations, sep='\t')
 
     print("\nProgram complete.")
 
