@@ -219,7 +219,7 @@ def main():
     plt.savefig(readstats_plot, bbox_inches='tight')
 
     # get umi statistics about gene calls into a dataframe
-    cellcounts = dict([("{0}-{1}".format(gene, cat), []) for gene in genenames
+    cellcounts = dict([("{0}_{1}".format(gene, cat), []) for gene in genenames
             for cat in umi_cats])
     cellcounts['cellbarcode'] = []
     for cb in cellbarcodes:
@@ -239,18 +239,18 @@ def main():
                     else:
                         cellgene_d['invalid'] += 1
             for cat in umi_cats:
-                cellcounts["{0}-{1}".format(gene, cat)].append(cellgene_d[cat])
+                cellcounts["{0}_{1}".format(gene, cat)].append(cellgene_d[cat])
     cellcounts_df = pandas.DataFrame.from_dict(cellcounts)
     cellcounts_df.set_index('cellbarcode', inplace=True, drop=True, 
             verify_integrity=True)
     for gene in genenames:
-        cellcounts_df[gene] = cellcounts_df[['{0}-{1}'.format(gene, cat)
+        cellcounts_df[gene] = cellcounts_df[['{0}_{1}'.format(gene, cat)
                 for cat in umi_cats]].sum(axis=1)
     for cat in umi_cats:
-        cellcounts_df['flu-{0}'.format(cat)] = cellcounts_df[
-                ['{0}-{1}'.format(gene, cat)
+        cellcounts_df['flu_{0}'.format(cat)] = cellcounts_df[
+                ['{0}_{1}'.format(gene, cat)
                 for gene in genenames]].sum(axis=1)
-    cellcounts_df['total-flu'] = cellcounts_df[genenames].sum(axis=1)
+    cellcounts_df['total_flu'] = cellcounts_df[genenames].sum(axis=1)
 
     # write and plot umi statistics
     umistatsplot = outprefix + 'umistats.pdf'
@@ -260,7 +260,7 @@ def main():
           "{0}, {1}, {2}".format(umistatsfile, umistatsplot, barcodefracplot))
     umistats = {}
     for gene in genenames:
-        umistats[gene] = dict([(cat, cellcounts_df.sum(axis=0)['{0}-{1}'.format(
+        umistats[gene] = dict([(cat, cellcounts_df.sum(axis=0)['{0}_{1}'.format(
                 gene, cat)]) for cat in umi_cats])
     umistats = pandas.DataFrame.from_dict(umistats, orient='index')
     umistats = umistats.reindex(genenames)
@@ -291,8 +291,8 @@ def main():
     nfluplot = outprefix + 'nflu.pdf'
     print("\nPlotting distribution of flu reads across cells to "
           "{0}".format(nfluplot))
-    nwithflu = cellcounts_df['total-flu'].astype(bool).sum()
-    ser = cellcounts_df['total-flu'].sort_values()
+    nwithflu = cellcounts_df['total_flu'].astype(bool).sum()
+    ser = cellcounts_df['total_flu'].sort_values()
     plt.figure(figsize=(4, 3))
     if (0 < ser).any():
         cdf = pandas.Series(numpy.linspace(0., 1., len(ser)), index=ser)
@@ -319,13 +319,13 @@ def main():
     purity = []
     randompurity = []
     fracsyn = []
-    for (cellbc, row) in cellcounts_df.sort_values('total-flu').iterrows():
-        nbc = row['flu-syn'] + row['flu-wt']
+    for (cellbc, row) in cellcounts_df.sort_values('total_flu').iterrows():
+        nbc = row['flu_syn'] + row['flu_wt']
         if nbc < 2:
             continue
-        nflu.append(row['total-flu'])
-        fracsyn.append(row['flu-syn'] / float(nbc))
-        purity.append(max(row['flu-syn'], row['flu-wt']) / float(nbc))
+        nflu.append(row['total_flu'])
+        fracsyn.append(row['flu_syn'] / float(nbc))
+        purity.append(max(row['flu_syn'], row['flu_wt']) / float(nbc))
         if nbc > 500:
             # numerical overflow for large nbc, assign value about this
             randompurity.append(max(avgfracsyn, 1 - avgfracsyn))
@@ -368,9 +368,9 @@ def main():
     # write out file giving matrix of values for each cell
     cellannotations = outprefix + 'cellannotations.tsv'
     print("\nWriting cell annotations to {0}".format(cellannotations))
-    cellcounts_df[['{0}-{1}'.format(gene, cat) for gene in genenames + ['flu']
-            for cat in ['syn', 'wt']] + ['total-flu']].to_csv(
-            cellannotations, sep='\t')
+    cellcounts_df = cellcounts_df.rename(
+            columns=lambda x: x.replace('flu', 'annotated_flu'))
+    cellcounts_df.to_csv(cellannotations, sep='\t')
 
     print("\nProgram complete.")
 
