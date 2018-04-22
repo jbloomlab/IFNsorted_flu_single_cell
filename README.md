@@ -31,20 +31,23 @@ None at this time.
 Alistair Russell and [Jesse Bloom](https://research.fhcrc.org/bloom/en.html).
 
 ## Organization of analysis
-The analysis is performed by a set of Jupyter notebooks that do the following.
+The analysis is performed by a set of [Jupyter notebooks](http://jupyter.org/) that do the following.
 
-### 1. Align and annotate 10X single-cell data to create cell-gene matrix
+The entire analysis can be run from the top by executing the bash script [run_analysis.bash](run_analysis.bash).
+
+#### 1. Align and annotate 10X single-cell data to create cell-gene matrix
 The Python notebook [align_and_annotate.ipynb][] demultiplexes and aligns the reads, annotates the flu synonymous barcodes, and generates the cell-gene matrix. It requires installation of [cellranger](https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/what-is-cell-ranger), which performs the demultiplexing and alignment. It also uses custom Python and bash scripts found in the `./scripts/` subdirectory, and requires installation of a few common Python modules. The notebook describes the software versions used. The end result of this notebook is an annotated cell-gene matrix that is stored in `./results/cellgenecounts/`. There are separate matrices for the human cells with flu reads (*humanplusflu*) and the canine reads (*canine*):
 
-    results/cellgenecounts//merged_canine_cells.tsv
-    results/cellgenecounts//merged_canine_genes.tsv
-    results/cellgenecounts//merged_canine_matrix.mtx
-    results/cellgenecounts//merged_humanplusflu_cells.tsv
-    results/cellgenecounts//merged_humanplusflu_genes.tsv
-    results/cellgenecounts//merged_humanplusflu_matrix.mtx
+    results/cellgenecounts/merged_canine_cells.tsv
+    results/cellgenecounts/merged_canine_genes.tsv
+    results/cellgenecounts/merged_canine_matrix.mtx
+    results/cellgenecounts/merged_humanplusflu_cells.tsv
+    results/cellgenecounts/merged_humanplusflu_genes.tsv
+    results/cellgenecounts/merged_humanplusflu_matrix.mtx
 
-### 2. Process annotated cell-gene matrix. 
-The R notebook [monocle_analysis.ipynb][]
+#### 2. Analyze cell-gene matrix for viral features associated with IFN induction.
+The R notebook [monocle_analysis.ipynb][] analyzeds the cell-gene matrix to look for viral features associated with IFN induction.
+The analysis makes substantial use of the [Monocle][] package, and the results are described within the notebook.
 
 ## Input data
 The following input data is used by the analyses:
