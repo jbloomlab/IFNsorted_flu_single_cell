@@ -14,6 +14,8 @@ A modest number of non-infected MDCK (canine) cells were also included to enable
 The virus used was a mix of wildtype and virus with synonymous "barcodes" near the 3' end to help enable identification of co-infection, similar to the approach in [Russell et al (2018)][].
 But whereas in that experiment that viral genomes were barcoded only at the end that gives the 3' end of the mRNA, in this experiment they were barcoded at both ends.
 
+The viral mRNA in the IFN-enriched sample was then amplified by semi-specific PCR and sequenced using PacBio long-read technologies to try to obtain full length sequences for the viral genomes.
+
 This study differs from [Russell et al (2018)][]:
 
   - The cells were enriched for IFN+, as that study found a very low rate of IFN+ cells.
@@ -23,6 +25,8 @@ This study differs from [Russell et al (2018)][]:
   - The MOI and timepoints are different.
 
   - The canine cells were included to better assess lysis / leakage.
+
+  - PacBio sequencing was performed in viral mRNAs.
 
 ## Publication and data
 None at this time.
@@ -45,8 +49,11 @@ The Python notebook [align_and_annotate.ipynb][] demultiplexes and aligns the re
     results/cellgenecounts/merged_humanplusflu_genes.tsv
     results/cellgenecounts/merged_humanplusflu_matrix.mtx
 
-#### 2. Analyze cell-gene matrix for viral features associated with IFN induction.
-The R notebook [monocle_analysis.ipynb][] analyzeds the cell-gene matrix to look for viral features associated with IFN induction.
+#### 2. Analzye PacBio sequencing of viral mRNAs
+The Python notebook [pacbio_analysis.ipynb][] analyzes the PacBio sequencing of the viral mRNAs that have been enriched from the 10X library by semi-specific PCR.
+
+#### 3. Analyze cell-gene matrix for viral features associated with IFN induction.
+The R notebook [monocle_analysis.ipynb][] analyzes the cell-gene matrix to look for viral features associated with IFN induction.
 The analysis makes substantial use of the [Monocle][] package, and the results are described within the notebook.
 
 ## Input data
@@ -63,5 +70,6 @@ All output from the analyses are written to the `./results/` subdirectory.
 
 [align_and_annotate.ipynb]: align_and_annotate.ipynb
 [monocle_analysis.ipynb]: monocle_analysis.ipynb
+[pacbio_analysis.ipynb]: pacbio_analysis.ipynb
 [Monocle]: http://cole-trapnell-lab.github.io/monocle-release/
 [Russell et al (2018)]: https://doi.org/10.7554/eLife.32303
