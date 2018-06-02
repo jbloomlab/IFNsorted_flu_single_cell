@@ -49,7 +49,7 @@ The Python notebook [align_and_annotate.ipynb][] demultiplexes and aligns the re
     results/cellgenecounts/merged_humanplusflu_genes.tsv
     results/cellgenecounts/merged_humanplusflu_matrix.mtx
 
-#### 2. Analzye PacBio sequencing of viral mRNAs
+#### 2. Analyze PacBio sequencing of viral mRNAs
 The Python notebook [pacbio_analysis.ipynb][] analyzes the PacBio sequencing of the viral mRNAs that have been enriched from the 10X library by semi-specific PCR.
 
 #### 3. Analyze cell-gene matrix for viral features associated with IFN induction.
@@ -62,6 +62,8 @@ The following input data is used by the analyses:
 1. The BCL files that contain the deep sequencing data are on the Bloom lab `ngs` directory, and are linked to directly in [align_and_annotate.ipynb][].
 
 2. [./data/flu_sequences/](./data/flu_sequences) contains the influenza genomes for both the wildtype A/WSN/1933 virus and the variants with double synonymous mutations barcoding the end of the mRNAs, as taken from the Bloom lab reverse-genetics plasmids used to grow these viruses.
+
+3. [./data/images/](./data/images/) contains some schematic images used in the Jupyter notebooks.
 
 ## Results and Conclusions
 The results from the analysis in each notebook are displayed and described in that notebook.
