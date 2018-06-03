@@ -61,7 +61,7 @@ The following input data is used by the analyses:
 
 1. The BCL files that contain the deep sequencing data are on the Bloom lab `ngs` directory, and are linked to directly in [align_and_annotate.ipynb][].
 
-2. [./data/flu_sequences/](./data/flu_sequences) contains the influenza genomes for both the wildtype A/WSN/1933 virus and the variants with double synonymous mutations barcoding the end of the mRNAs, as taken from the Bloom lab reverse-genetics plasmids used to grow these viruses.
+2. [./data/flu_sequences/](./data/flu_sequences) contains the influenza genomes for both the wildtype A/WSN/1933 virus and the variants with double synonymous barcodes. See the [README](./data/flu_sequences/README.md) in that directory for more details.
 
 3. [./data/images/](./data/images/) contains some schematic images used in the Jupyter notebooks.
 
