@@ -47,7 +47,7 @@ def main():
             vrnaseq = plasmid[u12matches[0].start(0) : u13matches[0].end(0)]
             print("vRNA of length {0} for {1}{2}".format(len(vrnaseq), seg, syntype))
             vrna = Bio.SeqRecord.SeqRecord(Bio.Seq.Seq(vrnaseq), 
-                    id='flu' + seg + syntype,
+                    id='flu' + seg,
                     description='{0} vRNA from plasmid {1}'.format(seg, fplasmid),
                     features=[Bio.SeqFeature.SeqFeature(
                         Bio.SeqFeature.FeatureLocation(0, len(vrnaseq)),
@@ -74,16 +74,16 @@ def main():
                 intron = list(mRNA_splice[seg].finditer(mrnaseq))
                 assert len(intron) == 1, "not exactly one intron for {0}{1}".format(
                         seg, syntype)
-                mrna1_name = 'flu' + seg + '1' + syntype
+                mrna1_name = 'flu' + seg + '1'
                 mrnas.append((mrna1_name, mrnaseq))
                 print("mRNA of length {0} for {1}".format(len(mrnaseq), mrna1_name))
-                mrna2_name = 'flu' + seg + '2' + syntype
+                mrna2_name = 'flu' + seg + '2'
                 mrnaseq2 = (mrnaseq[ : intron[0].start('intron')] +
                             mrnaseq[intron[0].end('intron') : ])
                 mrnas.append((mrna2_name, mrnaseq2))
                 print("mRNA of length {0} for {1}".format(len(mrnaseq2), mrna2_name))
             else:
-                mrna_name = 'flu' + seg + syntype
+                mrna_name = 'flu' + seg
                 mrnas.append((mrna_name, mrnaseq))
                 print("mRNA of length {0} for {1}".format(len(mrnaseq), mrna_name))
 

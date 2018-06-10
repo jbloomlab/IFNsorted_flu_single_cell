@@ -44,7 +44,7 @@ def parseArgs():
     parser.add_argument('--samplename', 
             help='Name of sample, used as title for plots', required=True)
     parser.add_argument('--synsuffix', help="Suffix on genes in `--synflugenes`",
-            default='-double-syn')
+            default='')
     parser.add_argument('--flugeneprefix', help='Prefix on flu gene names.',
             default='humanplusflu_')
     parser.add_argument('--dist3', default=400, 
