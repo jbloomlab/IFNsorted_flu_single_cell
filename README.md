@@ -1,5 +1,8 @@
 # Single-cell sequencing of IFN-sorted influenza-infected cells
 
+## Authors
+Alistair Russell and [Jesse Bloom](https://research.fhcrc.org/bloom/en.html).
+
 ## Overview
 This is an analysis of single-cell mRNA sequencing of influenza-infected A549 cells that have been enriched for IFN+ cells.
 
@@ -15,19 +18,18 @@ But whereas in that experiment that viral genomes were barcoded only at the end 
 
 The viral mRNA in the IFN-enriched sample was then amplified by semi-specific PCR and sequenced using PacBio long-read technologies to obtain full length sequences for the viral genomes.
 
-## Publication and data
-None at this time.
-
-## Authors
-Alistair Russell and [Jesse Bloom](https://research.fhcrc.org/bloom/en.html).
-
 ## Organization of analysis
 The analysis is performed by a set of [Jupyter notebooks](http://jupyter.org/) that do the following.
 
 The entire analysis can be run from the top by executing the bash script [run_analysis.bash](run_analysis.bash).
 
 #### 1. Align and annotate 10X single-cell data to create cell-gene matrix
-The Python notebook [align_and_annotate.ipynb][] demultiplexes and aligns the reads, annotates the flu synonymous barcodes, and generates the cell-gene matrix. It requires installation of [cellranger](https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/what-is-cell-ranger), which performs the demultiplexing and alignment. It also uses custom Python and bash scripts found in the `./scripts/` subdirectory, and requires installation of a few common Python modules. The notebook describes the software versions used. The end result of this notebook is an annotated cell-gene matrix that is stored in `./results/cellgenecounts/`. There are separate matrices for the human cells with flu reads (*humanplusflu*) and the canine reads (*canine*):
+The Python notebook [align_and_annotate.ipynb][] demultiplexes and aligns the reads, annotates the flu synonymous barcodes, and generates the cell-gene matrix. 
+It requires installation of [cellranger](https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/what-is-cell-ranger), which performs the demultiplexing and alignment. 
+It also uses custom Python and bash scripts found in the `./scripts/` subdirectory, and requires installation of a few common Python modules. 
+The notebook describes the software versions used. 
+The end result of this notebook is an annotated cell-gene matrix that is stored in `./results/cellgenecounts/`. 
+There are separate matrices for the human cells with flu reads (*humanplusflu*) and the canine reads (*canine*):
 
     results/cellgenecounts/merged_canine_cells.tsv
     results/cellgenecounts/merged_canine_genes.tsv
@@ -37,7 +39,13 @@ The Python notebook [align_and_annotate.ipynb][] demultiplexes and aligns the re
     results/cellgenecounts/merged_humanplusflu_matrix.mtx
 
 #### 2. Analyze PacBio sequencing of viral mRNAs
-The Python notebook [pacbio_analysis.ipynb][] analyzes the PacBio sequencing of the viral mRNAs that have been enriched from the 10X library by semi-specific PCR.
+The Python notebook [pacbio_analysis.ipynb][] analyzes the PacBio sequencing of the viral mRNAs that have been enriched from the 10X library by semi-specific PCR. 
+Numerous plots and a detailed analysis are included in this notebook.
+In addition, the notebook creates an annotated version of the cell descriptor for the cell-gene matrix that contains information about the mutations that can be called by the PacBio sequencing. 
+This is the file:
+
+    results/cellgenecounts/PacBio_annotated_merged_humanplusflu_cells.tsv
+
 
 #### 3. Analyze cell-gene matrix for viral features associated with IFN induction.
 The R notebook [monocle_analysis.ipynb][] analyzes the cell-gene matrix to look for viral features associated with IFN induction.
