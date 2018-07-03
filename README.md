@@ -7,26 +7,13 @@ Briefly, A549 cells were infected with A/WSN/1933 influenza virus at a relativel
 These A549 cells contained a sortable marker (LNGFRdel) under an IFNbeta promoter.
 At 13-hours post-infection, the cells were sorted to enrich for IFN+ ones. 
 These enriched IFN+ cells were mixed with some of the ones that did not sort as IFN+, and they were sequenced on the [Chromium 10X platform](https://www.10xgenomics.com/single-cell/).
-A control sample infected with the same virus but not MACS sorted was collected and sequenced at 10 hours.
 
 A modest number of non-infected MDCK (canine) cells were also included to enable assessment of mRNA leakage and lsysis.
 
 The virus used was a mix of wildtype and virus with synonymous "barcodes" near the 3' end to help enable identification of co-infection, similar to the approach in [Russell et al (2018)][].
 But whereas in that experiment that viral genomes were barcoded only at the end that gives the 3' end of the mRNA, in this experiment they were barcoded at both ends.
 
-The viral mRNA in the IFN-enriched sample was then amplified by semi-specific PCR and sequenced using PacBio long-read technologies to try to obtain full length sequences for the viral genomes.
-
-This study differs from [Russell et al (2018)][]:
-
-  - The cells were enriched for IFN+, as that study found a very low rate of IFN+ cells.
-
-  - The viral population was passaged at slightly less stringent MOI so it is a bit more IFN-inducing.
-
-  - The MOI and timepoints are different.
-
-  - The canine cells were included to better assess lysis / leakage.
-
-  - PacBio sequencing was performed in viral mRNAs.
+The viral mRNA in the IFN-enriched sample was then amplified by semi-specific PCR and sequenced using PacBio long-read technologies to obtain full length sequences for the viral genomes.
 
 ## Publication and data
 None at this time.
