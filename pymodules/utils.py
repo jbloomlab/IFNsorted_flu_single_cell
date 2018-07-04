@@ -14,7 +14,6 @@ import scipy.io
 import scipy.sparse
 import pandas
 import matplotlib
-matplotlib.use('pdf')
 import matplotlib.pyplot as plt
 plt.style.use('ggplot')
 from IPython.display import Image, display
