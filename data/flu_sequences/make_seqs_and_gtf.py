@@ -8,6 +8,7 @@ import itertools
 import collections
 import copy
 
+import Bio.Alphabet
 import Bio.SeqIO
 import Bio.Seq
 import Bio.SeqRecord
@@ -39,6 +40,8 @@ def main():
 
     for syntype, gene_short_name in itertools.product(viral_barcodes, gene_names):
 
+        print("\nProcessing {0}{1}...".format(gene_short_name, syntype))
+
         # read plasmid
         plasmidfile = glob.glob('*_pHW18*-{0}{1}.gb'.format(
                 gene_short_name, syntype))
@@ -55,10 +58,10 @@ def main():
         assert len(u13matches) == 1, "Not exactly one U13 for {0}{1}".format(
                 gene_short_name, syntype)
         geneseq = plasmid[u12matches[0].start(0) : u13matches[0].end(0)]
-        print("gene length {0} for {1}{2}".format(
-                len(geneseq), gene_short_name, syntype))
+        print("Gene length is {0}".format(len(geneseq)))
         gene_name = "flu" + gene_short_name
-        gene = Bio.SeqRecord.SeqRecord(Bio.Seq.Seq(geneseq), 
+        gene = Bio.SeqRecord.SeqRecord(
+                Bio.Seq.Seq(geneseq, Bio.Alphabet.generic_dna),
                 id=gene_name,
                 name=gene_name,
                 description='{0} vRNA from plasmid {1}'.format(
@@ -73,6 +76,7 @@ def main():
                         "gene_id":gene_name,
                         "gene_name":gene_name,
                         "gene_biotype":"gene",
+                        "name":gene_name,
                         },
                     )],
                 )
@@ -94,9 +98,7 @@ def main():
                     strand=1,
                     qualifiers={
                         "source":"JesseBloom",
-                        "gene_id":gene_name,
-                        "gene_name":gene_name,
-                        "transcript_id":mrna_name,
+                        "name":mrna_name,
                         "gene_biotype":"mRNA",
                         },
                     )
@@ -123,10 +125,61 @@ def main():
                         strand=1,
                         qualifiers={
                             "source":"JesseBloom",
-                            "gene_id":gene_name,
-                            "gene_name":gene_name,
-                            "transcript_id":mrna_name,
+                            "name":mrna_name,
                             "gene_biotype":"mRNA",
+                            },
+                        )
+                    )
+
+        # for each mRNA, get the CDS, which we heuristically identify as
+        # first ATG initiated CDS (checking it is at least 50% of mRNA length)
+        for mrna in filter(lambda gene: gene.type == 'mRNA', gene.features):
+
+            # find start / end of first ATG initiated sequence
+            mrna_seq = mrna.extract(gene).seq
+            assert len(mrna_seq) == len(mrna)
+            mrna_start = str(mrna_seq).index('ATG')
+            last_triplet = mrna_start + 3 * (len(mrna_seq[mrna_start : ]) // 3)
+            protlen = len(mrna_seq[mrna_start : last_triplet].translate(
+                    to_stop=True))
+            mrna_end = mrna_start + 3 * protlen + 3 # include stop codon
+            print("{0} mRNA is of length {1}, encodes protein of {2} residues"
+                    .format(mrna.id, len(mrna), protlen))
+
+            # construct CDS location
+            assert mrna_start < len(mrna.location.parts[0]),\
+                    "start not in first exon"
+            assert len(mrna) - mrna_end < len(mrna.location.parts[-1]),\
+                    "end not in last exon"
+            cds_start = mrna.location.parts[0].start + mrna_start
+            cds_end = mrna.location.parts[-1].end - (len(mrna) - mrna_end)
+            assert cds_end <= len(gene)
+            location_parts = [Bio.SeqFeature.FeatureLocation(
+                    cds_start, min(cds_end, mrna.location.parts[0].end))]
+            for p in mrna.location.parts[1 : -1]:
+                location_parts.append(p)
+            if len(mrna.location.parts) > 1:
+                location_parts.append(Bio.SeqFeature.FeatureLocation(
+                        mrna.location.parts[-1].start, cds_end))
+
+            if len(location_parts) > 1:
+                cds_location = Bio.SeqFeature.CompoundLocation(location_parts)
+            else:
+                cds_location = location_parts[0]
+            prot = cds_location.extract(gene).seq.translate()
+            assert len(prot) == protlen + 1
+            assert prot[0] == 'M' and prot[-1] == '*'
+            gene.features.append(
+                    Bio.SeqFeature.SeqFeature(
+                        cds_location,
+                        id=mrna.id,
+                        type="CDS",
+                        strand=1,
+                        qualifiers={
+                            "source":"JesseBloom",
+                            "name":mrna.id,
+                            "gene_biotype":"CDS",
+                            "translation":prot
                             },
                         )
                     )
@@ -136,9 +189,13 @@ def main():
     # now write output
     for syntype in viral_barcodes:
 
+
         genefile = 'flu-wsn{0}.fasta'.format(syntype)
-        print("Writing {0} genes to {1}".format(len(genes[syntype]), genefile))
+        genbankfile = os.path.splitext(genefile)[0] + '.gb'
+        print("\nWriting {0} genes to {1} and {2}".format(
+                len(genes[syntype]), genefile, genbankfile))
         Bio.SeqIO.write(genes[syntype], genefile, 'fasta')
+        Bio.SeqIO.write(genes[syntype], genbankfile, 'genbank')
 
         mrnas = [Bio.SeqRecord.SeqRecord(mrna.extract(gene).seq,
                     id=mrna.id, description='')
@@ -149,7 +206,7 @@ def main():
         Bio.SeqIO.write(mrnas, mrnafile, 'fasta')
 
         gtffile = os.path.splitext(genefile)[0] + '.gtf'
-        print("Writing gene annotations to {0}\n".format(gtffile))
+        print("Writing gene annotations to {0}".format(gtffile))
         just_genes = []
         for gene in genes[syntype]:
             just_gene = copy.deepcopy(gene)

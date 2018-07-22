@@ -1,17 +1,17 @@
 ##gff-version 3
 ##sequence-region fluPB2 1 2341
-fluPB2	JesseBloom	gene	1	2341	.	+	.	gene_biotype "gene"; gene_id "fluPB2"; gene_name "fluPB2"
+fluPB2	JesseBloom	gene	1	2341	.	+	.	gene_biotype "gene"; gene_id "fluPB2"; gene_name "fluPB2"; name "fluPB2"
 ##sequence-region fluPB1 1 2341
-fluPB1	JesseBloom	gene	1	2341	.	+	.	gene_biotype "gene"; gene_id "fluPB1"; gene_name "fluPB1"
+fluPB1	JesseBloom	gene	1	2341	.	+	.	gene_biotype "gene"; gene_id "fluPB1"; gene_name "fluPB1"; name "fluPB1"
 ##sequence-region fluPA 1 2233
-fluPA	JesseBloom	gene	1	2233	.	+	.	gene_biotype "gene"; gene_id "fluPA"; gene_name "fluPA"
+fluPA	JesseBloom	gene	1	2233	.	+	.	gene_biotype "gene"; gene_id "fluPA"; gene_name "fluPA"; name "fluPA"
 ##sequence-region fluHA 1 1775
-fluHA	JesseBloom	gene	1	1775	.	+	.	gene_biotype "gene"; gene_id "fluHA"; gene_name "fluHA"
+fluHA	JesseBloom	gene	1	1775	.	+	.	gene_biotype "gene"; gene_id "fluHA"; gene_name "fluHA"; name "fluHA"
 ##sequence-region fluNP 1 1565
-fluNP	JesseBloom	gene	1	1565	.	+	.	gene_biotype "gene"; gene_id "fluNP"; gene_name "fluNP"
+fluNP	JesseBloom	gene	1	1565	.	+	.	gene_biotype "gene"; gene_id "fluNP"; gene_name "fluNP"; name "fluNP"
 ##sequence-region fluNA 1 1409
-fluNA	JesseBloom	gene	1	1409	.	+	.	gene_biotype "gene"; gene_id "fluNA"; gene_name "fluNA"
+fluNA	JesseBloom	gene	1	1409	.	+	.	gene_biotype "gene"; gene_id "fluNA"; gene_name "fluNA"; name "fluNA"
 ##sequence-region fluM 1 1027
-fluM	JesseBloom	gene	1	1027	.	+	.	gene_biotype "gene"; gene_id "fluM"; gene_name "fluM"
+fluM	JesseBloom	gene	1	1027	.	+	.	gene_biotype "gene"; gene_id "fluM"; gene_name "fluM"; name "fluM"
 ##sequence-region fluNS 1 890
-fluNS	JesseBloom	gene	1	890	.	+	.	gene_biotype "gene"; gene_id "fluNS"; gene_name "fluNS"
+fluNS	JesseBloom	gene	1	890	.	+	.	gene_biotype "gene"; gene_id "fluNS"; gene_name "fluNS"; name "fluNS"
