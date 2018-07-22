@@ -13,8 +13,10 @@ We identify the NS1 / NS2 and M1 / M2 mRNAs using the splice junctions described
 
 Running this Python script produces:
   - [flu-wsn.fasta](flu-wsn.fasta)
+  - [flu-wsn.genbank](flu-wsn.genbank)
   - [flu-wsn.gtf](flu-wsn.gtf)
   - [flu-wsn-double-syn.fasta](flu-wsn-double-syn.fasta)
+  - [flu-wsn-double-syn.genbank](flu-wsn-double-syn.genbank)
   - [flu-wsn-double-syn.gtf](flu-wsn-double-syn.gtf)
   - [flu-wsn-mRNA.fasta](flu-wsn-mRNA.fasta)
   - [flu-wsn-double-syn-mRNA.fasta](flu-wsn-double-syn-mRNA.fasta)
