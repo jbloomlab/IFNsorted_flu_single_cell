@@ -25,7 +25,11 @@ The entire analysis can be run by executing the [Snakemake](https://snakemake.re
 
         snakemake
 
-This command performs the following major steps:
+To run this command on the Fred Hutch computing cluster, execute the file [run_snakemake_Hutch_cluster.sbatch](run_snakemake_Hutch_cluster.sbatch) with:
+
+    sbatch run_snakemake_Hutch_cluster.sbatch
+
+The pipeline in [Snakefile](Snakefile) consists of the following major steps:
 
 #### 1. Align and annotate 10X single-cell data to create cell-gene matrix
 The Python notebook [align_and_annotate.ipynb][] demultiplexes and aligns the reads, annotates the flu synonymous barcodes, and generates the cell-gene matrix. 

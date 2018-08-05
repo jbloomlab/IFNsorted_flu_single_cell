@@ -4,6 +4,7 @@ Written by Jesse Bloom."""
 
 
 # Imports -----------------------------------------
+import shutil
 from os.path import join
 
 
@@ -62,14 +63,16 @@ rule get_PacBio_CCSs:
         join(SUBREADS_DIR, '{pacbioRun}.subreads.bam'),
     output:
         ccs_bam=os.path.join(CCS_DIR, '{pacbioRun}_ccs.bam'),
-        ccs_report=os.path.join(CCS_DIR, '{pacbioRun}_report.csv')
+        ccs_report=os.path.join(CCS_DIR, '{pacbioRun}_report.csv'),
+        ccs_log=os.path.join(CCS_DIR, '{pacbioRun}_log.txt')
+    threads: 16
     shell:
         'ccs '
             '--minLength 50 '
             '--maxLength 5000 '
             '--minPasses 3 '
             '--minPredictedAccuracy 0.999 '
-            '--logFile {wildcards.pacbioRun}_log.txt '
+            '--logFile {output.ccs_log}_log.txt '
             '--reportFile {output.ccs_report} '
             '--polish '
             '--numThreads {threads} '
@@ -80,11 +83,11 @@ rule get_PacBio_CCSs:
 rule get_PacBio_subreads:
     """Get the PacBio subreads."""
     input:
-        lambda wildcards: PACBIO_RUNS[wildcards.pacbioRun]
+        subreads=lambda wildcards: PACBIO_RUNS[wildcards.pacbioRun]
     output:
-        join(SUBREADS_DIR, '{pacbioRun}.subreads.bam')
-    shell:
-        'cp {input.subreads} {output}'
+        subreads=join(SUBREADS_DIR, '{pacbioRun}.subreads.bam')
+    run:
+        shutil.copy(input.subreads, output.subreads)
         
 
 rule get_cellgene_matrix:

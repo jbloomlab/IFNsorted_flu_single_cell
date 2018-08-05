@@ -1,7 +1,6 @@
 .*
 !.gitignore
 *.pyc
-*.sbatch
 humanplusflu_and_canine
 results
 _temp*
