@@ -4,9 +4,9 @@
 Alistair Russell and [Jesse Bloom](https://research.fhcrc.org/bloom/en.html).
 
 ## Overview
-This is an analysis of single-cell mRNA sequencing of influenza-infected A549 cells that have been enriched for IFN+ cells.
+Analysis of single-cell mRNA sequencing of influenza-infected A549 cells that have been enriched for IFN+ cells.
 
-Briefly, A549 cells were infected with A/WSN/1933 influenza virus at a relatively low MOI, aiming for about 30% infected by HA staining.
+A549 cells were infected with A/WSN/1933 influenza virus at a relatively low MOI.
 These A549 cells contained a sortable marker (LNGFRdel) under an IFNbeta promoter.
 At 13-hours post-infection, the cells were sorted to enrich for IFN+ ones. 
 These enriched IFN+ cells were mixed with some of the ones that did not sort as IFN+, and they were sequenced on the [Chromium 10X platform](https://www.10xgenomics.com/single-cell/).
@@ -21,7 +21,11 @@ The viral mRNA in the IFN-enriched sample was then amplified by semi-specific PC
 ## Organization of analysis
 The analysis is performed by a set of [Jupyter notebooks](http://jupyter.org/) that do the following.
 
-The entire analysis can be run from the top by executing the bash script [run_analysis.bash](run_analysis.bash).
+The entire analysis can be run by executing the [Snakemake](https://snakemake.readthedocs.io/en/stable/) file [Snakefile](Snakefile) with:
+
+        snakemake
+
+This command performs the following major steps:
 
 #### 1. Align and annotate 10X single-cell data to create cell-gene matrix
 The Python notebook [align_and_annotate.ipynb][] demultiplexes and aligns the reads, annotates the flu synonymous barcodes, and generates the cell-gene matrix. 
@@ -38,27 +42,30 @@ There are separate matrices for the human cells with flu reads (*humanplusflu*) 
     results/cellgenecounts/merged_humanplusflu_genes.tsv
     results/cellgenecounts/merged_humanplusflu_matrix.mtx
 
-#### 2. Analyze PacBio sequencing of viral mRNAs
-The Python notebook [pacbio_analysis.ipynb][] analyzes the PacBio sequencing of the viral mRNAs that have been enriched from the 10X library by semi-specific PCR. 
+#### 2. Build PacBio circular consensus sequences (CCSs)
+[Snakefile](Snakefile) runs the PacBio [ccs](https://github.com/PacificBiosciences/unanimity/blob/develop/doc/PBCCS.md) program to build circular consensus sequences.
+These are placed in the directory `./results/pacbio/ccs/`.
+
+#### 3. Analyze PacBio sequencing of viral mRNAs
+The Python notebook [pacbio_analysis.ipynb][] analyzes the PacBio CCSs to identify mutations present in viruses infecting individual cells. 
 Numerous plots and a detailed analysis are included in this notebook.
 In addition, the notebook creates an annotated version of the cell descriptor for the cell-gene matrix that contains information about the mutations that can be called by the PacBio sequencing. 
-This is the file:
+This is the created file:
 
     results/cellgenecounts/PacBio_annotated_merged_humanplusflu_cells.tsv
 
-
-#### 3. Analyze cell-gene matrix for viral features associated with IFN induction.
+#### 4. Analyze cell-gene matrix for viral features associated with IFN induction.
 The R notebook [monocle_analysis.ipynb][] analyzes the cell-gene matrix to look for viral features associated with IFN induction.
 The analysis makes substantial use of the [Monocle][] package, and the results are described within the notebook.
 
 ## Input data
-The following input data is used by the analyses:
+The `./data/` subdirectory contains input data used by the analysis:
 
-1. The BCL files that contain the deep sequencing data are on the Bloom lab `ngs` directory, and are linked to directly in [align_and_annotate.ipynb][].
+1. The file [./data/PacBio_runs.tsv](./data/PacBio_runs.tsv) contains a list of the PacBio runs and the locations of their corresponding subreads files on the Hutch computing cluster.
 
-2. [./data/flu_sequences/](./data/flu_sequences) contains the influenza genomes for both the wildtype A/WSN/1933 virus and the variants with double synonymous barcodes. See the [README](./data/flu_sequences/README.md) in that directory for more details.
+2. The subdirectory [./data/flu_sequences/](./data/flu_sequences) contains the influenza genomes for both the wildtype A/WSN/1933 virus and the variants with double synonymous barcodes. See the [README](./data/flu_sequences/README.md) in that directory for more details.
 
-3. [./data/images/](./data/images/) contains some schematic images used in the Jupyter notebooks.
+3. The subdirectory [./data/images/](./data/images/) contains some schematic images used in the Jupyter notebooks.
 
 ## Results and Conclusions
 The results from the analysis in each notebook are displayed and described in that notebook.
