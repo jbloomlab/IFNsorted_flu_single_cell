@@ -25,13 +25,19 @@ The entire analysis can be run by executing the [Snakemake](https://snakemake.re
 
         snakemake
 
-To run this command on the Fred Hutch computing cluster, execute the file [run_snakemake_Hutch_cluster.sbatch](run_snakemake_Hutch_cluster.sbatch) with:
+To run this command on the Fred Hutch computing cluster across multiple nodes, execute the file [run_snakemake_Hutch_cluster.sbatch](run_snakemake_Hutch_cluster.sbatch) with:
 
     sbatch run_snakemake_Hutch_cluster.sbatch
 
-The pipeline in [Snakefile](Snakefile) consists of the following major steps:
+Here is a visualization of the pipeline in [Snakefile](Snakefile) created in the file `workflow.png` with:
 
-#### 1. Align and annotate 10X single-cell data to create cell-gene matrix
+    snakemake --forceall --dag | dot -Tpng > workflow.png
+
+![workflow](workflow.png)
+
+This workflow involves the following major steps:
+
+#### Get cell-gene matrix
 The Python notebook [align_and_annotate.ipynb][] demultiplexes and aligns the reads, annotates the flu synonymous barcodes, and generates the cell-gene matrix. 
 It requires installation of [cellranger](https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/what-is-cell-ranger), which performs the demultiplexing and alignment. 
 It also uses custom Python and bash scripts found in the `./scripts/` subdirectory, and requires installation of a few common Python modules. 
@@ -46,11 +52,11 @@ There are separate matrices for the human cells with flu reads (*humanplusflu*) 
     results/cellgenecounts/merged_humanplusflu_genes.tsv
     results/cellgenecounts/merged_humanplusflu_matrix.mtx
 
-#### 2. Build PacBio circular consensus sequences (CCSs)
+#### Get PacBio circular consensus sequences (CCSs)
 [Snakefile](Snakefile) runs the PacBio [ccs](https://github.com/PacificBiosciences/unanimity/blob/develop/doc/PBCCS.md) program to build circular consensus sequences.
 These are placed in the directory `./results/pacbio/ccs/`.
 
-#### 3. Analyze PacBio sequencing of viral mRNAs
+#### Call viral mutations from PacBio CCSs 
 The Python notebook [pacbio_analysis.ipynb][] analyzes the PacBio CCSs to identify mutations present in viruses infecting individual cells. 
 Numerous plots and a detailed analysis are included in this notebook.
 In addition, the notebook creates an annotated version of the cell descriptor for the cell-gene matrix that contains information about the mutations that can be called by the PacBio sequencing. 
@@ -58,7 +64,7 @@ This is the created file:
 
     results/cellgenecounts/PacBio_annotated_merged_humanplusflu_cells.tsv
 
-#### 4. Analyze cell-gene matrix for viral features associated with IFN induction.
+#### Analyze viral features associated with IFN induction.
 The R notebook [monocle_analysis.ipynb][] analyzes the cell-gene matrix to look for viral features associated with IFN induction.
 The analysis makes substantial use of the [Monocle][] package, and the results are described within the notebook.
 

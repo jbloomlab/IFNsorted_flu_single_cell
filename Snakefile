@@ -32,8 +32,30 @@ with open(PACBIO_RUNS_FILE) as f:
 # Rules ------------------------------------------- 
 
 rule all:
+    """Results of analysis of viral mutations and IFN."""
     input:
-        join(CELLGENE_DIR, 'PacBio_annotated_merged_humanplusflu_cells.tsv')
+        'results/plots/p_genotypes.png'
+
+
+rule analyze_IFN_vs_viral_mutations:
+    """Analyze viral mutations associated with IFN induction."""
+    input:
+        join(CELLGENE_DIR, 'PacBio_annotated_merged_humanplusflu_cells.tsv'),
+        join(CELLGENE_DIR, 'merged_humanplusflu_genes.tsv'),
+        join(CELLGENE_DIR, 'merged_humanplusflu_matrix.mtx'),
+        join(CELLGENE_DIR, 'merged_canine_cells.tsv'),
+        join(CELLGENE_DIR, 'merged_canine_genes.tsv'),
+        join(CELLGENE_DIR, 'merged_canine_matrix.mtx'),
+        join(FLUSEQ_DIR, 'flu-wsn.fasta')
+    output:
+        'results/plots/p_genotypes.png'
+    shell:
+        'jupyter nbconvert '
+            '--to notebook '
+            '--execute '
+            '--inplace '
+            '--ExecutePreprocessor.timeout=-1 '
+            'monocle_analysis.ipynb'
     
 
 rule call_PacBio_mutations:
@@ -96,11 +118,11 @@ rule get_cellgene_matrix:
         join(FLUSEQ_DIR, 'flu-wsn.fasta'),
         join(FLUSEQ_DIR, 'flu-wsn-double-syn.fasta')
     output:
-        join(CELLGENE_DIR, 'merged_humanplusflu_genes.tsv'),
         join(CELLGENE_DIR, 'merged_humanplusflu_cells.tsv'),
+        join(CELLGENE_DIR, 'merged_humanplusflu_genes.tsv'),
         join(CELLGENE_DIR, 'merged_humanplusflu_matrix.mtx'),
-        join(CELLGENE_DIR, 'merged_canine_genes.tsv'),
         join(CELLGENE_DIR, 'merged_canine_cells.tsv'),
+        join(CELLGENE_DIR, 'merged_canine_genes.tsv'),
         join(CELLGENE_DIR, 'merged_canine_matrix.mtx')
     shell:
         'jupyter nbconvert '
