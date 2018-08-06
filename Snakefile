@@ -94,7 +94,7 @@ rule get_PacBio_CCSs:
             '--maxLength 5000 '
             '--minPasses 3 '
             '--minPredictedAccuracy 0.999 '
-            '--logFile {output.ccs_log}_log.txt '
+            '--logFile {output.ccs_log} '
             '--reportFile {output.ccs_report} '
             '--polish '
             '--numThreads {threads} '
