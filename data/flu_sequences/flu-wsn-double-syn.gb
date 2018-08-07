@@ -11,12 +11,12 @@ FEATURES             Location/Qualifiers
                      /source="JesseBloom"
                      /gene_id="fluPB2"
                      /gene_name="fluPB2"
-                     /gene_biotype="gene"
+                     /gene_biotype="protein_coding"
                      /label="fluPB2"
      mRNA            2..2320
                      /source="JesseBloom"
                      /label="fluPB2"
-                     /gene_biotype="mRNA"
+                     /gene_biotype="protein_coding"
      CDS             28..2307
                      /source="JesseBloom"
                      /label="fluPB2"
@@ -90,12 +90,12 @@ FEATURES             Location/Qualifiers
                      /source="JesseBloom"
                      /gene_id="fluPB1"
                      /gene_name="fluPB1"
-                     /gene_biotype="gene"
+                     /gene_biotype="protein_coding"
                      /label="fluPB1"
      mRNA            2..2320
                      /source="JesseBloom"
                      /label="fluPB1"
-                     /gene_biotype="mRNA"
+                     /gene_biotype="protein_coding"
      CDS             25..2298
                      /source="JesseBloom"
                      /label="fluPB1"
@@ -169,12 +169,12 @@ FEATURES             Location/Qualifiers
                      /source="JesseBloom"
                      /gene_id="fluPA"
                      /gene_name="fluPA"
-                     /gene_biotype="gene"
+                     /gene_biotype="protein_coding"
                      /label="fluPA"
      mRNA            2..2211
                      /source="JesseBloom"
                      /label="fluPA"
-                     /gene_biotype="mRNA"
+                     /gene_biotype="protein_coding"
      CDS             25..2175
                      /source="JesseBloom"
                      /label="fluPA"
@@ -245,12 +245,12 @@ FEATURES             Location/Qualifiers
                      /source="JesseBloom"
                      /gene_id="fluHA"
                      /gene_name="fluHA"
-                     /gene_biotype="gene"
+                     /gene_biotype="protein_coding"
                      /label="fluHA"
      mRNA            2..1754
                      /source="JesseBloom"
                      /label="fluHA"
-                     /gene_biotype="mRNA"
+                     /gene_biotype="protein_coding"
      CDS             33..1730
                      /source="JesseBloom"
                      /label="fluHA"
@@ -310,12 +310,12 @@ FEATURES             Location/Qualifiers
                      /source="JesseBloom"
                      /gene_id="fluNP"
                      /gene_name="fluNP"
-                     /gene_biotype="gene"
+                     /gene_biotype="protein_coding"
                      /label="fluNP"
      mRNA            2..1544
                      /source="JesseBloom"
                      /label="fluNP"
-                     /gene_biotype="mRNA"
+                     /gene_biotype="protein_coding"
      CDS             46..1542
                      /source="JesseBloom"
                      /label="fluNP"
@@ -371,12 +371,12 @@ FEATURES             Location/Qualifiers
                      /source="JesseBloom"
                      /gene_id="fluNA"
                      /gene_name="fluNA"
-                     /gene_biotype="gene"
+                     /gene_biotype="protein_coding"
                      /label="fluNA"
      mRNA            2..1388
                      /source="JesseBloom"
                      /label="fluNA"
-                     /gene_biotype="mRNA"
+                     /gene_biotype="protein_coding"
      CDS             20..1381
                      /source="JesseBloom"
                      /label="fluNA"
@@ -428,16 +428,16 @@ FEATURES             Location/Qualifiers
                      /source="JesseBloom"
                      /gene_id="fluM"
                      /gene_name="fluM"
-                     /gene_biotype="gene"
+                     /gene_biotype="protein_coding"
                      /label="fluM"
      mRNA            2..1005
                      /source="JesseBloom"
                      /label="fluM1"
-                     /gene_biotype="mRNA"
+                     /gene_biotype="protein_coding"
      mRNA            join(2..51,740..1005)
                      /source="JesseBloom"
                      /label="fluM2"
-                     /gene_biotype="mRNA"
+                     /gene_biotype="protein_coding"
      CDS             26..784
                      /source="JesseBloom"
                      /label="fluM1"
@@ -486,16 +486,16 @@ FEATURES             Location/Qualifiers
                      /source="JesseBloom"
                      /gene_id="fluNS"
                      /gene_name="fluNS"
-                     /gene_biotype="gene"
+                     /gene_biotype="protein_coding"
                      /label="fluNS"
      mRNA            2..868
                      /source="JesseBloom"
                      /label="fluNS1"
-                     /gene_biotype="mRNA"
+                     /gene_biotype="protein_coding"
      mRNA            join(2..56,529..868)
                      /source="JesseBloom"
                      /label="fluNS2"
-                     /gene_biotype="mRNA"
+                     /gene_biotype="protein_coding"
      CDS             27..719
                      /source="JesseBloom"
                      /label="fluNS1"

@@ -116,6 +116,7 @@ rule get_cellgene_matrix:
     """Build the cell-gene matrices with ``cellranger``."""
     input:
         join(FLUSEQ_DIR, 'flu-wsn.fasta'),
+        join(FLUSEQ_DIR, 'flu-wsn.gtf'),
         join(FLUSEQ_DIR, 'flu-wsn-double-syn.fasta')
     output:
         join(CELLGENE_DIR, 'merged_humanplusflu_cells.tsv'),

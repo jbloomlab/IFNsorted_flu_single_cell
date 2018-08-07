@@ -75,7 +75,7 @@ def main():
                         "source":"JesseBloom",
                         "gene_id":gene_name,
                         "gene_name":gene_name,
-                        "gene_biotype":"gene",
+                        "gene_biotype":"protein_coding",
                         "label":gene_name,
                         },
                     )],
@@ -99,7 +99,7 @@ def main():
                     qualifiers={
                         "source":"JesseBloom",
                         "label":mrna_name,
-                        "gene_biotype":"mRNA",
+                        "gene_biotype":"protein_coding",
                         },
                     )
                 )
@@ -126,7 +126,7 @@ def main():
                         qualifiers={
                             "source":"JesseBloom",
                             "label":mrna_name,
-                            "gene_biotype":"mRNA",
+                            "gene_biotype":"protein_coding",
                             },
                         )
                     )
