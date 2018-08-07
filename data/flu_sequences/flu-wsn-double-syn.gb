@@ -12,14 +12,14 @@ FEATURES             Location/Qualifiers
                      /gene_id="fluPB2"
                      /gene_name="fluPB2"
                      /gene_biotype="gene"
-                     /name="fluPB2"
+                     /label="fluPB2"
      mRNA            2..2320
                      /source="JesseBloom"
-                     /name="fluPB2"
+                     /label="fluPB2"
                      /gene_biotype="mRNA"
      CDS             28..2307
                      /source="JesseBloom"
-                     /name="fluPB2"
+                     /label="fluPB2"
                      /gene_biotype="CDS"
                      /translation="MERIKELRNLMSQSRTREILTKTTVDHMAIIKKYTSGRQEKNPAL
                      RMKWMMAMKYPITADKRITEMIPERNEQGQTLWSKMNDAGSDRVMVSPLAVTWWNRNGP
@@ -91,14 +91,14 @@ FEATURES             Location/Qualifiers
                      /gene_id="fluPB1"
                      /gene_name="fluPB1"
                      /gene_biotype="gene"
-                     /name="fluPB1"
+                     /label="fluPB1"
      mRNA            2..2320
                      /source="JesseBloom"
-                     /name="fluPB1"
+                     /label="fluPB1"
                      /gene_biotype="mRNA"
      CDS             25..2298
                      /source="JesseBloom"
-                     /name="fluPB1"
+                     /label="fluPB1"
                      /gene_biotype="CDS"
                      /translation="MDVNPTLLFLKVPAQNAISTTFPYTGDPPYSHGTGTGYTMDTVNR
                      THQYSERGRWTTNTETGAPQLNPIDGPLPEDNEPSGYAQTDCVLEAMAFLEESHPGIFE
@@ -170,14 +170,14 @@ FEATURES             Location/Qualifiers
                      /gene_id="fluPA"
                      /gene_name="fluPA"
                      /gene_biotype="gene"
-                     /name="fluPA"
+                     /label="fluPA"
      mRNA            2..2211
                      /source="JesseBloom"
-                     /name="fluPA"
+                     /label="fluPA"
                      /gene_biotype="mRNA"
      CDS             25..2175
                      /source="JesseBloom"
-                     /name="fluPA"
+                     /label="fluPA"
                      /gene_biotype="CDS"
                      /translation="MEDFVRQCFNPMIVELAEKAMKEYGEDLKIETNKFAAICTHLEVC
                      FMYSDFHFIDEQGESIVVELGDPNALLKHRFEIIEGRDRTIAWTVINSICNTTGAEKPK
@@ -246,14 +246,14 @@ FEATURES             Location/Qualifiers
                      /gene_id="fluHA"
                      /gene_name="fluHA"
                      /gene_biotype="gene"
-                     /name="fluHA"
+                     /label="fluHA"
      mRNA            2..1754
                      /source="JesseBloom"
-                     /name="fluHA"
+                     /label="fluHA"
                      /gene_biotype="mRNA"
      CDS             33..1730
                      /source="JesseBloom"
-                     /name="fluHA"
+                     /label="fluHA"
                      /gene_biotype="CDS"
                      /translation="MKAKLLVLLYAFVATDADTICIGYHANNSTDTVDTILEKNVAVTH
                      SVNLLEDSHNGKLCKLKGIAPLQLGKCNITGWLLGNPECDSLLPARSWSYIVETPNSEN
@@ -311,14 +311,14 @@ FEATURES             Location/Qualifiers
                      /gene_id="fluNP"
                      /gene_name="fluNP"
                      /gene_biotype="gene"
-                     /name="fluNP"
+                     /label="fluNP"
      mRNA            2..1544
                      /source="JesseBloom"
-                     /name="fluNP"
+                     /label="fluNP"
                      /gene_biotype="mRNA"
      CDS             46..1542
                      /source="JesseBloom"
-                     /name="fluNP"
+                     /label="fluNP"
                      /gene_biotype="CDS"
                      /translation="MATKGTKRSYEQMETDGERQNATEIRASVGKMIDGIGRFYIQMCT
                      ELKLSDYEGRLIQNSLTIERMVLSAFDERRNKYLEEHPSAGKDPKKTGGPIYRRVDGKW
@@ -372,14 +372,14 @@ FEATURES             Location/Qualifiers
                      /gene_id="fluNA"
                      /gene_name="fluNA"
                      /gene_biotype="gene"
-                     /name="fluNA"
+                     /label="fluNA"
      mRNA            2..1388
                      /source="JesseBloom"
-                     /name="fluNA"
+                     /label="fluNA"
                      /gene_biotype="mRNA"
      CDS             20..1381
                      /source="JesseBloom"
-                     /name="fluNA"
+                     /label="fluNA"
                      /gene_biotype="CDS"
                      /translation="MNPNQKIITIGSICMVVGIISLILQIGNIISIWISHSIQTGNQNH
                      TGICNQGSITYKVVAGQDSTSVILTGNSSLCPIRGWAIHSKDNGIRIGSKGDVFVIREP
@@ -429,18 +429,18 @@ FEATURES             Location/Qualifiers
                      /gene_id="fluM"
                      /gene_name="fluM"
                      /gene_biotype="gene"
-                     /name="fluM"
+                     /label="fluM"
      mRNA            2..1005
                      /source="JesseBloom"
-                     /name="fluM1"
+                     /label="fluM1"
                      /gene_biotype="mRNA"
      mRNA            join(2..51,740..1005)
                      /source="JesseBloom"
-                     /name="fluM2"
+                     /label="fluM2"
                      /gene_biotype="mRNA"
      CDS             26..784
                      /source="JesseBloom"
-                     /name="fluM1"
+                     /label="fluM1"
                      /gene_biotype="CDS"
                      /translation="MSLLTEVETYVLSIVPSGPLKAEIAQRLEDVFAGKNTDLEVLMEW
                      LKTRPILSPLTKGILGFVFTLTVPSERGLQRRRFVQNALNGNGDPNNMDKAVKLYRKLK
@@ -449,7 +449,7 @@ FEATURES             Location/Qualifiers
                      PSSSAGLKDDLLENLQAYQKRMGVQMQRFK*"
      CDS             join(26..51,740..1007)
                      /source="JesseBloom"
-                     /name="fluM2"
+                     /label="fluM2"
                      /gene_biotype="CDS"
                      /translation="MSLLTEVETPIRNEWGCRCNDSSDPLVIAANIIGILHLILWILDR
                      LFFKCIYRRFKYGLKRGPSTEGVPESMREEYRKEQQNAVDVDDGHFVNIELE*"
@@ -487,18 +487,18 @@ FEATURES             Location/Qualifiers
                      /gene_id="fluNS"
                      /gene_name="fluNS"
                      /gene_biotype="gene"
-                     /name="fluNS"
+                     /label="fluNS"
      mRNA            2..868
                      /source="JesseBloom"
-                     /name="fluNS1"
+                     /label="fluNS1"
                      /gene_biotype="mRNA"
      mRNA            join(2..56,529..868)
                      /source="JesseBloom"
-                     /name="fluNS2"
+                     /label="fluNS2"
                      /gene_biotype="mRNA"
      CDS             27..719
                      /source="JesseBloom"
-                     /name="fluNS1"
+                     /label="fluNS1"
                      /gene_biotype="CDS"
                      /translation="MDPNTVSSFQVDCFLWHVRKRVADQELGDAPFLDRLRRDQKSLRG
                      RGSTLGLDIETATRAGKQIVERILKEESDEALKMTMASVPASRYLTDMTLEEMSRHWFM
@@ -507,7 +507,7 @@ FEATURES             Location/Qualifiers
                      AGTIRSEV*"
      CDS             join(27..56,529..864)
                      /source="JesseBloom"
-                     /name="fluNS2"
+                     /label="fluNS2"
                      /gene_biotype="CDS"
                      /translation="MDPNTVSSFQDILMRMSKMQLGSSSEDLNGIITQFESLKLYRDSL
                      GEAVMRMGDLHSLQNRNGKWREQLGQKFEEIRWLIEEVRHRLKITENSFEQITFMQALQ

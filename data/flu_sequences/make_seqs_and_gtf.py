@@ -76,7 +76,7 @@ def main():
                         "gene_id":gene_name,
                         "gene_name":gene_name,
                         "gene_biotype":"gene",
-                        "name":gene_name,
+                        "label":gene_name,
                         },
                     )],
                 )
@@ -98,7 +98,7 @@ def main():
                     strand=1,
                     qualifiers={
                         "source":"JesseBloom",
-                        "name":mrna_name,
+                        "label":mrna_name,
                         "gene_biotype":"mRNA",
                         },
                     )
@@ -125,7 +125,7 @@ def main():
                         strand=1,
                         qualifiers={
                             "source":"JesseBloom",
-                            "name":mrna_name,
+                            "label":mrna_name,
                             "gene_biotype":"mRNA",
                             },
                         )
@@ -177,7 +177,7 @@ def main():
                         strand=1,
                         qualifiers={
                             "source":"JesseBloom",
-                            "name":mrna.id,
+                            "label":mrna.id,
                             "gene_biotype":"CDS",
                             "translation":prot
                             },
