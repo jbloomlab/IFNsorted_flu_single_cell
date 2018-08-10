@@ -4,7 +4,7 @@ Written by Jesse Bloom."""
 
 
 # Imports -----------------------------------------
-import shutil
+import os
 from os.path import join
 
 
@@ -24,9 +24,9 @@ CCS_DIR = 'results/pacbio/ccs'
 
 # PacBio runs and subdirectory with initial subreads files
 # are read from file.
-PACBIO_RUNS_FILE = 'data/PacBio_runs.tsv'
+PACBIO_RUNS_FILE = 'data/PacBio_runs.csv'
 with open(PACBIO_RUNS_FILE) as f:
-    PACBIO_RUNS = dict([line.strip().split('\t') for line in f])
+    PACBIO_RUNS = dict([line.strip().split(',') for line in f])
 
 
 # Rules ------------------------------------------- 
@@ -61,7 +61,7 @@ rule analyze_IFN_vs_viral_mutations:
 rule call_PacBio_mutations:
     """Call viral mutations from PacBio CCSs."""
     input:
-        expand(os.path.join(CCS_DIR, '{pacbioRun}_ccs.bam'),
+        expand(join(CCS_DIR, '{pacbioRun}_ccs.bam'),
                 pacbioRun=PACBIO_RUNS.keys()),
         join(CELLGENE_DIR, 'merged_humanplusflu_cells.tsv'),
         join(FLUSEQ_DIR, 'flu-wsn-mRNA.fasta'),
@@ -84,9 +84,9 @@ rule get_PacBio_CCSs:
     input:
         join(SUBREADS_DIR, '{pacbioRun}.subreads.bam'),
     output:
-        ccs_bam=os.path.join(CCS_DIR, '{pacbioRun}_ccs.bam'),
-        ccs_report=os.path.join(CCS_DIR, '{pacbioRun}_report.csv'),
-        ccs_log=os.path.join(CCS_DIR, '{pacbioRun}_log.txt')
+        ccs_bam=join(CCS_DIR, '{pacbioRun}_ccs.bam'),
+        ccs_report=join(CCS_DIR, '{pacbioRun}_report.csv'),
+        ccs_log=join(CCS_DIR, '{pacbioRun}_log.txt')
     threads: 16
     shell:
         'ccs '
@@ -109,7 +109,7 @@ rule get_PacBio_subreads:
     output:
         subreads=join(SUBREADS_DIR, '{pacbioRun}.subreads.bam')
     run:
-        shutil.copy(input.subreads, output.subreads)
+        os.symlink(input.subreads, output.subreads)
         
 
 rule get_cellgene_matrix:

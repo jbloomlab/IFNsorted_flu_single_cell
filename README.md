@@ -71,7 +71,7 @@ The analysis makes substantial use of the [Monocle][] package, and the results a
 ## Input data
 The `./data/` subdirectory contains input data used by the analysis:
 
-1. The file [./data/PacBio_runs.tsv](./data/PacBio_runs.tsv) contains a list of the PacBio runs and the locations of their corresponding subreads files on the Hutch computing cluster.
+1. The file [./data/PacBio_runs.csv](./data/PacBio_runs.csv) contains a list of the PacBio runs and the locations of their corresponding subreads files on the Hutch computing cluster.
 
 2. The subdirectory [./data/flu_sequences/](./data/flu_sequences) contains the influenza genomes for both the wildtype A/WSN/1933 virus and the variants with double synonymous barcodes. See the [README](./data/flu_sequences/README.md) in that directory for more details.
 

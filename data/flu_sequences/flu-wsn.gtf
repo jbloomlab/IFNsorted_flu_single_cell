@@ -1,17 +1,17 @@
 ##gff-version 3
 ##sequence-region fluPB2 1 2341
-fluPB2	JesseBloom	gene	1	2341	.	+	.	gene_biotype "protein_coding"; gene_id "fluPB2"; gene_name "fluPB2"; label "fluPB2"
+fluPB2	JesseBloom	exon	1	2341	.	+	.	gene_biotype "vRNA"; gene_id "fluPB2"; transcript_id "fluPB2"
 ##sequence-region fluPB1 1 2341
-fluPB1	JesseBloom	gene	1	2341	.	+	.	gene_biotype "protein_coding"; gene_id "fluPB1"; gene_name "fluPB1"; label "fluPB1"
+fluPB1	JesseBloom	exon	1	2341	.	+	.	gene_biotype "vRNA"; gene_id "fluPB1"; transcript_id "fluPB1"
 ##sequence-region fluPA 1 2233
-fluPA	JesseBloom	gene	1	2233	.	+	.	gene_biotype "protein_coding"; gene_id "fluPA"; gene_name "fluPA"; label "fluPA"
+fluPA	JesseBloom	exon	1	2233	.	+	.	gene_biotype "vRNA"; gene_id "fluPA"; transcript_id "fluPA"
 ##sequence-region fluHA 1 1775
-fluHA	JesseBloom	gene	1	1775	.	+	.	gene_biotype "protein_coding"; gene_id "fluHA"; gene_name "fluHA"; label "fluHA"
+fluHA	JesseBloom	exon	1	1775	.	+	.	gene_biotype "vRNA"; gene_id "fluHA"; transcript_id "fluHA"
 ##sequence-region fluNP 1 1565
-fluNP	JesseBloom	gene	1	1565	.	+	.	gene_biotype "protein_coding"; gene_id "fluNP"; gene_name "fluNP"; label "fluNP"
+fluNP	JesseBloom	exon	1	1565	.	+	.	gene_biotype "vRNA"; gene_id "fluNP"; transcript_id "fluNP"
 ##sequence-region fluNA 1 1409
-fluNA	JesseBloom	gene	1	1409	.	+	.	gene_biotype "protein_coding"; gene_id "fluNA"; gene_name "fluNA"; label "fluNA"
+fluNA	JesseBloom	exon	1	1409	.	+	.	gene_biotype "vRNA"; gene_id "fluNA"; transcript_id "fluNA"
 ##sequence-region fluM 1 1027
-fluM	JesseBloom	gene	1	1027	.	+	.	gene_biotype "protein_coding"; gene_id "fluM"; gene_name "fluM"; label "fluM"
+fluM	JesseBloom	exon	1	1027	.	+	.	gene_biotype "vRNA"; gene_id "fluM"; transcript_id "fluM"
 ##sequence-region fluNS 1 890
-fluNS	JesseBloom	gene	1	890	.	+	.	gene_biotype "protein_coding"; gene_id "fluNS"; gene_name "fluNS"; label "fluNS"
+fluNS	JesseBloom	exon	1	890	.	+	.	gene_biotype "vRNA"; gene_id "fluNS"; transcript_id "fluNS"
