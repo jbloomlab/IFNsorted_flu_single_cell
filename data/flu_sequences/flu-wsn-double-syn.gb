@@ -7,11 +7,12 @@ SOURCE      .
   ORGANISM  .
             .
 FEATURES             Location/Qualifiers
-     gene            1..2341
+     exon            1..2341
                      /source="JesseBloom"
                      /gene_id="fluPB2"
                      /gene_name="fluPB2"
-                     /gene_biotype="protein_coding"
+                     /gene_biotype="vRNA"
+                     /transcript_id="fluPB2"
                      /label="fluPB2"
      mRNA            2..2320
                      /source="JesseBloom"
@@ -86,11 +87,12 @@ SOURCE      .
   ORGANISM  .
             .
 FEATURES             Location/Qualifiers
-     gene            1..2341
+     exon            1..2341
                      /source="JesseBloom"
                      /gene_id="fluPB1"
                      /gene_name="fluPB1"
-                     /gene_biotype="protein_coding"
+                     /gene_biotype="vRNA"
+                     /transcript_id="fluPB1"
                      /label="fluPB1"
      mRNA            2..2320
                      /source="JesseBloom"
@@ -165,11 +167,12 @@ SOURCE      .
   ORGANISM  .
             .
 FEATURES             Location/Qualifiers
-     gene            1..2233
+     exon            1..2233
                      /source="JesseBloom"
                      /gene_id="fluPA"
                      /gene_name="fluPA"
-                     /gene_biotype="protein_coding"
+                     /gene_biotype="vRNA"
+                     /transcript_id="fluPA"
                      /label="fluPA"
      mRNA            2..2211
                      /source="JesseBloom"
@@ -241,11 +244,12 @@ SOURCE      .
   ORGANISM  .
             .
 FEATURES             Location/Qualifiers
-     gene            1..1775
+     exon            1..1775
                      /source="JesseBloom"
                      /gene_id="fluHA"
                      /gene_name="fluHA"
-                     /gene_biotype="protein_coding"
+                     /gene_biotype="vRNA"
+                     /transcript_id="fluHA"
                      /label="fluHA"
      mRNA            2..1754
                      /source="JesseBloom"
@@ -306,11 +310,12 @@ SOURCE      .
   ORGANISM  .
             .
 FEATURES             Location/Qualifiers
-     gene            1..1565
+     exon            1..1565
                      /source="JesseBloom"
                      /gene_id="fluNP"
                      /gene_name="fluNP"
-                     /gene_biotype="protein_coding"
+                     /gene_biotype="vRNA"
+                     /transcript_id="fluNP"
                      /label="fluNP"
      mRNA            2..1544
                      /source="JesseBloom"
@@ -367,11 +372,12 @@ SOURCE      .
   ORGANISM  .
             .
 FEATURES             Location/Qualifiers
-     gene            1..1409
+     exon            1..1409
                      /source="JesseBloom"
                      /gene_id="fluNA"
                      /gene_name="fluNA"
-                     /gene_biotype="protein_coding"
+                     /gene_biotype="vRNA"
+                     /transcript_id="fluNA"
                      /label="fluNA"
      mRNA            2..1388
                      /source="JesseBloom"
@@ -424,11 +430,12 @@ SOURCE      .
   ORGANISM  .
             .
 FEATURES             Location/Qualifiers
-     gene            1..1027
+     exon            1..1027
                      /source="JesseBloom"
                      /gene_id="fluM"
                      /gene_name="fluM"
-                     /gene_biotype="protein_coding"
+                     /gene_biotype="vRNA"
+                     /transcript_id="fluM"
                      /label="fluM"
      mRNA            2..1005
                      /source="JesseBloom"
@@ -482,11 +489,12 @@ SOURCE      .
   ORGANISM  .
             .
 FEATURES             Location/Qualifiers
-     gene            1..890
+     exon            1..890
                      /source="JesseBloom"
                      /gene_id="fluNS"
                      /gene_name="fluNS"
-                     /gene_biotype="protein_coding"
+                     /gene_biotype="vRNA"
+                     /transcript_id="fluNS"
                      /label="fluNS"
      mRNA            2..868
                      /source="JesseBloom"

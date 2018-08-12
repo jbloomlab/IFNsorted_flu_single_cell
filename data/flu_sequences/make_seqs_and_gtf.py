@@ -69,13 +69,14 @@ def main():
                 features=[Bio.SeqFeature.SeqFeature(
                     Bio.SeqFeature.FeatureLocation(0, len(geneseq)),
                     id=gene_name,
-                    type='gene',
+                    type='exon',
                     strand=1,
                     qualifiers={
                         "source":"JesseBloom",
                         "gene_id":gene_name,
                         "gene_name":gene_name,
-                        "gene_biotype":"protein_coding",
+                        "gene_biotype":"vRNA",
+                        "transcript_id":gene_name,
                         "label":gene_name,
                         },
                     )],
