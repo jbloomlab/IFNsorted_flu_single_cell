@@ -1,6 +1,6 @@
 "cell","cell_barcode","frac_mRNA_from_flu","IFN_frac","IFN_state","coinfection_state","mutations"
 "cell 1","CAAGAAATCGTGACAT",0.651126712941785,0.00011401858502936,"IFN-","no dual-barcode coinfection",""
-"cell 2","TGTGTTTTCAACGGGA",0.623427944174377,4.1642375281086e-05,"IFN-","dual-barcode coinfection","fluPA-WT /   fluPA-del207to1867_(8867/8951); fluHA-WT / fluHA-A1338G_fluHA-Thr436Ala_(24/46)"
+"cell 2","TGTGTTTTCAACGGGA",0.623427944174377,4.1642375281086e-05,"IFN-","dual-barcode coinfection","fluPA-WT /   fluPA-del207to1867_(8874/8951); fluHA-WT / fluHA-A1338G_fluHA-Thr436Ala_(24/46)"
 "cell 3","TTCTACAAGCCCAATT",0.609588262056415,7.28332119446468e-05,"IFN-","dual-barcode coinfection","fluPB1-del427to1876_(1083/1089) / fluPB1-WT"
 "cell 4","CCTACACCAGATAATG",0.590159805851916,0.00217864923747277,"IFN+","no dual-barcode coinfection","fluNA-missing; fluM-missing"
 "cell 5","TTTATGCGTACAGTGG",0.584707593006348,0.000170794192997438,"IFN-","no dual-barcode coinfection",""
