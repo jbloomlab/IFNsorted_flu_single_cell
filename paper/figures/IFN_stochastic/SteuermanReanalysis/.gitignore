@@ -1,1 +1,3 @@
 downloaded_data
+plots/*
+!plots/p_mRNA_counts.pdf

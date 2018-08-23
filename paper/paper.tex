@@ -73,30 +73,42 @@ Apparent in single-cell \textit{in vitro}~\citep{russell2018extreme}, single-cel
 Triggering of IFN production is rare in influenza-infected cells.
 {\bf (A)} Number of influenza-infected, NS-deficient, and IFN+ cells in our prior single-cell study of influenza infection of A549 cells.
 The Venn diagram shows data aggregated over all samples from \citet{russell2018extreme}.
-{\bf (B)} Number of IFN+ cells in the single-cell analysis of influenza-infected mice by \citep{steuerman2018dissection}.
-\jdbcomment{We could possibly add a \emph{small simple} schematic of reporter line here as panel {\bf (C)} and move the current {\bf (C)} to {\bf (D)}, and then have more details in \FIGSUPP[IFNrare]{reporter_cells}.}
-Alternatively, we could just show everything in \FIGSUPP[IFNrare]{reporter_cells}.
-{\bf (C)} An A549 fluorescent-reporter cell-line confirms that IFN expression is very rare in cells infected with our relatively pure viral stock.
+{\bf (B)} An A549 fluorescent-reporter cell-line confirms that IFN expression is very rare in cells infected with our relatively pure viral stock.
 \jdbcomment{This should be a simple figure, such as a plot that just shows the fraction IFN+ among flu infected cells for a few replicates.
 If you have suitable data, you could show for low, medium, and high-inducing stock and indicate which we use.
-Then put detailed flow data similar to what is in your writeup in \FIGSUPP[IFNrare]{flow}. For that flow data, I think contour plots are better than overplotting. Also, don't subsample but show all points, as that will give better statistics.}
+Then put detailed flow data similar to what is in your writeup in \FIGSUPP[IFNrare]{flow}. For that flow data, I think contour plots are better than overplotting. Also, don't subsample but show all points, as that will give better statistics.
+We could possibly add a \emph{small simple} schematic of reporter line here as panel {\bf (B)} and move the current {\bf (B)} to {\bf (C)}, and then have more details in \FIGSUPP[IFNrare]{reporter_cells}.
+Alternatively, we could just show everything in \FIGSUPP[IFNrare]{reporter_cells}.}
 }
 \label{fig:IFNrare}
 
 \figsupp[Creation and validation of A549 fluorescent-reporter cell lines for type I and type III IFN expression.]
 {CAPTION}
-{IMAGE}
+{\jdbcomment{ADD FIGURE}}
 \label{figsupp:reporter_cells}
 
 \figsupp[Expression of type I and type III IFN are highly correlated in influenza-infected A549 cells.]
 {CAPTION}
-{IMAGE}
+{\jdbcomment{ADD FIGURE}}
 \label{figsupp:type_I_vs_III}
 
-\figsupp[Full flow cytometry data for \FIG{IFNrare}C.]
+\figsupp[Full flow cytometry data for \FIG{IFNrare}B.]
 {CAPTION}
-{IMAGE}
+{\jdbcomment{ADD FIGURE}}
 \label{figsupp:flow}
+
+\figsupp[Few cells express detectable IFN in the single-cell analysis influenza-infected mice by \citet{steuerman2018dissection}.]
+{A re-analysis of the data from \citet{steuerman2018dissection}'s single-cell mRNA-sequencing of cells from influenza-infected mice shows that only 5 of 1220 virus-infected cells express \emph{detectable} type I or type III IFN transcripts \textit{in vivo}.
+Specifically, we downloaded the data from \citet{steuerman2018dissection} and identified influenza-infected cells using calling criteria similar to those described in \citet{steuerman2018dissection}.
+Here we show statistics for the cells from the influenza-infected wildtype C57BL/6J mice, which were collected at 48 hours (two replicates) or 72 hours (1 replicate)---we do not show cells from the control mice.
+As shown in the left-most panel, the sequencing depth of \citet{steuerman2018dissection} was quite low, with only $\sim$1,500 mRNA counts per cell on average (this is 10 to 15-fold lower than the sequencing depth in \citet{russell2018extreme} and the current study, respectively).
+An important caveat is that this low sequencing depth could lead to a simple failure to detect IFN transcripts in some cells.
+Nonetheless, there is detectable expression of key interferon-stimulated gene (ISG) mRNAs in the majority of infected cells (the middle panel shows the total counts of IFIT1, ISG15, CCL5, and Mx1).
+However, only 5 of 1220 cells express any detectable type I (IFN$\alpha$ and IFN$\beta$) or type III (IFN$\lambda$) mRNAs, and only at low levels.
+The full code that performs the re-analysis shown in this figure is at \url{https://github.com/jbloomlab/IFNsorted_flu_single_cell/tree/master/paper/figures/IFN_stochastic/SteuermanReanalysis/}.
+}
+{\includegraphics[width=0.8\textwidth]{figures/IFN_stochastic/SteuermanReanalysis/plots/p_mRNA_counts.pdf}}
+\label{figsupp:mice}
 
 \end{figure}
 %%% end IFNrare figure %%%
@@ -107,7 +119,7 @@ We came up with a scheme to determine full genotypes of infecting viruses in IFN
 %%% start approach figure
 \begin{figure}
 
-\centerline{\jdbcomment{FIGURE}}
+\centerline{\jdbcomment{FIGURE 2 HERE}}
 
 \caption{
 {\bf (A)} Schematic of experimental approach.
