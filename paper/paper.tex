@@ -73,7 +73,7 @@ Apparent in single-cell \textit{in vitro}~\citep{russell2018extreme}, single-cel
 Triggering of IFN production is rare in influenza-infected cells.
 {\bf (A)} Number of influenza-infected, NS-deficient, and IFN+ cells in our prior single-cell study of influenza infection of A549 cells.
 The Venn diagram shows data aggregated over all samples from \citet{russell2018extreme}.
-{\bf (B)} An A549 fluorescent-reporter cell-line confirms that IFN expression is very rare in cells infected with our relatively pure viral stock.
+{\bf (B)} An A549 fluorescent-reporter cell-line confirms that IFN expression is rare in cells infected with our viral stock.
 \jdbcomment{This should be a simple figure, such as a plot that just shows the fraction IFN+ among flu infected cells for a few replicates.
 If you have suitable data, you could show for low, medium, and high-inducing stock and indicate which we use.
 Then put detailed flow data similar to what is in your writeup in \FIGSUPP[IFNrare]{flow}. For that flow data, I think contour plots are better than overplotting. Also, don't subsample but show all points, as that will give better statistics.
@@ -87,7 +87,7 @@ Alternatively, we could just show everything in \FIGSUPP[IFNrare]{reporter_cells
 {\jdbcomment{ADD FIGURE}}
 \label{figsupp:reporter_cells}
 
-\figsupp[Expression of type I and type III IFN are highly correlated in influenza-infected A549 cells.]
+\figsupp[Expression of type I and type III IFN are highly correlated in influenza-infected A549 cells. \jdbcomment{Alternatively, we could leave this out if you don't have clean data for this point and just refer to \FIGSUPP[experiment]{type_I_III_correlation}}]
 {CAPTION}
 {\jdbcomment{ADD FIGURE}}
 \label{figsupp:type_I_vs_III}
@@ -104,28 +104,97 @@ Here we show statistics for the cells from the influenza-infected wildtype C57BL
 As shown in the left-most panel, the sequencing depth of \citet{steuerman2018dissection} was quite low, with only $\sim$1,500 mRNA counts per cell on average (this is 10 to 15-fold lower than the sequencing depth in \citet{russell2018extreme} and the current study, respectively).
 An important caveat is that this low sequencing depth could lead to a simple failure to detect IFN transcripts in some cells.
 Nonetheless, there is detectable expression of key interferon-stimulated gene (ISG) mRNAs in the majority of infected cells (the middle panel shows the total counts of IFIT1, ISG15, CCL5, and Mx1).
-However, only 5 of 1220 cells express any detectable type I (IFN$\alpha$ and IFN$\beta$) or type III (IFN$\lambda$) mRNAs, and only at low levels.
+However, only 5 of 1220 cells express any detectable type I (IFN-$\alpha$ and IFN-$\beta$) or type III (IFN-$\lambda$) mRNAs, and only at low levels.
 The full code that performs the re-analysis shown in this figure is at \url{https://github.com/jbloomlab/IFNsorted_flu_single_cell/tree/master/paper/figures/IFN_stochastic/SteuermanReanalysis/}.
 }
-{\includegraphics[width=0.8\textwidth]{figures/IFN_stochastic/SteuermanReanalysis/plots/p_mRNA_counts.pdf}}
+{\includegraphics[width=\textwidth]{figures/IFN_stochastic/SteuermanReanalysis/plots/p_mRNA_counts.pdf}}
 \label{figsupp:mice}
 
 \end{figure}
 %%% end IFNrare figure %%%
 
 All past single-cell transcriptomics of viral infected cells~\citep{russell2018extreme,zanini2018single,steuerman2018dissection,zanini2018virus} have focused on counting the number of viral transcripts rather than determining their full sequences.
-We came up with a scheme to determine full genotypes of infecting viruses in IFN+ cells (\FIG{approach}).
+We came up with a scheme to determine full genotypes of infecting viruses in IFN+ cells (\FIG{experiment}).
 
 %%% start approach figure
 \begin{figure}
+\begin{fullwidth}
 
-\centerline{\jdbcomment{FIGURE 2 HERE}}
+{\centering
+{\bf A} \jdbcomment{PANEL WITH EXPERIMENTAL OUTLINE SCHEMATIC} \vspace{0.2in}\\
 
-\caption{
-{\bf (A)} Schematic of experimental approach.
-{\bf (B)} Some summary stats on numbers of cells, etc.
+\includegraphics[width=\linewidth, clip=false]{figures/single_cell_figures/p_cell_summary.pdf}
 }
 
+\caption{
+Experimental overview.
+{\bf (A)} Schematic of approach.
+{\bf (B)} Number of cells for which transcriptomes were obtained.
+Most transcriptomes are from human cells, but a few are from the uninfected canine cells spiked into the experiment as a control.
+From the transcriptomes with both human and canine transcripts, we estimate~\citep{bloom2018estimating} that $\approx$11\% of the captured cells are actually multiplets in which more than one cell was captured in an emulsion. 
+These cross-celltype multiplets are excluded from subsequent analyses.
+{\bf (C)} The number of cellular and viral mRNAs detected for each cell is plotted as a point.
+Green lines show the distribution of cellular mRNAs per cell, and the blue rug plot at the left of each panel shows the distribution of viral mRNAs per cell.
+Cells outside the dashed magenta lines have unusually low or high amounts of cellular mRNA (possibly low-quality emulsions or multiplets), and are excluded from subsequent analyses.
+{\bf (D)} Distribution across cells of the fraction of all mRNA derived from influenza.
+Cells called as infected are in blue, while other cells are in green.
+The inset shows the amount of viral mRNA among the human cells called as infected.
+{\bf (E)} The number of influenza genes detected per infected cell, and the amount of viral mRNA in cells expressing each number of viral genes.
+The majority of cells express all eight gene segments, but a substantial minority fail to express at least one gene.
+\FIGSUPP[experiment]{frac_has_gene} shows the frequency that each viral gene is detected in infected cells.
+{\bf (F)} Relative expression of viral genes among infected cells.
+{\bf (G)} The number of cells infected with wildtype virus, synonymously barcoded virus, or both.
+From the cells infected with both viral barcodes, we estimate~\citep{bloom2018estimating} that 63\% of infected cells are co-infected.
+{\bf (H)} Fraction of cellular mRNA derived from type I or type III IFN across all cells, faceted by whether the cells are infected.
+Cells to the left of the first dashed magenta line are classified as IFN-, and cells to the right of the second line are classified as IFN+.
+We grouped type I and type III IFN together because their expression is highly correlated (\FIGSUPP[experiment]{type_I_III_correlation}).
+Many cells that do not express IFN itself still express interferon-stimulated genes (\FIGSUPP[experiment]{ISG}).
+}
+\label{fig:experiment}
+
+\figsupp[Fraction of infected cells that detectably express each influenza gene.]
+{Bars show the fraction of infected cells that are called as expressing each viral gene.
+The gray dotted line is at one (the fraction that would be observed if all viral genes are expressed in all infected cells).
+Each viral gene is detected in $\approx$80-90\% of the infected cells, roughly in line with prior estimates~\citep{brooke2013most, heldt2015single, dou2017analysis, russell2018extreme}.
+The exception is NP, which is detected in virtually all infected cells.
+The much higher frequency of detecting NP could reflect a biological phenomenon, or it could be because cells lacking NP tend to have much lower viral gene expression overall and so are not reliably called as being infected in our experiments and analysis.}
+{\includegraphics[width=0.5\textwidth]{figures/single_cell_figures/p_frac_has_gene.pdf}}
+\label{figsupp:frac_has_gene}
+
+\figsupp[Expression of type I and type III IFN genes is highly correlated in single cells in our experiments.]
+{The correlation between the fraction of cellular mRNA derived from type I (IFN-$\alpha$ and IFN-$\beta$) and type III (IFN-$\lambda$) IFN in the A549 cells in our experiments.
+Each point represents a single cell.
+The plots are faceted by whether the cells are called as infected, and the Pearson correlation coefficient is shown.
+Because type I and type III IFN expression are highly correlated, for the remainder of the paper we group them together and refer to their combined expression as the level of IFN.
+}
+{\includegraphics[width=0.7\textwidth]{figures/single_cell_figures/p_ifn_genes_corr.pdf}}
+\label{figsupp:type_I_III_correlation}
+
+\figsupp[Expression of interferon-stimulated genes (ISGs).]
+{
+For each cell, we quantified ISG expression as the total fraction of cellular mRNAs derived from four prototypical ISGs that are highly expressed A549 cells (IFIT1, ISG15, CCL5, and Mx1). 
+{\bf (A)} The histograms show the distribution of ISG expression taken across infected (top) and uninfected (bottom) cells.
+We heuristically classify as ISG+ cells with $>10^{-3}$ of their cellular mRNA from ISGs, and color these cells red.
+Comparison to \FIG{experiment}H shows that substantially more cells are ISG+ than IFN+, both among infected and uninfected cells.
+This is probably because paracrine signaling leads to ISG expression in some cells that are not themselves expressing IFN.
+{\bf (B)} The correlation between the fraction of cellular mRNA derived from IFN and from ISGs.
+Each point represents a single cell, and the Pearson correlation coefficient is shown.
+IFN and ISG expression is more correlated for infected than uninfected cells, probably because in the latter the ISG expression is often due to paracrine signaling that does not induce expression of IFN itself.
+But among both the infected and uninfected populations, there are many cells with high expression of ISGs and little expression of IFN, but very few cells that express high levels of IFN without also substantially expressing ISGs.
+}
+{\includegraphics[width=0.8\textwidth]{figures/single_cell_figures/p_isg.pdf}}
+\label{figsupp:ISG}
+
+\figsupp[Unsupervised t-SNE clustering shows that cell-to-cell variation in influenza genes, IFN genes, and ISGs explains a substantial part of the structure of the data.]
+{To generate an unbiased representation of the factors that distinguished the transcriptomes of the cells in our experiments, we used unsupervised t-SNE~\citep{maaten2008visualizing} as implemented in \texttt{Monocle}~\citep{qiu2017reversed, trapnell2014dynamics} to generate a two-dimensional representation of the data.
+In the t-SNE plot, each point is a different cell and cells with similar transcriptomes are closer together.
+Each panel shows the same t-SNE plot, but the cells are colored differently in each panel based on the amount of viral, IFN, or ISG mRNA shown on a log (top) or linear (bottom) scale.
+As is clear from this plot, expression of influenza genes, IFN, and ISGs help explain the structure of the data, since cells with high expression of these genes clearly group together.
+}
+{\includegraphics[width=\textwidth]{figures/single_cell_figures/p_tsne.pdf}}
+\label{figsupp:tSNE}
+
+\end{fullwidth}
 \end{figure}
 %%% end approach figure
 
@@ -146,11 +215,11 @@ Viral genotypes and infection outcomes in single cells.
 \label{fig:genotypes}
 
 \figsupp[Genotypes and infection outcomes plotted separately for IFN+ and IFN- cells.]
-{This plot shows the same data as \FIG{genotypes}, but with cells separated into columns based on whether they are IFN- or IFN+.}
-{\includegraphics[height=0.95\textheight]{figures/single_cell_figures/p_genotypes_by_ifn.pdf}}
+{This plot shows the same data as \FIG{genotypes}, but with cells separated into columns based on whether they are IFN- (left column) or IFN+ (right column).}
+{\includegraphics[width=\textwidth]{figures/single_cell_figures/p_genotypes_by_ifn.pdf}}
 \label{figsupp:genotypes_by_ifn}
 
-\figdata{A CSV file giving the genotypes is in \texttt{figures/single_cell_figures/genotypes.csv}.}
+\figdata{A CSV file giving the genotypes is in \texttt{figures/single\_cell\_figures/genotypes.csv}.}
 \label{figdata:genotypes}
 
 \end{fullwidth}
