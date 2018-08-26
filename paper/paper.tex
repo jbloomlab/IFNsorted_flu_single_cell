@@ -67,11 +67,10 @@ Apparent in single-cell \textit{in vitro}~\citep{russell2018extreme}, single-cel
 \centerline{
 {\bf \Large A}\includegraphics[width=0.25\textwidth,valign=t]{figures/IFN_stochastic/RussellVenn/venn_diagram.pdf}
 {\bf \Large B}
-{\bf \Large C}
 }
 \caption{
 Triggering of IFN production is rare in influenza-infected cells.
-{\bf (A)} Number of influenza-infected, NS-deficient, and IFN+ cells in our prior single-cell study of influenza infection of A549 cells.
+{\bf (A)} Number of influenza-infected and IFN+ cells in our prior single-cell study of influenza infection of A549 cells.
 The Venn diagram shows data aggregated over all samples from \citet{russell2018extreme}.
 {\bf (B)} An A549 fluorescent-reporter cell-line confirms that IFN expression is rare in cells infected with our viral stock.
 \jdbcomment{This should be a simple figure, such as a plot that just shows the fraction IFN+ among flu infected cells for a few replicates.
@@ -100,7 +99,7 @@ Alternatively, we could just show everything in \FIGSUPP[IFNrare]{reporter_cells
 \figsupp[Few cells express detectable IFN in the single-cell analysis influenza-infected mice by \citet{steuerman2018dissection}.]
 {A re-analysis of the data from \citet{steuerman2018dissection}'s single-cell mRNA-sequencing of cells from influenza-infected mice shows that only 5 of 1220 virus-infected cells express \emph{detectable} type I or type III IFN transcripts \textit{in vivo}.
 Specifically, we downloaded the data from \citet{steuerman2018dissection} and identified influenza-infected cells using calling criteria similar to those described in \citet{steuerman2018dissection}.
-Here we show statistics for the cells from the influenza-infected wildtype C57BL/6J mice, which were collected at 48 hours (two replicates) or 72 hours (1 replicate)---we do not show cells from the control mice.
+Here we show statistics for the cells from the influenza-infected wildtype C57BL/6J mice, which were collected at 48 hours (two replicates) or 72 hours (one replicate)---we do not show cells from the control mice.
 As shown in the left-most panel, the sequencing depth of \citet{steuerman2018dissection} was quite low, with only $\sim$1,500 mRNA counts per cell on average (this is 10 to 15-fold lower than the sequencing depth in \citet{russell2018extreme} and the current study, respectively).
 An important caveat is that this low sequencing depth could lead to a simple failure to detect IFN transcripts in some cells.
 Nonetheless, there is detectable expression of key interferon-stimulated gene (ISG) mRNAs in the majority of infected cells (the middle panel shows the total counts of IFIT1, ISG15, CCL5, and Mx1).
@@ -154,7 +153,7 @@ Many cells that do not express IFN itself still express interferon-stimulated ge
 
 \figsupp[Fraction of infected cells that detectably express each influenza gene.]
 {Bars show the fraction of infected cells that are called as expressing each viral gene.
-The gray dotted line is at one (the fraction that would be observed if all viral genes are expressed in all infected cells).
+The gray dashed line is at one (the fraction that would be observed if all viral genes are expressed in all infected cells).
 Each viral gene is detected in $\approx$80-90\% of the infected cells, roughly in line with prior estimates~\citep{brooke2013most, heldt2015single, dou2017analysis, russell2018extreme}.
 The exception is NP, which is detected in virtually all infected cells.
 The much higher frequency of detecting NP could reflect a biological phenomenon, or it could be because cells lacking NP tend to have much lower viral gene expression overall and so are not reliably called as being infected in our experiments and analysis.}
