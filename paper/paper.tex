@@ -252,6 +252,17 @@ A negligible number of molecules have low-accuracy sequence or unexpected nucleo
 {\includegraphics[width=\textwidth]{figures/pacbio_single_cell_figures/ccs_per_viralbarcode.pdf}}
 \label{figsupp:CCSs}
 
+\figsupp[Number of cells for which genotype(s) of infecting viruses were completely determined.]
+{Cells for which we could determine the full sequences of all genes expressed by the infecting virus(es).
+{\bf (A)} We could call the complete genotypes of the infecting virus(es) for the majority of cells infected with just a single viral barcode variant, but only a minority of cells co-infected with both viral barcodes.
+{\bf (B)} The cells for which we could call complete viral genotypes tended to have higher expression of viral mRNAs than cells for which we could not call complete genotypes.
+This makes sense, as cells with more viral mRNA are more likely to have their viral genes captured in the PacBio sequencing, which is only able to capture a small fraction of the total transcripts identified by the 3'-sequencing of the 10X platform.
+The lower calling rate for dual-barcode co-infections relative to single barcode infectionis is probably because these co-infections have more viral genes that must be sequenced (potentially a copy of each viral gene from each viral variant), increasing the chances that one of these genes is missed by the PacBio sequencing. 
+An important implication of this plot is that the cells for which we call complete viral genotypes are \emph{not} a random subsampling of all infected cells in the experiment, but are rather enriched for cells that have high levels of viral mRNA and do not have dual-barcode viral infections.
+Note also that this plot is limited to the cells that were called as infected (\FIG{experiment}D) and could clearly be classified as IFN- or IFN+ (\FIG{experiment}H).
+}
+{\includegraphics[width=0.8\textwidth]{figures/single_cell_figures/p_cells_complete.pdf}}
+
 \figsupp[Genotypes and infection outcomes plotted separately for IFN+ and IFN- cells.]
 {This plot shows the same data as \FIG{genotypes}, but with cells separated into columns based on whether they are IFN- (left column) or IFN+ (right column).}
 {\includegraphics[width=\textwidth]{figures/single_cell_figures/p_genotypes_by_ifn.pdf}}
