@@ -68,6 +68,11 @@ This is the created file:
 The R notebook [monocle_analysis.ipynb][] analyzes the cell-gene matrix to look for viral features associated with IFN induction.
 The analysis makes substantial use of the [Monocle][] package, and the results are described within the notebook.
 
+#### Assemble into paper
+The [./paper](paper) subdirectory builds the paper..
+It contains the LaTex source for the paper and manually created figures.
+Figures related to the single-cell sequencing are created automatically and placed into this directory.
+
 ## Input data
 The `./data/` subdirectory contains input data used by the analysis:
 
