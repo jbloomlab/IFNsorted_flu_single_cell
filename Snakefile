@@ -6,6 +6,7 @@ Written by Jesse Bloom."""
 # Imports -----------------------------------------
 import os
 from os.path import join
+import re
 
 
 # Globals -----------------------------------------
@@ -28,17 +29,54 @@ PACBIO_RUNS_FILE = 'data/PacBio_runs.csv'
 with open(PACBIO_RUNS_FILE) as f:
     PACBIO_RUNS = dict([line.strip().split(',') for line in f])
 
+# paper in this directory
+PAPER_DIR = 'paper'
+PAPER = 'paper'
+
+# get paper figures made by R and Python notebooks
+with open(join(PAPER_DIR, PAPER) + '.tex') as f:
+    paper_text = f.read()
+# figs from monocle_analysis.ipynb in paper/figures/single_cell_figures
+R_FIGS_SUBDIR = 'figures/single_cell_figures/'
+R_FIGS = [
+        join(PAPER_DIR, R_FIGS_SUBDIR, fig) for fig in re.findall(
+        '\{[^\}]*' + R_FIGS_SUBDIR + '([^\}]+)\}',
+        paper_text)
+        ]
+# figs from pacbio_analysis.ipynb in paper/figures/pacbio_single_cell_figures
+PYTHON_FIGS_SUBDIR = 'figures/pacbio_single_cell_figures/'
+PYTHON_FIGS = [
+        join(PAPER_DIR, PYTHON_FIGS_SUBDIR, fig) for fig in re.findall(
+        '\{[^\}]*' + PYTHON_FIGS_SUBDIR + '([^\}]+)\}',
+        paper_text)
+        ]
+
 
 # Rules ------------------------------------------- 
 
-rule all:
-    """Results of analysis of viral mutations and IFN."""
+rule make_paper:
+    """Compile LaTex paper describing results."""
     input:
-        'results/plots/p_genotypes.png'
+        join(PAPER_DIR, PAPER) + '.tex',
+        R_FIGS,
+        PYTHON_FIGS,
+        join(PAPER_DIR, 'references.bib'),
+        join(PAPER_DIR, 'elife.cls')
+    output:
+        join(PAPER_DIR, PAPER) + '.pdf'
+    shell:
+        """
+        cd {PAPER_DIR}
+        pdflatex {PAPER}
+        bibtex {PAPER}
+        pdflatex {PAPER}
+        pdflatex {PAPER}
+        cd ..
+        """
 
 
 rule analyze_IFN_vs_viral_mutations:
-    """Analyze viral mutations associated with IFN induction."""
+   """Analyze mutations associated with IFN and make paper figures."""
     input:
         join(CELLGENE_DIR, 'PacBio_annotated_merged_humanplusflu_cells.tsv'),
         join(CELLGENE_DIR, 'merged_humanplusflu_genes.tsv'),
@@ -48,18 +86,22 @@ rule analyze_IFN_vs_viral_mutations:
         join(CELLGENE_DIR, 'merged_canine_matrix.mtx'),
         join(FLUSEQ_DIR, 'flu-wsn.fasta')
     output:
-        'results/plots/p_genotypes.png'
+        R_FIGS
     shell:
-        'jupyter nbconvert '
-            '--to notebook '
-            '--execute '
-            '--inplace '
-            '--ExecutePreprocessor.timeout=-1 '
-            'monocle_analysis.ipynb'
-    
+        """
+        jupyter nbconvert \
+            --to notebook \
+            --execute \
+            --inplace \
+            --ExecutePreprocessor.timeout=-1 \
+            monocle_analysis.ipynb
+        jupyter nbconvert monocle_analysis.ipynb --to html
+        mv monocle_analysis.html {PAPER_DIR}/{R_FIGS_SUBDIR}
+        """
+
 
 rule call_PacBio_mutations:
-    """Call viral mutations from PacBio CCSs."""
+    """Call mutations from PacBio CCSs and make some figures."""
     input:
         expand(join(CCS_DIR, '{pacbioRun}_ccs.bam'),
                 pacbioRun=PACBIO_RUNS.keys()),
@@ -69,14 +111,19 @@ rule call_PacBio_mutations:
         join(FLUSEQ_DIR, 'flu-wsn.gb'),
         'data/images/10Xschematic.png'
     output:
-        join(CELLGENE_DIR, 'PacBio_annotated_merged_humanplusflu_cells.tsv')
+        join(CELLGENE_DIR, 'PacBio_annotated_merged_humanplusflu_cells.tsv'),
+        PYTHON_FIGS
     shell:
-        'jupyter nbconvert '
-            '--to notebook '
-            '--execute '
-            '--inplace '
-            '--ExecutePreprocessor.timeout=-1 '
-            'pacbio_analysis.ipynb'
+        """
+        jupyter nbconvert \
+            --to notebook \
+            --execute \
+            --inplace \
+            --ExecutePreprocessor.timeout=-1 \
+            pacbio_analysis.ipynb
+        jupyter nbconvert pacbio_analysis.ipynb --to html
+        mv pacbio_analysis.html {PAPER_DIR}/{R_FIGS_SUBDIR}
+        """
 
 
 rule get_PacBio_CCSs:
