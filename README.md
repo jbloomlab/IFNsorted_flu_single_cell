@@ -1,13 +1,13 @@
-# Single-cell sequencing of IFN-sorted influenza-infected cells
+# Single-cell virus sequencing of influenza variants that trigger innate immunity
 
 ## Authors
 Alistair Russell and [Jesse Bloom](https://research.fhcrc.org/bloom/en.html).
 
 ## Overview
-Analysis of single-cell mRNA sequencing of influenza-infected A549 cells that have been enriched for IFN+ cells.
+Single-cell transcriptomics and full-length virus sequencing of single influenza-infected A549 cells that have been enriched for IFN+ cells.
 
 A549 cells were infected with A/WSN/1933 influenza virus at a relatively low MOI.
-These A549 cells contained a sortable marker (LNGFRdel) under an IFNbeta promoter.
+These A549 cells contained a sortable marker under an IFN promoter.
 At 13-hours post-infection, the cells were sorted to enrich for IFN+ ones. 
 These enriched IFN+ cells were mixed with some of the ones that did not sort as IFN+, and they were sequenced on the [Chromium 10X platform](https://www.10xgenomics.com/single-cell/).
 
@@ -18,8 +18,12 @@ But whereas in that experiment that viral genomes were barcoded only at the end 
 
 The viral mRNA in the IFN-enriched sample was then amplified by semi-specific PCR and sequenced using PacBio long-read technologies to obtain full length sequences for the viral genomes.
 
+The 10X transcriptomic data and the full-length viral gene sequences were analyzed to determine characteristics of infections that triggered IFN production.
+
 ## Organization of analysis
-The analysis is performed by a set of [Jupyter notebooks](http://jupyter.org/) that do the following.
+Most of the analysis is performed by a set of [Jupyter notebooks](http://jupyter.org/) that contain detailed descriptions of the results.
+
+### Running the analysis
 
 The entire analysis can be run by executing the [Snakemake](https://snakemake.readthedocs.io/en/stable/) file [Snakefile](Snakefile) with:
 
@@ -35,7 +39,18 @@ Here is a visualization of the pipeline in [Snakefile](Snakefile) created in the
 
 ![workflow](workflow.png)
 
-This workflow involves the following major steps:
+Results are written to a `./results/` subdirectory, which is not included as part of this GitHub repository.
+The figures and the final paper describing the findings and conclusions are in the [./paper/](paper) subdirectory.
+
+Note that the automatically generated figures required for the paper are included as part of this repository, so if you simply run `snakemake` it will not re-run the full analysis since the required figures already exist.
+If you want to delete the figures and re-run the analysis from the top, first run:
+
+    snakemake --delete-all-output
+
+which deletes the existing output.
+
+### Steps in the analysis
+The analysis involves the following major steps:
 
 #### Get cell-gene matrix
 The Python notebook [align_and_annotate.ipynb][] demultiplexes and aligns the reads, annotates the flu synonymous barcodes, and generates the cell-gene matrix. 
@@ -69,23 +84,18 @@ The R notebook [monocle_analysis.ipynb][] analyzes the cell-gene matrix to look 
 The analysis makes substantial use of the [Monocle][] package, and the results are described within the notebook.
 
 #### Assemble into paper
-The [./paper](paper) subdirectory builds the paper..
-It contains the LaTex source for the paper and manually created figures.
+The [./paper/](paper) subdirectory contains the LaTex source for the paper and manually created figures.
 Figures related to the single-cell sequencing are created automatically and placed into this directory.
 
 ## Input data
-The `./data/` subdirectory contains input data used by the analysis:
+The [./data/](data) subdirectory contains input data used by the analysis:
 
-1. The file [./data/PacBio_runs.csv](./data/PacBio_runs.csv) contains a list of the PacBio runs and the locations of their corresponding subreads files on the Hutch computing cluster.
+1. [./data/PacBio_runs.csv](./data/PacBio_runs.csv) contains a list of the PacBio runs and the locations of their corresponding subreads files on the Hutch computing cluster.
 
 2. The subdirectory [./data/flu_sequences/](./data/flu_sequences) contains the influenza genomes for both the wildtype A/WSN/1933 virus and the variants with double synonymous barcodes. See the [README](./data/flu_sequences/README.md) in that directory for more details.
 
 3. The subdirectory [./data/images/](./data/images/) contains some schematic images used in the Jupyter notebooks.
 
-## Results and Conclusions
-The results from the analysis in each notebook are displayed and described in that notebook.
-
-All output from the analyses are written to the `./results/` subdirectory.
 
 [align_and_annotate.ipynb]: align_and_annotate.ipynb
 [monocle_analysis.ipynb]: monocle_analysis.ipynb

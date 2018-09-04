@@ -122,7 +122,7 @@ rule call_PacBio_mutations:
             --ExecutePreprocessor.timeout=-1 \
             pacbio_analysis.ipynb
         jupyter nbconvert pacbio_analysis.ipynb --to html
-        mv pacbio_analysis.html {PAPER_DIR}/{R_FIGS_SUBDIR}
+        mv pacbio_analysis.html {PAPER_DIR}/{PYTHON_FIGS_SUBDIR}
         """
 
 
