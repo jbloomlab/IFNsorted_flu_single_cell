@@ -139,15 +139,19 @@ We came up with a scheme to determine full genotypes of infecting viruses in IFN
 \begin{figure}
 \begin{fullwidth}
 
-{\centering
-{\bf A} \jdbcomment{PANEL WITH EXPERIMENTAL OUTLINE SCHEMATIC} \vspace{0.2in}\\
+{\bf A} \includegraphics[width=0.9\linewidth, valign=t]{figures/WorkflowSchematic/SchematicForPaper.pdf}
+\vspace{0.1in}
 
 \includegraphics[width=\linewidth, clip=false]{figures/single_cell_figures/p_cell_summary.pdf}
-}
 
 \caption{
-Experimental overview.
-{\bf (A)} Schematic of approach.
+Single-cell virus sequencing of influenza infections that induce IFN.
+{\bf (A)} Experimental workflow.
+(1) IFN reporter A549 cells are infected with a mix of wildtype virus and virus carrying synonymous mutations at both ends of each gene segment.
+IFN+ cells are enriched by MACS, and pooled with non-enriched cells and uninfected canine cells that serve as an internal control for multiplets and mRNA leakage.
+(2) The mRNAs from individual cells are tagged with cell-specific barcodes using a 10X Chromium device.
+(3) The entire cellular transcriptomes are quantified using the standard single-cell mRNA-seq protocol, and viral genes are enriched by influenza-specific PCR and fully sequenced by PacBio.
+(4) The result is a matrix giving the expression of each gene in each cell, as well as the full sequences of the viral genes in infected cells.
 {\bf (B)} Number of cells for which transcriptomes were obtained.
 Most transcriptomes are from human cells, but a few are from the uninfected canine cells spiked into the experiment as a control.
 From the transcriptomes with both human and canine transcripts, we estimate~\citep{bloom2018estimating} that $\approx$11\% of the captured cells are actually multiplets in which more than one cell was captured in an emulsion. 
@@ -374,8 +378,8 @@ Wildtype and synonymously barcoded viruses in \FIGDATA[experiment]{virus_seqs}
 \subsection{Enrichment and preparation of viral cDNA for PacBio sequencing}
 \jdbcomment{Alistair writes this}
 
-\subsection{Computational analysis of single-cell transcriptomic and PacBio data}
-\jdbcomment{Jesse writes this}
+\subsection{Computational analysis of single-cell transcriptomic and viral sequence data}
+A computational pipeline that performs all steps in the data analysis is available at \url{https://github.com/jbloomlab/IFNsorted_flu_single_cell}
 
 
 \section{Acknowledgments}
