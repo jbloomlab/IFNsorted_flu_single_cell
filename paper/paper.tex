@@ -66,33 +66,45 @@ Apparent in single-cell \textit{in vitro}~\citep{russell2018extreme}, single-cel
 \begin{figure}
 \centerline{
 {\bf \Large A}\includegraphics[width=0.25\textwidth,valign=t]{figures/IFN_stochastic/RussellVenn/venn_diagram.pdf}
-{\bf \Large B}
+\hspace{0.05\textwidth}
+{\bf \Large B}\includegraphics[width=0.35\textwidth,valign=t]{figures/IFN_stochastic/IFN_reporter/IFN_reporter.pdf}
+\hspace{0.05\textwidth}
+{\bf \Large C} \jdbcomment{ADD FIGURE PANEL}
 }
 \caption{
 Triggering of IFN production is rare in influenza-infected cells.
 {\bf (A)} Number of influenza-infected and IFN+ cells in our prior single-cell study of influenza infection of A549 cells.
 The Venn diagram shows data aggregated over all samples from \citet{russell2018extreme}.
-{\bf (B)} An A549 fluorescent-reporter cell-line confirms that IFN expression is rare in cells infected with our viral stock.
-\jdbcomment{This should be a simple figure, such as a plot that just shows the fraction IFN+ among flu infected cells for a few replicates.
-If you have suitable data, you could show for low, medium, and high-inducing stock and indicate which we use.
-Then put detailed flow data similar to what is in your writeup in \FIGSUPP[IFNrare]{flow}. For that flow data, I think contour plots are better than overplotting. Also, don't subsample but show all points, as that will give better statistics.
-We could possibly add a \emph{small simple} schematic of reporter line here as panel {\bf (B)} and move the current {\bf (B)} to {\bf (C)}, and then have more details in \FIGSUPP[IFNrare]{reporter_cells}.
-Alternatively, we could just show everything in \FIGSUPP[IFNrare]{reporter_cells}.}
+{\bf (B)} Creation of an A549 reporter cell line to efficiently identify single cells expressing IFN.
+The cells are engineered to contain an IFN promoter that drives expression of a fluorescent protein and cell-surface protein amenable to MACS (magnetic-activated cell sorting).
+We created reporter cell lines with both type I (IFN-$\beta$) and type III (IFN-$\lambda$) promoters (\FIGDATA[IFNrare]{reporter_sequences}).
+The reporters were efficiently activated when infected with a virus known to potently induce IFN (\FIGSUPP[IFNrare]{reporter_validation}).
+Expression of type I and type III IFN is highly correlated in the reporter cell lines upon infection with influenza virus (\FIGSUPP[IFNrare]{type_I_vs_III}).
+{\bf (C)}
+Frequency of IFN induction upon infection with the influenza virus stocks used in this paper as quantified using the reporter cell lines.
+\jdbcomment{This should be a simple figure, such as a plot that just shows the fraction IFN+ among flu infected cells for the virus stocks we use, plus positive and negative controls.
+Then put detailed flow data in \FIGSUPP[IFNrare]{flow}. }
 }
 \label{fig:IFNrare}
 
-\figsupp[Creation and validation of A549 fluorescent-reporter cell lines for type I and type III IFN expression.]
-{CAPTION}
-{\jdbcomment{ADD FIGURE}}
-\label{figsupp:reporter_cells}
+\figsupp[Validation of IFN reporter cell lines.]
+{To validate the IFN reporter cell lines, they were infected at high MOI with the Cantell strain of Sendai virus, which strongly activates IFN expression~\citep{strahle2006sendai}.
+Activation of the IFN reporter was then monitored by flow cytometry using the marker indicated at the bottom of each plot (either a fluorescent protein or antibody staining for the cell-surface LNGFR).
+Sendai infection efficiently activated the IFN reporter in all cases, with the strongest signal for the IFN-$\lambda$ reporter driving ZsGreen.
+}
+{\includegraphics[width=0.5\textwidth]{figures/IFN_stochastic/IFN_reporter/Sendai_validation.pdf}}
+\label{figsupp:reporter_validation}
 
-\figsupp[Expression of type I and type III IFN are highly correlated in influenza-infected A549 cells. \jdbcomment{Alternatively, we could leave this out if you don't have clean data for this point and just refer to \FIGSUPP[experiment]{type_I_III_correlation}}]
-{CAPTION}
-{\jdbcomment{ADD FIGURE}}
+\figsupp[Expression of type I and type III IFN are highly correlated in influenza-infected A549 cells.]
+{A549 cells were dually transduced with the IFN-$\beta$ and IFN-$\lambda$ reporters driving expression of mCherry and ZsGreen, respectively.
+The cells were then infected with two different stocks of ``wildtype'' WSN influenza, or stocks with a deletion in PB1 or stop codons in NS1 (described later in the paper).
+After 13 hours, cells were analyzed by flow cytometry.
+As shown in the FACS plots, expression of the IFN-$\beta$ and IFN-$\lambda$ reporters is highly correlated in all cases.}
+{\includegraphics[width=0.5\textwidth]{figures/IFN_stochastic/IFN_reporter/IFNbeta_IFN_lambda_correlated.pdf}}
 \label{figsupp:type_I_vs_III}
 
-\figsupp[Full flow cytometry data for \FIG{IFNrare}B.]
-{CAPTION}
+\figsupp[Full flow cytometry data for \FIG{IFNrare}C.]
+{\jdbcomment{ADD CAPTION}}
 {\jdbcomment{ADD FIGURE}}
 \label{figsupp:flow}
 
@@ -108,6 +120,14 @@ The full code that performs the re-analysis shown in this figure is at \url{http
 }
 {\includegraphics[width=\textwidth]{figures/IFN_stochastic/SteuermanReanalysis/plots/p_mRNA_counts.pdf}}
 \label{figsupp:mice}
+
+\figdata{Sequences of the reporters schematized in \FIG{IFNrare}B.
+The MACS sortable surface marker is a truncated LNGFR.
+For the IFN-$\beta$ reporter, the fluorescent protein is mNeonGreen.
+For the IFN-$\lambda$ (IL29) reporter, the fluorescent protein is ZsGreen.
+The sequences of plasmids carrying these reporters are at \url{https://github.com/jbloomlab/IFNsorted_flu_single_cell/tree/master/paper/figures/IFN_stochastic/IFN_reporter/1517_pHAGE2_IFNbeta_prom_LNGFR_P2A_mNeongreen.gb} and \url{https://github.com/jbloomlab/IFNsorted_flu_single_cell/tree/master/paper/figures/IFN_stochastic/IFN_reporter/1767_pHAGE2_IL29_promnkozak_LNGFR_P2A_zsGreen.gb}.
+}
+\label{figdata:reporter_sequences}
 
 \end{figure}
 %%% end IFNrare figure %%%
