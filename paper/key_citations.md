@@ -49,6 +49,15 @@ Infection with the NS1-deficient virus clearly induces more IFN globally in the 
 [Tapia et al (2013)](https://journals.plos.org/plospathogens/article?id=10.1371/journal.ppat.1003703):
 Shows that appearance of defective viral genomes (internal deletions in polymerase genes) appeared in mice after a few days, coincident with IFN expression.
 
+[Baum et al (2010)](http://www.pnas.org/content/107/37/16303.short):
+Suggests RIG-I preferentially binds shorter internally deleted influenza segments.
+
+[Boergeling et al (2015)](https://journals.plos.org/plospathogens/article?id=10.1371/journal.ppat.1004924):
+Shows that the truncated PB2 protein in an internal deletion virus induces more IFN.
+
+[Dimmock and Easton (2015)](http://www.mdpi.com/1999-4915/7/7/2796):
+Reviews a cloned defective interfering influenza RNA that induces more IFN.
+
 ## Single-cell virus mRNA-seq
 
 [Russell et al (2018)](https://elifesciences.org/articles/32303):
