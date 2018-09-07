@@ -58,6 +58,11 @@ Shows that the truncated PB2 protein in an internal deletion virus induces more 
 [Dimmock and Easton (2015)](http://www.mdpi.com/1999-4915/7/7/2796):
 Reviews a cloned defective interfering influenza RNA that induces more IFN.
 
+[Sjaastad et al (2018)](http://www.pnas.org/content/early/2018/08/29/1807516115):
+Uses reporter viruses to look at heterogeneity and IFN induction of single-cycle flu in mice.
+Argues for specific ISG signatures in cells with more flu, although this is done at the bulk level so could be confounded by cell type, etc.
+Definitely shows that priming of IFN by one infection changes tropism of cells infected in a second infection shortly thereafter.
+
 ## Single-cell virus mRNA-seq
 
 [Russell et al (2018)](https://elifesciences.org/articles/32303):
