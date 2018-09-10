@@ -153,7 +153,7 @@ We came up with a scheme to determine full genotypes of infecting viruses in IFN
 Single-cell virus sequencing of influenza infections that induce IFN.
 {\bf (A)} Experimental workflow.
 (1) IFN reporter A549 cells are infected with a mix of wildtype virus and virus carrying synonymous mutations at both ends of each gene segment.
-IFN+ cells are enriched by MACS, and pooled with non-enriched cells and uninfected canine cells that serve as an internal control for multiplets and mRNA leakage.
+IFN+ cells are enriched by MACS (\FIGSUPP[experiment]{MACS}), and pooled with non-enriched cells and uninfected canine cells that serve as an internal control for multiplets and mRNA leakage.
 (2) The mRNAs from individual cells are tagged with cell-specific barcodes using a 10X Chromium device.
 (3) The entire cellular transcriptomes are quantified using the standard single-cell mRNA-seq protocol, and viral genes are enriched by influenza-specific PCR and fully sequenced by PacBio.
 (4) The result is a matrix giving the expression of each gene in each cell, as well as the full sequences of the viral genes in infected cells.
@@ -179,6 +179,11 @@ We grouped type I and type III IFN together because their expression is highly c
 Many cells that do not express IFN itself still express interferon-stimulated genes (\FIGSUPP[experiment]{ISG}).
 }
 \label{fig:experiment}
+
+\figsupp[MACS enrichment of IFN+ cells]
+{\jdbcomment{Add caption}}
+{\jdbcomment{Add figure showing example MACS sorting}}
+\label{figsupp:MACS}
 
 \figsupp[Fraction of infected cells that detectably express each influenza gene.]
 {Bars show the fraction of infected cells that are called as expressing each viral gene.
@@ -376,7 +381,7 @@ The parental A549 cell line used to create these reporters was obtained from ATC
 The cells were maintained in D10 media (DMEM supplemented with 10\% heat-inactivated fetal bovine serum, 2 mM L-glutamine, 100 U of penicillin / ml, and 100 $\mu$g of streptomycin / ml) at 37$^{\circ}$C and 5\% carbon dioxide.
 
 To create the type I interferon reporters, a 1kb promoeter region upstream of the human IFNB1 gene was cloned into the pHAGE2 lentiviral vector~\citep{oconnell2010lentiviral}, with a NotI site immediately downstream of the promoter serving as an artificial Kozak sequence. 
-Downstream of this NotI site, each of the following reporter constructs was cloned: mCherry, mNeonGreen, and mNeonGreen translationally linked to low-affinity nerve growth factor lacking the C-terminal signaling domain (LNGFR$\Delta$C)~\citep{bonini1997hsv,ruggieri1997cell} by a P2A linker~\citep{kim2011high}.
+Downstream of this NotI site, each of the following reporter constructs was cloned: mCherry, mNeonGreen, and low-affinity nerve growth factor lacking the C-terminal signaling domain (LNGFR$\Delta$C)~\citep{bonini1997hsv,ruggieri1997cell} linked to mNeonGreen by a P2A linker~\citep{kim2011high}.
 The sequence of the last of these constructs is provided in \FIGDATA[IFNrare]{reporter_sequences}.
 
 To create the type III interferon reporters, a 1.2kb region upstream of the human IL29 (IFNL1) gene was cloned into the pHAGE2 vector, with the native Kozak sequence retained at the 3' end. 
@@ -410,25 +415,27 @@ We estimated titers of transcriptionally active virions by staining for HA expre
 Specifically, we infected A549 cells in influenza growth medium, and at \jdbcomment{?} hours post-infection, we trypsinized cells, re-suspended in phosphate-buffered saline (PBS) supplemented with 2\% heat-inactivated fetal bovine serum (FBS), and stained with 10 $\mu$g/ml of H17-L19, a mouse monoclonal antibody previously shown to bind to the HA from the A/WSN/1933 strain of virus~\citep{doud2017complete}.
 After washing in PBS supplemented with 2\% FBS, the cells were stained with a goat anti-mouse IgG antibody conjugated to APC, washed, fixed in 1\% formaldehyde in PBS, washed again, and then analyzed by flow cytometry to determine the fraction expressing detectable HA protein.
 
+\subsection{Single-cell transcriptomics of IFN-enriched infected cells using 10X Chromium}
+The single-cell transcriptomics and virus sequencing was performed using the A549 cells with the LNGFR$\Delta$C-P2A-mNeonGreen reporter.
+A schematic of the experiment is shown in \FIG{experiment}A.
 
-\subsection{Single-cell infections and transcriptomics using 10X Chromium on IFN-enriched cells}
-Type I interferon reporter A549 cells (mNeongreen-p2A-LNGFR$/Delta$C) were infected with a mixture of barcoded (MOI 0.1) and wild-type (MOI 0.02) virus. 
-These differing MOI's were chosen to roughly match the fraction of HA-positive cells in flow cytometry experiments (and thus biologically active particles) titering these two stocks. 
-Infections were allowed to proceed for 12h.
-Cells were trypsonized, trypsin was quenched with D10 media, and cells were resuspended in de-gassed PBS supplemented with 0.5\% bovine serum albumin and 5 mM EDTA. 
-Cells were then incubated with anti-LNGFR MACSelect Microbeads and passed over an MS magnetic column twice, selecting the positive population each time. The original, unsorted, population was then added back in to approximately 10 percent of the final cell fraction in order to ensure the presence of interferon negative cells. 
-At this point, uninfected MDCK-SIAT1 cells were also added to approximately 10 percent of the final cell fraction for doublet and lysis metrics. 
-The final cell suspension was counted using a disposable hemocytometer and loaded on the 10x Genomics instrument at a targeted capture of ~1500 cells. 
+The wildtype and synonymously barcoded viruses were mixed with the goal of adding equal numbers of transcriptionally active HA-expressing virions of each virus strain.
+The cells were then infected with this mixture at a dose designed to infect about 30\% of cells \jdbcomment{Is this correct that you targeted 30\%?} (this is about what ended up being the rate of detectable infection in the final sorted and sequenced cells, see \FIG{experiment}D).
+\jdbcomment{Were the cells washed after infection?}
+Infections were allowed to proceed for 12 hours.
+The cells were then trypsinized, the trypsin was quenched with D10 media, and cells were resuspended in de-gassed PBS supplemented with 0.5\% bovine serum albumin and 5 mM EDTA. 
+To enrich IFN+ cells, the cells were then incubated with anti-LNGFR MACSelect Microbeads (Miltenyi Biotec) and twice passed over an MS magnetic column (Miltenyi Biotec), retaining the bound (and presumably IFN-enriched) population each time. 
+This MACS sorting is expected to give approximately the enrichment for IFN+ cells shown in \FIGSUPP[experiment]{MACS}.
+The original, unsorted, population was then added back in to approximately 10\% of the final cell fraction in order to ensure the presence of interferon negative cells. 
+At this point, uninfected MDCK-SIAT1 cells were also added to approximately 10\% of the final cell fraction to enable quantification of the cell multiplet rate (\FIG{experiment}B) and background viral mRNA in uninfected cells (\FIG{experiment}D). 
+The final cell suspension was counted using a disposable hemocytometer and loaded on the 10x Genomics Chromium instrument~\citep{zheng2017massively}, targeting capture of $\sim$1,500 cells. 
 
-This sample was then processed according to the manufacturer's protocol using the Chromium Single Cell 3? Library and Gel Bead Kit v2 with one important modification; rather than process all full-length cDNA through enzymatic fragmentation, several nanograms were retained for targeted sequencing as described below.
+This sample was then processed to create libraries for Illumina 3'-end sequencing according to the 10X Genomics protocol using the Chromium Single Cell 3' Library and Gel Bead Kit v2 with one important modification: rather than process all full-length cDNA through enzymatic fragmentation, several nanograms were retained for targeted full-length viral cDNA sequencing as described below.
+The single-cell mRNA-seq library was sequenced on an Illumina HiSeq 2500, and the data analyzed as described below.
 
-
-\jdbcomment{Alistair writes this}
 
 \subsection{Enrichment and preparation of viral cDNA for PacBio sequencing}
 Approximately 1ng of full-length 10x-barcoded cDNA was used as template in an emulsion PCR using the 
-
-
 \jdbcomment{Alistair writes this}
 
 \subsection{Viruses for validation experiments}
