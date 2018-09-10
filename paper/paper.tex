@@ -94,7 +94,7 @@ Then put detailed flow data in \FIGSUPP[IFNrare]{flow}. }
 
 \figsupp[Validation of IFN reporter cell lines.]
 {To validate the IFN reporter cell lines, they were infected at high MOI with the Cantell strain of Sendai virus, which strongly activates IFN expression~\citep{strahle2006sendai}.
-Activation of the IFN reporter was then monitored by flow cytometry using the marker indicated at the bottom of each plot (either a fluorescent protein or antibody staining for the cell-surface LNGFR).
+At \jdbcomment{?} hours post-infection, activation of the IFN reporter was then monitored by flow cytometry using the marker indicated at the bottom of each plot (either a fluorescent protein or antibody staining for the cell-surface LNGFR).
 Sendai infection efficiently activated the IFN reporter in all cases, with the strongest signal for the IFN-$\lambda$ reporter driving ZsGreen.
 }
 {\includegraphics[width=0.5\textwidth]{figures/IFN_stochastic/IFN_reporter/Sendai_validation.pdf}}
@@ -371,22 +371,30 @@ Add text
 \section{Methods and Materials}
 
 \subsection{IFN reporter cell lines}
-\jdbcomment{Alistair writes this}
-For our type I interferon reporters, A 1kb region upstream of the human IFNB1 gene was cloned into the pHAGE2 lentiviral vector, with a NotI site immediately downstream serving as an artificial Kozak sequence (REF). 
-Downstream of this NotI site, each of the following reporter constructs was cloned: mCherry, mNeongreen, and mNeongreen translationally linked to low-affinity nerve growth factor lacking the C-terminal signaling domain (LNGFR$\Delta$C) by a p2A linker (REFS).
-For our type III interferon reporters, a 1.2kb region upstream of the human IL29 (IFNL1) gene was cloned into the pHAGE2 vector, with the native kozak sequence left at the 3' end. 
-Downstream of this promoter zsGreen translationally linked to LNGFR$\Delta$C via a p2A linker was cloned. 
-Replication-incompetent lentivirus was generated from these vectors as previously described (REF).
-A monolayer of A549 cells in D10 was transduced with each lentivirus in the presence of 5 $\mu$g polybrene, and sorted as single cells. 
-These single cell clones were grown and tested for reporter activity by poly I:C transfection---a potent agonist of the RIG-I pathway.
-Critically, cells propagated and used in experiments were not exposed to poly I:C,  thus avoiding selection on survival post interferon-induction.
-For our dual- type I and type III reporter, a single-cell clone of our type III reporter strain was transduced with our type I reporter bearing the mCherry fluorescent marker and subsequently propagated as a single cell clone and validated as above.
+We created IFN reporter variants of the A549 human lung epithelial cell line (\FIG{IFNrare}B).
+The parental A549 cell line used to create these reporters was obtained from ATCC (CCL-185), and was tested as negative for mycoplasma contamination by the Fred Hutch Genomics Core and authenticated using the ATCC STR profiling service.
+The cells were maintained in D10 media (DMEM supplemented with 10\% heat-inactivated fetal bovine serum, 2 mM L-glutamine, 100 U of penicillin / ml, and 100 $\mu$g of streptomycin / ml) at 37$^{\circ}$C and 5\% carbon dioxide.
 
-Reporter sequences \FIGDATA[IFNrare]{reporter_sequences}
+To create the type I interferon reporters, a 1kb promoeter region upstream of the human IFNB1 gene was cloned into the pHAGE2 lentiviral vector~\citep{oconnell2010lentiviral}, with a NotI site immediately downstream of the promoter serving as an artificial Kozak sequence. 
+Downstream of this NotI site, each of the following reporter constructs was cloned: mCherry, mNeonGreen, and mNeonGreen translationally linked to low-affinity nerve growth factor lacking the C-terminal signaling domain (LNGFR$\Delta$C)~\citep{bonini1997hsv,ruggieri1997cell} by a P2A linker~\citep{kim2011high}.
+The sequence of the last of these constructs is provided in \FIGDATA[IFNrare]{reporter_sequences}.
+
+To create the type III interferon reporters, a 1.2kb region upstream of the human IL29 (IFNL1) gene was cloned into the pHAGE2 vector, with the native Kozak sequence retained at the 3' end. 
+Downstream of this promoter we cloned ZsGreen translationally linked to LNGFR$\Delta$C via a P2A linker.
+The sequence of this construct is provided in \FIGDATA[IFNrare]{reporter_sequences}.
+ 
+We used these constructs to generate lentiviral vectors~\citep{oconnell2010lentiviral} which were used to transduce of A549 cells in the presence of 5 $\mu$g polybrene.
+We then sorted single transduced cells and expanded them.
+A portion of the expanded cells were tested for reporter activity by transfecting poly(I:C) (a potent agonist of the RIG-I pathway), and we retained clones with strong activation.
+Importantly, the cells that we retained for further use were not the same portion that were tested by poly(I:C) treatment, but rather a separate split of the same population---this avoids any selection on the cells from transient activation of IFN.
+For the dual type I / type III reporter used in \FIGSUPP[IFNrare]{type_I_vs_III}, a single-cell clone of the type III reporter cell line was transduced with the type I reporter bearing the mCherry fluorescent marker, and then isolated and propagated as a single cell clone for the other cell lines.
+
+\FIGSUPP[IFNrare]{reporter_validation} shows validation of the reporter cell lines using infection with saturating amounts of the Cantell strain of Sendai virus (obtained from Charles River Laboratories).
+For detection of the cell-surface bound LNGFR$\Delta$C, \jdbcomment{cells were stained with?}.
 
 
 
-\subsection{Viral stocks}
+\subsection{Viruses for single-cell experiments}
 \jdbcomment{Alistair writes this}
 All viruses were generated using reverse-genetics as previously described.
 All infections were performed in influenza growth media as previously described.
@@ -427,6 +435,27 @@ Approximately 1ng of full-length 10x-barcoded cDNA was used as template in an em
 
 
 \jdbcomment{Alistair writes this}
+
+\subsection{Viruses for validation experiments}
+\jdbcomment{Alistair writes this}
+All viruses were generated using reverse-genetics as previously described.
+All infections were performed in influenza growth media as previously described.
+Briefly, bidirectional plasmids producing viral mRNA and vRNA are transfected into a co-culture of MDCK-SIAT1 and 293t cells grown in D10.
+After 24h, media is changed from D10 to influenza growth media.
+Between 48h and 72h post-infection, depending on viral growth kinetics, supernatant was harvested and titered by TCID50.
+Virus was subsequently expanded on MDCK-SIAT1 cells as described below.
+For all viral variants, the described mutations were introduced into reverse-genetics plasmids using PCR mutagenesis. 
+For the HA-flanked mCherry pseudovirus, a plasmid was generated similarly to a previously-described HA-flanked eGFP vector.
+Synonymously-barcoded virus utilized previously described 3' synonymous mutations, and two newly-introduced single-nucleotide synonymous mutations at the 5' end of each viral gene.
+Wild-type, synonymously-barcoded, NS1-inactivated, and single-nucleotide variant viruses were all grown in unmodified MDCK-SIAT1 and 293t cells.
+Viral variants bearing large internal deleltions in the PB1 segment were grown in MDCK-SIAT1 and 293t cells expressing PB1 as previously described.
+Pseudovirus expressing mCherry in place of eGFP was grown in MDCK-SIAT1 and 293t cells expressing HA as previously described.
+
+Wildtype and synonymously barcoded viruses in \FIGDATA[experiment]{virus_seqs} obtained from reverse-genetic transfections was subsequently propagated at an MOI of 0.001 for 72h twice in MDCK-SIAT1 cells (wild-type) or once at an MOI of 0.01 (barcoded) for 60h in order to generate potential immunostimulatory diversity.
+For analyses of interferon induction, an additional wild-type stock of virus was grown at an MOI of 0.01 for 36h in order to generate a population relatively free of defective particles. (WILL REPEAT WITH 48H STOCK AS DESCRIBED BELOW)
+Viruses bearing SNPs, deletions in PB1, NS1-inactivation mutations, and HA-mCherry pseudovirus were all propagated at an MOI of 0.01 for 48h owing to slower growth kinetics. 
+All stocks were subsequently titered by TCID50, using complementing cells where necessary.
+Additionally, for qPCR experiments, stocks were titered by qPCR against the viral HA segment using a plasmid standard to determine relative genome copy numbers between viral stocks.
 
 \subsection{Computational analysis of single-cell transcriptomic and viral sequence data}
 A computational pipeline that performs all steps in the data analysis is available at \url{https://github.com/jbloomlab/IFNsorted_flu_single_cell}~\citep{russell2018github}. 
