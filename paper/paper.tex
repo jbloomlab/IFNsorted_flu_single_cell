@@ -181,8 +181,21 @@ Many cells that do not express IFN itself still express interferon-stimulated ge
 \label{fig:experiment}
 
 \figsupp[MACS enrichment of IFN+ cells]
-{\jdbcomment{Add caption}}
-{\jdbcomment{Add figure showing example MACS sorting}}
+{
+Example MACS enrichments of IFN+ influenza-infected cells.
+The A549 cells with the IFN-$\beta$ LNGFR$\Delta$C-mNeonGreen reporter were infected with wildtype A/WSN/1933 influenza (two different viral stocks) at a target MOI of 0.1 TCID50 per cell.
+After infection had proceeded for 12 hours, the cells were twice magnetically sorted for LNGFR$\Delta$C expression over magnetic columns as detailed in the methods for the single-cell sequencing experiment.
+{\bf (A)}
+After sorting, the populations were analyzed by flow cytometry for IFN expression using the mNeonGreen fluorescent protein.
+The plots show the distribution of fluorescence in the original population, the flow-through from the first column, and the MACS-sorted positive population after two columns.
+As indicated by the percentages shown for the original and MACS-sorted population, this process led to between 50- and 350-fold enrichment for IFN+ cells.
+We expect that the IFN sorting for the actual single-cell sequencing led to similar enrichment, although we could not directly quantify this as the sorted cells in that case were immediately used for the sequencing and so could not be analyzed by flow cytometry.
+{\bf (B)}
+Analysis of expression of IFNB1 (relative to the housekeeping gene L32) by qPCR in the positive (IFN enriched) and negative (IFN depleted) populations from panel (A).
+The qPCR validates a roughly 50- to 100-fold enrichment in total IFNB1 expression.
+The qPCR was performed in quadruplicate (hence the four points for each sample).
+}
+{\includegraphics[width=\textwidth]{figures/MACS/MACS.pdf}}
 \label{figsupp:MACS}
 
 \figsupp[Fraction of infected cells that detectably express each influenza gene.]
@@ -422,7 +435,7 @@ A schematic of the experiment is shown in \FIG{experiment}A.
 The wildtype and synonymously barcoded viruses were mixed with the goal of adding equal numbers of transcriptionally active HA-expressing virions of each virus strain.
 The cells were then infected with this mixture at a dose designed to infect about 30\% of cells \jdbcomment{Is this correct that you targeted 30\%?} (this is about what ended up being the rate of detectable infection in the final sorted and sequenced cells, see \FIG{experiment}D).
 \jdbcomment{Were the cells washed after infection?}
-Infections were allowed to proceed for 12 hours.
+Infections were allowed to proceed for 12 hours \jdbcomment{Clarify: this says 12 hours, but other places it says 13 hours. Were they harvested at 12 but the idea is that the whole process added another hour, or were they harvested at 13 hours?}.
 The cells were then trypsinized, the trypsin was quenched with D10 media, and cells were resuspended in de-gassed PBS supplemented with 0.5\% bovine serum albumin and 5 mM EDTA. 
 To enrich IFN+ cells, the cells were then incubated with anti-LNGFR MACSelect Microbeads (Miltenyi Biotec) and twice passed over an MS magnetic column (Miltenyi Biotec), retaining the bound (and presumably IFN-enriched) population each time. 
 This MACS sorting is expected to give approximately the enrichment for IFN+ cells shown in \FIGSUPP[experiment]{MACS}.
@@ -436,6 +449,9 @@ The single-cell mRNA-seq library was sequenced on an Illumina HiSeq 2500, and th
 
 \subsection{Enrichment and preparation of viral cDNA for PacBio sequencing}
 Approximately 1ng of full-length 10x-barcoded cDNA was used as template in an emulsion PCR using the 
+\jdbcomment{Alistair writes this}
+
+\subsection{qPCR for viral genes and IFN}
 \jdbcomment{Alistair writes this}
 
 \subsection{Viruses for validation experiments}
