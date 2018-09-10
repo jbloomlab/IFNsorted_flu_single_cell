@@ -94,7 +94,7 @@ Then put detailed flow data in \FIGSUPP[IFNrare]{flow}. }
 
 \figsupp[Validation of IFN reporter cell lines.]
 {To validate the IFN reporter cell lines, they were infected at high MOI with the Cantell strain of Sendai virus, which strongly activates IFN expression~\citep{strahle2006sendai}.
-At \jdbcomment{?} hours post-infection, activation of the IFN reporter was then monitored by flow cytometry using the marker indicated at the bottom of each plot (either a fluorescent protein or antibody staining for the cell-surface LNGFR).
+At 13 hours post-infection, activation of the IFN reporter was then monitored by flow cytometry using the marker indicated at the bottom of each plot (either a fluorescent protein or antibody staining for the cell-surface LNGFR using a PE-conjugated anti-LNGFR antibody from Miltenyi Biotec).
 Sendai infection efficiently activated the IFN reporter in all cases, with the strongest signal for the IFN-$\lambda$ reporter driving ZsGreen.
 }
 {\includegraphics[width=0.5\textwidth]{figures/IFN_stochastic/IFN_reporter/Sendai_validation.pdf}}
@@ -408,7 +408,7 @@ Importantly, the cells that we retained for further use were not the same portio
 For the dual type I / type III reporter used in \FIGSUPP[IFNrare]{type_I_vs_III}, a single-cell clone of the type III reporter cell line was transduced with the type I reporter bearing the mCherry fluorescent marker, and then isolated and propagated as a single cell clone for the other cell lines.
 
 \FIGSUPP[IFNrare]{reporter_validation} shows validation of the reporter cell lines using infection with saturating amounts of the Cantell strain of Sendai virus (obtained from Charles River Laboratories).
-For detection of the cell-surface bound LNGFR$\Delta$C, \jdbcomment{cells were stained with?}.
+For detection of the cell-surface bound LNGFR$\Delta$C, cells were stained with PE-conjugated anti-LNGFR (CD271) antibody from Miltenyi Biotec.
 
 \subsection{Viruses for single-cell experiments}
 We performed the single-cell experiments using the A/WSN/1933 (H1N1) strain of influenza virus.
@@ -425,7 +425,7 @@ The MOIs for this passaging are based on titers determined using TCID50 assays v
 
 For the single-cell experiments (which only examine the transcriptional results of a single cycle of infection), we were most interested in the titer of viral particles that are transcriptionally active for a single round of infection of A549 cells.
 We estimated titers of transcriptionally active virions by staining for HA expression in virus-infected A549 cells.
-Specifically, we infected A549 cells in influenza growth medium, and at \jdbcomment{?} hours post-infection, we trypsinized cells, re-suspended in phosphate-buffered saline (PBS) supplemented with 2\% heat-inactivated fetal bovine serum (FBS), and stained with 10 $\mu$g/ml of H17-L19, a mouse monoclonal antibody previously shown to bind to the HA from the A/WSN/1933 strain of virus~\citep{doud2017complete}.
+Specifically, we infected A549 cells in influenza growth medium, and at 14 hours post-infection, we trypsinized cells, re-suspended in phosphate-buffered saline (PBS) supplemented with 2\% heat-inactivated fetal bovine serum (FBS), and stained with 10 $\mu$g/ml of H17-L19, a mouse monoclonal antibody previously shown to bind to the HA from the A/WSN/1933 strain of virus~\citep{doud2017complete}.
 After washing in PBS supplemented with 2\% FBS, the cells were stained with a goat anti-mouse IgG antibody conjugated to APC, washed, fixed in 1\% formaldehyde in PBS, washed again, and then analyzed by flow cytometry to determine the fraction expressing detectable HA protein.
 
 \subsection{Single-cell transcriptomics of IFN-enriched infected cells using 10X Chromium}
@@ -433,14 +433,14 @@ The single-cell transcriptomics and virus sequencing was performed using the A54
 A schematic of the experiment is shown in \FIG{experiment}A.
 
 The wildtype and synonymously barcoded viruses were mixed with the goal of adding equal numbers of transcriptionally active HA-expressing virions of each virus strain.
-The cells were then infected with this mixture at a dose designed to infect about 30\% of cells \jdbcomment{Is this correct that you targeted 30\%?} (this is about what ended up being the rate of detectable infection in the final sorted and sequenced cells, see \FIG{experiment}D).
-\jdbcomment{Were the cells washed after infection?}
-Infections were allowed to proceed for 12 hours \jdbcomment{Clarify: this says 12 hours, but other places it says 13 hours. Were they harvested at 12 but the idea is that the whole process added another hour, or were they harvested at 13 hours?}.
+The cells were then infected with this mixture at a dose designed to infect about 50\% of cells.
+Infections were allowed to proceed for 12 hours.
 The cells were then trypsinized, the trypsin was quenched with D10 media, and cells were resuspended in de-gassed PBS supplemented with 0.5\% bovine serum albumin and 5 mM EDTA. 
 To enrich IFN+ cells, the cells were then incubated with anti-LNGFR MACSelect Microbeads (Miltenyi Biotec) and twice passed over an MS magnetic column (Miltenyi Biotec), retaining the bound (and presumably IFN-enriched) population each time. 
 This MACS sorting is expected to give approximately the enrichment for IFN+ cells shown in \FIGSUPP[experiment]{MACS}.
 The original, unsorted, population was then added back in to approximately 10\% of the final cell fraction in order to ensure the presence of interferon negative cells. 
 At this point, uninfected MDCK-SIAT1 cells were also added to approximately 10\% of the final cell fraction to enable quantification of the cell multiplet rate (\FIG{experiment}B) and background viral mRNA in uninfected cells (\FIG{experiment}D). 
+Preparation of samples for single cell analysis added an extra hour to the process, and thus the cells were analyzed at a final time point of 13 hours post infection.
 The final cell suspension was counted using a disposable hemocytometer and loaded on the 10x Genomics Chromium instrument~\citep{zheng2017massively}, targeting capture of $\sim$1,500 cells. 
 
 This sample was then processed to create libraries for Illumina 3'-end sequencing according to the 10X Genomics protocol using the Chromium Single Cell 3' Library and Gel Bead Kit v2 with one important modification: rather than process all full-length cDNA through enzymatic fragmentation, several nanograms were retained for targeted full-length viral cDNA sequencing as described below.
