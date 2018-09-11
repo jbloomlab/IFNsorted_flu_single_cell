@@ -72,10 +72,10 @@ Apparent in single-cell \textit{in vitro}~\citep{russell2018extreme}, single-cel
 \begin{figure}
 \centerline{
 {\bf \Large A}\includegraphics[width=0.25\textwidth,valign=t]{figures/IFN_stochastic/RussellVenn/venn_diagram.pdf}
-\hspace{0.05\textwidth}
-{\bf \Large B}\includegraphics[width=0.35\textwidth,valign=t]{figures/IFN_stochastic/IFN_reporter/IFN_reporter.pdf}
-\hspace{0.05\textwidth}
-{\bf \Large C} \jdbcomment{ADD FIGURE PANEL}
+\hspace{0.02\textwidth}
+{\bf \Large B}\includegraphics[width=0.32\textwidth,valign=t]{figures/IFN_stochastic/IFN_reporter/IFN_reporter.pdf}
+\hspace{0.02\textwidth}
+{\bf \Large C} \includegraphics[width=0.18\textwidth,valign=t]{figures/IFN_stochastic/Flow/ifn_percent.pdf}
 }
 \caption{
 Triggering of IFN production is rare in influenza-infected cells.
@@ -87,9 +87,9 @@ We created reporter cell lines with both type I (IFN-$\beta$) and type III (IFN-
 The reporters were efficiently activated when infected with a virus known to potently induce IFN (\FIGSUPP[IFNrare]{reporter_validation}).
 Expression of type I and type III IFN is highly correlated in the reporter cell lines upon infection with influenza virus (\FIGSUPP[IFNrare]{type_I_vs_III}).
 {\bf (C)}
-Frequency of IFN induction upon infection with the influenza virus stocks used in this paper as quantified using the reporter cell lines.
-\jdbcomment{This should be a simple figure, such as a plot that just shows the fraction IFN+ among flu infected cells for the virus stocks we use, plus positive and negative controls.
-Then put detailed flow data in \FIGSUPP[IFNrare]{flow}. }
+Frequency of IFN induction upon infection with the influenza virus stocks used in the single-cell studies in this paper as quantified using the IFN reporter cell line (see \FIGSUPP[IFNrare]{flow} for details).
+The plot also shows uninfected cells as a negative control, and cells infected with saturating amounts of the Cantell strain of Sendai virus~\citep{strahle2006sendai} as a positive control.
+The limit of detection of 0.05\% is indicated with a dashed line, and numbers show the median of three measurements.
 }
 \label{fig:IFNrare}
 
@@ -110,8 +110,10 @@ As shown in the FACS plots, expression of the IFN-$\beta$ and IFN-$\lambda$ repo
 \label{figsupp:type_I_vs_III}
 
 \figsupp[Full flow cytometry data for \FIG{IFNrare}C.]
-{\jdbcomment{ADD CAPTION}}
-{\jdbcomment{ADD FIGURE}}
+{Flow cytometry data for \FIG{IFNrare}C.
+\jdbcomment{add details}
+}
+{\includegraphics[width=0.75\textwidth]{figures/IFN_stochastic/Flow/flow_plot.pdf}}
 \label{figsupp:flow}
 
 \figsupp[Few cells express detectable IFN in the single-cell analysis influenza-infected mice by \citet{steuerman2018dissection}.]
