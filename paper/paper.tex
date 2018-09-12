@@ -253,6 +253,12 @@ As is clear from this plot, expression of influenza genes, IFN, and ISGs help ex
 \figdata{Genbank files giving the sequences of the wildtype and synonymously barcoded viruses are in \url{https://github.com/jbloomlab/IFNsorted_flu_single_cell/blob/master/data/flu_sequences/flu-wsn.gb} and \url{https://github.com/jbloomlab/IFNsorted_flu_single_cell/blob/master/data/flu_sequences/flu-wsn-double-syn.gb}.}
 \label{figdata:virus_seqs}
 
+\figdata{textfile providing all primer sequences used to amplify and enrich influenza transcripts for PacBio sequencing. \url{https://github.com/jbloomlab/IFNsorted_flu_single_cell/tree/master/paper/figures/WorkflowSchematic/PacBio_primer_list.txt} 
+}
+\label{figdata:primer_sequences}
+
+
+
 \end{fullwidth}
 \end{figure}
 %%% end approach figure
@@ -460,11 +466,12 @@ The single-cell mRNA-seq library was sequenced on an Illumina HiSeq 2500, and th
 
 
 \subsection{Enrichment and preparation of viral cDNA for PacBio sequencing}
-All PCR amplifications were performed using Kapa HiFi Hotstart Readymix.
-In order to enrich full-length cDNA derived from influenza transcripts, 1ng of full-length 10x-barcoded cDNA was used as template in a multiplex PCR reaction using eight segment-specific 5' primers and a shared, 10x-specific 3' primer \abrcomment{supplemental text}.
-To reduce strand-exchange and generate more even amplification across segments, this reaction was performed in an emulsion PCR using the Micellula DNA Emulsion Kit from Roboklon, supplementing our PCR reaction with additional BSA to a final concentration of 0.1mg/ml.
+Sequences of all primers described below are described in  \FIGDATA[experiment]{primer_sequences}.
+All PCR amplifications were performed using Kapa HiFi Hotstart Readymix in a 100$\mu$l volume.
+In order to enrich full-length cDNA derived from influenza transcripts, 1ng of full-length 10x-barcoded cDNA was used as template in a multiplex PCR reaction using eight segment-specific 5' primers and a shared, 10x-specific 3' primer.
+To reduce strand-exchange and generate more even amplification across segments, this reaction was performed in an emulsion PCR using the Micellula DNA Emulsion Kit from Roboklon, supplementing our PCR reaction with additional BSA to a final concentration of 0.1mg/ml and an aqueous phase of 100$\mu$l .
 Emulsion PCR involves encapsidating DNA template molecules in a reverse-phase emulsion, with each template positive droplet serving as a microreactor.
-This process physically separates disparate template molecules, preventing strand exchange, and, moreover, allowing each molecule to be amplified to exhaustion of its droplet's reagents without competing with the broader pool of PCR-amenable molecules.
+This process physically separates disparate template molecules, preventing strand exchange, and, moreover, allowing each molecule to be amplified to exhaustion of its droplet's reagents without competing with the broader pool of PCR-amenable molecules~\citep{Boers:2015emulsion}.
 To reach this level of reagent exhaustion, for all emulsion PCRs described here, 30 rounds of PCR was performed in order to saturate emulsion materials---unlike open PCR reactions, the physical occlusion of amplified material reduces artifacts at high cycle numbers.
 
 As multiplex enrichment would still result in highly uneven reads across influenza transcripts due to differences in gene segment expression, this amplified material was then subjected to eight, individual, emulsion PCR reactions, each using only a single segment-specific 5' primer as well as the common 10x-specific 3' primer, using 1ng of material in each reaction.
@@ -473,17 +480,21 @@ This material was pooled to try and obtain an equimolar ratio of segments and se
 All remaining SMRT-sequencing described in this section was performed on the PacBio Sequel.
 Our theoretically equimolar pool of PCR products still produced highly biased ratios of segment coverage, and so to reduce the variability in length of our input pool to try and reduce bias in SMRT library preparation we produced two new sequencing pools, one consisting of the segments HA, NP, NA, M, and NS, and the other consisting of the longer PB2, PB1, and PA transcripts. The latter was sequenced on two additional SMRTcells, and the former on a single SMRTcell.
 
-As our depth on the three longest segments remained low, we further amplified our already-amplified material using a non-emulsion PCR using standard conditions for PB2, PB1, and PA, and subjecting the resulting material to a rigorous SPRI-bead selection using SPRIselect beads at a bead-PCR volume ratio of 0.4. 
-This bead-selection was an attempt to correct for the high level of internally-deleted PB2, PB1, and PA segments dominating our sequencing, and enrich for the longer, full-length segments.
+As our depth on the three longest segments remained low (PB2, PB1, and PA), and those reads that we did possess were dominated by internally-deleted segments, we subjected 10ng of our amplified material for each segment to SPRI-bead selection using SPRIselect beads at a bead-PCR volume ratio of 0.4. 
+This selection removes most low-molecular weight DNA species including internally-deleted defective segments.
+Material from this selection was then amplified using 16 (PB1) or 14 (PB2 and PA) cycles of a non-emulsion PCR using standard conditions.
 All non-emulsion PCRs were recovered at sub ${\mu}$g yields to prevent the occurrence of artifacts at PCR saturation.
 We sequenced this bead-selected and repooled material on an additional SMRTcell.
 
 Enrichment of full-length PB2, PB1, and PA was aided by bead-selection but these segments still exhibited relatively low PCR efficiency and comprised a small component of the remaining material.
 Finally, to improve recovery of full-length PB1, PB2, and PA and overcome poor PCR efficiency and over-representation of internally deleted sequences deriving from defective viruses, we undertook a technique allowing us to use two segment-specific primers rather than one, in a PCR that would exclude internally-deleted sequences.
 Namely, we sought to circularize our template molecules, allowing us to still amplify across the whole transcript, including the cell-specific barcode, while using two segment-specific primers in apposition that lie within a region absent in most internally-deleted segments.
-First, we first used our already-amplified segment-specific material in a low-cycle PCR to append circularization adapters, and circularized 10ng of this material using NEBuilder in a 20${\mu}$l reaction volume using an extended reaction time of 50 minutes.
-We then further incubated these reactions a  1 hour at 37$^{\circ}$C with exonuclease V to remove linear concatemers and uncircularized material, and bead-cleaned using SPRIselect beads at a volume ratio of 0.4.
-This circularized material was then used in three non-emulsion PCRs specific to PB2, PB1, and PA, using two segment-specific primers that align to the central portion of each gene but in apposition to one-another, and bead-cleaned using a ratio of 0.4 volumes.
+First, we first used 2.5ng of our already-amplified segment-specific material in a 10 cycle PCR to append circularization adapters, and cleaned the resultant mixture using SPRI-beads at a volume ratio of 0.4.
+10ng of this amplified material was then used in a 20${\mu}$l NEBuilder reaction using an extended reaction time of 50 minutes in order to circularize our target segments using a Gibson reaction.
+We then further incubated these reactions a  1 hour at 37$^{\circ}$C with exonuclease V and additional ATP to a final increase in concentration of 1mM.
+As exonuclease V would be unable to act on closed circles, this step serves  to remove linear concatemers and uncircularized material.
+Circularized and digested material was then bead-cleaned using SPRIselect beads at a volume ratio of 0.4.
+This circularized material was then used in three non-emulsion PCRs specific to PB2, PB1, and PA, using two segment-specific primers that align to the central portion of each gene but in apposition to one-another at 20 (PB2), or 26 (PB1 and PA) cycles and bead-cleaned using a ratio of 1.0 volumes .
 This results in successful amplification only if the central portion of the gene is present, while still amplifying across the entire transcript as well as cell-specific barcode regions. 
 This material was pooled to produce an equimolar mixture of full-length PB1, PA, and PB2 and sequenced in an additional SMRTcell in the PacBio Sequel. 
 
@@ -493,14 +504,16 @@ This material was pooled to produce an equimolar mixture of full-length PB1, PA,
 \abrcomment{Assuming we use the cycloheximide and ribavirin data as-is, can be modified if not}
 For figures \abrcomment{whichever figures} A549 cells were seeded at a density of 10,000 cells/well in a 96-well plate in D10 media 24 hours prior to infection, with four independent wells seeded per experimental treatment. 
 Immediately prior to infection D10 media was removed and replaced with influenza growth media and infected with the indicated influenza strains at the indicated MOI.
-Viral infections were normalized to an MOI of a relatively-deletion free stock of virus that we previously characterized (ref), and identical particle numbers (calculated by qPCR, described below) of other viruses were added.
-Crucially, by controlling for particle number rather than infectious units we avoid the confounding problem of differing immune stimulation by simply infecting at a higher rate of biologically active but non-infectious particles.
-For experimental treatments with ribavirin and cycloheximde, these compounds were added to cells at the time of infection to a final concentration of 100$\mu$M and 50$\mu$g/ml, respectively, both of which are sufficient to block downstream viral replication (references).
+Viral infections were normalized to an MOI of a previously-characterized relatively-deletion free stock of virus~\citep{russell2018extreme}, with all other strains matched for viral genome copy number as calculated by qPCR, described below.
+Crucially, by controlling for genome copy number rather than infectious units we avoid the confounding problem of differing immune stimulation by simply infecting at a higher rate of biologically active but non-infectious particles.
+For experimental treatments with ribavirin and cycloheximde, these compounds were added to cells at the time of infection to a final concentration of 100$\mu$M and 50$\mu$g/ml, respectively, both of which are sufficient to block downstream viral replication~\citep{Vanderlinden:2016ec,Reuther:2015ef,Scholtissek:1976wg,killip2014activation}.
 At 8 hours post infection media was removed and cell lysates generated using the CellAmp RT-PCR for Direct Prep Kit (Real Time) \& Protein Analysis, following manufacturer's instructions. 
-cDNA was synthesized using an oligoDT primer and the SuperScript III first-strand synthesis supermix from ThermoFisher using the manufacturerâ€™s protocol. 
-Transcript abundance was measured using SYBR green PCR master mix, using a combined anneal/extension step of 60 for one minute with the following primers: HA: 5â€™-GGCCCAACCACACATTCAAC-3â€™, 5â€™-GCTCATCACTGCTAGACGGG-3â€™, IFNB1: 5â€™-AAACTCATGAGCAGTCTGCA-3â€™, 5â€™-AGGAGATCTTCAGTTTCGGAGG-3â€™, L32: 5â€™-AGCTCCCAAAAATAGACGCAC-3â€™, 5â€™-TTCATAGCAGTAGGCACAAAGG-3â€™. 
+cDNA was synthesized using an oligoDT primer and the SuperScript III first-strand synthesis supermix from ThermoFisher using the manufacturer'€'s protocol. 
+Transcript abundance was measured using SYBR green PCR master mix, using a combined anneal/extension step of 60 for one minute with the following primers: HA: 5'€™-GGCCCAACCACACATTCAAC-3'€™, 5'€™-GCTCATCACTGCTAGACGGG-3'€™, IFNB1: 5'€™-AAACTCATGAGCAGTCTGCA-3'€™, 5'€™-AGGAGATCTTCAGTTTCGGAGG-3'€™, L32: 5'-AGCTCCCAAAAATAGACGCAC-3'€™, 5'-TTCATAGCAGTAGGCACAAAGG-3'€™. 
 
-For titering virus by qPCR, vRNA was harvested from 80 $\mu$l of viral supernatant by the addition of 600 $\mu$l of RLT plus before proceeding with the standard QIAGEN RNeasy Plus Mini kit protocol. The cDNA was generated using SuperScript III first-strand synthesis supermix using the manufacturerâ€™s protocol, and using the universal vRNA primers of Hoffmann et al. (add Hoffman ref) with the modifications described in Xue et al. (add Katherine ref). The qPCR was then performed as for mRNA measurements. 
+For titering virus by qPCR, vRNA was harvested from 80 $\mu$l of viral supernatant by the addition of 600 $\mu$l of RLT plus before proceeding with the standard QIAGEN RNeasy Plus Mini kit protocol. 
+The cDNA was generated using SuperScript III first-strand synthesis supermix using the manufacturerâ€'s protocol, and using the universal vRNA primers of Hoffmann et al. (add Hoffman ref) with the modifications described in Xue et al.\citep{Xue:2017dla}. 
+The qPCR was then performed as for mRNA measurements using the HA qPCR primers to measure genome dose. 
 
 
 \jdbcomment{Alistair writes this}
