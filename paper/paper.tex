@@ -467,9 +467,10 @@ The single-cell mRNA-seq library was sequenced on an Illumina HiSeq 2500, and th
 
 \subsection{Enrichment and preparation of viral cDNA for PacBio sequencing}
 Sequences of all primers described below are described in  \FIGDATA[experiment]{primer_sequences}.
-All PCR amplifications were performed using Kapa HiFi Hotstart Readymix in a 100$\mu$l volume.
+All PCR amplifications were performed using Kapa HiFi Hotstart Readymix in a 100$\mu$l volume using each primer at a final concentration of 0.5$\mu$M and a 2 minute 15 second extension time and annealing temperature of 67$^{\circ}$C.
 In order to enrich full-length cDNA derived from influenza transcripts, 1ng of full-length 10x-barcoded cDNA was used as template in a multiplex PCR reaction using eight segment-specific 5' primers and a shared, 10x-specific 3' primer.
 To reduce strand-exchange and generate more even amplification across segments, this reaction was performed in an emulsion PCR using the Micellula DNA Emulsion Kit from Roboklon, supplementing our PCR reaction with additional BSA to a final concentration of 0.1mg/ml and an aqueous phase of 100$\mu$l .
+Rather than the standard 98$^{\circ}$C melting step suggested by the manufacturer for Kapa HiFi we instead used a 95$^{\circ}$C melting step to prevent collapse of emulsion integrity.
 Emulsion PCR involves encapsidating DNA template molecules in a reverse-phase emulsion, with each template positive droplet serving as a microreactor.
 This process physically separates disparate template molecules, preventing strand exchange, and, moreover, allowing each molecule to be amplified to exhaustion of its droplet's reagents without competing with the broader pool of PCR-amenable molecules~\citep{Boers:2015emulsion}.
 To reach this level of reagent exhaustion, for all emulsion PCRs described here, 30 rounds of PCR was performed in order to saturate emulsion materials---unlike open PCR reactions, the physical occlusion of amplified material reduces artifacts at high cycle numbers.
