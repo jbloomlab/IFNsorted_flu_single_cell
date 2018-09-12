@@ -81,17 +81,31 @@ Apparent in single-cell \textit{in vitro}~\citep{russell2018extreme}, single-cel
 Triggering of IFN production is rare in influenza-infected cells.
 {\bf (A)} Number of influenza-infected and IFN+ cells in our prior single-cell study of influenza infection of A549 cells.
 The Venn diagram shows data aggregated over all samples from \citet{russell2018extreme}.
-{\bf (B)} Creation of an A549 reporter cell line to efficiently identify single cells expressing IFN.
-The cells are engineered to contain an IFN promoter that drives expression of a fluorescent protein and cell-surface protein amenable to MACS (magnetic-activated cell sorting).
-We created reporter cell lines with both type I (IFN-$\beta$) and type III (IFN-$\lambda$) promoters (\FIGDATA[IFNrare]{reporter_sequences}).
-The reporters were efficiently activated when infected with a virus known to potently induce IFN (\FIGSUPP[IFNrare]{reporter_validation}).
+\FIGSUPP[IFNrare]{mice} shows that IFN+ cells were also rare in the single-cell mRNA-sequencing study of influenza-infected mice by \citet{steuerman2018dissection}.
+{\bf (B)} Creation of an A549 reporter cell line to identify single cells expressing IFN.
+The cells contain an IFN promoter that drives expression of a cell-surface protein amenable to MACS (magnetic-activated cell sorting) and a fluorescent protein.
+We created reporter cell lines with type I (IFN-$\beta$) and type III (IFN-$\lambda$) promoters (\FIGDATA[IFNrare]{reporter_sequences}).
+The reporters were efficiently activated when infected with a strain of Sendai virus~\citep{strahle2006sendai} known to potently induce IFN (\FIGSUPP[IFNrare]{reporter_validation}).
 Expression of type I and type III IFN is highly correlated in the reporter cell lines upon infection with influenza virus (\FIGSUPP[IFNrare]{type_I_vs_III}).
 {\bf (C)}
-Frequency of IFN induction upon infection with the influenza virus stocks used in the single-cell studies in this paper as quantified using the IFN reporter cell line (see \FIGSUPP[IFNrare]{flow} for details).
-The plot also shows uninfected cells as a negative control, and cells infected with saturating amounts of the Cantell strain of Sendai virus~\citep{strahle2006sendai} as a positive control.
+Frequency of IFN induction upon infection with the influenza virus stocks used in the single-cell studies in this paper quantified using the reporter cell line (see \FIGSUPP[IFNrare]{flow} for details).
+The plot also shows uninfected cells, and cells infected with saturating amounts of Sendai virus as a positive control.
 The limit of detection of 0.05\% is indicated with a dashed line, and numbers show the median of three measurements.
 }
 \label{fig:IFNrare}
+
+\figsupp[Few cells express detectable IFN in the single-cell analysis of influenza-infected mice by \citet{steuerman2018dissection}.]
+{A re-analysis of the data from \citet{steuerman2018dissection}'s single-cell mRNA-sequencing of cells from influenza-infected mice shows that only 5 of 1220 virus-infected cells express \emph{detectable} type I or type III IFN transcripts \textit{in vivo}.
+Specifically, we downloaded the data from \citet{steuerman2018dissection} and identified influenza-infected cells using calling criteria similar to those described in \citet{steuerman2018dissection}.
+Here we show statistics for the cells from the influenza-infected wildtype C57BL/6J mice, which were collected at 48 hours (two replicates) or 72 hours (one replicate)---we do not show cells from the control mice.
+As shown in the left-most panel, the sequencing depth of \citet{steuerman2018dissection} was quite low, with only $\sim$1,500 mRNA counts per cell on average (this is 10 to 15-fold lower than the sequencing depth in \citet{russell2018extreme} and the current study, respectively).
+An important caveat is that this low sequencing depth could lead to a simple failure to detect IFN transcripts in some cells.
+Nonetheless, there is detectable expression of key interferon-stimulated gene (ISG) mRNAs in the majority of infected cells (the middle panel shows the total counts of IFIT1, ISG15, CCL5, and Mx1).
+However, only 5 of 1220 cells express any detectable type I (IFN-$\alpha$ and IFN-$\beta$) or type III (IFN-$\lambda$) mRNAs, and only at low levels (one mRNA transcript detected).
+The full code that performs the re-analysis shown in this figure is at \url{https://github.com/jbloomlab/IFNsorted_flu_single_cell/tree/master/paper/figures/IFN_stochastic/SteuermanReanalysis/}.
+}
+{\includegraphics[width=\textwidth]{figures/IFN_stochastic/SteuermanReanalysis/plots/p_mRNA_counts.pdf}}
+\label{figsupp:mice}
 
 \figsupp[Validation of IFN reporter cell lines.]
 {To validate the IFN reporter cell lines, they were infected at high MOI with the Cantell strain of Sendai virus, which strongly activates IFN expression~\citep{strahle2006sendai}.
@@ -111,23 +125,16 @@ As shown in the FACS plots, expression of the IFN-$\beta$ and IFN-$\lambda$ repo
 
 \figsupp[Full flow cytometry data for \FIG{IFNrare}C.]
 {Flow cytometry data for \FIG{IFNrare}C.
-\jdbcomment{add details}
+The A549 cells with the IFN-$\lambda$ reporter driving LNGFR$\Delta$C-ZsGreen were not infected, infected with saturating amounts of the Cantell strain of Sendai virus~\citep{strahle2006sendai}, or infected the same stock of influenza virus used in the single-cell experiment at a target MOI of 0.3.
+After 13 hours, the cells were stained for expression of HA protein and analyzed for the IFN-$\lambda$ reporter driven ZsGreen expression by FACS.
+Each condition was done in triplicate.
+The contour plots show the density of all cells, and all IFN+ cells are also indicated by orange dots.
+Cells were classified as HA+ or IFN+ based on gates set to put 0.05\% of the uninfected cells in these populations.
+For the influenza-infected cells, the percentage IFN+ was calculated only among the HA+ cells (since these are the ones that are infected).
+For the uninfected and Sendai-virus infected, the percentage IFN+ was calculated among all cells, since these cells do not express HA.
 }
 {\includegraphics[width=0.75\textwidth]{figures/IFN_stochastic/Flow/flow_plot.pdf}}
 \label{figsupp:flow}
-
-\figsupp[Few cells express detectable IFN in the single-cell analysis influenza-infected mice by \citet{steuerman2018dissection}.]
-{A re-analysis of the data from \citet{steuerman2018dissection}'s single-cell mRNA-sequencing of cells from influenza-infected mice shows that only 5 of 1220 virus-infected cells express \emph{detectable} type I or type III IFN transcripts \textit{in vivo}.
-Specifically, we downloaded the data from \citet{steuerman2018dissection} and identified influenza-infected cells using calling criteria similar to those described in \citet{steuerman2018dissection}.
-Here we show statistics for the cells from the influenza-infected wildtype C57BL/6J mice, which were collected at 48 hours (two replicates) or 72 hours (one replicate)---we do not show cells from the control mice.
-As shown in the left-most panel, the sequencing depth of \citet{steuerman2018dissection} was quite low, with only $\sim$1,500 mRNA counts per cell on average (this is 10 to 15-fold lower than the sequencing depth in \citet{russell2018extreme} and the current study, respectively).
-An important caveat is that this low sequencing depth could lead to a simple failure to detect IFN transcripts in some cells.
-Nonetheless, there is detectable expression of key interferon-stimulated gene (ISG) mRNAs in the majority of infected cells (the middle panel shows the total counts of IFIT1, ISG15, CCL5, and Mx1).
-However, only 5 of 1220 cells express any detectable type I (IFN-$\alpha$ and IFN-$\beta$) or type III (IFN-$\lambda$) mRNAs, and only at low levels.
-The full code that performs the re-analysis shown in this figure is at \url{https://github.com/jbloomlab/IFNsorted_flu_single_cell/tree/master/paper/figures/IFN_stochastic/SteuermanReanalysis/}.
-}
-{\includegraphics[width=\textwidth]{figures/IFN_stochastic/SteuermanReanalysis/plots/p_mRNA_counts.pdf}}
-\label{figsupp:mice}
 
 \figdata{Sequences of the reporters schematized in \FIG{IFNrare}B.
 The MACS sortable surface marker is a truncated LNGFR.
