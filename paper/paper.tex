@@ -517,6 +517,14 @@ Importantly, the various PCR biases and enrichment schemes mean that the coverag
 However, as described in the computational analysis section below, the final analyses use the cell barcodes and UMIs in conjunction with the standard 10X Illumina sequencing to ensure that none of the conclusions are affected by the disproportionate amplification of some molecules during the PacBio library preparation (for instance, duplicate UMIs are removed from the PacBio data, and all conclusions about gene abundance or absence are based on the Illumina data).
 
 \subsection{qPCR for viral genes and IFN}
+We performed qPCR for influenza HA (to quantify viral transcription), IFNB1 (to quantify IFN induction), and L32 (a cellular housekeeping gene for normalization).
+For the qPCR, we used the SYBR Green PCR Master Mix (Thermo Fisher) according to the manufacturer's protocol.
+The qPCR primers were: HA primer 1, 5'-\texttt{GGCCCAACCACACATTCAAC}-3'; HA primer 2, 5'-\texttt{GCTCATCACTGCTAGACGGG}-3'; IFNB1 primer 1, 5'-\texttt{AAACTCATGAGCAGTCTGCA}-3'; IFNB1 primer 2, 5'-\texttt{AGGAGATCTTCAGTTTCGGAGG}-3'; L32 primer 1, 5'-\texttt{AGCTCCCAAAAATAGACGCAC}-3'; L32 primer 2, 5'-\texttt{TTCATAGCAGTAGGCACAAAGG}-3'. 
+
+For titering virus by qPCR, vRNA was harvested from 80 $\mu$l of viral supernatant by the addition of 600 $\mu$l of RLT plus before proceeding with the standard QIAGEN RNeasy Plus Mini Kit protocol. 
+The cDNA was generated using SuperScript III First-Strand Synthesis SuperMix (Thermo Fisher) using the manufacturer's protocol, and using the universal vRNA primers of \citet{hoffmann2001universal} with the modifications described in \citet{xue2017parallel}. 
+The number of HA molecules were then quantified by qPCR to measure genome dose. 
+
 \abrcomment{Assuming we use the cycloheximide and ribavirin data as-is, can be modified if not}
 For figures \abrcomment{whichever figures} A549 cells were seeded at a density of 10,000 cells/well in a 96-well plate in D10 media 24 hours prior to infection, with four independent wells seeded per experimental treatment. 
 Immediately prior to infection D10 media was removed and replaced with influenza growth media and infected with the indicated influenza strains at the indicated MOI.
@@ -525,14 +533,7 @@ Crucially, by controlling for genome copy number rather than infectious units we
 For experimental treatments with ribavirin and cycloheximde, these compounds were added to cells at the time of infection to a final concentration of 100$\mu$M and 50$\mu$g/ml, respectively, both of which are sufficient to block downstream viral replication~\citep{Vanderlinden:2016ec,Reuther:2015ef,Scholtissek:1976wg,killip2014activation}.
 At 8 hours post infection media was removed and cell lysates generated using the CellAmp RT-PCR for Direct Prep Kit (Real Time) \& Protein Analysis, following manufacturer's instructions. 
 cDNA was synthesized using an oligoDT primer and the SuperScript III first-strand synthesis supermix from ThermoFisher using the manufacturer's protocol. 
-Transcript abundance was measured using SYBR green PCR master mix, using a combined anneal/extension step of 60 for one minute with the following primers: HA: 5'-GGCCCAACCACACATTCAAC-3', 5'-GCTCATCACTGCTAGACGGG-3', IFNB1: 5'-AAACTCATGAGCAGTCTGCA-3', 5'-AGGAGATCTTCAGTTTCGGAGG-3', L32: 5'-AGCTCCCAAAAATAGACGCAC-3', 5'-TTCATAGCAGTAGGCACAAAGG-3'. 
 
-For titering virus by qPCR, vRNA was harvested from 80 $\mu$l of viral supernatant by the addition of 600 $\mu$l of RLT plus before proceeding with the standard QIAGEN RNeasy Plus Mini kit protocol. 
-The cDNA was generated using SuperScript III first-strand synthesis supermix using the manufacturer's protocol, and using the universal vRNA primers of Hoffmann et al. (add Hoffman ref) with the modifications described in Xue et al.\citep{Xue:2017dla}. 
-The qPCR was then performed as for mRNA measurements using the HA qPCR primers to measure genome dose. 
-
-
-\jdbcomment{Alistair writes this}
 
 \subsection{Viruses for validation experiments}
 \jdbcomment{Alistair writes this. I've copied text from prior consolidated section, but it needs to be clarified by more clearly breaking things down by virus.}
