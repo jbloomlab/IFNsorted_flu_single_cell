@@ -114,7 +114,7 @@ Show stochastic induction of type I and III IFN, dependent on part on epigenetic
 Shows that only a fraction pDCs stochastically activate IFN.
 
 
-##Effect of ribavirin on influenza
+## Effect of ribavirin on influenza
 
 [C, Schiktussek (1976)](https://www.ncbi.nlm.nih.gov/pubmed/1275709) Original report on the inhibition of influenza RNA synthesis with virazole (ribavirin).
 
