@@ -164,7 +164,7 @@ This frequency of IFN induction was roughly comparable to what we had observed i
 
 \subsection{Simultaneous transcriptomics and virus-sequencing of single infected cells}
 We next set out to develop a method to determine whether features of the infecting virions are responsible for the heterogeneous outcome of influenza infection in single cells, including the rare induction of IFN.
-Standard single-cell transcriptomic approaches are inadequate to for this purpose, since they typically just use 3'-end sequencing of poly-adenylated mRNAs to determine the abundance of each transcript~\citep{klein2015droplet, macosko2015highly, zheng2017massively, cao2017comprehensive, gierahn2017seq}.
+Standard single-cell transcriptomic approaches are inadequate for this purpose, since they typically just use 3'-end sequencing of poly-adenylated mRNAs to determine the abundance of each transcript~\citep{klein2015droplet, macosko2015highly, zheng2017massively, cao2017comprehensive, gierahn2017seq}.
 These transcriptomic measurements of abundance do not reveal if the virions that infect individual cells have features (e.g., mutations) that contribute to heterogeneity in infection outcome. 
 
 %%% start workflow figure
@@ -219,15 +219,22 @@ First, we generated a stock of virus that consisted of a mix of two variants of 
 We have previously used synonymous barcoding near the 3' end of viral mRNAs to quantify the co-infection rate in single-cell transcriptomic data~\citep[about half of cells infected by multiple virions express a mix of wildtype and synonymously barcoded viral transcripts;][]{russell2018extreme}. 
 New to this study, we also added synonymous barcodes near the 5' end of the mRNAs; as explained below, having viral barcodes at both ends provides an important control for PCR artifacts during full-length sequencing of viral transcripts.
 
-We next used this viral stock to infect A549 cells carrying a type I IFN reporter (\FIG{transcriptomics}A) at a dose that we expected to lead to transcriptionally active viral infection in slightly less than half the cells.
+We next used this viral stock to infect A549 cells carrying a type I IFN reporter (\FIG{workflow}A) at a dose that we expected to lead to transcriptionally active viral infection in slightly less than half the cells.
 From 12 to 13 hours post-infection, we used magnetic columns to enrich for cells that expressed the cell-surface protein driven by the IFN reporter.
 Based on pilot experiments, we expected this MACS to enrich the rare IFN+ cells to $\sim$5\% to 30\% of the total population (\FIGSUPP[workflow]{MACS}).
 In order to ensure the presence of IFN- cells, after the MACS enrichment we added back non-sorted cells to $\sim$10\% of the total.
 We also added uninfected canine cells to $\sim$5\% of the total to serve as an internal control for multiplets and enable estimation of the background amount of viral mRNA detected in the transcriptomes of truly uninfected cells.
 
-We then processed the cells on a commercially available platform~\citep[the 10X Chromium;][]{zheng2017massively} that physically isolates cells in droplets and performs reverse-transcription of poly-adenylated mRNAs that appends a unique cell barcode to all cDNAs originating from a particular droplet, and a unique molecular identifier (UMI) to each cDNA molecules (\FIG{workflow}B).
+We then processed the cells on a commercially available platform~\citep[the 10X Chromium;][]{zheng2017massively} that physically isolates cells in droplets and then reverse transcribes polyadenylated mRNAs in a way that appends a unique cell barcode to all cDNAs in each droplet, and a unique molecular identifier (UMI) to each cDNA molecule (\FIG{workflow}B).
 Because influenza virus mRNAs are polyadenylated~\citep{robertson1981polyadenylation}, this process appends cell barcodes to both cellular and viral mRNAs.
-Furthermore, because virtually all the influenza genome is transcribed into mRNA, the cell-barcoded transcripts cover nearly the entire viral genome: the only portions that are not captured in the cell-barcoded transcripts are one highly conserved nucleotide upstream of the transcription start site at nucleotide 2~\citep{koppstein2015sequencing}
+Furthermore, because virtually all the influenza genome is transcribed into mRNA, the cell-barcoded cDNA spans nearly the entire 13,581-nucleotide segmented viral genome: the only portions not covered are one universally conserved nucleotide upstream of the transcription start site~\citep{koppstein2015sequencing} and 17 to 22 highly conserved nucleotides downstream of the polyadenylation site~\citep{robertson1981polyadenylation} in each of the eight viral gene segments.
+
+We used a portion of the cell-barcoded cDNA for standard single-cell transcriptomics by Illumina 3'-end sequencing (\FIG{workflow}C).
+But we also took a portion of the cell-barcoded cDNA and enriched for full-length viral molecules (\FIG{workflow}D) using PCR as detailed below.
+We performed PacBio sequencing on these full-length viral cDNAs to generate high-accuracy circular consensus sequences~\citep[CCSs;][]{travers2010flexible}.
+These CCSs retain the cell barcodes, and with sufficient sequencing depth we obtain CCSs from multiple unique copies of each viral gene in each cell.
+Because most cells are infected by just one or two unique virions, we can therefore build a consensus of CCSs for each viral gene in each cell to determine the sequence(s) of the infecting virions.
+Combining this information with the 3'-end sequencing simultaneously determines the entire transcriptome and the full sequences of the infecting virions in single cells (\FIG{workflow}E).
  
 
 %%% start transcriptomics figure
@@ -648,7 +655,7 @@ We refer the reader to this notebook for a detailed description and a variety of
 Briefly, we first filtered cells that were extreme outliers in the amount of mRNA as shown in \FIG{transcriptomics}B.
 We used the uninfected canine cells to estimate the percentage of total mRNA in a cell that would come from influenza purely due to background (e.g., from cell lysis) in the absence of infection, and called as infected the human cells for which significantly more than this amount of mRNA was derived from influenza under a Poisson model (\FIG{transcriptomics}C).
 We next used a Poisson model parameterized by the amount of expected background mRNA for each influenza gene to call the presence or absence of each influenza gene in each infected cell (\FIG{transcriptomics}D and \FIGSUPP[transcriptomics]{frac_has_gene}). 
-To identify cells that were co-infected with both viral barcodes (\FIG{transcriptomics}F), we used a binomial test to identify cells for which we could reject the null hypothesis that at least 95\% of viral mRNA was derived form the more common viral barcode.
+To identify cells that were co-infected with both viral barcodes (\FIG{transcriptomics}F), we used a binomial test to identify cells for which we could reject the null hypothesis that at least 95\% of viral mRNA was derived from the more common viral barcode.
 We called IFN+ and ISG+ cells using the heuristic thresholds shown in \FIG{transcriptomics}G and \FIGSUPP[transcriptomics]{ISG}, respectively.
 We counted IFN mRNAs as any IFN-$\alpha$, IFN-$\beta$, or IFN-$\lambda$ transcripts.
 We counted ISG mRNAs as any of CCL5, IFIT1, ISG15, or Mx1.
