@@ -163,9 +163,9 @@ As shown in \FIG{IFNrare}C, $\sim$0.5\% of infected cells activated the IFN repo
 This frequency of IFN induction was roughly comparable to what we had observed in our prior single-cell transcriptomics of influenza-infected cells (\FIG{IFNrare}B), with the slightly higher rate in \FIG{IFNrare}C probably due to using a different viral stock and slightly later timepoint.
 
 \subsection{Simultaneous transcriptomics and virus-sequencing of single infected cells}
-We next set out to determine whether features of the infecting virions are responsible for the heterogeneous outcome of influenza infection in single cells, including the rare induction of IFN.
-Standard single-cell transcriptomic approaches are inadequate to address this question, since they typically just use 3'-end sequencing of poly-adenylated mRNAs to determine the abundance of each transcript~\citep{klein2015droplet, macosko2015highly, zheng2017massively, cao2017comprehensive, gierahn2017seq}.
-But simply measuring the abundance of viral transcripts is insufficient for our purposes: we want to know the full sequences of all viral genes in each infected cell, so that we can determine if features of these genes (e.g., mutations) contribute to heterogeneity in infection outcome. 
+We next set out to develop a method to determine whether features of the infecting virions are responsible for the heterogeneous outcome of influenza infection in single cells, including the rare induction of IFN.
+Standard single-cell transcriptomic approaches are inadequate to for this purpose, since they typically just use 3'-end sequencing of poly-adenylated mRNAs to determine the abundance of each transcript~\citep{klein2015droplet, macosko2015highly, zheng2017massively, cao2017comprehensive, gierahn2017seq}.
+These transcriptomic measurements of abundance do not reveal if the virions that infect individual cells have features (e.g., mutations) that contribute to heterogeneity in infection outcome. 
 
 %%% start workflow figure
 \begin{figure}
@@ -197,7 +197,7 @@ After infection had proceeded for 12 hours, the cells were twice magnetically so
 {\bf (A)}
 After sorting, the populations were analyzed by flow cytometry for IFN expression using the mNeonGreen fluorescent protein.
 The plots show the distribution of fluorescence in the original population, the flow-through from the first column, and the MACS-sorted positive population after two columns.
-As indicated by the percentages shown for the original and MACS-sorted population, this process led to between 50- and 350-fold enrichment for IFN+ cells.
+As indicated by the percentages shown for the original and MACS-sorted population, this process led to substantial enrichment for IFN+ cells.
 We expect that the IFN sorting for the actual single-cell sequencing led to similar enrichment, although we could not directly quantify this as the sorted cells in that case were immediately used for the sequencing and so could not be analyzed by flow cytometry.
 {\bf (B)}
 Analysis of expression of IFNB1 (relative to the housekeeping gene L32) by qPCR in the positive (IFN enriched) and negative (IFN depleted) populations from panel (A).
@@ -214,16 +214,21 @@ The qPCR was performed in quadruplicate (hence the four points for each sample).
 \end{figure}
 %%% end workflow figure
 
-We developed the experimental approach in \FIG{workflow} to simultaneously determine the entire transcriptome and the full sequences of the infecting virions in single cells.
-First, we generated a stock of virus that consisted of a mix of two variants of the WSN strain: the wildtype virus and a ``synonymously barcoded'' variant that contains two engineered synonymous mutations near each end of each gene (\FIGDATA[workflow]{virus_seqs}).
-We have previously shown that synonymously barcoding viral genes near the 3' end of the mRNA enables quantification of the co-infection rate in single-cell transcriptomic data, since about half the cells infected by multiple virions express a mix of wildtype and synonymously barcoded viral transcripts~\citep{russell2018extreme}. 
-New to this study, we also added synonymous barcodes near the 5' end of the mRNA; as explained below, having barcodes at both ends provides an important control for PCR artifacts during full-length sequencing of viral transcripts.
+We therefore developed the experimental approach in \FIG{workflow} to simultaneously determine the entire transcriptome and the full sequences of the infecting virions in single cells.
+First, we generated a stock of virus that consisted of a mix of two variants of the WSN strain of influenza: the wildtype virus and a ``synonymously barcoded'' variant that contains two engineered synonymous mutations near each end of each gene (\FIGDATA[workflow]{virus_seqs}).
+We have previously used synonymous barcoding near the 3' end of viral mRNAs to quantify the co-infection rate in single-cell transcriptomic data~\citep[about half of cells infected by multiple virions express a mix of wildtype and synonymously barcoded viral transcripts;][]{russell2018extreme}. 
+New to this study, we also added synonymous barcodes near the 5' end of the mRNAs; as explained below, having viral barcodes at both ends provides an important control for PCR artifacts during full-length sequencing of viral transcripts.
 
-We next used this viral stock to infect A549 cells carrying a type I IFN reporter (\FIG{transcriptomics}A), using a viral dose that we expected to lead to transcriptionally active viral infection in slightly less than half the cells.
+We next used this viral stock to infect A549 cells carrying a type I IFN reporter (\FIG{transcriptomics}A) at a dose that we expected to lead to transcriptionally active viral infection in slightly less than half the cells.
 From 12 to 13 hours post-infection, we used magnetic columns to enrich for cells that expressed the cell-surface protein driven by the IFN reporter.
-Based on pilot experiments, we expected this MACS to enrich the rare IFN+ cells to about 5\% to 30\% of the total population (\FIGSUPP[workflow]{MACS}; the MACS enrichment efficiency is imperfect so many sorted cells are still IFN-).
-In order to ensure the presence of IFN- cell, we also added back non-sorted cells to $\sim$10\% of the total.
-We also added uninfected canine cells to $\sim$5\% of the total to serve as an internal control for multiplets and to estimate the background amount of viral mRNA observed in the transcriptomes of truly uninfected cells.
+Based on pilot experiments, we expected this MACS to enrich the rare IFN+ cells to $\sim$5\% to 30\% of the total population (\FIGSUPP[workflow]{MACS}).
+In order to ensure the presence of IFN- cells, after the MACS enrichment we added back non-sorted cells to $\sim$10\% of the total.
+We also added uninfected canine cells to $\sim$5\% of the total to serve as an internal control for multiplets and enable estimation of the background amount of viral mRNA detected in the transcriptomes of truly uninfected cells.
+
+We then processed the cells on a commercially available platform~\citep[the 10X Chromium;][]{zheng2017massively} that physically isolates cells in droplets and performs reverse-transcription of poly-adenylated mRNAs that appends a unique cell barcode to all cDNAs originating from a particular droplet, and a unique molecular identifier (UMI) to each cDNA molecules (\FIG{workflow}B).
+Because influenza virus mRNAs are polyadenylated~\citep{robertson1981polyadenylation}, this process appends cell barcodes to both cellular and viral mRNAs.
+Furthermore, because virtually all the influenza genome is transcribed into mRNA, the cell-barcoded transcripts cover nearly the entire viral genome: the only portions that are not captured in the cell-barcoded transcripts are one highly conserved nucleotide upstream of the transcription start site at nucleotide 2~\citep{koppstein2015sequencing}
+ 
 
 %%% start transcriptomics figure
 \begin{figure}
