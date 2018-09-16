@@ -19,6 +19,8 @@
 \newcommand{\jdbcomment}[1]{\emph{\color{red} [#1]}}
 \newcommand{\abrcomment}[1]{\emph{\color{blue} [#1]}}
 
+\renewcommand{\floatpagefraction}{.9}
+
 \newfloat{suppfile}{thp}{lofsupfile}
 %\renewcommand{\thesuppfile}{Supplementary file \arabic{suppfile}}
 \floatname{suppfile}{Supplementary file}
@@ -65,8 +67,8 @@ Early in infection
 \section{Results}
 
 \subsection{A system to identify and enrich for rare IFN+ positive cells}
-A challenge in studying the induction of IFN by influenza is that infection only rarely triggers IFN expression at the single-cell level~\citep{killip2017single}.
-For instance, we previously performed single-cell transcriptomics on hundreds of influenza-infected A549 cells at early times (6 to 10 hours) post-infection~\citep{russell2018extreme}.
+Influenza infection only rarely triggers IFN expression at the single-cell level~\citep{killip2017single}.
+For instance, we previously performed single-cell transcriptomics on hundreds of influenza-infected A549 human lung epithelial cells at early times (6 to 10 hours) post-infection~\citep{russell2018extreme}.
 Only 1 of 368 infected cells expressed detectable type I or type III IFN (\FIG{IFNrare}A).
 Importantly, the paucity of IFN+ cells was not due simply to a poor detection threshold, since $>$100 IFN transcripts were detected in the one IFN+ cell~\citep{russell2018extreme}.
 
@@ -93,7 +95,6 @@ IFN expression is rare in influenza-infected cells.
 The reporter consists of an IFN promoter that drives expression of a cell-surface protein amenable to MACS and a fluorescent protein.
 We created reporters with type I and type III promoters (\FIGDATA[IFNrare]{reporter_sequences}).
 The reporters were efficiently activated by an IFN-inducing strain of Sendai virus (\FIGSUPP[IFNrare]{reporter_validation}).
-Activation of the type I and type III IFN reporters is highly correlated in single cells upon infection with influenza virus (\FIGSUPP[IFNrare]{type_I_vs_III}).
 {\bf (C)}
 Frequency of IFN induction upon infection with the influenza virus stock used in the single-cell studies in this paper, as quantified using the reporter cell line (see \FIGSUPP[IFNrare]{flow} for details).
 The plot also shows uninfected cells, and cells infected with saturating amounts of Sendai virus.
@@ -155,7 +156,7 @@ These reporters consisted of a type I (\textit{IFNB1}) or type III (\textit{IFNL
 Cells that activate IFN express the cell-surface protein, enabling them to be enriched by magnetic-activated cell sorting (MACS).
 The frequency of IFN+ cells can also be determined by flow cytometry for the fluorescent protein.
 We validated that the reporters were efficiently activated by a strain of Sendai virus~\citep{strahle2006sendai} that potently induces IFN (\FIGSUPP[IFNrare]{reporter_validation}).
-We also used the reporters to show that expression of type I and type III IFN is highly correlated in single influenza-infected A549 cells (\FIGSUPP[IFNrare]{type_I_vs_III}), a result further validated by our single-cell transcriptomics described below.
+We also found that expression of type I and type III IFN is highly correlated in single influenza-infected A549 cells (\FIGSUPP[IFNrare]{type_I_vs_III}), a result further validated by our single-cell transcriptomics described below.
 Therefore, for the rest of this paper we will use the term ``IFN expression'' to refer to the combined expression of type I and III IFNs. 
 
 We used the reporter cells to quantify the frequency of IFN induction in single A549 cells infected with the A/WSN/1933 (H1N1) strain of influenza (hereafter referred to as ``WSN'').
@@ -164,7 +165,7 @@ This frequency of IFN induction is roughly comparable to what we had observed in
 
 \subsection{Simultaneous transcriptomics and virus-sequencing of single infected cells}
 We next developed a method to determine if features of the infecting virions are responsible for the heterogeneous outcome of influenza infection in single cells, including the rare induction of IFN.
-Standard single-cell transcriptomic approaches are inadequate for this purpose, since they typically just use 3'-end sequencing of poly-adenylated mRNAs to determine the abundance of each transcript~\citep{klein2015droplet, macosko2015highly, zheng2017massively, cao2017comprehensive, gierahn2017seq}.
+Standard single-cell transcriptomic approaches are inadequate for this purpose, since they just use 3'-end sequencing of poly-adenylated mRNAs to determine the abundance of each transcript~\citep{klein2015droplet, macosko2015highly, zheng2017massively, cao2017comprehensive, gierahn2017seq}.
 These measurements of transcriptomic abundance do not reveal if the virions that infect individual cells have features (e.g., mutations) that contribute to heterogeneity in infection outcome. 
 
 %%% start workflow figure
@@ -222,21 +223,21 @@ New to this study, we also added synonymous barcodes near the 5' end of the mRNA
 We next used this viral stock to infect A549 cells carrying a type I IFN reporter (\FIG{workflow}A) at a dose that we expected to lead to transcriptionally active viral infection in slightly less than half the cells.
 From 12 to 13 hours post-infection, we used magnetic columns to enrich cells that expressed the cell-surface protein driven by the IFN reporter.
 Based on pilot experiments, we expected this MACS to enrich the rare IFN+ cells to $\sim$5\% to 30\% of the total population (\FIGSUPP[workflow]{MACS}).
-To ensure the presence of IFN- cells, after the MACS enrichment we added back non-sorted cells to $\sim$10\% of the total.
-We also added uninfected canine cells to $\sim$5\% of the total to serve as an internal control for multiplets and enable estimation of the background amount of viral mRNA detected in the transcriptomes of truly uninfected cells.
+To ensure the presence of IFN- cells after the MACS enrichment, we added back non-sorted cells to $\sim$10\% of the total.
+We also added uninfected canine cells to $\sim$5\% of the total as an internal control for multiplets and to estimate the background amount of viral mRNA detected in the transcriptomes of truly uninfected cells.
 
-We then processed the cells on a commercially available platform~\citep[the 10X Chromium;][]{zheng2017massively} that physically isolates cells in droplets and then reverse transcribes polyadenylated mRNAs in a way that appends a unique cell barcode to all cDNAs in each droplet, and a unique molecular identifier (UMI) to each cDNA molecule (\FIG{workflow}B).
+We processed the cells on a commercially available platform~\citep[the 10X Chromium;][]{zheng2017massively} that physically isolates cells in droplets and then reverse transcribes polyadenylated mRNAs to append a unique cell barcode to all cDNAs in each droplet, and a unique molecular identifier (UMI) to each cDNA molecule (\FIG{workflow}B).
 Because influenza virus mRNAs are polyadenylated~\citep{robertson1981polyadenylation}, this process appends cell barcodes to both cellular and viral mRNAs.
-Furthermore, because virtually all the influenza genome is transcribed into mRNA, the cell-barcoded cDNA spans nearly the entire 13,581-nucleotide segmented viral genome: the only portions not covered are one universally conserved nucleotide upstream of the transcription start site~\citep{koppstein2015sequencing} and 17 to 22 highly conserved nucleotides downstream of the polyadenylation site~\citep{robertson1981polyadenylation} in each of the eight viral gene segments.
+Furthermore, because virtually all the influenza genome is transcribed, the cell-barcoded cDNA spans nearly the entire 13,581-nucleotide segmented viral genome: the only portions not covered are one universally conserved nucleotide upstream of the transcription start site~\citep{koppstein2015sequencing} and 17 to 22 highly conserved nucleotides downstream of the polyadenylation site~\citep{robertson1981polyadenylation} in each of the eight viral gene segments.
 
 We used a portion of the cell-barcoded cDNA for standard single-cell transcriptomics by Illumina 3'-end sequencing (\FIG{workflow}C).
-But we also took a portion of the cell-barcoded cDNA and enriched for full-length viral molecules (\FIG{workflow}D) using PCR as detailed below.
+But we also took a portion and enriched for full-length viral molecules (\FIG{workflow}D) using PCR as detailed below.
 We performed PacBio sequencing on these full-length viral cDNAs to generate high-accuracy circular consensus sequences~\citep[CCSs;][]{travers2010flexible}.
 These CCSs retain the cell barcodes, and with sufficient sequencing depth we obtain CCSs from multiple unique UMI-tagged cDNAs for each viral gene in each cell.
 Because most cells are infected by just one or two virions, we can build a consensus of CCSs for each viral gene in each cell to determine the sequence(s) of these virions.
 Combining this information with the 3'-end sequencing simultaneously determines the entire transcriptome and the full sequences of the infecting virions in single cells (\FIG{workflow}E).
 
-\subsection{Transcriptomic analyses of single IFN+ and IFN- influenza-infected cells} 
+\subsection{Transcriptomic analyses of single IFN+ and IFN- influenza-infected cells}
 
 %%% start transcriptomics figure
 \begin{figure}
@@ -248,22 +249,23 @@ Combining this information with the 3'-end sequencing simultaneously determines 
 Single-cell transcriptomics of IFN-enriched influenza-infected cells.
 {\bf (A)} 
 Number of cells for which transcriptomes were obtained.
-From the number of human and canine transcriptomes, we estimate~\citep{bloom2018estimating} that $\approx$11\% of the captured cells are actually multiplets in which more than one cell was in an emulsion. 
+From these numbers, we estimate~\citep{bloom2018estimating} that $\approx$11\% of the transcriptomes are actually multiplets derived from multiple cells. 
 {\bf (B)} The number of cellular and viral mRNAs detected for each cell is plotted as a point.
 Green lines show the distribution of cellular mRNAs per cell, and the blue rug plot at the left of each panel shows the distribution of viral mRNAs per cell.
-Cells outside the dashed magenta lines have unusually low or high amounts of cellular mRNA (possibly low-quality emulsions or multiplets), and are excluded from subsequent analyses.
+Cells outside the dashed magenta lines have unusually low or high amounts of cellular mRNA (likely low-quality emulsions or multiplets), and are excluded from subsequent analyses.
 {\bf (C)} Distribution across cells of the fraction of all mRNA derived from influenza.
 Cells called as infected are in blue, while other cells are in green.
 The inset shows the amount of viral mRNA among the human cells called as infected.
-{\bf (D)} The number of influenza genes detected per infected cell, and the amount of viral mRNA in cells expressing each number of viral genes.
+{\bf (D)} Number of influenza genes detected per infected cell, and the amount of viral mRNA in cells expressing each number of viral genes.
 The majority of cells express all eight gene segments, but a substantial minority fail to express at least one gene.
-\FIGSUPP[transcriptomics]{frac_has_gene} shows the frequency that each viral gene is detected in infected cells.
+\FIGSUPP[transcriptomics]{frac_has_gene} shows the frequency that each viral gene is detected.
 {\bf (E)} Relative expression of viral genes among infected cells.
-{\bf (F)} The number of cells infected with wildtype virus, synonymously barcoded virus, or both.
+{\bf (F)} Number of cells infected with wildtype virus, synonymously barcoded virus, or both.
 From the cells infected with both viral barcodes, we estimate~\citep{bloom2018estimating} that 63\% of infected cells are co-infected.
-{\bf (G)} Fraction of cellular mRNA from IFN across all cells, faceted by whether the cells are infected.
+{\bf (G)} Fraction of cellular mRNA from IFN across cells, faceted by whether the cells are infected.
 Cells to the left of the first dashed magenta line are classified as IFN-, and cells to the right of the second line are classified as IFN+.
-Many cells that do not express IFN itself still express ISGs (\FIGSUPP[transcriptomics]{ISG}).
+A pseudocount is added to the number of IFN transcripts detected in each cell, which is why none of the fractions are zero.
+Many cells that do not express IFN still express ISGs (\FIGSUPP[transcriptomics]{ISG}).
 }
 \label{fig:transcriptomics}
 
@@ -285,7 +287,7 @@ Because type I and type III IFN expression are highly correlated, for the remain
 {\includegraphics[width=0.7\textwidth]{figures/single_cell_figures/p_ifn_genes_corr.pdf}}
 \label{figsupp:type_I_III_correlation}
 
-\figsupp[Expression of ISGs in single infected and un-infected cells.]
+\figsupp[Expression of ISGs in single infected and uninfected cells.]
 {
 For each cell, we quantified ISG expression as the total fraction of cellular mRNAs derived from four prototypical ISGs (IFIT1, ISG15, CCL5, and Mx1). 
 {\bf (A)} The histograms show the distribution of ISG expression taken across infected (top) and uninfected (bottom) cells.
@@ -313,6 +315,49 @@ As is clear from this plot, expression of influenza, IFN, and ISG genes contribu
 \end{figure}
 %%% end transcriptomics figure
 
+We first analyzed the transcriptomic data to characterize the infection and IFN status of the cells in our experiment.
+Overall, we obtained transcriptomes for 1,614 human (A549) cells (some of which were infected with influenza), and 50 of the uninfected canine cells that were spiked into the experiment as a control (\FIG{transcriptomics}A).
+We also obtained 12 transcriptomes with a mix of human and canine transcripts; these mixes arise when multiple cells are captured in a single droplet.
+From the number of mixed cell-type transcriptomes, we estimate~\citep{bloom2018estimating} that $\sim$11\% of the human transcriptomes are derived from multiple cells.
+To remove some of these multiplets, we filtered transcriptomes with unusually high or low numbers of cellular transcripts (\FIG{transcriptomics}B).
+For the remainder of this paper, we analyze the 1,490 human cells that passed this filtering.
+
+To identify infected cells, we examined the fraction of each transcriptome that was derived from virus (\FIG{transcriptomics}B).
+As expected, only a small fraction ($\sim$0.7\%) of the transcripts in the uninfected canine cells were from influenza; this low-level background is likely from lysed cells that release ambient viral mRNA that is captured in droplets during reverse-transcription.
+We tested whether each cell contained significantly more viral transcripts than expected under a Poisson model given this background fraction.
+Using this test, we classified 290 of the 1,490 human cells as definitively infected with influenza (\FIG{transcriptomics}B).
+We classified the other cells as uninfected, although we cannot rule out that some of them were infected with virions that produced too little mRNA to be detected in our experiment.
+The distribution of the amount of viral mRNA across infected cells is shown in the inset in \FIG{transcriptomics}B.
+As we observed previously~\citep{russell2018extreme}, the amount of viral mRNA is extremely heterogeneous: many infected cells have only a few percent of their mRNA derived from virus, but for a few cells viral mRNA comprises over half the transcriptome.
+
+We then called the presence or absence of each viral gene in each infected cell, again using a Poisson model parameterized by background fractions estimated from uninfected canine cells.
+Although ten transcripts are encoded by the eight viral genes, we call presence / absence at the level of genes rather than transcripts.
+The reason is that the genes that encode multiple transcripts (M1 / M2 from the M gene, and NS1 / NS2 from the NS gene) do so via alternative splicing that leaves both isoforms with the same termini, making them indistinguishable in the 3'-end sequencing transcriptomic data.
+\FIG{transcriptomics}D (top panel) shows that the majority (162 of 290) of infected cells express all eight genes, although a substantial minority fail to express one or more genes (see \FIGSUPP[transcriptomics]{frac_has_gene} for frequencies at which individual genes are present).
+This measured frequency of infected cells expressing all eight genes is higher than in our own prior work~\citep{russell2018extreme} and studies by others~\citep{brooke2013most, heldt2015single, dou2017analysis}, which have estimated that only 13\% to 50\% of infected cells express all genes. 
+The difference is sufficiently modest that it could simply be due to methodological differences in the thresholds used to call gene presence.
+But it is important to remember that the cells in our experiment have been enriched for IFN expression by MACS sorting, which could conceivably alter the distribution of viral gene expression from a fully random sample of infected cells.
+
+The amount of viral mRNA tended to be lower in cells that failed to express viral genes (\FIG{transcriptomics}D, bottom panel), consistent with our prior work~\citep{russell2018extreme}.
+However, viral burden remained highly variable even after conditioning on the number of viral genes: some cells that failed to express one or even two genes still derived over 50\% of their mRNA from influenza, while other cells that expressed all viral genes had only a few percent of their mRNA from influenza (\FIG{transcriptomics}D, bottom panel).
+Also consistent with our prior work~\citep{russell2018extreme}, despite the wide variation in absolute expression of viral genes, their \emph{relative} expression was fairly consistent across cells (\FIG{transcriptomics}E) and generally matched values obtained by older bulk studies~\citep{hatada1989control}.
+
+Using the synonymous barcodes near the 3' termini of transcripts from one of the two infecting viral variants, we determined that 38\% of cells were co-infected with wildtype and synonymously barcoded virions (\FIG{transcriptomics}F; cells called as co-infected if a binomial test rejected null hypothesis that $\ge$95\% of viral mRNA is from one viral barcode variant).
+From the numbers in \FIG{transcriptomics}F, we estimate~\citep{bloom2018estimating} that 63\% of infected cells are co-infected, implying that 25\% are co-infected with two virions with the same viral barcode and so cannot be directly identified as co-infected from the transcriptomic data.
+Interestingly, this co-infection rate is substantially higher than expected from the relative numbers of infected and uninfected cells (\FIG{transcriptomics}C) if infection is a Poisson process.
+We speculate that the discrepancy arises because the MACS for IFN+ cells might also enrich for co-infected cells, because infection itself may not actually be Poisson, or because co-infection might increase the likelihood that we identify a cell as infected given the thresholds in \FIG{transcriptomics}C.
+
+We next examined expression of IFN and ISGs (\FIG{transcriptomics}G and \FIGSUPP[transcriptomics]{ISG}).
+Over 20\% of  infected cells were IFN+ given the heuristic thresholds in \FIG{transcriptomics}C, indicating that the MACS successfully enriched IFN+ cells far beyond their initial frequency of $\sim$0.5\% (\FIG{IFNrare}C) among infected cells.
+Few ($\sim$1.3\%) uninfected cells were IFN+; the few that were present might be because the MACS enriched for rare cells that spontaneously activated IFN, or because some cells that we classified as uninfected were actually infected but produced too few viral transcripts to be detected above background.
+Many more cells expressed ISGs than IFN itself: the ratio of ISG+ to IFN+ cells was 1.8 among infected cells, and 7 among uninfected cells (\FIGSUPP[transcriptomics]{ISG}A).
+The IFN+ cells were a subset of the ISG+ cells: IFN+ cells always expressed ISGs, but many ISG+ cells did not express significant IFN (\FIGSUPP[transcriptomics]{ISG}B).
+Overall, these results are consistent with the established knowledge that IFN is expressed only in cells that directly detect that they have been infected, but that ISGs are also expressed via paracrine signaling in cells that do not detect viral infection~\citep{stetson2006type,honda2006type}.
+
+Finally, we qualitatively examined whether expression of viral genes, IFN, and ISGs play a major role in explaining the structure of the high-dimensional transcriptomic data.
+\FIGSUPP[transcriptomics]{tSNE} shows unsupervised t-SNE clustering~\citep{maaten2008visualizing} of the cells.
+Although the clustering is entirely unsupervised, cells expressing high levels of viral genes, IFN, and ISGs cluster together---and most of the structure in the t-SNE plot that is not associated with expression of these genes involves uninfected and IFN- cells.
+This fact provides some qualitative justification for the focus of this paper on examining viral factors associated with IFN expression.
 
 \subsection{Viral genotypes in IFN+ and IFN- influenza-infected cells}
 \FIG{genotypes} and \FIGSUPP[genotypes]{genotypes_by_ifn} and \FIGDATA[genotypes]{genotypes}
