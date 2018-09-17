@@ -464,10 +464,7 @@ The two cells that expressed the most IFN in our experiment (\textit{cell 13} an
 Many other IFN+ cells had other defects, including large internal deletions (e.g., \textit{cell 5} and \textit{cell 89}) or amino-acid mutations (e.g., \textit{cell 9}, \textit{cell 28}, and many others).
 However, \FIG{genotypes} also shows that expressing unmutated copies of all eight genes does not guarantee a favorable outcome for the virus: for instance, the apparently flawless virion that infected \textit{cell 139} still only managed to express viral mRNA to only 6\% of the total transcriptome, and the apparently flawless virion that infected \textit{cell 105} still induced IFN expression.
 
-
-
 \subsection{Systematic examination of viral features associated with infection outcome}
-
 
 %%% begin mutations figure %%%
 \begin{figure}
@@ -476,25 +473,23 @@ However, \FIG{genotypes} also shows that expressing unmutated copies of all eigh
 \includegraphics[width=\linewidth]{figures/single_cell_figures/p_mutations.pdf}
 }
 \caption{
-Viral genetic variation partially explains the heterogeneity in viral burden and IFN induction among the infected cells for which we sequenced all expressed viral genes (\FIG{genotypes}).
+Viral genetic variation partially explains heterogeneity in infection outcome among cells for which we sequenced all expressed viral genes.
 {\bf (A)} 
-The percent of all mRNA derived from virus, faceted by whether the cells express wildtype copies of all eight viral genes, or fail to express a wildtype copy of one or more genes (due to gene absence, amino-acid substitution, insertion, or deletion).
+Percent of all mRNA derived from virus, faceted by whether cells express unmutated copies of all eight viral genes, or fail to express an unmutated copy of one or more genes.
 Cells infected by full wildtype virus exhibit less heterogeneity in viral burden as quantified by the Gini index (95\% confidence intervals are indicated).
 {\bf (B)}
 There is a trend for cells infected by full wildtype virus to express less IFN.
 {\bf (C)}
 Some specific forms of viral genetic variation are associated with IFN induction.
-The top panel show the percent of IFN+ and IFN- cells that fail to express each viral gene.
+The top panel show the percent of IFN- and IFN+ cells that fail to express each viral gene.
 The middle and bottom panels show the percent of IFN- and IFN+ cells that have a deletion or amino-acid substitution in each viral gene, conditioned on the cell expressing that gene.
 Numbers above the bars give P-values (Fisher's exact test) and associated Q-values~\citep{storey2003statistical} for rejecting the null hypothesis that percents are equal among IFN- and IFN+ cells. 
-Absence of NS is strongly associated with IFN induction, and amino-acid substitutions in PB1 or NS and deletions in HA are weakly associated with IFN induction.
-Only the absence of NS remains significant at a false-discovery rate of 10\%.
-\FIGSUPP[mutations]{allcells} shows that the trends remain largely the same if we also analyze infected cells with incomplete viral sequence information, with the addition of a trend towards IFN induction associated with \emph{presence} of PB2 and PA. 
-\FIGSUPP[mutations]{isg} shows that the trends also remain largely similar if we analyze the association of viral genetic variation with ISG expression rather than IFN expression.
-Insertions are not shown as a mutation type as they are extremely rare (\FIG{genotypes}).
+\FIGSUPP[mutations]{allcells} shows that the trends remain largely the same if we include infected cells with incomplete viral sequence information. 
+\FIGSUPP[mutations]{isg} shows that the trends remain largely the same if we categorize cells by ISG expression rather than IFN expression.
 {\bf (D)}
 There is no association between IFN induction and the amount of viral mRNA in cells that express NS, but viral burden is associated with IFN induction among cells that lack NS.
-Note that throughout this figure, we only consider as substitution mutations that are non-synonymous.
+Throughout this figure, we only consider substitutions that are non-synonymous.
+Insertions are not shown as a mutation type as they are extremely rare (\FIG{genotypes}).
 }
 \label{fig:mutations}
 
@@ -524,6 +519,20 @@ Viral burden is not associated with ISG expression levels in NS-sufficient infec
 \end{fullwidth}
 \end{figure}
 %%% end mutations figure %%%
+
+To more systematically assess how viral genetic variation affected infection outcome, we divided the 150 cells in \FIG{genotypes} into those that expressed unmutated copies of all eight genes (disregarding synonymous mutations) and those that did not (due to gene absence, amino-acid substitution, insertion, or deletion).
+\FIG{mutations}A shows that the 49 cells infected by full wildtype viruses had a significantly tighter distribution of the amount of viral mRNA per cell than the other 101 cells as quantified by the Gini index~\citep{gini1921measurement}.
+Therefore, viral genetic variation is a major contributor to the heterogeneity in viral transcriptional burden among cells.
+
+Viral genetic variation also contributed to the heterogeneity in IFN induction, with cells infected by full wildtype virions less likely to express IFN than cells infected by incomplete or mutated virions (\FIG{mutations}B).
+Furthermore, specific viral genetic defects were associated with IFN induction (\FIG{mutations}C).
+For instance, absence of NS and amino-acid mutations in PB1 were significantly enriched in IFN+ cells, and amino-acid mutations in NS and deletions in HA were more weakly enriched.
+Only the absence of NS remained associated with IFN induction at a false discovery rate of 10\% (\FIG{mutations}C), although a Bayesian-minded virologist might argue that controlling for all the hypotheses in \FIG{mutations}C is too stringent since the association of defects in certain genes (particularly NS and the polymerase genes) with IFN induction is more plausible \textit{a priori} given existing biological knowledge~\citep[e.g.,][]{killip2017single, velthuis2018mini, wu2014high}.
+In any case, the modest number of cells with full viral genotype information precludes drawing strong conclusions from statistical analyses alone---but \FIG{genotypes} and \FIG{mutations}C do motivate compelling hypotheses about specific viral mutations that contribute to IFN induction, and for most of the rest of this paper we pursue these hypotheses using experimental follow-up. 
+
+One other interesting trend emerges from analyzing the combined single-cell transcriptomic and viral genetic information.
+There is no difference in the amount of viral mRNA between IFN+ and IFN- cells that express NS---but among cells that lack NS, the IFN+ ones have significantly more viral mRNA (\FIG{mutations}D).
+The statistical analysis in \FIG{mutations}D is insufficient to determine if the higher viral transcriptional burden in IFN+ NS-deficient infections is a cause or a consequence of the IFN induction, but the experimental follow-up below will also shed more light on this question.
 
 \subsection{Validation that multiple types of viral mutations increase IFN induction}
 
