@@ -620,7 +620,7 @@ We performed the PCRs using Kapa HiFi Hotstart ReadyMix, supplementing the react
 Both the common 3' primer and the multiplex mix of eight 5' primers were added to a final concentration of 0.5$\mu$M.
 We performed 30 cycles of PCR, using an extension time of 2 minutes 15 seconds at 67$^{\circ}$C, and a melting temperature of 95$^{\circ}C$.
 This melting temperature is lower than the standard 98$^{\circ}$C melting step suggested by the manufacturer for Kapa HiFi because we wanted to avoid collapse of emulsion integrity at high temperature.
-We performed 30 cycles in order to saturate the reagents in each emulsion---unlike for open PCR reactions, the physical occlusion of amplified material in emulsin PCR reduces artifacts at high cycle numbers.
+We performed 30 cycles in order to saturate the reagents in each emulsion---unlike for open PCR reactions, the physical occlusion of amplified material in emulsion PCR reduces artifacts at high cycle numbers.
 
 Because were were concerned that the multiplex PCR would still result in highly uneven amplification of different influenza cDNAs due to differences in their expression levels and lengths, the product of this multiplex PCR was subjected to eight additional individual emulsion PCR reactions, each using only a single segment-specific 5' primer as well as the common 3' primer, using 1 ng of material in each reaction.
 The material from these eight segment-specific PCRs was then pooled with the goal of obtaining a equimolar ratio of segments, and sequenced on one SMRT Cell in a PacBio RS II and one SMRT Cell of a PacBio Sequel. 
@@ -676,11 +676,12 @@ At 8 hours post infection media was removed and cell lysates generated using the
 cDNA was synthesized using an oligoDT primer and the SuperScript III first-strand synthesis supermix from ThermoFisher using the manufacturer's protocol. 
 
 
+
+
 \subsection{Viruses for validation experiments}
-\jdbcomment{Alistair writes this. I've copied text from prior consolidated section, but it needs to be clarified by more clearly breaking things down by virus.}
 
 All viruses were generated using reverse-genetics as previously described using plasmids derived from pHW181-PB2, pHW182-PB1, pHW183-PA, pHW184-HA, pHW185-NP, pHW186-NA, pHW187-M, and pHW188-NS~\citep{hoffmann2000dna}.
-To generate viruses from these plasmids, or variants described below, we transfected an equimolar mix of all eight plasmids into cocultures of 293T and MDCK-SIAT1 cells seeded at a ratio of 8:1. At 24 hr post-transfection, we changed media from D10 to influenza growth media (Opti-MEM supplemented with 0.01\% heat-inactivated FBS, 0.3\% BSA, 100 U of penicillin/ml, 100 $\mu$g of streptomycin/ml, and 100 $\mu$g of calcium chloride/ml). At 48-72h post-transfection we harvested the virus-containing supernatant, pelletted cellular material by centrifugation at 300 x g's for 4 min, and stored aliquots of the clarified viral supernatant at 80$^{\circ}$C.
+To generate viruses from these plasmids, or variants described below, we transfected an equimolar mix of all eight plasmids into cocultures of 293T and MDCK-SIAT1 cells seeded at a ratio of 8:1. At 24 hr post-transfection, we changed media from D10 to influenza growth media (Opti-MEM supplemented with 0.01\% heat-inactivated FBS, 0.3\% BSA, 100 U of penicillin/ml, 100 $\mu$g of streptomycin/ml, and 100 $\mu$g of calcium chloride/ml). At 48-72h post-transfection we harvested the virus-containing supernatant, pelletted cellular material by centrifugation at 300 x g's for 4 min, and stored aliquots of the clarified viral supernatant at -80$^{\circ}$C.
 We then titered thawed aliquots of viral by TCID50 on MDCK-SIAT1 cells, computing titers via the formula of Reed and Muench as described above.
 
 For comparisons of interferon stimulation a relatively pure stock of WSN influenza was derived by harvesting reverse-genetics supernatants at 48h post infection and passaging virus on MDCK-SIAT1 cells for 36h at an MOI of 0.05---conditions which we previously validated to lead to stocks relatively depleted in defective particles~\citep{russell2018extreme}.
@@ -693,7 +694,7 @@ Genome copy number of this virus relative to infectious titer was determined as 
 
 To generate viruses bearing internal deletions in the PB1 segment, indicated regions of the PB1 segment were excised by PCR from our reverse genetics plasmids.
 Sequences are described in (sequence) \abrcomment{I have uploaded the genbank files and modified coordinates in map names to match mRNA coordinates, just waiting for appropriate figure to append}. 
-To rescue these viruses, we used 293t cells and MDCK-SIAT1 cells transduced to constituitively express PB1 as previously described!\citep{Bloom2010oseltamivir}. 
+To rescue these viruses, we used 293t cells and MDCK-SIAT1 cells transduced to constituitively express PB1 as previously described~\citep{Bloom2010oseltamivir}. 
 Virus was harvested from transfections at 72h, and passaged twice in MDCK-SIAT1 cells expressing PB1 constituitively at an MOI of 0.001 for 72h and 0.01 for 48h. 
 This passaging was necessary as viral titers from transfections were too low to generate sufficient virus from a single passage.
 This virus was titered on complementing MDCK-SIAT1 cells.
@@ -703,6 +704,25 @@ To generate pseudovirus that expresses fluorescent mCherry instead of HA, a plas
 To rescue this virus, we used MDCK-SIAT1 cells transduced to constituitively express HA and included an HA protein expression plasmid in our reverse-genetics transfection mixture.
 Virus was harvested from transfections at 72h and passaged for 48 at an MOI of 0.01 on MDCK-SIAT1 cells that express HA. 
 This virus was titered on complementing MDCK-SIAT1 cells.
+
+Viruses bearing potentially innate-immune stimulatory SNPs as identified in our single-cell analyses were recapitulated by first introducing these mutations to plasmids encoding the viral segments PB1 or NS by PCR. 
+Sequences of these plasmids are described in (sequence). \abrcomment{I have uploaded the genbank files and modified coordinates in map names to match mRNA coordinates, just waiting for appropriate figure to append}. 
+These viruses were rescued via reverse-transfection in a coculture of MDCK-SIAT1 and 293t cells alongside a matched wild-type control.
+Each virus was rescued in two seperate transfection reactions. 
+Transfection supernatants were harvested at either 72 hours post transfection (biological replicate \#2 of all SNPs tested) or 48-50h post infection (biological replicate \#1 of all SNPs tested and both replicates of wild-type influenza). 
+Virus recovered from transfections was titered by hemagglutination, and MOI set to infectious dose as measured in the wild-type virus as measured by TCID50 on MDCK-SIAT1 cells. 
+Particle-normalized viruses recovered from transfections were used directly in experiments in \abrcomment{Figure}. 
+
+
+\subsection{flow cytometry analysis of interferon induction}
+Our A549 lambda reporter cell line was seeded in D10 media 24h prior to infection.
+At the time of infection, D10 media was replaced with influenza growth media and virus added to the indicated titers.
+Cells were harvested 13hpi and stained for HA as described above.
+For NS1 staining, HA-stained cells were permeabilized using BD Cytofix/Cytoperm following manufacturer's instructions, stained with anti-NS1 (GTX125990, Genetex) at 4.4 $\mu$g/ml, washed, stained with a goat anti-rabbit IgG antibody conjugated to Alexa Fluor 405, washed, and analyzed.
+After channels were compensated and cells gated to exclude multiplets and debris in FlowJo, data were analyzed using custom python pipelines described in \abrcomment{wherever we put those notebooks}.
+Briefly, gating thresholds for interferon, mCherry, and HA staining were set to 99.9\% of an uninfected control.
+For NS1, owing to sample-to-sample staining variation, thresholds were dynamically set on an individual sample to encompass an equal proportion of HA-expressing and NS1-expressing cells.
+
 
 
 
