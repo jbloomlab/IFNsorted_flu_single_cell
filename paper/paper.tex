@@ -717,73 +717,59 @@ Importantly, the various PCR biases and enrichment schemes mean that the coverag
 However, as described in the computational analysis section below, the final analyses use the cell barcodes and UMIs in conjunction with the standard 10X Illumina sequencing to ensure that none of the conclusions are affected by the disproportionate amplification of some molecules during the PacBio library preparation (for instance, duplicate UMIs are removed from the PacBio data, and all conclusions about gene abundance or absence are based on the Illumina data).
 
 \subsection{qPCR for viral genes and IFN}
-We performed qPCR for influenza HA (to quantify viral transcription), IFNB1 (to quantify IFN induction), and L32 (a cellular housekeeping gene for normalization).
-For the qPCR, we used the SYBR Green PCR Master Mix (Thermo Fisher) according to the manufacturer's protocol.
+We performed qPCR on reverse-transcribed mRNA for influenza HA (to quantify viral transcription), IFNB1 (to quantify IFN induction), and L32 (a cellular housekeeping gene for normalization).
+For the qPCR, we used the SYBR Green PCR Master Mix (Thermo Fisher) according to the manufacturer's protocol using oligo-dT primers.
 The qPCR primers were: HA primer 1, 5'-\texttt{GGCCCAACCACACATTCAAC}-3'; HA primer 2, 5'-\texttt{GCTCATCACTGCTAGACGGG}-3'; IFNB1 primer 1, 5'-\texttt{AAACTCATGAGCAGTCTGCA}-3'; IFNB1 primer 2, 5'-\texttt{AGGAGATCTTCAGTTTCGGAGG}-3'; L32 primer 1, 5'-\texttt{AGCTCCCAAAAATAGACGCAC}-3'; L32 primer 2, 5'-\texttt{TTCATAGCAGTAGGCACAAAGG}-3'. 
 
 For titering virus by qPCR, vRNA was harvested from 80 $\mu$l of viral supernatant by the addition of 600 $\mu$l of RLT plus before proceeding with the standard QIAGEN RNeasy Plus Mini Kit protocol. 
 The cDNA was generated using SuperScript III First-Strand Synthesis SuperMix (Thermo Fisher) using the manufacturer's protocol, and using the universal vRNA primers of \citet{hoffmann2001universal} with the modifications described in \citet{xue2017parallel}. 
 The number of HA molecules were then quantified by qPCR to measure genome dose. 
 
-\abrcomment{Assuming we use the cycloheximide and ribavirin data as-is, can be modified if not}
-For figures \abrcomment{whichever figures} A549 cells were seeded at a density of 10,000 cells/well in a 96-well plate in D10 media 24 hours prior to infection, with four independent wells seeded per experimental treatment. 
+For the qPCR in \FIGSUPP[validation]{delqPCR}, A549 cells were seeded at a density of 10,000 cells/well in a 96-well plate in D10 media 24 hours prior to infection, with four independent wells seeded per experimental treatment. 
 Immediately prior to infection D10 media was removed and replaced with influenza growth media and infected with the indicated influenza strains at the indicated MOI.
-Viral infections were normalized to an MOI of a previously-characterized relatively-deletion free stock of virus~\citep{russell2018extreme}, with all other strains matched for viral genome copy number as calculated by qPCR, described below.
-Crucially, by controlling for genome copy number rather than infectious units we avoid the confounding problem of differing immune stimulation by simply infecting at a higher rate of biologically active but non-infectious particles.
-For experimental treatments with ribavirin and cycloheximde, these compounds were added to cells at the time of infection to a final concentration of 100$\mu$M and 50$\mu$g/ml, respectively, both of which are sufficient to block downstream viral replication~\citep{Vanderlinden:2016ec,Reuther:2015ef,Scholtissek:1976wg,killip2014activation}.
-At 8 hours post infection media was removed and cell lysates generated using the CellAmp RT-PCR for Direct Prep Kit (Real Time) \& Protein Analysis, following manufacturer's instructions. 
-cDNA was synthesized using an oligoDT primer and the SuperScript III first-strand synthesis supermix from ThermoFisher using the manufacturer's protocol. 
+For the cells with cycloheximide added to block protein expression (and hence secondary transcription), cycloheximide was added to a final concentration of 50 $\mu$g/ml~\citep[a concentration sufficient to block secondary transcription;][]{killip2014activation} at the time of infection.
+After 8 hours, mRNA was harvested using the CellAmp Direct RNA Prep Kit for RT-PCR, reverse-transcribed using an oligo-dT primer, and qPCR was performed as described above.
 
+\jdbcomment{These details can be added once the appropriate figure is in place: ribavirin was added to cells at the time of infection to a final concentration of 100$\mu$M, respectively, which is sufficient to block secondary transcription~\citep{Vanderlinden:2016ec,Reuther:2015ef,Scholtissek:1976wg}.}
 
-\subsection{Viruses for validation experiments}
-We generated the mutant viruses for the validation experiments in \FIG{validation} by reverse genetics using the pHW18* series of WSN reverse genetics plasmids~\citep{hoffmann2000dna}, but substituting the appropriate mutant plasmid listed in \FIGDATA[validation]{sequences} for the wildtype plasmid for that gene.
+\subsection{Viruses and experiments for validation experiments}
+In \FIG{validation}, we tested the IFN inducing capacity of a variety of viral mutants identified in the single-cell experiments.
+Four of these viruses contained point mutations in PB1, two contained point mutations in NS, and one contained an internal deletion in PB1.
+In addition, we created a virus with an inactivated NS1 to mimic the infections that failed to express NS (it was not possible to generate a viral stock that completely lacked the NS segment).
+This NS1stop virus contained six nucleotide changes resulting in the addition of five in-frame stop codons in NS1 starting 10 nucleotides downstream of the 5' splice donor site, thereby disrupting NS1 while leaving NS2 (NEP) intact.
+All of these mutants were cloned into the pHW2000 bi-directional reverse-genetics plasmid~\citep{hoffmann2000dna} in order to enable generation of viruses encoding the mutant genes.
+ \FIGDATA[validation]{sequences} provides the full sequences for all of these plasmids.
+
+We generated the wildtype and point-mutant viruses for the validation experiments in \FIG{validation}A by reverse genetics using the pHW18* series of WSN reverse genetics plasmids~\citep{hoffmann2000dna}, but substituting the appropriate mutant plasmid listed in \FIGDATA[validation]{sequences} for the wildtype plasmid for that gene.
 To generate the viruses from these plasmids, we transfected an equimolar mix of all eight plasmids into co-cultures of 293T and MDCK-SIAT1 cells seeded at a ratio of 8:1.
 At 24 hours post-transfection, we changed media from D10 to influenza growth media. 
-At 48 to 72 hours post-transfection, we harvested the virus-containing supernatant, clarified this supernatant by centrifugation at 300$\times$g for 4 min, and stored aliquots of the clarified viral supernatant at -80$^{\circ}$C.
-We then thawed an aliquot of each virus and titered by TCID50 as described above.
+At 50 hours post-transfection (for the replicate 1 viruses in \FIGSUPP[validation]{SNPflow}) or 72 hours (for the replicate 2 viruses in \FIGSUPP[validation]{SNPflow}), we harvested the virus-containing supernatant, clarified this supernatant by centrifugation at 300$\times$g for 4 min, and stored aliquots of the clarified viral supernatant at -80$^{\circ}$C.
+We then thawed aliquots and titered by TCID50 on MDCK-SIAT1 cells.
+For the infections in \FIGSUPP[validation]{SNPflow}, we wanted to use equivalent particle counts, so we normalized all viruses to an equivalent HI titer on \jdbcomment{red blood cells from what species where, and is there citation to protocol?}.
+We then performed infections of the A549 reporter cell line at equivalent HI titer and analyzed the data as described in \FIGSUPP[validation]{SNPflow}. 
 
-For comparisons of interferon stimulation a relatively pure stock of WSN influenza was derived by harvesting reverse-genetics supernatants at 48h post infection and passaging virus on MDCK-SIAT1 cells for 36h at an MOI of 0.05---conditions which we previously validated to lead to stocks relatively depleted in defective particles~\citep{russell2018extreme}.
-
-To generate an NS1-inactivated strain of influenza, six nucleotide changes resulting in the addition of five in-frame stop codons starting 10 nucleotides downstream of the 5' splice donor site, interrupting translation of NS1 while leaving NS2 (NEP) intact.
-The viral RNA produced by this vector is described in (sequence)\abrcomment{I have uploaded the genbank files, just waiting for appropriate figure to append}.
-This modified plasmid was used in a reverse-genetics approach to recapitulate mutant virus, harvesting transfection supernatant after 72h.
-This virus was then passaged in MDCK-SIAT1 cells for 48h at an MOI of 0.05---due to slower growth kinetics than the wild-type virus this longer incubation was necessary.
-Genome copy number of this virus relative to infectious titer was determined as described below by qPCR.
-
-To generate viruses bearing internal deletions in the PB1 segment, indicated regions of the PB1 segment were excised by PCR from our reverse genetics plasmids.
-Sequences are described in (sequence) \abrcomment{I have uploaded the genbank files and modified coordinates in map names to match mRNA coordinates, just waiting for appropriate figure to append}. 
-To rescue these viruses, we used 293t cells and MDCK-SIAT1 cells transduced to constituitively express PB1 as previously described~\citep{bloom2010permissive}. 
-Virus was harvested from transfections at 72h, and passaged twice in MDCK-SIAT1 cells expressing PB1 constituitively at an MOI of 0.001 for 72h and 0.01 for 48h. 
+To generate the NS1stop mutant virus and the wildtype and PB1del385to2163 mutant viruses in \FIGSUPP[validation]{delflow}, we used slightly different procedures.
+The wildtype virus was generated by reverse genetics as described for the point-mutant viruses above, harvested at 48 hours post-transfection, and then passaged on MDCK-SIAT1 cells for 36 hours at an MOI of 0.05---conditions that we previously validated to lead to relatively little accumulation of defective particles~\citep{russell2018extreme}.
+The NS1stop virus was similarly generated, but was passaged for 48 rather than 36 hours, since it had slower growth kinetics and so needed a longer period of time to reach high titers.
+The viruses with deletions in the PB1 segment could not be generated in normal 293T and MDCK-SIAT1 cells, since they required the exogenous expression of the PB1 protein.
+Therefore, these viruses were generated in previously described 293T and MDCK-SIAT1 cells that had been engineered to constitutively express PB1~\citep{bloom2010permissive}.
+These viruses were harvested from transfections at 72 hours, and passaged twice in the MDCK-SIAT1 cells constitutively expressing PB1 at a MOI of 0.001 for 72 hours and 0.01 for 48 hours. 
 This passaging was necessary as viral titers from transfections were too low to generate sufficient virus from a single passage.
-This virus was titered on complementing MDCK-SIAT1 cells.
-Genome copy number of this virus relative to infectious titer was determined as described below by qPCR.
+The wildtype and NS1stop viruses were titered by TCID50 on MDCK-SIAT1 cells, and the PB1 deletion viruses were titered on the MDCK-SIAT1 cells constitutively expressing PB1.
+The infections in \FIGSUPP[validation]{delflow} were performed at equivalent TCID50s as described in the legend to that figure.
+That these equivalent TCID50s were also roughly equivalent in terms of particles capable of undergoing primary transcription is shown in \FIGSUPP[validation]{delqPCR}.
 
+\subsection{\jdbcomment{Not yet used, can add when section with this virus is added}}
 To generate pseudovirus that expresses fluorescent mCherry instead of HA, a plasmid was generated similarly to a previously-described eGFP-expressing pseudovirus~\citep{russell2018extreme}. 
 To rescue this virus, we used MDCK-SIAT1 cells transduced to constituitively express HA and included an HA protein expression plasmid in our reverse-genetics transfection mixture.
 Virus was harvested from transfections at 72h and passaged for 48 at an MOI of 0.01 on MDCK-SIAT1 cells that express HA. 
 This virus was titered on complementing MDCK-SIAT1 cells.
 
-Viruses bearing potentially innate-immune stimulatory SNPs as identified in our single-cell analyses were recapitulated by first introducing these mutations to plasmids encoding the viral segments PB1 or NS by PCR. 
-Sequences of these plasmids are described in (sequence). \abrcomment{I have uploaded the genbank files and modified coordinates in map names to match mRNA coordinates, just waiting for appropriate figure to append}. 
-These viruses were rescued via reverse-transfection in a coculture of MDCK-SIAT1 and 293t cells alongside a matched wild-type control.
-Each virus was rescued in two seperate transfection reactions. 
-Transfection supernatants were harvested at either 72 hours post transfection (biological replicate \#2 of all SNPs tested) or 48-50h post infection (biological replicate \#1 of all SNPs tested and both replicates of wild-type influenza). 
-Virus recovered from transfections was titered by hemagglutination, and MOI set to infectious dose as measured in the wild-type virus as measured by TCID50 on MDCK-SIAT1 cells. 
-Particle-normalized viruses recovered from transfections were used directly in experiments in \abrcomment{Figure}. 
-
-
-\subsection{flow cytometry analysis of interferon induction}
-Our A549 lambda reporter cell line was seeded in D10 media 24h prior to infection.
-At the time of infection, D10 media was replaced with influenza growth media and virus added to the indicated titers.
-Cells were harvested 13hpi and stained for HA as described above.
+\subsection{\jdbcomment{NS1 staining}}
+\jdbcomment{Most details about flow are now in figure supplements, but we do need to add details on NS1 staining after we see how that goes into paper}
 For NS1 staining, HA-stained cells were permeabilized using BD Cytofix/Cytoperm following manufacturer's instructions, stained with anti-NS1 (GTX125990, Genetex) at 4.4 $\mu$g/ml, washed, stained with a goat anti-rabbit IgG antibody conjugated to Alexa Fluor 405, washed, and analyzed.
-After channels were compensated and cells gated to exclude multiplets and debris in FlowJo, data were analyzed using custom python pipelines described in \abrcomment{wherever we put those notebooks}.
-Briefly, gating thresholds for interferon, mCherry, and HA staining were set to 99.9\% of an uninfected control.
+After channels were compensated and cells gated to exclude multiplets and debris in FlowJo, data were analyzed using custom python pipelines described in 
 For NS1, owing to sample-to-sample staining variation, thresholds were dynamically set on an individual sample to encompass an equal proportion of HA-expressing and NS1-expressing cells.
-
-
-
-
 
 \subsection{Computational analysis of single-cell transcriptomic and viral sequence data}
 A computational pipeline that performs all steps in the data analysis is available at \url{https://github.com/jbloomlab/IFNsorted_flu_single_cell}~\citep{russell2018github}. 
