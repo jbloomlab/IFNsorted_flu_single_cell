@@ -134,7 +134,7 @@ As shown in the FACS plots, expression of the \textit{IFNB1} and \textit{IFNL1} 
 \figsupp[Full flow cytometry data for \FIG{IFNrare}C.]
 {Flow cytometry data for \FIG{IFNrare}C.
 The A549 cells with the \textit{IFNL1} reporter driving LNGFR$\Delta$C-ZsGreen were not infected, infected with saturating amounts of the Cantell strain of Sendai virus~\citep{strahle2006sendai}, or infected the same stock of influenza virus used in the single-cell experiment at a target MOI of 0.3.
-After 13 hours, the cells were stained for expression of HA protein and analyzed by FACS for expression of the ZsGreen driven by the \textit{IFNL1} reporter.
+After 13 hours, the cells were stained for expression of HA protein and analyzed by FACS for HA and expression of the ZsGreen driven by the \textit{IFNL1} reporter.
 Each condition was done in triplicate.
 The contour plots show the density of all cells, and all IFN+ cells are also indicated by orange dots.
 Cells were classified as HA+ or IFN+ based on gates set to put 0.05\% of the uninfected cells in these populations.
@@ -536,9 +536,58 @@ The statistical analysis in \FIG{mutations}D is insufficient to determine if the
 %%% begin validation figure %%%
 \begin{figure}
 
-\jdbcomment{add figure}
-\caption{\jdbcomment{add caption}}
+\centerline{\includegraphics[width=0.85\textwidth]{figures/Validation_Figure/ifn_plot.pdf}}
+\caption{Validation that IFN induction is increased by some of the mutations identified in the single-cell virus sequencing of IFN+ cells.
+{\bf (A)}
+Percent of cells that become IFN+ after infection with a bulk stock of the indicated viral mutant, as determined using a reporter cell line (see \FIGSUPP[validation]{SNPflow} for details).
+The numbers indicate the median of four measurements for each viral mutant.
+The limit of detection of 0.05\% is indicated with a dashed green line, and the median value for the wildtype is indicated with a dashed blue line.
+The points are colored orange if the mutant virus stock induces IFN more frequently than the wildtype viral stock (t-test, $P < 0.01$), and blue if the frequency of IFN induction is not significantly different than wildtype at this cutoff.
+{\bf (B)}
+Similar to the first panel, but validates the increased rate of IFN induction for a large internal deletion in the PB1 gene.
+See \FIGSUPP[validation]{delflow} for detailed flow cytometry data, and \FIGSUPP[validation]{delqPCR} for details of how we validated that the infections were performed with a similar doses of each viral mutant.
+The experiments in the two panels were performed on different days, and so exact numerical values can be reliably compared within each panel but not between panels.
+}
 \label{fig:validation}
+
+\figsupp[Flow cytometry data for \FIG{validation}A.]
+{A549 cells with the \textit{IFNL1} reporter driving LNGFR$\Delta$C-ZsGreen were not infected (three replicates) or infected with stocks of the indicated viral mutant in quadruplicate.
+After 13 hours, cells were stained for expression of HA protein and analyzed by FACS for HA and the ZsGreen driven by the \textit{IFNL1} reporter.
+The contour plots show the density of all cells, and IFN+ cells are also indicated by orange dots.
+Cells were classified as HA+ or IFN+ based on gates set to put 0.05\% of the uninfected cells in these populations.
+For all influenza-infected cells, the percentage IFN+ was calculated only among the HA+ cells (since these are the ones that are infected).
+For the uninfected cells, the percentage IFN+ was calculated among all cells, since uninfected cells do not express HA.
+For each viral mutant, two independently generated stocks were each assayed in duplicate (i.e., \#1a and \#1b are replicates of one viral stock, and \#2a and \#2b are replicates of the other viral stock).
+The infections with replicate \#1 of the wildtype virus were performed at an MOI of 0.1 as determined by TCID50, and all other viruses were infected at an equivalent particle number as determined by HI assay. 
+The HA staining indicates that the number of transcriptionally active viral units per cell was similar across most mutants, and calculating percentage IFN+ only among HA+ cells largely corrects for modest variation in titer across mutants.
+}
+{\includegraphics[height=0.75\textheight]{figures/Validation_Figure/SNP_flow_plot.pdf}}
+\label{figsupp:SNPflow}
+
+\figsupp[Flow cytometry data for \FIG{validation}B.]
+{This figure is similar to \FIGSUPP[validation]{SNPflow} except that it shows the flow cytometry data for \FIG{validation}B.
+Each infection was performed in triplicate.
+A complicating factor for these data is that the virus with the deletion in PB1 (PB1del385to2163) cannot perform secondary transcription because it does not express PB1 protein, and so cannot be effectively normalized by HA expression since it expresses lower levels of HA due to the lack of secondary transcription.
+Therefore, for the data in this figure all cells were infected at an equivalent MOI of 0.3 as determined by TCID50 on MDCK-SIAT1 cells for the wildtype and NS1stop, and on MDCK-SIAT1 cells expressing PB1~\citep{bloom2010permissive} for the PB1del385to2163 virus.
+Then qPCR was used to show that the ratio of viral RNA to TCID50 was similar for all viral variants (data not shown).
+Finally, the approach in \FIGSUPP[validation]{delqPCR} was used to show that all viral variants had similar amounts of transcriptionally active virus in the absence of secondary transcription.
+All this normalization suggests that all infections were performed at a similar dose of particles active for primary transcription.
+Therefore, the percent IFN+ was calculated from the flow data in this figure for \emph{all} cells (HA+ and HA-) since that is a more fair comparison for the PB1del385to2163 virus.
+}
+{\includegraphics[width=0.7\textwidth]{figures/Validation_Figure/del_flow_plot.pdf}}
+\label{figsupp:delflow}
+
+\figsupp[Validation of viral titer normalization for \FIG{validation}B.]
+{Validation that the infections in \FIG{validation}B and \FIGSUPP[validation]{delflow} were performed at similar doses of virions capable of initiating primary transcription.
+In this experiment, A549 cells were infected at MOI of 0.4 (based on TCID50 as described in \FIGSUPP[validation]{delflow}), and then mRNA was harvested for qPCR on oligo-dT primed reverse transcription.
+The y-axis shows the ratio of viral HA mRNA to the housekeeping gene L32.
+These infections were performed in the presence of absence of cycloheximide, which blocks protein synthesis and hence secondary transcription by newly synthesized viral proteins.
+In the absence of cycloheximide, the viruses with deletions in PB1 produced less viral mRNA presumably because they could not produce PB1 protein for secondary transcription.
+But in the presence of cycloheximide, all viruses produced similar amounts of viral mRNA, indicating that the dose of particles active for primary transcription is roughly equivalent across variants.
+Each measurement was performed in quadruplicate.
+}
+{\includegraphics[width=0.6\textwidth]{figures/Validation_Figure/qpcr_plot.pdf}}
+\label{figsupp:delqPCR}
 
 \figdata{Genbank plasmid maps for the mutant genes in this figure cloned into the pHW* bi-directional reverse genetics plasmid~\citep{hoffmann2000dna} are at \url{https://github.com/jbloomlab/IFNsorted_flu_single_cell/tree/master/paper/figures/FluVariantPlasmidMaps}}
 \label{figdata:sequences}
@@ -703,7 +752,7 @@ Genome copy number of this virus relative to infectious titer was determined as 
 
 To generate viruses bearing internal deletions in the PB1 segment, indicated regions of the PB1 segment were excised by PCR from our reverse genetics plasmids.
 Sequences are described in (sequence) \abrcomment{I have uploaded the genbank files and modified coordinates in map names to match mRNA coordinates, just waiting for appropriate figure to append}. 
-To rescue these viruses, we used 293t cells and MDCK-SIAT1 cells transduced to constituitively express PB1 as previously described~\citep{Bloom2010oseltamivir}. 
+To rescue these viruses, we used 293t cells and MDCK-SIAT1 cells transduced to constituitively express PB1 as previously described~\citep{bloom2010permissive}. 
 Virus was harvested from transfections at 72h, and passaged twice in MDCK-SIAT1 cells expressing PB1 constituitively at an MOI of 0.001 for 72h and 0.01 for 48h. 
 This passaging was necessary as viral titers from transfections were too low to generate sufficient virus from a single passage.
 This virus was titered on complementing MDCK-SIAT1 cells.
