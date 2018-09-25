@@ -433,24 +433,24 @@ Note also that this plot is limited to the cells that were called as infected (\
 \end{figure}
 %%% end genotypes figure %%%
 
-The foregoing transcriptomic analyses identify which viral genes are expressed in each cell, but they do not provide information on the sequences of these genes.
-This is a major shortcoming, since influenza's high mutation rate means that although the \emph{consensus} sequence of the viral stock used in our experiment corresponds to WSN influenza, the specific virions infecting individual cells will often carry mutations~\citep{parvin1986measurement, suarez1992heterogeneity, suarez1994estimation, bloom2014experimentally, pauly2017novel}.
-We therefore used the approach schematized in \FIG{workflow}D to determine the full-length sequences of the viral genes expressed in the majority of infected cells.
+The foregoing transcriptomic analyses identify which viral genes are expressed in each cell, but not the sequences of these genes.
+This is a major shortcoming, since influenza's high mutation rate means that although the \emph{consensus} sequence of the viral stock corresponds to WSN influenza, the virions infecting individual cells will often carry mutations~\citep{parvin1986measurement, suarez1992heterogeneity, suarez1994estimation, bloom2014experimentally, pauly2017novel}.
+We therefore used PacBio sequencing (\FIG{workflow}D) to determine the full sequences of the viral genes expressed in the majority of infected cells.
 
 By employing several PCR enrichment strategies (see Methods), we obtained over 200,000 high-quality PacBio CCSs that mapped to influenza genes (\FIGSUPP[genotypes]{CCSs}).
-Crucially, the fact that about half the infecting virions encoded genes that were tagged with synonymous viral barcodes at both termini enabled us to estimate the rate of PCR strand exchange among cDNAs that we amplified for PacBio sequencing (\FIGSUPP[genotypes]{StrandExchange}).
+Crucially, the synonymous viral barcodes at both termini of each gene enabled us to estimate the rate of PCR strand exchange among PacBio-sequenced cDNAs (\FIGSUPP[genotypes]{StrandExchange}).
 Less then 3\% of the cDNAs experienced strand exchange that we were not able to identify and filter (\FIGSUPP[genotypes]{CCSs}), meaning that the vast majority of CCSs correctly link mutations in viral transcripts to cell barcodes and UMIs that identify the cell and molecule of origin.
 
 We used these CCSs to call the sequences of viral genes in single cells.
-We called a mutation as present in a particular cell if it was found in least two CCSs originating from different mRNAs (unique UMIs) in that cell, and was also present in at least 30\% of all CCSs for that gene in that cell.
+We called a mutation if it was found in least two CCSs originating from different mRNAs (unique UMIs) in that cell, and was also present in at least 30\% of all CCSs for that gene in that cell.
 For cells co-infected with both viral barcode variants, we called mutations separately for each viral variant.
-This strategy reliably identifies mutations in the virions that initiate infection of cells infected with at most one virion of each viral barcode variant (estimated to be $\sim$75\% of infected cells), as well as identifying high-abundance mutations in cells co-infected with multiple virions of the same viral barcode.
-The strategy will not identify mutations that arise within a cell after the first few rounds of viral genome replication, since such mutations will not reach 30\% frequency among viral transcripts in that cell.
-Therefore, analogous to somatic variant calling in tumor sequencing~\citep{xu2014comparison, cibulskis2013sensitive}, there is an inherent limit to our detection threshold: we can identify viral mutations that are at high frequency within single infected cells, but not mutations that are present on just a small fraction of the viral transcripts in a cell. 
+This strategy reliably identifies mutations in the virions that initiate infection of cells infected with at most one virion of each viral barcode variant (estimated to be $\sim$75\% of infected cells), as well as high-abundance mutations in cells co-infected with multiple virions of the same viral barcode.
+The strategy will not identify mutations that arise within a cell after the first few rounds of viral genome replication, since such mutations will not reach 30\% frequency in that cell.
+Therefore, analogous to somatic variant calling in tumor sequencing~\citep{xu2014comparison, cibulskis2013sensitive}, there is an inherent limit to our detection threshold: we can identify viral mutations that are at high frequency within single infected cells, but not mutations that occur on just a small fraction of the viral transcripts in a cell. 
 
-We were able to call the sequences of all expressed viral genes in the majority of infected cells (\FIGSUPP[genotypes]{ncells}).
-We were most effective at calling full viral genotypes in cells that expressed high amounts of viral mRNA and were not co-infected by both viral barcode variants (\FIGSUPP[genotypes]{ncells}).
-But despite this bias towards calling full viral genotypes from cells with these characteristics, we also called full genotypes for many cells that had low viral burden or were co-infected by both viral barcode variants.
+We could call the sequences of all expressed viral genes in the majority of infected cells (\FIGSUPP[genotypes]{ncells}).
+We were most effective at calling full viral genotypes in cells that expressed high amounts of viral mRNA and were infected by by only one viral barcode variant (\FIGSUPP[genotypes]{ncells}).
+But we also called full genotypes for many cells that had low viral burden or were co-infected by both viral barcode variants.
 
 The 150 cells for which we called the full viral genotypes are shown in \FIG{genotypes}.
 Simple visual inspection of this figure reveals a wealth of information.
@@ -469,19 +469,19 @@ However, \FIG{genotypes} also shows that expressing unmutated copies of all eigh
 \includegraphics[width=\linewidth]{figures/single_cell_figures/p_mutations.pdf}
 }
 \caption{
-Viral genetic variation associated with heterogeneity in infection outcome among cells for which we sequenced all expressed viral genes.
+Viral features associated with heterogeneity in infection outcome among cells for which we sequenced all expressed viral genes.
 {\bf (A)} 
-Percent of all mRNA derived from virus, faceted by whether cells express unmutated copies of all eight viral genes, or fail to express an unmutated copy of one or more genes.
+Percent of all mRNA derived from virus, faceted by whether cells express unmutated copies of all eight genes.
 Cells infected by full wildtype virus exhibit less heterogeneity in viral burden as quantified by the Gini index (95\% confidence intervals are indicated).
 {\bf (B)}
-There is a trend for cells infected by full wildtype virus to express less IFN.
+Cells infected by full wildtype virus to express less IFN.
 {\bf (C)}
-Some specific forms of viral genetic variation are associated with IFN induction.
+Specific viral defects associated with IFN induction.
 The top panel show the percent of IFN- and IFN+ cells that fail to express each viral gene.
-The middle and bottom panels show the percent of IFN- and IFN+ cells that have a deletion or amino-acid substitution in each viral gene, conditioned on the cell expressing that gene.
-Numbers above the bars give P-values (Fisher's exact test) and associated Q-values~\citep{storey2003statistical} for rejecting the null hypothesis that percents are equal among IFN- and IFN+ cells. 
-\FIGSUPP[mutations]{allcells} shows that the trends remain largely the same if we include infected cells with incomplete viral sequence information. 
-\FIGSUPP[mutations]{isg} shows that the trends remain largely the same if we categorize cells by ISG expression rather than IFN expression.
+The middle and bottom panels show the percent of IFN- and IFN+ cells that have a deletion or amino-acid substitution in each gene, conditioned on the cell expressing that gene.
+Numbers give P-values (Fisher's exact test) and associated Q-values~\citep{storey2003statistical} for rejecting the null hypothesis that percents are equal among IFN- and IFN+ cells. 
+\FIGSUPP[mutations]{allcells} shows the trends are similar if we include infected cells with incomplete viral sequence information. 
+\FIGSUPP[mutations]{isg} shows the trends are similar if we categorize cells by ISG expression rather than IFN expression.
 {\bf (D)}
 There is no association between IFN induction and the amount of viral mRNA in cells that express NS, but viral burden is associated with IFN induction among cells that lack NS.
 Throughout this figure, we only consider substitutions that are non-synonymous.
@@ -516,22 +516,21 @@ Viral burden is not associated with ISG expression levels in NS-sufficient infec
 \end{figure}
 %%% end mutations figure %%%
 
-To more systematically assess how viral genetic variation associated with infection outcome, we divided the 150 cells in \FIG{genotypes} into those that expressed unmutated copies of all eight genes (disregarding synonymous mutations) and those that did not (due to gene absence, amino-acid substitution, insertion, or deletion).
+To more systematically assess viral features associated with infection outcome, we divided the 150 cells in \FIG{genotypes} into those that expressed unmutated copies of all eight genes (disregarding synonymous mutations) and those that did not (due to gene absence, amino-acid substitution, insertion, or deletion).
 \FIG{mutations}A shows that the 49 cells infected by full wildtype viruses had a significantly tighter distribution of the amount of viral mRNA per cell than the other 101 cells as quantified by the Gini index~\citep{gini1921measurement}.
 Therefore, viral genetic variation is a major contributor to the heterogeneity in viral transcriptional burden among cells.
 
-Viral genetic variation also associated with IFN induction, since cells infected by full wildtype virions less IFN than cells infected by incomplete or mutated virions (\FIG{mutations}B).
-Furthermore, specific viral genetic defects were associated with IFN induction (\FIG{mutations}C).
+Viral genetic variation also associated with IFN induction, since cells infected by full wildtype virions expressed less IFN than cells infected by incomplete or mutated virions (\FIG{mutations}B).
+Specific viral genetic defects were especially associated with IFN induction (\FIG{mutations}C).
 For instance, absence of NS and amino-acid mutations in PB1 were significantly enriched in IFN+ cells, and amino-acid mutations in NS and deletions in HA were more weakly enriched.
-Only the absence of NS remained associated with IFN induction at a false discovery rate of 10\% (\FIG{mutations}C), although a Bayesian-minded virologist might contend that controlling for all the hypotheses in \FIG{mutations}C is too stringent since the association of defects in certain genes with IFN induction is more plausible \textit{a priori} given existing biological knowledge~\citep[e.g.,][]{killip2017single, velthuis2018mini, wu2014high}.
-In any case, the modest number of cells with full viral genotype information precludes drawing strong conclusions from statistical analyses alone---but \FIG{genotypes} and \FIG{mutations}C do motivate compelling hypotheses about specific viral mutations that contribute to IFN induction, and in the next few sections, we pursue these hypotheses using experimental follow-up. 
+Only the absence of NS remained associated with IFN induction at a false discovery rate of 10\% (\FIG{mutations}C)---although a Bayesian-minded virologist might contend that controlling for all the hypotheses in \FIG{mutations}C is too stringent, since some are much more plausible \textit{a priori} given existing biological knowledge~\citep[e.g.,][]{killip2017single, velthuis2018mini, wu2014high}.
+In any case, \FIG{genotypes} and \FIG{mutations}C motivate compelling hypotheses about specific viral mutations that contribute to IFN induction, and below we pursue these hypotheses using experimental follow-up. 
 
 One other interesting trend emerges from the combined single-cell data.
 There is no difference in the amount of viral mRNA between IFN+ and IFN- cells that express NS---but among cells that lack NS, the IFN+ ones have significantly more viral mRNA (\FIG{mutations}D).
 The statistical analysis in \FIG{mutations}D is insufficient to determine if the higher viral transcriptional burden in IFN+ NS-deficient infections is a cause or a consequence of the IFN induction, but the experimental follow-up below sheds more light on this question.
 
 \subsection{Validation that multiple types of viral mutations increase IFN induction}
-
 
 %%% begin validation figure %%%
 \begin{figure}
@@ -545,8 +544,8 @@ The limit of detection of 0.05\% is indicated with a dashed green line, and the 
 The points are colored orange if the mutant virus stock induces IFN more frequently than the wildtype viral stock (t-test, $P < 0.01$), and blue if the frequency of IFN induction is not significantly different than wildtype at this cutoff.
 {\bf (B)}
 Similar to the first panel, but validates the increased rate of IFN induction for a large internal deletion in the PB1 gene.
-See \FIGSUPP[validation]{delflow} for detailed flow cytometry data, and \FIGSUPP[validation]{delqPCR} for details of how we validated that the infections were performed with a similar doses of each viral mutant.
-The experiments in the two panels were performed on different days, and so exact numerical values can be reliably compared within each panel but not between panels.
+See \FIGSUPP[validation]{delflow} and \FIGSUPP[validation]{delqPCR} for more detailed experimental data.
+The experiments in the two panels were performed on different days, and so numerical values can be reliably compared within panels but not between panels.
 }
 \label{fig:validation}
 
@@ -589,11 +588,14 @@ Each measurement was performed in quadruplicate.
 {\includegraphics[width=0.6\textwidth]{figures/Validation_Figure/qpcr_plot.pdf}}
 \label{figsupp:delqPCR}
 
-\figdata{Genbank plasmid maps for the mutant genes in this figure cloned into the pHW* bi-directional reverse genetics plasmid~\citep{hoffmann2000dna} are at \url{https://github.com/jbloomlab/IFNsorted_flu_single_cell/tree/master/paper/figures/FluVariantPlasmidMaps}}
+\figdata{Genbank plasmid maps for the mutant genes cloned into the pHW* bi-directional reverse genetics plasmid~\citep{hoffmann2000dna} are at \url{https://github.com/jbloomlab/IFNsorted_flu_single_cell/tree/master/paper/figures/FluVariantPlasmidMaps}}
 \label{figdata:sequences}
 
 \end{figure}
 %%% end validation figure %%%
+
+To test if the viral defects identified in single IFN+ cells played a causal role in triggering IFN expression, we used reverse genetics to generate bulk stocks of viruses with some of these mutations.
+The greatest enrichment of amino-acid substitutions in IFN+ cells was in the PB1 and NS genes (\FIG{mutations}C), so we...
 
 \section{Discussion}
 
