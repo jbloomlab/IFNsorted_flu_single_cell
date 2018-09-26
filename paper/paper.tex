@@ -356,7 +356,7 @@ Finally, we qualitatively examined how expression of viral genes, IFN, and ISGs 
 \FIGSUPP[transcriptomics]{tSNE} shows unsupervised t-SNE clustering~\citep{maaten2008visualizing} of the cells.
 Although the clustering is entirely unsupervised, cells expressing high levels of viral genes, IFN, and ISGs cluster together---and most of the structure in the t-SNE plot that is not associated with expression of these genes involves uninfected and IFN- cells.
 
-\subsection{The full genotypes of viruses in single IFN+ and IFN- cells}
+\subsection{Full genotypes of viruses infecting single IFN+ and IFN- cells}
 
 %%% start genotypes figure %%%
 \begin{figure}
@@ -460,7 +460,7 @@ The two cells that expressed the most IFN in our experiment (\textit{cell 13} an
 Many other IFN+ cells had different defects, including large internal deletions (e.g., \textit{cell 5} and \textit{cell 89}) or amino-acid mutations (e.g., \textit{cell 9}, \textit{cell 28}, and many others).
 However, \FIG{genotypes} also shows that expressing unmutated copies of all eight genes does not guarantee a favorable outcome for the virus: for instance, the apparently flawless virion that infected \textit{cell 139} only managed to express viral mRNA to 6\% of the total transcriptome, and the apparently flawless virion that infected \textit{cell 105} still induced IFN.
 
-\subsection{Systematic examination of viral features associated with infection outcome}
+\subsection{Viral features associated with infection outcome in single cells}
 
 %%% begin mutations figure %%%
 \begin{figure}
@@ -530,7 +530,7 @@ One other interesting trend emerges from the combined single-cell data.
 There is no difference in the amount of viral mRNA between IFN+ and IFN- cells that express NS---but among cells that lack NS, the IFN+ ones have significantly more viral mRNA (\FIG{mutations}D).
 The statistical analysis in \FIG{mutations}D is insufficient to determine if the higher viral transcriptional burden in IFN+ NS-deficient infections is a cause or a consequence of the IFN induction, but the experimental follow-up below sheds more light on this question.
 
-\subsection{Validation that multiple types of viral mutations increase IFN induction}
+\subsection{Defects in viruses infecting single IFN+ cells often increase IFN induction}
 
 %%% begin validation figure %%%
 \begin{figure}
@@ -594,8 +594,15 @@ Each measurement was performed in quadruplicate.
 \end{figure}
 %%% end validation figure %%%
 
-To test if the viral defects identified in single IFN+ cells played a causal role in triggering IFN expression, we used reverse genetics to generate bulk stocks of viruses with some of these mutations.
-The greatest enrichment of amino-acid substitutions in IFN+ cells was in the PB1 and NS genes (\FIG{mutations}C), so we...
+To test if the viral defects identified in single IFN+ cells play a causal role in triggering IFN expression, we used reverse genetics to generate bulk stocks of viruses with some of these defects.
+
+The viral feature most strongly associated with IFN induction in single cells was failure to express the NS gene (\FIG{genotypes}, \FIG{mutations}C).
+Although it is sometimes possible to use complementing cell lines to generate influenza viruses lacking a specific viral gene~\citep{fujii2003selective,marsh2007specific}, we were unsuccessful in using this approach to generate viruses that lacked NS.
+The NS gene encodes two proteins (NS1 and NS2), the first of which is influenza virus's primary innate-immune antagonist~\citep{garcia1998influenza, hale2008multifunctional}.
+We therefore mimicked the effect of absence of NS by creating a mutant virus (which we will term \emph{NS1stop}) that had multiple stop codons early in the NS1 coding sequence.
+
+The single-cell data also showed that amino-acid substitutions in the PB1 and NS genes were associated with IFN induction (\FIG{genotypes}, \FIG{mutations}C), so we also created mutant viruses for each amino-acid substitution found in these genes among IFN+ cells that did not also lack the NS gene.
+Overall, there were six \jdbcomment{actually, seven with S704P} such point mutant viruses: PB1-D27N, PB1-G206S, PB1-K279R, PB1-T677A, \jdbcomment{what about PB1-S704P?} NS1-A122V, and NS2-E47G (\FIGSUPP[genotypes]{genotypes_by_ifn}).
 
 \section{Discussion}
 
