@@ -530,7 +530,7 @@ One other interesting trend emerges from the combined single-cell data.
 There is no difference in the amount of viral mRNA between IFN+ and IFN- cells that express NS---but among cells that lack NS, the IFN+ ones have significantly more viral mRNA (\FIG{mutations}D).
 The statistical analysis in \FIG{mutations}D is insufficient to determine if the higher viral transcriptional burden in IFN+ NS-deficient infections is a cause or a consequence of the IFN induction, but the experimental follow-up below sheds more light on this question.
 
-\subsection{Defects in viruses infecting single IFN+ cells often increase IFN induction}
+\subsection{Validation that viral defects in single IFN+ cells often cause increased IFN induction}
 
 %%% begin validation figure %%%
 \begin{figure}
@@ -541,7 +541,7 @@ The statistical analysis in \FIG{mutations}D is insufficient to determine if the
 Percent of cells that become IFN+ after infection with a bulk stock of the indicated viral mutant, as determined using a reporter cell line (see \FIGSUPP[validation]{SNPflow} for details).
 The numbers indicate the median of four measurements for each viral mutant.
 The limit of detection of 0.05\% is indicated with a dashed green line, and the median value for the wildtype is indicated with a dashed blue line.
-The points are colored orange if the mutant virus stock induces IFN more frequently than the wildtype viral stock (t-test, $P < 0.01$), and blue if the frequency of IFN induction is not significantly different than wildtype at this cutoff.
+The points are colored orange if the mutant virus stock induces IFN more frequently than the wildtype viral stock (one-sided t-test, $P < 0.01$), and blue if the frequency of IFN induction is not significantly different than wildtype at this cutoff.
 {\bf (B)}
 Similar to the first panel, but validates the increased rate of IFN induction for a large internal deletion in the PB1 gene.
 See \FIGSUPP[validation]{delflow} and \FIGSUPP[validation]{delqPCR} for more detailed experimental data.
@@ -596,13 +596,28 @@ Each measurement was performed in quadruplicate.
 
 To test if the viral defects identified in single IFN+ cells play a causal role in triggering IFN expression, we used reverse genetics to generate bulk stocks of viruses with some of these defects.
 
-The viral feature most strongly associated with IFN induction in single cells was failure to express the NS gene (\FIG{genotypes}, \FIG{mutations}C).
-Although it is sometimes possible to use complementing cell lines to generate influenza viruses lacking a specific viral gene~\citep{fujii2003selective,marsh2007specific}, we were unsuccessful in using this approach to generate viruses that lacked NS.
+The viral defect most strongly associated with IFN induction in single cells was failure to express the NS gene (\FIG{genotypes}, \FIG{mutations}C).
+Although it is sometimes possible to use complementing cell lines to generate influenza viruses lacking a specific viral gene~\citep{fujii2003selective,marsh2007specific}, we were unable to generate viruses that lacked NS.
 The NS gene encodes two proteins (NS1 and NS2), the first of which is influenza virus's primary innate-immune antagonist~\citep{garcia1998influenza, hale2008multifunctional}.
-We therefore mimicked the effect of absence of NS by creating a mutant virus (which we will term \emph{NS1stop}) that had multiple stop codons early in the NS1 coding sequence.
+We therefore mimicked the effect of absence of NS by creating a mutant virus (which we will term ``NS1stop'') that had multiple stop codons early in the NS1 coding sequence.
 
-The single-cell data also showed that amino-acid substitutions in the PB1 and NS genes were associated with IFN induction (\FIG{genotypes}, \FIG{mutations}C), so we also created mutant viruses for each amino-acid substitution found in these genes among IFN+ cells that did not also lack the NS gene.
-Overall, there were six \jdbcomment{actually, seven with S704P} such point mutant viruses: PB1-D27N, PB1-G206S, PB1-K279R, PB1-T677A, \jdbcomment{what about PB1-S704P?} NS1-A122V, and NS2-E47G (\FIGSUPP[genotypes]{genotypes_by_ifn}).
+The single-cell data also showed that amino-acid substitutions in the PB1 and NS genes were enriched in IFN+ cells (\FIG{genotypes}, \FIG{mutations}C), so we created mutant viruses with many of amino-acid substitutions found in these genes among IFN+ cells.
+Overall, we created six such point-mutant viruses: PB1-D27N, PB1-G206S, PB1-K279R, PB1-T677A, NS1-A122V, and NS2-E47G.
+
+Finally, prior work has suggested that virions carrying internal deletions in the polymerase genes can induce higher levels of IFN~\citep{baum2010preference, tapia2013defective, boergeling2015evidence, dimmock2015cloned}.
+Although such deletions are not significantly enriched among IFN+ cells in our single-cell data (\FIG{mutations}C), there is an IFN+ cell that has a large deletion in PB1 spanning nucleotides 385 to 2163 (\textit{cell 5} in \FIG{genotypes}).
+We therefore created a virus carrying this deletion that we were able to propagate in cells constitutively expressing the PB1 protein~\citep{bloom2010permissive}.
+
+We next tested the rate of IFN induction by each viral stock using the reporter cell lines.
+As shown in \FIG{validation}, five of the eight mutant viruses induced IFN more frequently than a wildtype viral stock.
+The strongest IFN induction was by the NS1stop virus, but the PB1 internal deletion and three of the six point-mutant viruses (PB1-D27N, PB1-T677A, and NS1-A122V) also induced significantly more IFN than the wildtype viral stock.
+These results show that the viral defects in single IFN+ cells often cause increased IFN production.
+
+It is tempting to compare the rates of IFN induction measured in \FIG{validation} with the enrichment of particular viral defects among the IFN+ cells in the single-cell data.
+However, these comparisons are confounded by the fact that the measurements in \FIG{validation} are made using \emph{bulk} stocks of each viral variant---and, as shown by the single-cell data in \FIG{genotypes}, many virions in each stock will also have additional mutations.
+For instance, our single-cell experiment used a ``wildtype'' viral stock, but the vast majority of IFN+ cells (31 of 40) still failed to express wildtype copies of all viral genes (\FIGSUPP[genotypes]{genotypes_by_ifn}). 
+Therefore, although the increased IFN induction by most viral variant stocks in \FIG{validation} does indicate that these variants are causally associated with IFN, without single-cell virus-sequencing it remains impossible to know how many of the IFN+ cells for each viral stock are infected by virions that also have other defects.
+
 
 \section{Discussion}
 
@@ -743,8 +758,11 @@ After 8 hours, mRNA was harvested using the CellAmp Direct RNA Prep Kit for RT-P
 
 \subsection{Viruses and experiments for validation experiments}
 In \FIG{validation}, we tested the IFN inducing capacity of a variety of viral mutants identified in the single-cell experiments.
-Four of these viruses contained point mutations in PB1, two contained point mutations in NS, and one contained an internal deletion in PB1.
-In addition, we created a virus with an inactivated NS1 to mimic the infections that failed to express NS (it was not possible to generate a viral stock that completely lacked the NS segment).
+For point-mutant viruses, we created variants for all amino-acid substitutions found in PB1 and NS among IFN+ cells that did not also lack NS.
+One of these mutants (amino-acid substitution S704P in PB1) did not reach sufficient titers in a single attempt to generate it by reverse genetics, and so was dropped from the experiment (note that we did not attempt replicates of the reverse genetics for this mutant, and so are \emph{not} confident in drawing strong conclusions about its actual attenuation).
+This left six point-mutant viruses: four with point mutations in PB1, and two with point mutations in NS.
+We also created a mutant virus that contained the internal deletion in PB1 found in an IFN+ cell.
+In addition, we created a virus with an inactivated NS1 to mimic the infections that failed to express NS (we were unable to use complementing cells to generate a viral stock that completely lacked the NS segment).
 This NS1stop virus contained six nucleotide changes resulting in the addition of five in-frame stop codons in NS1 starting 10 nucleotides downstream of the 5' splice donor site, thereby disrupting NS1 while leaving NS2 (NEP) intact.
 All of these mutants were cloned into the pHW2000 bi-directional reverse-genetics plasmid~\citep{hoffmann2000dna} in order to enable generation of viruses encoding the mutant genes.
  \FIGDATA[validation]{sequences} provides the full sequences for all of these plasmids.
