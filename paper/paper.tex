@@ -566,8 +566,7 @@ The HA staining indicates that the number of transcriptionally active viral unit
 Each infection was performed in triplicate.
 A complicating factor for these data is that the virus with the deletion in PB1 (PB1del385to2163) cannot perform secondary transcription because it does not express PB1 protein, and so cannot be effectively normalized by HA expression since it expresses lower levels of HA due to the lack of secondary transcription.
 Therefore, for the data in this figure all cells were infected at an equivalent MOI of 0.3 as determined by TCID50 on MDCK-SIAT1 cells for the wildtype and NS1stop, and on MDCK-SIAT1 cells expressing PB1~\citep{bloom2010permissive} for the PB1del385to2163 virus.
-Then qPCR was used to show that the ratio of viral RNA to TCID50 was similar for all viral variants (data not shown).
-Finally, the approach in \FIGSUPP[validation]{delqPCR} was used to show that all viral variants had similar amounts of transcriptionally active virus in the absence of secondary transcription.
+Finally, the approach in \FIGSUPP[validation]{delqPCR} was used to show that equivalent TCID50s, all viral variants had similar amounts of transcriptionally active virus in the absence of secondary transcription.
 All this normalization suggests that all infections were performed at a similar dose of particles active for primary transcription.
 Therefore, the percent IFN+ was calculated from the flow data in this figure for \emph{all} cells (HA+ and HA-) since that is a more fair comparison for the PB1del385to2163 virus.
 }
@@ -576,9 +575,9 @@ Therefore, the percent IFN+ was calculated from the flow data in this figure for
 
 \figsupp[Validation of viral titer normalization for \FIG{validation}B.]
 {Validation that the infections in \FIG{validation}B and \FIGSUPP[validation]{delflow} were performed at similar doses of virions capable of initiating primary transcription.
-In this experiment, A549 cells were infected at MOI of 0.4 (based on TCID50 as described in \FIGSUPP[validation]{delflow}), and then mRNA was harvested for qPCR on oligo-dT primed reverse transcription.
+In this experiment, A549 cells were infected at MOI of 0.4 (based on TCID50 as described in \FIGSUPP[validation]{delflow}), and then after 8 hours mRNA was harvested for qPCR on oligo-dT primed reverse transcription products.
 The y-axis shows the ratio of viral HA mRNA to the housekeeping gene L32.
-These infections were performed in the presence of absence of cycloheximide, which blocks protein synthesis and hence secondary transcription by newly synthesized viral proteins.
+These infections were performed in the presence of absence of 50 $\mu$g/ml cycloheximide, which blocks protein synthesis and hence secondary transcription by newly synthesized viral proteins.
 In the absence of cycloheximide, the viruses with deletions in PB1 produced less viral mRNA presumably because they could not produce PB1 protein for secondary transcription.
 But in the presence of cycloheximide, all viruses produced similar amounts of viral mRNA, indicating that the dose of particles active for primary transcription is roughly equivalent across variants.
 Each measurement was performed in quadruplicate.
@@ -617,6 +616,58 @@ For instance, our single-cell experiment used a ``wildtype'' viral stock, but th
 Therefore, although the increased IFN induction by most viral variant stocks in \FIG{validation} does indicate that these variants are causally associated with IFN, without single-cell virus-sequencing it is impossible to know how many of the IFN+ cells induced by each viral stock are infected by virions that also have other defects.
 For instance, most of the 0.67\% of cells infected with the ``wildtype'' viral stock that turned IFN+ in \FIG{validation}A are probably infected by virions that have some type of genetic defect. 
 
+\subsection{Distinct IFN-inducing characteristics of different viral variants}
+
+%%% begin mutantcomparison figure %%%
+\begin{figure}
+
+\centerline{\includegraphics[width=0.85\textwidth]{figures/MutantComparison/p_merged.pdf}}
+\caption{
+For NS1-deficient infections, higher viral gene expression causes more IFN induction.
+{\bf (A)}
+Flow cytometry shows that for viruses with defects in NS1, there is increased IFN induction among infected cells that express high levels of HA protein relative to those that express low levels of HA.
+However, for wildtype virus and viruses with mutations in PB1, there is only a modest increase in IFN induction with increasing HA.
+The y-axis shows the ratio of the percent of cells that are IFN+ in the highest HA-expression quartile relative to the lowest HA-expression quartile.
+Points indicate four replicates, and lines indicate the mean.
+See \FIGSUPP[mutantcomparison]{ha_vs_ifn} for details.
+{\bf (B)}
+Higher viral gene expression \emph{causes} more IFN induction for NS1-deficient infections, since blocking viral secondary transcription strongly decreases IFN levels in cells infected with NS1stop virus, but not cells infected with the virus carrying a deletion in PB1.
+A549 cells were infected with both viral stocks at doses that induced equivalent IFN, and ribavirin was added to half the samples at a concentration (100 $\mu$M) sufficient to block secondary transcription~\citep{Vanderlinden:2016ec,Reuther:2015ef,Scholtissek:1976wg}.
+After eight hours, IFNB1 transcript was quantified relative to the housekeeping gene L32 by qPCR. 
+Points indicate four replicates, and lines indicate the mean.
+The dashed gray line indicates the limit of detection.
+\FIGSUPP[mutantcomparison]{cycloheximide} shows that similar results are obtained if secondary transcription is blocked with cycloheximide rather than ribavirin.
+}
+\label{fig:mutantcomparison}
+
+\figsupp[Flow cytometry analysis showing that viral burden strongly correlates with IFN induction in NS1-deficient infections.]
+{Re-analysis of the flow cytometry data in \FIGSUPP[validation]{SNPflow} indicates that a higher viral burden is associated with increased IFN-induction in NS1-deficient infections.
+We re-analyzed all the infected cells (defining ``infected'' using the same HA-gating scheme in \FIGSUPP[validation]{SNPflow}) for the wildtype virus, the NS1stop virus, and the three amino-acid mutants with significantly increased IFN induction.
+For each virus and replicate, we binned the infected cells into HA expression quartiles.
+We then calculated the percent of cells that were IFN+ in each quartile (defining ``IFN+'' using the same gating scheme in \FIGSUPP[validation]{SNPflow}).
+The plots show the mean HA expression in each quartile versus the percent of cells that are IFN+.
+The results clearly indicate that for the NS1stop virus, increased viral burden (more HA) correlates with IFN induction.
+A similar trend also holds for the virus with an amino-acid substitution in NS1 (NS1-A122V). 
+But for wildtype and the two PB1 mutants, there is no clear trend for higher viral burden to correlate with IFN induction.
+\FIG{mutantcomparison}A summarizes the data in this figure by simply showing the ratio of the percent IFN+ of the highest HA-expression quartile to the lowest HA-expression quartile for each sample and replicate.}
+{\includegraphics[width=0.9\textwidth]{figures/MutantComparison/p_ifn_vs_ha.pdf}}
+\label{figsupp:ha_vs_ifn}
+
+\figsupp[Similar to \FIG{mutantcomparison}B, but uses cycloheximide rather than ribavirin.]
+{Preventing viral secondary transcription by addition of the cycloheximide also decreases the rate of IFN induction by the NS1stop virus relative to the PB1 deletion virus, corroborating the result in \FIG{mutantcomparison}B with a different inhibitor.
+However, the results are more complex here, since cycloheximide alone increases IFN production~\citep{raj1981analysis, maroteaux1983cycloheximide, killip2014activation}.
+Therefore, we see an increase in IFN levels upon cycloheximide treatment for the uninfected cells and cells infected with the PB1 deletion virus, but a decrease in cells infected with the NS1stop virus.
+This plot shows qPCR results for the same samples as in \FIGSUPP[validation]{cycloheximide}, but with the qPCR for expression of IFNB1 transcripts relative to the housekeeping gene L32.
+As described in \FIGSUPP[validation]{cycloheximide}, A549 cells were infected at an MOI of 0.4, such that HA expression was equivalent between viral variants when secondary transcription was blocked, and some of the samples treated with 50 $\mu$g/ml of cycloheximide.
+After 8 hours, transcript levels were quantified by qPCR.
+Points indicate four replicates, and lines indicate the mean.
+The dashed line shows the limit of detection, and points below this limit where set to that value.
+}
+{\includegraphics[width=0.6\textwidth]{figures/MutantComparison/cyclo_qPCR_plot.pdf}}
+\label{figsupp:cycloheximide}
+
+\end{figure}
+%%% end mutantcomparison figure%%%
 
 \section{Discussion}
 
@@ -657,7 +708,7 @@ These genes were cloned into the pHW2000~\citep{hoffmann2000dna} reverse-genetic
 
 Both viral strains were generated by reverse genetics using the pHW18* series of bi-directional plasmids~\citep{hoffmann2000dna}.
 We controlled the durations and MOI during viral passaging since these factors can greatly affect the accumulation of defective viral particles~\citep{xue2016propagation}.
-The viruses were generated by reverse genetics in co-cultures of 293T and MDCK-SIAT1 in influenza growth media ((Opti-MEM supplemented with 0.01\% heat-inactivated FBS, 0.3\% BSA, 100 U of penicillin/ml, 100 $\mu$g of streptomycin/ml, and 100 $\mu$g of calcium chloride/ml) and then propagated in MDCK-SIAT1 cells in influenza growth media using the same basic procedures detailed in \citet{russell2018extreme}.
+The viruses were generated by reverse genetics in co-cultures of 293T and MDCK-SIAT1 in influenza growth media (Opti-MEM supplemented with 0.01\% heat-inactivated FBS, 0.3\% BSA, 100 U of penicillin/ml, 100 $\mu$g of streptomycin/ml, and 100 $\mu$g of calcium chloride/ml) and then propagated in MDCK-SIAT1 cells in influenza growth media using the same basic procedures detailed in \citet{russell2018extreme}.
 Specifically, after generation by reverse genetics, the wildtype variant was expanded at an MOI of 0.001 for 72 hours twice in MDCK-SIAT1 cells, and the synonymously barcoded variant was expanded once at an MOI of 0.01 for 60 hours.
 The MOIs for this passaging are based on titers determined using TCID50 assays via the formula of \citet{reed1938simple} as implemented at \url{https://github.com/jbloomlab/reedmuenchcalculator}.
 
@@ -744,16 +795,14 @@ We performed qPCR on reverse-transcribed mRNA for influenza HA (to quantify vira
 For the qPCR, we used the SYBR Green PCR Master Mix (Thermo Fisher) according to the manufacturer's protocol using oligo-dT primers.
 The qPCR primers were: HA primer 1, 5'-\texttt{GGCCCAACCACACATTCAAC}-3'; HA primer 2, 5'-\texttt{GCTCATCACTGCTAGACGGG}-3'; IFNB1 primer 1, 5'-\texttt{AAACTCATGAGCAGTCTGCA}-3'; IFNB1 primer 2, 5'-\texttt{AGGAGATCTTCAGTTTCGGAGG}-3'; L32 primer 1, 5'-\texttt{AGCTCCCAAAAATAGACGCAC}-3'; L32 primer 2, 5'-\texttt{TTCATAGCAGTAGGCACAAAGG}-3'. 
 
-For titering virus by qPCR, vRNA was harvested from 80 $\mu$l of viral supernatant by the addition of 600 $\mu$l of RLT plus before proceeding with the standard QIAGEN RNeasy Plus Mini Kit protocol. 
-The cDNA was generated using SuperScript III First-Strand Synthesis SuperMix (Thermo Fisher) using the manufacturer's protocol, and using the universal vRNA primers of \citet{hoffmann2001universal} with the modifications described in \citet{xue2017parallel}. 
-The number of HA molecules were then quantified by qPCR to measure genome dose. 
-
-For the qPCR in \FIGSUPP[validation]{delqPCR}, A549 cells were seeded at a density of 10,000 cells/well in a 96-well plate in D10 media 24 hours prior to infection, with four independent wells seeded per experimental treatment. 
-Immediately prior to infection D10 media was removed and replaced with influenza growth media and infected with the indicated influenza strains at the indicated MOI.
+For the qPCR in \FIGSUPP[validation]{delqPCR} and \FIGSUPP[mutantcomparison]{cycloheximide}, A549 cells were seeded at a density of 10,000$10^4$ cells/well in a 96-well plate in D10 media 24 hours prior to infection, with four independent wells seeded per experimental treatment. 
+Immediately prior to infection D10 media was removed and replaced with influenza growth media and infected with the indicated influenza strains at a MOI of 0.4 based on TCID50 in MDCK-SIAT1 cells.
 For the cells with cycloheximide added to block protein expression (and hence secondary transcription), cycloheximide was added to a final concentration of 50 $\mu$g/ml~\citep[a concentration sufficient to block secondary transcription;][]{killip2014activation} at the time of infection.
 After 8 hours, mRNA was harvested using the CellAmp Direct RNA Prep Kit for RT-PCR, reverse-transcribed using an oligo-dT primer, and qPCR was performed as described above.
 
-\jdbcomment{These details can be added once the appropriate figure is in place: ribavirin was added to cells at the time of infection to a final concentration of 100$\mu$M, respectively, which is sufficient to block secondary transcription~\citep{Vanderlinden:2016ec,Reuther:2015ef,Scholtissek:1976wg}.}
+For the qPCR in \FIG{mutantcomparison}B, A549 cells were infected with the NS1stop virus at a MOI of 0.1 (based on TCID50) in MDCK-SIAT1 and with the PB1del385to2163 virus at a dose that induced equivalent IFN in the absence of ribavirin.
+The ribavirin was added to cells at the time of infection to a final concentration of 100$\mu$M, which is sufficient to block secondary transcription~\citep{Vanderlinden:2016ec,Reuther:2015ef,Scholtissek:1976wg}.
+All other steps were performed as for the cycloheximide experiments described immediately above..
 
 \subsection{Viruses and experiments for validation experiments}
 In \FIG{validation}, we tested the IFN inducing capacity of a variety of viral mutants identified in the single-cell experiments.
@@ -771,7 +820,7 @@ To generate the viruses from these plasmids, we transfected an equimolar mix of 
 At 24 hours post-transfection, we changed media from D10 to influenza growth media. 
 At 50 hours post-transfection (for the replicate 1 viruses in \FIGSUPP[validation]{SNPflow}) or 72 hours (for the replicate 2 viruses in \FIGSUPP[validation]{SNPflow}), we harvested the virus-containing supernatant, clarified this supernatant by centrifugation at 300$\times$g for 4 min, and stored aliquots of the clarified viral supernatant at -80$^{\circ}$C.
 We then thawed aliquots and titered by TCID50 on MDCK-SIAT1 cells.
-For the infections in \FIGSUPP[validation]{SNPflow}, we wanted to use equivalent particle counts, so we normalized all viruses to an equivalent hemagglutination titer on turkey red blood cells ~\citep{hirs1941tHI}.
+For the infections in \FIGSUPP[validation]{SNPflow}, we wanted to use equivalent particle counts, so we normalized all viruses to an equivalent hemagglutination titer on turkey red blood cells~\citep{hirst1942quantitative}.
  Briefly, a solution of 10\% v/v red blood cells (LAMPIRE Biological Laboratories, Fisher Scientific catalogue number 50412942)  was washed in PBS and diluted to a final concentration of 0.5\% v/v. 
 Two-fold serial dilutions of virus were added to an equal volume of diluted red blood cells, and titer was measured as the highest dilution of viral stock at which complete hemagglutination of red blood cells was observed.
 We then performed infections of the A549 reporter cell line at equivalent hemagglutination titer and analyzed the data as described in \FIGSUPP[validation]{SNPflow}. 
@@ -792,12 +841,6 @@ To generate pseudovirus that expresses fluorescent mCherry instead of HA, a plas
 To rescue this virus, we used MDCK-SIAT1 cells transduced to constituitively express HA and included an HA protein expression plasmid in our reverse-genetics transfection mixture.
 Virus was harvested from transfections at 72h and passaged for 48 at an MOI of 0.01 on MDCK-SIAT1 cells that express HA. 
 This virus was titered on complementing MDCK-SIAT1 cells.
-
-\subsection{\jdbcomment{NS1 staining}}
-\jdbcomment{Most details about flow are now in figure supplements, but we do need to add details on NS1 staining after we see how that goes into paper}
-For NS1 staining, HA-stained cells were permeabilized using BD Cytofix/Cytoperm following manufacturer's instructions, stained with anti-NS1 (GTX125990, Genetex) at 4.4 $\mu$g/ml, washed, stained with a goat anti-rabbit IgG antibody conjugated to Alexa Fluor 405, washed, and analyzed.
-After channels were compensated and cells gated to exclude multiplets and debris in FlowJo, data were analyzed using custom python pipelines described in 
-For NS1, owing to sample-to-sample staining variation, thresholds were dynamically set on an individual sample to encompass an equal proportion of HA-expressing and NS1-expressing cells.
 
 \subsection{Computational analysis of single-cell transcriptomic and viral sequence data}
 A computational pipeline that performs all steps in the data analysis is available at \url{https://github.com/jbloomlab/IFNsorted_flu_single_cell}~\citep{russell2018github}. 
