@@ -6,8 +6,6 @@ Amino-acid mutations are numbered in sequential in 1, 2, ... numbering as well.
 
  - [1481_pHH21-WSN-HAflank-startmut-mCherry.gb](1481_pHH21-WSN-HAflank-startmut-mCherry.gb): encodes HA gene segment with mCherry in place of the HA coding sequence. There are flanking packaging regions of HA around the mCherry, with start codons that would be upstream of mCherry mutated away.
 
- - [1649_pHW182-PB1-d351-1896.gb](1649_pHW182-PB1-d351-1896.gb): encodes PB1 from WSN strain with nucleotides 351 to 1896 (inclusive) deleted.
-
  - [1651_pHW182-PB1-d385-2163.gb](1651_pHW182-PB1-d385-2163.gb): encodes PB1 from WSN strain with nucleotides 385 to 2163 (inclusive) deleted.
 
  - [1717_pHW188_NS1mut.gb](1717_pHW188_NS1mut.gb): encodes NS gene from WSN strain of influenza with point mutations that create 5 stop codons shortly downstream of first splice site. This will disrupt NS1, but should leave NS2 intact.
