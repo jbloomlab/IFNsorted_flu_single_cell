@@ -454,19 +454,18 @@ Note also that this plot is limited to the cells that were called as infected (\
 %%% end genotypes figure %%%
 
 The foregoing transcriptomic analyses identify which viral genes are expressed in each cell, but not the sequences of these genes.
-This is a major shortcoming, since influenza's high mutation rate means that although the \emph{consensus} sequence of the viral stock corresponds to WSN influenza, the virions infecting individual cells will often carry mutations~\citep{parvin1986measurement, suarez1992heterogeneity, suarez1994estimation, bloom2014experimentally, pauly2017novel}.
 We therefore used PacBio sequencing (\FIG{workflow}D) to determine the full sequences of the viral genes expressed in the majority of infected cells.
 
 By employing several PCR enrichment strategies (see Methods), we obtained over 200,000 high-quality PacBio CCSs that mapped to an influenza gene and contained a cell barcode and UMI (\FIGSUPP[genotypes]{CCSs}).
-Crucially, the synonymous viral barcodes at both termini of each gene enabled us to estimate the rate of PCR strand exchange among PacBio-sequenced cDNAs (\FIGSUPP[genotypes]{StrandExchange}).
+Crucially, the synonymous viral barcodes at both termini of each gene enabled us to estimate the rate of PCR strand exchange (\FIGSUPP[genotypes]{StrandExchange}).
 Less then 3\% of the cDNAs experienced strand exchange that we were not able to identify and filter (\FIGSUPP[genotypes]{CCSs}), meaning that the vast majority of CCSs correctly link the sequence of the viral transcript to cell barcodes and UMIs that identify the cell and molecule of origin.
 
 We used these CCSs to call the sequences of viral genes in single cells.
 We called a mutation if it was found in least two CCSs originating from different mRNAs (unique UMIs) in that cell, and was also present in at least 30\% of all CCSs for that gene in that cell.
 For cells co-infected with both viral barcode variants, we called mutations separately for each viral variant.
-This strategy reliably identifies mutations in the virions that initiate infection of cells infected with at most one virion of each viral barcode variant (estimated to be $\sim$75\% of infected cells), as well as high-abundance mutations in cells co-infected with multiple virions of the same viral barcode.
-The strategy will not identify mutations that arise within a cell after the first few rounds of viral genome replication, since such mutations will not reach 30\% frequency in that cell.
-Therefore, analogous to somatic variant calling in tumor sequencing~\citep{xu2014comparison, cibulskis2013sensitive}, there is an inherent limit to our detection threshold: we can identify viral mutations that are at high frequency within single infected cells, but not mutations that occur on just a small fraction of the viral transcripts in a cell. 
+This strategy reliably identifies mutations in the virions that initiate infection of cells infected with at most one virion of each viral barcode variant ($\sim$75\% of infected cells), as well as high-abundance mutations in cells co-infected with multiple virions of the same viral barcode.
+It will not identify mutations that arise within a cell after the first few rounds of viral genome replication, since such mutations will not reach 30\% frequency in that cell.
+Therefore, analogous to somatic variant calling in tumor sequencing~\citep{xu2014comparison, cibulskis2013sensitive}, there is a limit to our detection threshold: we cannot identify mutations that occur on just a small fraction of viral transcripts in a cell. 
 
 We could call the sequences of all expressed viral genes in the majority of infected cells (\FIGSUPP[genotypes]{ncells}).
 We were most effective at calling full viral genotypes in cells that expressed high amounts of viral mRNA and were infected by only one viral barcode variant (\FIGSUPP[genotypes]{ncells}).
