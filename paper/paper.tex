@@ -342,15 +342,14 @@ To remove some of these multiplets, we filtered transcriptomes with unusually hi
 For the remainder of this paper, we analyze the 1,490 human cells that passed this filtering.
 
 To identify infected cells, we examined the fraction of each transcriptome derived from virus (\FIG{transcriptomics}B).
-As expected, only a small fraction ($\sim$0.7\%) of the transcripts in the uninfected canine cells were from influenza; this low-level background is likely from lysed cells that release ambient viral mRNA that is captured in droplets during reverse-transcription.
-We tested whether each cell contained significantly more viral transcripts than expected under a Poisson model given this background fraction.
-Using this test, we classified 290 of the 1,490 human cells as definitively infected with influenza (\FIG{transcriptomics}B).
-We classified the other cells as uninfected, although it is possible that some of them were infected with virions that produced too little mRNA to be detected in our experiment.
+As expected, only a small fraction ($\sim$0.7\%) of transcripts in the uninfected canine cells were from influenza; this low-level background is likely from lysed cells that release ambient viral mRNA that is captured in droplets during reverse-transcription.
+We tested whether each cell contained significantly more viral transcripts than expected under a Poisson model given this background fraction, and classified 290 of the 1,490 human cells as definitively infected with influenza (\FIG{transcriptomics}B).
+We classified the other cells as uninfected, although it is possible that some were infected with virions that produced too little mRNA to be detected in our experiment.
 The distribution of the amount of viral mRNA across infected cells is shown in the inset in \FIG{transcriptomics}B.
-As in our prior work~\citep{russell2018extreme}, the amount of viral mRNA is extremely heterogeneous: many infected cells have only a few percent of their mRNA derived from virus, but viral mRNA comprises over half the transcriptome of a few cells.
+As in our prior work~\citep{russell2018extreme}, the distribution is extremely heterogeneous: many infected cells have only a few percent of mRNA derived from virus, but viral mRNA comprises over half the transcriptome of a few cells.
 
 We then called the presence or absence of each viral gene in each infected cell, again using a Poisson model parameterized by background fractions estimated from uninfected canine cells.
-Although ten transcripts are encoded by the eight viral genes, we call presence / absence at the level of genes rather than transcripts.
+Although ten transcripts are encoded by the eight viral genes, we call presence / absence of genes rather than transcripts.
 The reason is that the genes that encode multiple transcripts (M1 / M2 from the M gene, and NS1 / NS2 from the NS gene) do so via alternative splicing that leaves both isoforms with the same termini, making them indistinguishable in the 3'-end sequencing transcriptomic data.
 \FIG{transcriptomics}D (top panel) shows that the majority (162 of 290) of infected cells express all eight genes, although a substantial minority fail to express one or more genes (see \FIGSUPP[transcriptomics]{frac_has_gene} for frequencies at which individual genes are present).
 This measured frequency of infected cells expressing all eight genes is higher than in our own prior work~\citep{russell2018extreme} and studies by others~\citep{brooke2013most, heldt2015single, dou2017analysis}, which have estimated that only 13\% to 50\% of infected cells express all genes. 
