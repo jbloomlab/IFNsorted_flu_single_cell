@@ -96,11 +96,11 @@ For instance, we previously performed single-cell transcriptomics on hundreds of
 Only 1 of 368 infected cells expressed detectable type I or type III IFN (\FIG{IFNrare}A).
 Importantly, the paucity of IFN+ cells was not due simply to a poor detection threshold, since $>$100 IFN transcripts were detected in the one IFN+ cell~\citep{russell2018extreme}.
 
-The rareness of IFN induction by influenza infection is not merely a feature of A549 cells in culture.
-Prior studies using fluorescent reporters have found that IFN expression is rare at the single-cell level in influenza-infected mice at 24 and even 48 hours post-infection~\citep{kallfass2013visualizing}.
-In further support of these findings, we re-analyzed the single-cell transcriptomics of influenza-infected mice by \citet{steuerman2018dissection}.
+This rareness of IFN induction is not merely a feature of A549 cells in culture.
+Prior studies using reporters have found that IFN expression is rare at the single-cell level in influenza-infected mice at 24 and even 48 hours post-infection~\citep{kallfass2013visualizing}.
+In support of these findings, we re-analyzed the single-cell transcriptomics of influenza-infected mice by \citet{steuerman2018dissection}.
 As shown in \FIGSUPP[IFNrare]{mice}, many infected cells in the mice expressed IFN-stimulated genes (ISGs), which are induced by autocrine and paracrine signaling~\citep{stetson2006type,honda2006type}.
-But only a handful of infected cells detectably expressed IFN itself, which is only induced by direct cellular detection of viral infection~\citep{stetson2006type,honda2006type}.
+But just a handful of cells detectably expressed IFN itself, which is only induced by direct cellular detection of viral infection~\citep{stetson2006type,honda2006type}.
 
 %%% start IFNrare figure %%%
 \begin{figure}
@@ -179,16 +179,15 @@ To efficiently identify and enrich rare IFN+ cells, we integrated IFN reporters 
 These reporters consisted of a type I (\textit{IFNB1}) or type III (\textit{IFNL1}) promoter driving expression of a cell-surface protein~\citep[LNGFR$\Delta$C;][]{bonini1997hsv,ruggieri1997cell} followed by a fluorescent protein.
 Cells that activate the IFN reporter can enriched by magnetic-activated cell sorting (MACS) for the cell-surface protein, or identified by flow cytometry for the fluorescent protein.
 The reporters were efficiently activated by a strain of Sendai virus~\citep{strahle2006sendai} that potently induces IFN (\FIGSUPP[IFNrare]{reporter_validation}), and activation of the type I and type III IFN reporters was highly correlated in single influenza-infected A549 cells (\FIGSUPP[IFNrare]{type_I_vs_III}; further validated by the single-cell transcriptomics described below).
-Therefore, for the rest of this paper, we will use ``IFN expression'' to refer to the combined expression of type I and III IFNs. 
+Therefore, for the rest of this paper, we use ``IFN expression'' to refer to combined expression of type I and III IFNs. 
 
-We used the reporter cells to quantify the frequency of IFN induction in single A549 cells infected with the A/WSN/1933 (H1N1) strain of influenza (hereafter referred to as ``WSN'').
+We used the reporter cells to quantify the frequency of IFN induction in A549 cells infected with the A/WSN/1933 (H1N1) strain of influenza (hereafter referred to as ``WSN'').
 As shown in \FIG{IFNrare}C, $\sim$0.5\% of infected cells activated the IFN reporter at 13 hours post-infection.
-This frequency of IFN induction is roughly comparable to what we had observed in our prior single-cell transcriptomics of influenza-infected cells (\FIG{IFNrare}B).
+This frequency of IFN induction is roughly comparable to that observed in our prior single-cell transcriptomics of influenza-infected cells (\FIG{IFNrare}B).
 
 \subsection{Combined transcriptomics and virus-sequencing of single infected cells}
-We next developed a method to determine if features of the infecting virions are responsible for the heterogeneous outcome of influenza infection in single cells, including the rare induction of IFN.
-Standard single-cell transcriptomic approaches are inadequate for this purpose, since they just use 3'-end sequencing of poly-adenylated mRNAs to determine the abundance of each transcript~\citep{klein2015droplet, macosko2015highly, zheng2017massively, cao2017comprehensive, gierahn2017seq}.
-Such measurements of transcriptomic abundance do not reveal if the virions that infect individual cells have features (e.g., mutations) that contribute to heterogeneity in infection outcome. 
+We next developed a method to determine if features of the infecting virions are responsible for the heterogeneous outcome of infection in single cells.
+Standard single-cell transcriptomic techniques are inadequate for this purpose, since they just use 3'-end sequencing of poly-adenylated mRNAs to measure the abundance of each transcript~\citep{klein2015droplet, macosko2015highly, zheng2017massively, cao2017comprehensive, gierahn2017seq}, and do not reveal if the virions that infect individual cells have features (e.g., mutations) that contribute to heterogeneity in infection outcome. 
 
 %%% start workflow figure
 \begin{figure}
@@ -237,15 +236,15 @@ The qPCR was performed in quadruplicate (hence the four points for each sample).
 \end{figure}
 %%% end workflow figure
 
-We therefore developed the approach in \FIG{workflow} to determine both the entire transcriptome \emph{and} the full sequences of the infecting virions in single cells.
-First, we generated a stock of virus that consisted of a mix of two variants of the WSN strain of influenza: the wildtype virus and a ``synonymously barcoded'' variant that contained two engineered synonymous mutations near each termini of each gene (\FIGDATA[workflow]{virus_seqs}).
+We therefore developed the approach in \FIG{workflow} to determine the entire transcriptome \emph{and} the full sequences of the infecting virions in single cells.
+First, we generated a stock of virus that consisted of a mix of wildtype WSN and a ``synonymously barcoded'' variant that contained two engineered synonymous mutations near each termini of each gene (\FIGDATA[workflow]{virus_seqs}).
 These viral barcodes allow us to identify co-infection of individual cells from single-cell transcriptomic data~\citep{russell2018extreme}, and also provide an important control for PCR artifacts during full-length sequencing of viral transcripts (see below).
 
-We next used this viral stock to infect A549 cells carrying an IFN reporter (\FIG{workflow}A) at a dose that led to detectable viral transcription in about a quarter of the cells.
+We next used this viral stock to infect A549 IFN reporter cells (\FIG{workflow}A) at a dose that led to detectable viral transcription in about a quarter of the cells.
 From 12 to 13 hours post-infection, we used MACS to enrich cells that had activated the IFN reporter.
-Based on pilot experiments, we expected this MACS to enrich the rare IFN+ cells to $\sim$5\% to 30\% of the total population (\FIGSUPP[workflow]{MACS}).
-To ensure the presence of IFN- cells after the MACS enrichment, we added back non-enriched cells to $\sim$10\% of the total.
-We also added uninfected canine cells to $\sim$5\% of the total as an internal control for multiplets and to estimate the background amount of viral mRNA detected in truly uninfected cells.
+Based on pilot experiments, we expected this MACS to enrich IFN+ cells to $\sim$5\% to 30\% of the total (\FIGSUPP[workflow]{MACS}).
+To ensure the presence of IFN- cells after MACS enrichment, we added back non-enriched cells to $\sim$10\% of the total.
+We also added uninfected canine cells to $\sim$5\% of the total as a control for multiplets and to estimate the background amount of viral mRNA detected in truly uninfected cells.
 
 We processed the cells on a commercially available platform~\citep[the 10X Chromium;][]{zheng2017massively} that physically isolates cells in droplets and then reverse transcribes polyadenylated mRNAs to append a unique cell barcode to all cDNAs in each droplet, and a unique molecular identifier (UMI) to each cDNA molecule (\FIG{workflow}B).
 Because influenza virus mRNAs are polyadenylated~\citep{robertson1981polyadenylation}, this process appends cell barcodes to both cellular and viral mRNAs.
@@ -256,7 +255,7 @@ But we also took a portion and enriched for full-length viral molecules by PCR (
 We performed PacBio sequencing on these full-length viral cDNAs to generate high-accuracy circular consensus sequences~\citep[CCSs;][]{travers2010flexible}.
 These CCSs retain the cell barcodes, and with sufficient sequencing depth we obtain CCSs from multiple unique UMI-tagged cDNAs for each viral gene in each cell.
 Because most cells are infected by just one or two virions, we can build a consensus of CCSs for each viral gene in each cell to determine the sequence(s) of these virions.
-Combining this information with the 3'-end sequencing simultaneously determines the entire transcriptome and the full sequences of the infecting virions in single cells (\FIG{workflow}E).
+Combining this information with the 3'-end sequencing determines the entire transcriptome and the full sequences of the infecting virions in single cells (\FIG{workflow}E).
 
 \subsection{Transcriptomic analyses of single IFN+ and IFN- influenza-infected cells}
 
