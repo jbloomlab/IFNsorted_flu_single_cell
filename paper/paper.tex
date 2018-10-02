@@ -479,7 +479,7 @@ But 12 of the other 13 cells with at least 50\% of their mRNA from virus were in
 The two cells that expressed the most IFN (\textit{cell 13} and \textit{cell 123}) both lacked the viral NS gene, and many other IFN+ cells had different defects such as large internal deletions (e.g., \textit{cell 5} and \textit{cell 89}) or amino-acid mutations (e.g., \textit{cell 9}, \textit{cell 28}, and many others).
 However, expressing unmutated copies of all eight genes did not guarantee a favorable outcome for the virus: for instance, the apparently flawless virion that infected \textit{cell 139} only managed to express viral mRNA to 6\% of the total transcriptome, and the apparently flawless virion that infected \textit{cell 105} still induced IFN.
 
-\subsection{Viral features associated with infection outcome in single cells}
+\subsection{Viral defects associated with infection outcome in single cells}
 
 %%% begin mutations figure %%%
 \begin{figure}
@@ -539,7 +539,7 @@ To systematically assess viral features associated with infection outcome, we di
 \FIG{mutations}A shows that the 49 cells infected by full wildtype viruses had a significantly tighter distribution of the amount of viral mRNA per cell than the other 101 cells as quantified by the Gini index~\citep{gini1921measurement}.
 Therefore, viral defects are a major contributor to the heterogeneity in viral transcriptional burden among cells.
 
-Viral features also associated with IFN induction, with cells infected by full wildtype virions turning IFN+ less often than cells infected by incomplete or mutated virions (\FIG{mutations}B).
+Viral defects also associated with IFN induction, with cells infected by full wildtype virions turning IFN+ less often than cells infected by incomplete or mutated virions (\FIG{mutations}B).
 Specific viral defects were especially associated with IFN induction (\FIG{mutations}C).
 Absence of NS and amino-acid mutations in PB1 were significantly enriched in IFN+ cells, and amino-acid mutations in NS and deletions in HA were weakly enriched.
 Only the absence of NS remained significant at a false discovery rate of 10\% (\FIG{mutations}C)---although a Bayesian-minded virologist might contend that controlling for all the hypotheses in \FIG{mutations}C is too stringent, since some are more plausible \textit{a priori} given existing biological knowledge~\citep[e.g.,][]{killip2017single, velthuis2018mini, wu2014high}.
@@ -615,7 +615,7 @@ Each measurement was performed in quadruplicate.
 To test if the viral defects identified in single IFN+ cells play a causal role in triggering IFN expression, we used reverse genetics to generate bulk stocks of viruses with some of these defects.
 
 The viral defect most strongly associated with IFN induction in single cells was failure to express the NS gene (\FIG{genotypes}, \FIG{mutations}C).
-Although it is sometimes possible to use complementing cell lines to generate influenza viruses lacking a specific viral gene~\citep{fujii2003selective,marsh2007specific}, we were unable to generate viruses that lacked NS.
+Although it is sometimes possible to use complementing cells to generate influenza viruses lacking a specific gene~\citep{fujii2003selective,marsh2007specific}, we were unable to generate viruses that lacked NS.
 The NS gene encodes two proteins (NS1 and NS2), the first of which is influenza virus's primary innate-immune antagonist~\citep{garcia1998influenza, hale2008multifunctional}.
 We therefore mimicked the effect of absence of NS by creating a mutant virus (which we will term ``NS1stop'') that had multiple stop codons early in the NS1 coding sequence.
 
@@ -623,19 +623,19 @@ The single-cell data also showed that amino-acid substitutions in the PB1 and NS
 Overall, we created six such point-mutant viruses: PB1-D27N, PB1-G206S, PB1-K279R, PB1-T677A, NS1-A122V, and NS2-E47G.
 
 Finally, prior work has suggested that virions carrying internal deletions in the polymerase genes can induce higher levels of IFN~\citep{baum2010preference, tapia2013defective, boergeling2015evidence, dimmock2015cloned}.
-Although such deletions are not significantly enriched among IFN+ cells in our single-cell data (\FIG{mutations}C), there is an IFN+ cell that has a large deletion in PB1 spanning nucleotides 385 to 2163 (\textit{cell 5} in \FIG{genotypes}).
-We therefore created a virus carrying this deletion that we were able to propagate in cells constitutively expressing the PB1 protein.
+Although such deletions are not significantly enriched among IFN+ cells in our single-cell data (\FIG{mutations}C), there is an IFN+ cell that has a deletion in PB1 spanning nucleotides 385 to 2163 (\textit{cell 5} in \FIG{genotypes}).
+We therefore created a virus carrying this deletion, and propagated it in cells constitutively expressing PB1 protein.
 
-We next tested the rate of IFN induction by each viral stock using the reporter cell lines.
-As shown in \FIG{validation}, five of the eight mutant viruses induced IFN more frequently than wildtype.
-The strongest IFN induction was by the NS1stop virus, but the PB1 internal deletion and three of the six point-mutant viruses (PB1-D27N, PB1-T677A, and NS1-A122V) also induced significantly more IFN than wildtype.
+We tested the rate of IFN induction by each viral stock using the reporter cells.
+\FIG{validation} shows that five of the eight mutant viral stocks induced IFN more frequently than wildtype.
+The strongest IFN induction was by the NS1stop virus, but the PB1 internal deletion and three of the point-mutant viruses (PB1-D27N, PB1-T677A, and NS1-A122V) also induced significantly more IFN than wildtype.
 These results show that the viral defects in single IFN+ cells often cause increased IFN production.
 
 It is tempting to compare the rates of IFN induction measured in \FIG{validation} with the enrichment of particular viral defects among the IFN+ cells in the single-cell data.
-However, these comparisons are confounded by the fact that the measurements in \FIG{validation} are made using \emph{bulk} stocks of each viral variant---and, as shown by the single-cell data in \FIG{genotypes}, many virions in each stock will also have additional mutations.
-For instance, our single-cell experiment used a ``wildtype'' viral stock, but the vast majority of IFN+ cells (31 of 40) still failed to express wildtype copies of all viral genes (\FIGSUPP[genotypes]{genotypes_by_ifn}). 
-Therefore, although the increased IFN induction by most viral variant stocks in \FIG{validation} does indicate that these variants are causally associated with IFN, without single-cell virus-sequencing it is impossible to know how many of the IFN+ cells induced by each viral stock are infected by virions that also have other defects.
-For instance, most of the 0.67\% of cells infected with the ``wildtype'' viral stock that turned IFN+ in \FIG{validation}A are probably infected by virions that have some type of genetic defect. 
+However, these comparisons are confounded by the fact that the measurements in \FIG{validation} use \emph{bulk} stocks of each viral mutant---and, as shown by the single-cell data in \FIG{genotypes}, many virions in each stock will also have additional mutations.
+For instance, our single-cell experiment used a ``wildtype'' viral stock, but most IFN+ cells (31 of 40) still had viral defects (\FIGSUPP[genotypes]{genotypes_by_ifn}). 
+So although increased IFN induction by the mutant viral stocks does indicate the mutations are causally associated with IFN, it is impossible to know how many of the IFN+ cells induced by each stock are infected by virions that also have other defects.
+The rate of IFN induction by any given viral mutant can therefore only be accurately quantified by single-cell virus-sequencing.
 
 \subsection{Distinct IFN-inducing characteristics of different viral variants}
 
