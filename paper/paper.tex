@@ -59,43 +59,42 @@ Our work shows that the genetic variation present in influenza virus populations
 
 \section{Introduction}
 Infection with an acute virus such as influenza initiates a race between the virus and immune system.
-As the virus spreads, some infected cells trigger innate immunity and begin producing interferon~\citep[IFN;][]{iwasaki2014innate}.
+As the virus spreads, some infected cells trigger innate immunity and begin producing interferon (IFN).
 This IFN directs expression of anti-viral interferon-stimulated genes (ISGs) in the infected cell and its neighbors via autocrine and paracrine signaling, as well as helping launch a broader immune response~\citep{stetson2006type,honda2006type}.
-If innate immunity is activated sufficiently rapidly, it can reduce viral replication and disease severity~\citep{solov1969results,treanor1987intranasally,beilharz2007protection,kugel2009intranasal,steel2010transmission}.
+If innate immunity is activated sufficiently rapidly, it can reduce viral replication and disease severity~\citep{solov1969results,treanor1987intranasally,beilharz2007protection,kugel2009intranasal,steel2010transmission}---although excessive prolonged immune responses later in infection can actually be associated with immunopathology and more severe disease~\citep{la2007question, iwasaki2014innate}.
 
-Unfortunately for the host, influenza infection only rarely triggers IFN production by individual infected cells~\citep{kallfass2013visualizing, killip2017single}.
+Unfortunately for the host, influenza infection only rarely triggers IFN production by individual infected cells early in infection~\citep{kallfass2013visualizing, killip2017single}.
 This rareness of IFN induction is just one form of the extreme cell-to-cell heterogeneity that characterizes influenza infection: infected cells also vary widely in their production of viral mRNA, proteins, and progeny virions~\citep{russell2018extreme,steuerman2018dissection,sjaastad2018distinct,heldt2015single}.
 Because viral replication and the IFN response are both feed-forward processes, early cell-to-cell heterogeneity could have significant downstream consequences for the race between virus and immune system---especially since real influenza infections are typically initiated by just a few virions entering a few cells~\citep{mccrone2018stochastic, xue2018reconciling, varble2014influenza}.
 
-It remains unclear why only some infected cells trigger innate-immune responses.
+It is unclear why only some infected cells trigger innate-immune responses.
 Two possible contributors are pure stochasticity and pre-existing variation in cellular state.
-For instance, only some cells induce IFN even upon homogeneous treatment with synthetic innate-immune ligands~\citep{shalek2013single, shalek2014single, wimmers2018single}, and there is evidence that the frequency of IFN induction depends on a cell's pre-existing chromatin state~\citep{bhushal2017cell}.
-Such self-imposed limitation of an IFN response is consistent with the biological impact of IFN as, despite the beneficial antiviral effects of IFN signaling, these effects can come at a significant cost due to increased immunopathology~\citep{iwasaki2014innate}.
+For instance, only some cells induce IFN even upon homogeneous treatment with synthetic innate-immune ligands~\citep{shalek2013single, shalek2014single, wimmers2018single}, and the frequency of IFN induction may depend on a cell's pre-existing chromatin state~\citep{bhushal2017cell}.
 But for influenza, a third possible contributor also looms large: viral genetic diversity.
-Specifically, because influenza has a high mutation rate, even if the \emph{consensus} sequence of a viral population is ``wildtype,'' individual virions will often have genetic defects~\citep{parvin1986measurement, suarez1992heterogeneity, suarez1994estimation, bloom2014experimentally, pauly2017novel}.
-Indeed, many studies have identified mutations that increase IFN induction when engineered into a viral population~\citep{velthuis2018mini, du2018genome, killip2017single, perez2014unbiased}, and more IFN is induced by viral stocks that contain defective virions with internal deletions in the polymerase genes~\citep{baum2010preference, tapia2013defective, boergeling2015evidence, dimmock2015cloned}.
+Because influenza has a high mutation rate, even if the \emph{consensus} sequence of a viral population is ``wildtype,'' individual virions will often have defects~\citep{parvin1986measurement, suarez1992heterogeneity, suarez1994estimation, bloom2014experimentally, pauly2017novel}.
+Indeed, many studies have identified mutations that increase IFN induction when engineered into a viral population~\citep{velthuis2018mini, du2018genome, killip2017single, perez2014unbiased}, and viral stocks that are rich in internal deletions in the polymerase genes induce more IFN~\citep{baum2010preference, tapia2013defective, boergeling2015evidence, dimmock2015cloned}.
 
-However, existing single-cell techniques are inadequate to determine how viral genetic diversity actually contributes to cell-to-cell heterogeneity during infection, since they do not systematically determine the full sequences of the virions that infect individual cells.
-Flow cytometry and fluorescent reporters only measure expression of viral proteins~\citep{brooke2013most, guo2017single}, and current single-cell transcriptomic techniques primarily measure abundance of viral transcripts~\citep{russell2018extreme, zanini2018single, zanini2018virus, steuerman2018dissection, saikia2018simultaneous}.
-None of these techniques reliably reveal if the virion infecting a specific cell has some idiosyncratic mutation, despite the fact that such mutations will be common regardless of whether the cells are infected with a nominally ``wildtype'' or ``mutant'' stock of virus.
+However, existing techniques are inadequate to determine how viral genetic diversity contributes to cell-to-cell heterogeneity during infection, since they do not determine full sequences of the virions that infect individual cells.
+Flow cytometry and fluorescent reporters only measure protein levels~\citep{brooke2013most, guo2017single}, and current single-cell transcriptomic techniques primarily measure abundance of transcripts~\citep{russell2018extreme, zanini2018single, zanini2018virus, steuerman2018dissection, saikia2018simultaneous}.
+None of these techniques reliably reveal if the virion infecting a specific cell has some idiosyncratic mutation, despite the fact that such mutations are common regardless of whether the cells are infected with a nominally ``wildtype'' or ``mutant'' stock of virus.
 
 Here we develop a new approach to measure both the full transcriptome and the sequences of all viral genes in single influenza-infected cells.
 To do this, we first enrich for rare IFN+ cells, and then perform both standard Illumina-based single-cell transcriptomics and full-length PacBio sequencing of viral genes.
-We obtain the transcriptomes and full sequences of all expressed viral genes in 150 virus-infected cells, 49 of which express IFN.
-Even though we used a nominally ``wildtype'' stock of virus, two-thirds of the cells are infected by virions that have a mutation or defect in gene expression.
+We obtain the transcriptomes and full sequences of all expressed viral genes in 150 infected cells, 40 of which express IFN.
+Even though we used a nominally ``wildtype'' stock of virus, two-thirds of cells are infected by virions that have a mutation or defect in gene expression.
 This viral diversity is a major contributor to cell-to-cell heterogeneity, with cells infected by truly wildtype virions having a tighter distribution of viral transcriptional burden.
 Viral defects are especially common in IFN+ cells, and we identify at least four defects that cause increased IFN induction: amino-acid substitutions in the viral polymerase (PB1), absence of the NS gene, amino-acid substitutions in NS1, and internal deletions in polymerase genes.
-However, viral genetic variation does not fully explain the cell-to-cell heterogeneity, as even truly wildtype virions sometimes induce IFN, and no viral mutations that we identify deterministically induce IFN.
+However, viral genetic variation does not fully explain the cell-to-cell heterogeneity, as even truly wildtype virions sometimes induce IFN, and no viral mutations deterministically induce IFN.
 Therefore, viral diversity is an important but not exclusive cause of cell-to-cell heterogeneity during influenza infection.
 
 \clearpage
 \section{Results}
 
 \subsection{A system to identify and enrich for rare IFN+ positive cells}
-Influenza infection only rarely triggers expression of the anti-viral IFNs~\citep[type I and type III IFNs;][]{kotenko2017contribution} at the single-cell level~\citep{killip2017single}.
+A challenge in studying IFN induction by influenza virus is that infection only rarely triggers expression of anti-viral IFN~\citep[type I and type III;][]{kotenko2017contribution} at the single-cell level~\citep{killip2017single}.
 For instance, we previously performed single-cell transcriptomics on hundreds of influenza-infected A549 human lung epithelial cells at early times (6 to 10 hours) post-infection~\citep{russell2018extreme}.
 Only 1 of 368 infected cells expressed detectable type I or type III IFN (\FIG{IFNrare}A).
-Importantly, the paucity of IFN+ cells was not due simply to a poor detection threshold, since $>$100 IFN transcripts were detected in the one IFN+ cell~\citep{russell2018extreme}.
+This paucity of IFN+ cells was not due simply to a poor detection threshold, since $>$100 IFN transcripts were detected in the one IFN+ cell~\citep{russell2018extreme}.
 
 This rareness of IFN induction is not merely a feature of A549 cells in culture.
 Prior studies using reporters have found that IFN expression is rare at the single-cell level in influenza-infected mice at 24 and even 48 hours post-infection~\citep{kallfass2013visualizing}.
