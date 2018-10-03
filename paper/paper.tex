@@ -548,7 +548,7 @@ In any case, \FIG{genotypes} and \FIG{mutations}C motivate compelling hypotheses
 
 One other interesting trend emerges from the single-cell data.
 There is no difference in the amount of viral mRNA between IFN+ and IFN- cells that express NS---but among cells that lack NS, the IFN+ ones have significantly more viral mRNA (\FIG{mutations}D).
-The statistical analysis in \FIG{mutations}D is insufficient to determine if the higher viral transcriptional burden in IFN+ NS-deficient infections is a cause or a consequence of the IFN induction, but the experiments below shed more light on this question.
+The statistical analysis in \FIG{mutations}D is insufficient to determine if the higher viral transcriptional burden in IFN+ NS-deficient infections is a cause or a consequence of IFN induction, but experiments below will shed more light on this question.
 
 \subsection{Validation that viral defects in single IFN+ cells often cause increased IFN induction}
 
@@ -638,7 +638,7 @@ For instance, our single-cell experiment used a ``wildtype'' viral stock, but mo
 So although increased IFN induction by the mutant viral stocks does indicate the mutations are causally associated with IFN, it is impossible to know how many of the IFN+ cells induced by each stock are infected by virions that also have other defects.
 The rate of IFN induction by any given viral mutant can therefore only be accurately quantified by single-cell virus-sequencing.
 
-\subsection{Distinct IFN-inducing characteristics of different viral variants}
+\subsection{Distinct characteristics of IFN induction by different viral variants}
 
 %%% begin mutantcomparison figure %%%
 \begin{figure}
@@ -689,7 +689,15 @@ The dashed line shows the limit of detection, and points below this limit where 
 \end{figure}
 %%% end mutantcomparison figure%%%
 
-\jdbcomment{Section needs to be completed after remaining data on co-infections.}
+The single-cell data reveal differences among IFN+ cells depending on the defect in the virion that infects them.
+Specifically, \FIG{mutations}D shows that if a cell is infected by a virion that fails to express NS, then a higher viral transcriptional load correlates with IFN induction---but that no such association is present among infected cells that express NS.
+To validate this conclusion, we used flow cytometry to compare the frequency of IFN induction among infected cells that express low or high levels of a viral protein (HA).
+\FIG{mutantcomparison}A shows that upon infection with stocks of the NS1stop or NS1-A122V mutant, cells that express high levels of HA are much more likely to be IFN+ than those with low HA expression.
+In contrast, if cells are infected with stocks of wildtype or PB1 amino-acid mutant virus, there is only a slight increase in IFN induction among cells with high HA expression. 
+
+To determine if higher viral transcriptional burden \emph{causes} IFN induction in NS-deficient infections, we treated infected cells with two different chemicals (ribavirin and cycloheximide) that inhibit secondary viral transcription, and so greatly reduce the level of viral transcripts~\citep{Vanderlinden:2016ec,Reuther:2015ef,Scholtissek:1976wg, killip2014activation}.
+As shown in \FIG{mutantcomparison}A and \FIGSUPP[mutantcomparison]{cycloheximide}, both inhibitors markedly reduced IFN induction by cells infected with the NS1stop viral stock, but not by cells infected the virus carrying a deletion in PB1.
+This result indicates that high levels of viral transcription promote IFN induction in NS-deficient infections, and suggests that there are distinct mechanisms of IFN induction by different viral variants---perhaps explaining why prior studies have not reached a consensus on the process by which influenza induces IFN~\citep{rehwinkel2010rig, weber2013incoming, killip2014activation}.
 
 \section{Discussion}
 
@@ -697,6 +705,8 @@ The dashed line shows the limit of detection, and points below this limit where 
 Add this:
 Approach builds on observations by \citet{saikia2018simultaneous} and \citet{zanini2018virus} that fragmentary viral genetic information can be obtained using more standard single-cell techniques, and is similar the approach used by \cite{gupta2018single} to obtain full-length isoforms of some cellular genes in single cells.
 }
+
+\jdbcomment{It also confirms the suggestion by \citet{sjaastad2018distinct} that viral genetic variation contributes to the variability in gene expression among IFN+ cells.}
 
 \section{Methods and Materials}
 
