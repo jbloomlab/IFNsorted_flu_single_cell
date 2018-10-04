@@ -699,36 +699,43 @@ As shown in \FIG{mutantcomparison}A and \FIGSUPP[mutantcomparison]{cycloheximide
 This result indicates that high levels of viral transcription promote IFN induction in NS-deficient infections, and suggests that there are distinct mechanisms of IFN induction by different viral variants---perhaps explaining why prior studies have not reached a consensus on the process by which influenza induces IFN~\citep{rehwinkel2010rig, weber2013incoming, killip2014activation}.
 
 \section{Discussion}
-We have determined the full sequences of the viral genes expressed in single influenza-infected cells, and examined how viral mutations and gene-expression defects associate with infection outcome in each cell.
-Methodologically, our major advance is to measure the \emph{genotypes} of viruses in addition to measuring the abundance of viral components (i.e., transcripts, proteins, or progeny virions) as has been done by prior single-cell studies~\citep{russell2018extreme, zanini2018single, zanini2018virus, steuerman2018dissection, saikia2018simultaneous, zhu2009growth, schulte2014single, akpinar2016high, heldt2015single, brooke2013most}.
-Our method builds on the observations by \citet{saikia2018simultaneous} and \citet{zanini2018virus} that fragmentary viral genetic information can be obtained using more standard single-cell transcriptomic techniques.
-To make this information complete, we have coupled a standard single-cell transcriptomic technique to long-read PacBio sequencing of viral genes, a strategy analogous to that recently used by \cite{gupta2018single} to obtain full-length isoforms of some cellular genes in single cells.
+We have determined the full sequences of all viral genes expressed in single influenza-infected cells, and examined how viral mutations and gene-expression defects associate with infection outcome in each cell.
+Methodologically, our major advance is to measure the \emph{genotypes} of viruses in addition to the abundance of viral components (i.e., transcripts, proteins, or progeny virions) as has been done by prior single-cell studies~\citep{russell2018extreme, zanini2018single, zanini2018virus, steuerman2018dissection, saikia2018simultaneous, zhu2009growth, schulte2014single, akpinar2016high, heldt2015single, brooke2013most}.
+Our method builds on the observations by \citet{saikia2018simultaneous} and \citet{zanini2018virus} that fragmentary viral genetic information can be obtained by more standard single-cell transcriptomic techniques.
+To make this information complete, we have coupled a single-cell transcriptomic technique with long-read PacBio sequencing of viral genes, a strategy analogous to that used by \cite{gupta2018single} to obtain full-length isoforms of some cellular genes in single cells.
 
-This viral genetic information turns out to be extremely important for understanding infection outcome and innate-immune induction.
-Despite the fact that we used a low-passage viral stock generated from plasmids encoding a ``wildtype'' influenza genome, a large majority of cells are infected by virions that have mutations or fail to express a gene.
-Although our study is certainly not the first to note that influenza virus has a high mutation rate~\citep{parvin1986measurement, suarez1992heterogeneity, suarez1994estimation, bloom2014experimentally, pauly2017novel} and sometimes fails to express genes~\citep{brooke2013most, heldt2015single, dou2017analysis, russell2018extreme}, it is the first to directly observe the full spectrum of these defects across single cells.
-Simple visual inspection of \FIG{genotypes} makes it glaringly obvious how any experimental approach that does not directly sequence the viral genes in single cells is really averaging across a vast number of hidden viral defects.
+This viral genetic information turns out to be crucial for understanding infection outcome and innate-immune induction.
+Despite the fact that we used a low-passage viral stock generated from plasmids encoding a ``wildtype'' influenza genome, most cells are infected by non-wildtype virions.
+Although our study is certainly not the first to note that influenza has a high mutation rate~\citep{parvin1986measurement, suarez1992heterogeneity, suarez1994estimation, bloom2014experimentally, pauly2017novel} and sometimes fails to express genes~\citep{brooke2013most, heldt2015single, dou2017analysis, russell2018extreme}, it is the first to directly observe the full spectrum of these defects across single cells.
+Visual inspection of \FIG{genotypes} makes it glaringly obvious how any experiment that does not directly sequence viral genes in single cells is really averaging across a vast number of hidden viral defects.
 
-It turns out that these idiosyncratic viral defects explain much of the heterogeneity in viral transcriptional burden that has been observed in prior single-cell studies of influenza~\citep{russell2018extreme, steuerman2018dissection, heldt2015single, sjaastad2018distinct}.
-If we examine only cells infected by truly wildtype virions, we see that the heterogeneity in viral transcriptional burden is substantially reduced (\FIG{mutations}A).
+It turns out that these viral defects explain much of the heterogeneity in viral transcriptional burden observed in prior single-cell studies of influenza~\citep{russell2018extreme, steuerman2018dissection, heldt2015single, sjaastad2018distinct}.
+If we examine only cells infected by truly wildtype virions, the heterogeneity in viral transcriptional burden is substantially reduced.
 
-Crucially, viral defects also play an important role in determining if infected cells trigger an innate-immune response.
+Viral defects also help determine if an infected cell triggers an innate-immune response.
 We identified four types of viral defects in single IFN+ cells that we validated to increase IFN induction. 
-Two types of defects---absence of the NS gene and amino-acid mutation to the NS1 protein---likely act by impairing NS1's well-known ability to antagonize innate-immune pathways~\citep{garcia1998influenza, hale2008multifunctional}.
+Two types of defects---absence of the NS gene and amino-acid mutation to the NS1 protein---presumably impair NS1's well-known ability to antagonize innate-immune pathways~\citep{garcia1998influenza, hale2008multifunctional}.
 The third type of defect, amino-acid mutations in the PB1 protein, is consistent with recent work by \citet{velthuis2018mini} showing that mutations to the viral polymerase affect generation of mini-viral RNAs that activate the innate-immune sensor RIG-I.
 Finally, we found an internal deletion in the PB1 gene that enhances IFN induction, consistent with a large body of prior work showing that such deletions are immunostimulatory~\citep{baum2010preference, tapia2013defective, boergeling2015evidence, dimmock2015cloned}.
-In fact, given the extensive prior work describing such deletions, it is perhaps surprising that we did not identify more of them in our single IFN+ cells.
-There may be several reasons: first, we used relatively pure viral stocks~\citep{xue2016propagation} at modest MOI~\citep[conditions that better reflect the early stages of real human influenza infections;][]{mccrone2018stochastic, xue2018reconciling, varble2014influenza}; second, our experiments preferentially captured cells with higher viral transcriptional load; and third, most prior studies have used techniques that can detect large deletions but not subtle point mutations.
-But we emphasize that the relative importance of different types of viral defects for IFN induction likely varies across infection conditions, viral strains, and cell types---so it certainly remains an open question as to which defects are most relevant for early immune detection of actual viral infections in humans.
+Given the extensive prior work describing such deletions, why did we not identify more of them in our single IFN+ cells?
+There may be several reasons: we used relatively pure viral stocks~\citep{xue2016propagation} at modest MOI; our experiments preferentially captured cells with higher viral transcriptional load; and most prior studies have used techniques that can detect large deletions but not subtle point mutations.
+But the relative importance of different types of viral defects for IFN induction likely varies across infection conditions, viral strains, and cell types---so it remains an open question as to which defects are most relevant for early immune detection of actual viral infections in humans.
 
-Our results also indicate that different types of viral defects induce IFN by somewhat different processes.
-For instance, higher viral gene transcription is associated with IFN induction only in cells that are infected by virions with deficiencies in NS.
-This finding is consistent with the suggestion by \citet{sjaastad2018distinct} that viral genetic variation contributes to cell-to-cell variability in the expression of anti-viral genes.
-Larger-scale studies similar to the one performed here should be useful for further determining the extent that virions with different defects cause cells to trigger distinct transcriptional programs.
+Our results also indicate that different viral defects induce IFN by somewhat distinct processes.
+For instance, higher viral transcription is associated with IFN induction only in cells infected by virions with deficiencies in NS.
+This finding is consistent with the suggestion by \citet{sjaastad2018distinct} that viral genetic variation relates to cell-to-cell variability in gene expression.
+Larger-scale studies similar to the one performed here should be useful for further elucidating the extent that virions with different defects cause cells to launch distinct transcriptional programs.
 
-\jdbcomment{But results also show that non-viral factors are clearly important.}
+But although viral variation is clearly important, it still only partially explains heterogeneity among influenza-infected cells.
+We find substantial breadth in viral transcriptional burden and occasional IFN induction even among cells infected with fully wildtype virions.
+Of course, our single-cell virus sequencing only calls mutations present in a cell at relatively high frequency, so there could be low-frequency mutations that affect cells expressing predominantly wildtype viral genes.
+However, we suspect that stochasticity or pre-existing cellular states also affect the outcome of infection, since heterogeneity in IFN induction is present even among cells treated with synthetic innate-immune ligands~\citep{shalek2013single, shalek2014single, wimmers2018single, bhushal2017cell}.
 
-\jdbcomment{summary paragraph}
+Perhaps the most intriguing question is how the heterogeneity that we have described ultimately affects the macroscopic outcome of infection.
+Real human influenza infections are established by just a handful of virions~\citep{mccrone2018stochastic, xue2018reconciling, varble2014influenza} that then undergo exponential growth, and early IFN responses are amplified by paracrine signaling~\citep{stetson2006type,honda2006type}.
+It is therefore plausible that genetic variation in the founding viral population could have a large effect on downstream events.
+Extending our approaches to more complex systems could shed further light on how this viral genetic variation interacts with cell-to-cell heterogeneity to shape the race between virus and immune system.
+
 
 \section{Methods and Materials}
 
