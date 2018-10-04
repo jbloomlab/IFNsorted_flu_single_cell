@@ -61,7 +61,7 @@ Our work shows that the genetic variation present in influenza virus populations
 Infection with an acute virus such as influenza initiates a race between the virus and immune system.
 As the virus spreads, some infected cells trigger innate immunity and begin producing interferon (IFN).
 This IFN directs expression of anti-viral interferon-stimulated genes (ISGs) in the infected cell and its neighbors via autocrine and paracrine signaling, as well as helping launch a broader immune response~\citep{stetson2006type,honda2006type}.
-If innate immunity is activated sufficiently rapidly, it can reduce viral replication and disease severity~\citep{solov1969results,treanor1987intranasally,beilharz2007protection,kugel2009intranasal,steel2010transmission}---although excessive prolonged immune responses later in infection can actually be associated with immunopathology and more severe disease~\citep{la2007question, iwasaki2014innate}.
+If innate immunity is activated sufficiently rapidly, it can reduce viral replication and disease severity~\citep{solov1969results,treanor1987intranasally,beilharz2007protection,kugel2009intranasal,steel2010transmission}---although excessive immune responses later in infection can actually be associated with immunopathology and more severe disease~\citep{la2007question, iwasaki2014innate}.
 
 Unfortunately for the host, influenza infection only rarely triggers IFN production by individual infected cells early in infection~\citep{kallfass2013visualizing, killip2017single}.
 This rareness of IFN induction is just one form of the extreme cell-to-cell heterogeneity that characterizes influenza infection: infected cells also vary widely in their production of viral mRNA, proteins, and progeny virions~\citep{russell2018extreme,steuerman2018dissection,sjaastad2018distinct,heldt2015single}.
@@ -75,7 +75,7 @@ Because influenza has a high mutation rate, even if the \emph{consensus} sequenc
 Indeed, many studies have identified mutations that increase IFN induction when engineered into a viral population~\citep{velthuis2018mini, du2018genome, killip2017single, perez2014unbiased}, and viral stocks that are rich in internal deletions in the polymerase genes induce more IFN~\citep{baum2010preference, tapia2013defective, boergeling2015evidence, dimmock2015cloned}.
 
 However, existing techniques are inadequate to determine how viral genetic diversity contributes to cell-to-cell heterogeneity during infection, since they do not determine full sequences of the virions that infect individual cells.
-Flow cytometry and fluorescent reporters only measure protein levels~\citep{brooke2013most, guo2017single}, and current single-cell transcriptomic techniques primarily measure abundance of transcripts~\citep{russell2018extreme, zanini2018single, zanini2018virus, steuerman2018dissection, saikia2018simultaneous}.
+Flow cytometry and fluorescent reporters only measure protein levels~\citep{brooke2013most, guo2017single}, and current single-cell transcriptomic techniques primarily measure abundance of transcripts and provide only fragmentary information on their sequences~\citep{russell2018extreme, zanini2018single, zanini2018virus, steuerman2018dissection, saikia2018simultaneous}.
 None of these techniques reliably reveal if the virion infecting a specific cell has some idiosyncratic mutation, despite the fact that such mutations are common regardless of whether the cells are infected with a nominally ``wildtype'' or ``mutant'' stock of virus.
 
 Here we develop a new approach to measure both the full transcriptome and the sequences of all viral genes in single influenza-infected cells.
@@ -87,7 +87,6 @@ Viral defects are especially common in IFN+ cells, and we identify at least four
 However, viral genetic variation does not fully explain the cell-to-cell heterogeneity, as even truly wildtype virions sometimes induce IFN, and no viral mutations deterministically induce IFN.
 Therefore, viral diversity is an important but not exclusive cause of cell-to-cell heterogeneity during influenza infection.
 
-\clearpage
 \section{Results}
 
 \subsection{A system to identify and enrich for rare IFN+ positive cells}
@@ -699,11 +698,12 @@ As shown in \FIG{mutantcomparison}A and \FIGSUPP[mutantcomparison]{cycloheximide
 This result indicates that high levels of viral transcription promote IFN induction in NS-deficient infections, and suggests that there are distinct mechanisms of IFN induction by different viral variants---perhaps explaining why prior studies have not reached a consensus on the process by which influenza induces IFN~\citep{rehwinkel2010rig, weber2013incoming, killip2014activation}.
 
 \section{Discussion}
+We have determined the full sequences of the infecting virions in single influenza-infected cells, and then examined how viral mutations and gene-expression defects associate with infection outcome in each cell.
+Methodologically, the major advance of our work is to measure the \emph{genotypes} of viruses in single cells in addition to quantifying the abundance of viral components (i.e., transcripts, proteins, or progeny virions) as has been done by prior single-cell virology studies~\citep{russell2018extreme, zanini2018single, zanini2018virus, steuerman2018dissection, saikia2018simultaneous, zhu2009growth, schulte2014single, akpinar2016high, heldt2015single, brooke2013most}.
+Our method builds on the observations by \citet{saikia2018simultaneous} and \citet{zanini2018virus} that fragmentary viral genetic information can be obtained using standard single-cell transcriptomic techniques.
+To make this genetic information complete, we have coupled a standard single-cell transcriptomic technique to long-read PacBio sequencing, a strategy analogous to that recently used by \cite{gupta2018single} to obtain full-length isoforms of some cellular genes in single cells.
 
-\jdbcomment{Section needs to be complete.
-Add this:
-Approach builds on observations by \citet{saikia2018simultaneous} and \citet{zanini2018virus} that fragmentary viral genetic information can be obtained using more standard single-cell techniques, and is similar the approach used by \cite{gupta2018single} to obtain full-length isoforms of some cellular genes in single cells.
-}
+Our results demonstrate that the single-cell viral genetic information provided by this methodological advance is extremely valuable for understanding the biology of influenza infection, especially as it relates to innate-immune detection.
 
 \jdbcomment{It also confirms the suggestion by \citet{sjaastad2018distinct} that viral genetic variation contributes to the variability in gene expression among IFN+ cells.}
 
