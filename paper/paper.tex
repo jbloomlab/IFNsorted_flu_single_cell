@@ -104,11 +104,11 @@ But just a handful of cells detectably expressed IFN itself, which is only induc
 %%% start IFNrare figure %%%
 \begin{figure}
 \centerline{
-{\bf \Large A}\includegraphics[width=0.25\textwidth,valign=t]{figures/IFN_stochastic/RussellVenn/venn_diagram.pdf}
+{\bf \Large A}\includegraphics[width=0.28\textwidth,valign=t]{figures/IFN_stochastic/RussellVenn/venn_diagram.pdf}
 \hspace{0.02\textwidth}
-{\bf \Large B}\includegraphics[width=0.32\textwidth,valign=t]{figures/IFN_stochastic/IFN_reporter/IFN_reporter.pdf}
+{\bf \Large B}\includegraphics[width=0.35\textwidth,valign=t]{figures/IFN_stochastic/IFN_reporter/IFN_reporter.pdf}
 \hspace{0.02\textwidth}
-{\bf \Large C} \includegraphics[width=0.2\textwidth,valign=t]{figures/IFN_stochastic/Flow/ifn_percent.pdf}
+{\bf \Large C} \includegraphics[width=0.23\textwidth,valign=t]{figures/IFN_stochastic/Flow/ifn_percent.pdf}
 }
 \caption{
 IFN expression is rare in influenza-infected cells.
@@ -169,7 +169,7 @@ For the uninfected and Sendai-virus infected, the percentage IFN+ was calculated
 {\includegraphics[width=0.75\textwidth]{figures/IFN_stochastic/Flow/flow_plot.pdf}}
 \label{figsupp:flow}
 
-\figdata{Sequences of the reporters in \FIG{IFNrare}B are at \url{https://github.com/jbloomlab/IFNsorted_flu_single_cell/tree/master/paper/figures/IFN_stochastic/IFN_reporter/plasmids}.}
+\figdata{Sequences of the reporters in \FIG{IFNrare}B are at \url{https://github.com/jbloomlab/IFNsorted_flu_single_cell/tree/master/paper/figures/IFN_stochastic/IFN_reporter/plasmids}.
 }
 \label{figdata:reporter_sequences}
 
@@ -188,7 +188,7 @@ This frequency of IFN induction is roughly comparable to that observed in our pr
 
 \subsection{Combined transcriptomics and virus-sequencing of single infected cells}
 We next developed a method to determine if features of the infecting virions are responsible for the heterogeneous outcome of infection in single cells.
-Standard single-cell transcriptomic techniques are inadequate for this purpose, since they just use 3'-end sequencing of poly-adenylated mRNAs to measure the abundance of each transcript~\citep{klein2015droplet, macosko2015highly, zheng2017massively, cao2017comprehensive, gierahn2017seq}, and do not reveal if the virions that infect individual cells have features (e.g., mutations) that contribute to heterogeneity in infection outcome. 
+Standard single-cell transcriptomic techniques are inadequate for this purpose, since they just use 3'-end sequencing of poly-adenylated mRNAs to measure the abundance of each transcript~\citep{klein2015droplet, macosko2015highly, zheng2017massively, cao2017comprehensive, gierahn2017seq}, and do not reveal if the virions that infect individual cells have mutations. 
 
 %%% start workflow figure
 \begin{figure}
@@ -247,7 +247,7 @@ Based on pilot experiments, we expected this MACS to enrich IFN+ cells to $\sim$
 To ensure the presence of IFN- cells after MACS enrichment, we added back non-enriched cells to $\sim$10\% of the total.
 We also added uninfected canine cells to $\sim$5\% of the total as a control for multiplets and to estimate the background amount of viral mRNA detected in truly uninfected cells.
 
-We processed the cells on a commercially available platform~\citep[the 10X Chromium;][]{zheng2017massively} that physically isolates cells in droplets and then reverse transcribes polyadenylated mRNAs to append a unique cell barcode to all cDNAs in each droplet, and a unique molecular identifier (UMI) to each cDNA molecule (\FIG{workflow}B).
+We processed the cells on a commercially available platform~\citep[the 10X Chromium;][]{zheng2017massively} that physically isolates cells in droplets and reverse transcribes polyadenylated mRNAs to append a unique cell barcode to all cDNAs in each droplet, and a unique molecular identifier (UMI) to each cDNA molecule (\FIG{workflow}B).
 Because influenza virus mRNAs are polyadenylated~\citep{robertson1981polyadenylation}, this process appends cell barcodes to both cellular and viral mRNAs.
 Furthermore, because virtually the entire influenza genome is transcribed, the cell-barcoded cDNA spans almost all 13,581 nucleotides in the segmented viral genome: the only portions not covered are one universally conserved nucleotide upstream of the transcription start site~\citep{koppstein2015sequencing} and 17 to 22 highly conserved nucleotides downstream of the polyadenylation site~\citep{robertson1981polyadenylation} in each of the eight viral gene segments.
 
@@ -351,11 +351,10 @@ As in our prior work~\citep{russell2018extreme}, the distribution is extremely h
 
 We then called the presence or absence of each viral gene in each infected cell, again using a Poisson model parameterized by background fractions estimated from uninfected canine cells.
 Although ten transcripts are encoded by the eight viral genes, we call presence / absence of genes rather than transcripts.
-The reason is that the genes that encode multiple transcripts (M1 / M2 from the M gene, and NS1 / NS2 from the NS gene) do so via alternative splicing that leaves both isoforms with the same termini, making them indistinguishable in the 3'-end sequencing transcriptomic data.
-\FIG{transcriptomics}D (top panel) shows that the majority (162 of 290) of infected cells express all eight genes, although a substantial minority fail to express one or more genes (see \FIGSUPP[transcriptomics]{frac_has_gene} for frequencies at which individual genes are present).
+The reason is that the genes that encode multiple transcripts (M1 / M2 from the M gene, and NS1 / NS2 from the NS gene) do so via alternative splicing that leaves both isoforms with the same termini, making them indistinguishable by 3'-end sequencing.
+\FIG{transcriptomics}D (top panel) shows that most (162 of 290) infected cells express all eight genes, although a substantial minority fail to express one or more genes (see \FIGSUPP[transcriptomics]{frac_has_gene} for frequencies at which individual genes are present).
 This measured frequency of infected cells expressing all eight genes is higher than in our own prior work~\citep{russell2018extreme} and studies by others~\citep{brooke2013most, heldt2015single, dou2017analysis}, which have estimated that only 13\% to 50\% of infected cells express all genes. 
-The difference is sufficiently modest that it could simply be due to methodological differences in the thresholds used to call gene presence.
-But it is also important to remember that the cells in our experiment have been enriched for IFN expression by MACS sorting, which could alter the distribution of viral gene expression from a fully random sample of infected cells.
+However, it is important to remember that the cells in our experiment have been enriched for IFN expression by MACS sorting, which could alter the distribution of viral gene expression from a fully random sample of infected cells.
 
 The amount of viral mRNA tended to be lower in cells that failed to express viral genes (\FIG{transcriptomics}D, bottom panel), consistent with our prior work~\citep{russell2018extreme}.
 However, viral burden remained highly variable even after conditioning on the number of viral genes: some cells that failed to express one or even two genes still derived over 50\% of their mRNA from influenza, while other cells that expressed all viral genes had only a few percent of their mRNA from influenza (\FIG{transcriptomics}D, bottom panel).
@@ -363,20 +362,20 @@ Also consistent with our prior work~\citep{russell2018extreme}, despite the wide
 
 By examining the synonymous viral barcodes near the 3' termini of transcripts, we determined that 38\% of cells were co-infected with wild-type and synonymously barcoded virions (\FIG{transcriptomics}F; cells called as co-infected if a binomial test rejected null hypothesis that $\ge$95\% of viral mRNA is from one viral barcode variant).
 From \FIG{transcriptomics}F, we estimate~\citep{bloom2018estimating} that 63\% of infected cells are co-infected, implying that 25\% are co-infected with two virions with the same viral barcode (such co-infections cannot be identified from the transcriptomic data).
-Interestingly, this co-infection rate is higher than expected from the relative numbers of infected and uninfected cells (\FIG{transcriptomics}C) if infection is a Poisson process.
-This discrepancy could arise if the MACS for IFN+ cells also enriches for co-infected cells, if infection itself is not truly Poisson, or if co-infection increases the likelihood that we identify a cell as infected given the thresholds in \FIG{transcriptomics}C.
-This moderately high rate of co-infection may also partially explain why relatively more cells in our experiment express all eight viral genes compared to some prior studies, as a co-infecting virion can complement a missing viral gene~\citep{russell2018extreme}. 
+Interestingly, this co-infection rate is higher than expected from the relative numbers of infected and uninfected cells (\FIG{transcriptomics}C) if infection is Poisson.
+This discrepancy could arise if the MACS for IFN+ cells also enriches co-infected cells, if infection itself is not truly Poisson, or if co-infection increases the likelihood that we identify a cell as infected given the thresholds in \FIG{transcriptomics}C.
+This moderately high rate of co-infection may also partially explain why more cells in our experiment express all eight viral genes compared to some prior studies, as a co-infecting virion can complement a missing viral gene~\citep{russell2018extreme}. 
 
 We next examined expression of IFN and ISGs (\FIG{transcriptomics}G and \FIGSUPP[transcriptomics]{ISG}).
 Over 20\% of  infected cells were IFN+ given the heuristic thresholds in \FIG{transcriptomics}C, indicating that the MACS successfully enriched IFN+ cells far beyond their initial frequency of $\sim$0.5\% (\FIG{IFNrare}C) among infected cells.
-Few ($\sim$1.3\%) uninfected cells were IFN+; the few that were present might be because the MACS enriched for rare cells that spontaneously activated IFN, or because some cells that we classified as uninfected were actually infected but produced too few viral transcripts to be detected above background.
+Few ($\sim$1.3\%) uninfected cells were IFN+; the few that were present might be because the MACS enriched for rare cells that spontaneously activated IFN, or because some cells that we classified as uninfected were actually infected at low levels.
 Many more cells expressed ISGs than IFN itself: the ratio of ISG+ to IFN+ cells was 1.8 among infected cells, and 7 among uninfected cells (\FIGSUPP[transcriptomics]{ISG}A).
-The IFN+ cells were a subset of the ISG+ cells: IFN+ cells always expressed ISGs, but many ISG+ cells did not express significant IFN (\FIGSUPP[transcriptomics]{ISG}B).
-These results are consistent with the established knowledge that IFN is expressed only in cells that directly detect that they have been infected, but that ISGs are also expressed via paracrine signaling in cells that do not themselves detect viral infection~\citep{stetson2006type,honda2006type}.
+The IFN+ cells were a subset of the ISG+ cells: IFN+ cells always expressed ISGs, but many ISG+ cells did not express IFN (\FIGSUPP[transcriptomics]{ISG}B).
+These results are consistent with the established knowledge that IFN is expressed only in cells that directly detect infection, but that ISGs are also expressed via paracrine signaling in cells that do not themselves detect infection~\citep{stetson2006type,honda2006type}.
 
 Finally, we qualitatively examined how expression of viral genes, IFN, and ISGs relate to the overall structure of the high-dimensional transcriptomic data.
 \FIGSUPP[transcriptomics]{tSNE} shows unsupervised t-SNE clustering~\citep{maaten2008visualizing} of the cells.
-Although the clustering is entirely unsupervised, cells expressing high levels of viral genes, IFN, and ISGs cluster together---and most of the structure in the t-SNE plot that is not associated with expression of these genes involves uninfected and IFN- cells.
+Cells expressing high levels of viral genes, IFN, and ISGs cluster together---and most of the structure in the t-SNE plot that is not associated with these genes involves uninfected and IFN- cells.
 
 \subsection{Full genotypes of viruses infecting single IFN+ and IFN- cells}
 
@@ -427,8 +426,8 @@ Note that since the rate of homologous recombination in influenza virus in negli
 \label{figsupp:StrandExchange}
 
 \figsupp[Number of cells for which genotype(s) of infecting viruses were completely determined.]
-{Cells for which we could determine the full sequences of all genes expressed by the infecting virus(es).
-{\bf (A)} We could call the complete genotypes of the infecting virus(es) for the majority of cells infected with just a single viral barcode variant, but only a minority of cells co-infected with both viral barcodes.
+{Cells for which we could determine the full sequences of all genes expressed by the infecting virion(s).
+{\bf (A)} We could call the complete genotypes of the infecting virion(s) for the majority of cells infected with just a single viral barcode variant, but only a minority of cells co-infected with both viral barcodes.
 {\bf (B)} The cells for which we could call complete viral genotypes tended to have higher expression of viral mRNA than cells for which we could not call complete genotypes.
 Both facts makes sense.
 Cells with more viral mRNA are more likely to have their viral cDNA captured in the PacBio sequencing, which is only captures a small fraction of the total transcripts identified by the 3'-end sequencing transcriptomic sequencing.
@@ -455,19 +454,16 @@ Note also that this plot is limited to the cells that were called as infected (\
 \end{figure}
 %%% end genotypes figure %%%
 
-The foregoing transcriptomic analyses identify which viral genes are expressed in each cell, but not the sequences of these genes.
-We therefore used PacBio sequencing (\FIG{workflow}D) to determine the full sequences of the viral genes expressed in the majority of infected cells.
-
-By employing several PCR enrichment strategies (see Methods), we obtained over 200,000 high-quality PacBio CCSs that mapped to an influenza gene and contained a cell barcode and UMI (\FIGSUPP[genotypes]{CCSs}).
+We next used PacBio sequencing (\FIG{workflow}D) to determine the full sequences of the viral genes expressed in single infected cells.
+Using PCR enrichment (see Methods), we obtained over 200,000 high-quality PacBio CCSs that mapped to an influenza gene and contained a cell barcode and UMI (\FIGSUPP[genotypes]{CCSs}).
 Crucially, the synonymous viral barcodes at both termini of each gene enabled us to estimate the rate of PCR strand exchange (\FIGSUPP[genotypes]{StrandExchange}).
 Less then 3\% of the cDNAs experienced strand exchange that we were not able to identify and filter (\FIGSUPP[genotypes]{CCSs}), meaning that the vast majority of CCSs correctly link the sequence of the viral transcript to cell barcodes and UMIs that identify the cell and molecule of origin.
 
-We used these CCSs to call the sequences of viral genes in single cells.
-We called a mutation if it was found in least two CCSs originating from different mRNAs (unique UMIs) in that cell, and was also present in at least 30\% of all CCSs for that gene in that cell.
+We called a mutation in a viral gene if it was found in least two CCSs originating from different mRNAs (unique UMIs) in that cell, and was also present in at least 30\% of all CCSs for that gene in that cell.
 For cells co-infected with both viral barcode variants, we called mutations separately for each viral variant.
-This strategy reliably identifies mutations in the virions that initiate infection of cells infected with at most one virion of each viral barcode variant ($\sim$75\% of infected cells), as well as high-abundance mutations in cells co-infected with multiple virions of the same viral barcode.
+This strategy reliably identifies mutations in virions that initiate infection of cells infected with at most one virion of each viral barcode variant ($\sim$75\% of infected cells), as well as high-abundance mutations in cells co-infected with multiple virions of the same viral barcode.
 It will not identify mutations that arise within a cell after the first few rounds of viral genome replication, since such mutations will not reach 30\% frequency in that cell.
-Therefore, analogous to somatic variant calling in tumor sequencing~\citep{xu2014comparison, cibulskis2013sensitive}, there is a limit to our detection threshold: we cannot identify mutations that occur on just a small fraction of viral transcripts in a cell. 
+Therefore, analogous to somatic variant calling in tumor sequencing~\citep{xu2014comparison, cibulskis2013sensitive}, there is a limit to our detection threshold: we cannot identify mutations that occur on just a small fraction of transcripts in a cell. 
 
 We could call the sequences of all expressed viral genes in the majority of infected cells (\FIGSUPP[genotypes]{ncells}).
 We were most effective at calling full viral genotypes in cells that expressed high amounts of viral mRNA and were infected by only one viral barcode variant (\FIGSUPP[genotypes]{ncells}).
@@ -476,7 +472,7 @@ But we also called full genotypes for many cells that had low viral burden or we
 The 150 cells for which we called the full viral genotypes are shown in \FIG{genotypes}.
 Simple visual inspection of this figure reveals a wealth of information.
 For instance, the cell with the highest viral burden (\textit{cell 1} in \FIG{genotypes}, which has 65\% of its mRNA from virus) was infected by a virion that expressed wild-type copies all eight genes and did not induce detectable IFN.
-But 12 of the other 13 cells with at least 50\% of their mRNA from virus were infected by virions that either had a mutation or failed to express at least one gene, and five of these cells expressed IFN.
+But 12 of the other 13 cells with at least 50\% of their mRNA from virus were infected by virions that had a mutation or failed to express at least one gene, and five of these cells expressed IFN.
 The two cells that expressed the most IFN (\textit{cell 13} and \textit{cell 123}) both lacked the viral NS gene, and many other IFN+ cells had different defects such as large internal deletions (e.g., \textit{cell 5} and \textit{cell 89}) or amino-acid mutations (e.g., \textit{cell 9}, \textit{cell 28}, and many others).
 However, expressing unmutated copies of all eight genes did not guarantee a favorable outcome for the virus: for instance, the apparently flawless virion that infected \textit{cell 139} only managed to express viral mRNA to 6\% of the total transcriptome, and the apparently flawless virion that infected \textit{cell 105} still induced IFN.
 
@@ -536,7 +532,7 @@ Viral burden is not associated with ISG expression levels in NS-sufficient infec
 \end{figure}
 %%% end mutations figure %%%
 
-To systematically assess viral features associated with infection outcome, we divided the 150 cells in \FIG{genotypes} into those that expressed unmutated copies of all eight genes (disregarding synonymous mutations) and those that did not (due to gene absence, amino-acid substitution, insertion, or deletion).
+To systematically assess viral features associated with infection outcome, we divided the 150 cells in \FIG{genotypes} into those that expressed unmutated copies of all eight genes (disregarding synonymous mutations) and those that did not.
 \FIG{mutations}A shows that the 49 cells infected by full wild-type viruses had a significantly tighter distribution of the amount of viral mRNA per cell than the other 101 cells as quantified by the Gini index~\citep{gini1921measurement}.
 Therefore, viral defects are a major contributor to the heterogeneity in viral transcriptional burden among cells.
 
@@ -548,7 +544,7 @@ In any case, \FIG{genotypes} and \FIG{mutations}C motivate compelling hypotheses
 
 One other interesting trend emerges from the single-cell data.
 There is no difference in the amount of viral mRNA between IFN+ and IFN- cells that express NS---but among cells that lack NS, the IFN+ ones have significantly more viral mRNA (\FIG{mutations}D).
-The statistical analysis in \FIG{mutations}D is insufficient to determine if the higher viral transcriptional burden in IFN+ NS-deficient infections is a cause or a consequence of IFN induction, but experiments below will shed more light on this question.
+The statistical analysis in \FIG{mutations}D is insufficient to determine if the higher viral transcriptional burden in IFN+ NS-deficient infections is a cause or a consequence of IFN induction, but experiments below shed more light on this question.
 
 \subsection{Validation that viral defects in single IFN+ cells often cause increased IFN induction}
 
@@ -580,7 +576,7 @@ For each viral mutant, two independently generated stocks were each assayed in d
 The infections with replicate \#1 of the wild-type virus were performed at an MOI of 0.1 as determined by TCID50, and all other viruses were infected at an equivalent particle number as determined by HI assay. 
 The HA staining indicates that the number of transcriptionally active viral units per cell was similar across most mutants, and calculating percentage IFN+ only among HA+ cells largely corrects for modest variation in titer across mutants.
 }
-{\includegraphics[height=0.75\textheight]{figures/Validation_Figure/SNP_flow_plot.pdf}}
+{\includegraphics[height=0.71\textheight]{figures/Validation_Figure/SNP_flow_plot.pdf}}
 \label{figsupp:SNPflow}
 
 \figsupp[Flow cytometry data for \FIG{validation}B.]
@@ -615,9 +611,9 @@ Each measurement was performed in quadruplicate.
 
 To test if the viral defects identified in single IFN+ cells play a causal role in triggering IFN expression, we used reverse genetics to generate bulk stocks of viruses with some of these defects.
 
-The viral defect most strongly associated with IFN induction in single cells was failure to express the NS gene (\FIG{genotypes}, \FIG{mutations}C).
+The viral defect most strongly associated with IFN induction was failure to express the NS gene (\FIG{genotypes}, \FIG{mutations}C).
 Although it is sometimes possible to use complementing cells to generate influenza viruses lacking a specific gene~\citep{fujii2003selective,marsh2007specific}, we were unable to generate viruses that lacked NS.
-The NS gene encodes two proteins (NS1 and NS2), the first of which is influenza virus's primary innate-immune antagonist~\citep{garcia1998influenza, hale2008multifunctional}.
+The NS gene encodes two proteins (NS1 and NS2), the first of which is influenza's primary innate-immune antagonist~\citep{garcia1998influenza, hale2008multifunctional}.
 We therefore mimicked the effect of absence of NS by creating a mutant virus (which we will term ``NS1stop'') that had multiple stop codons early in the NS1 coding sequence.
 
 The single-cell data also showed that amino-acid substitutions in the PB1 and NS genes were enriched in IFN+ cells (\FIG{genotypes}, \FIG{mutations}C), so we created mutant viruses with many of the amino-acid substitutions found in these genes among IFN+ cells.
@@ -630,13 +626,12 @@ We therefore created a virus carrying this deletion, and propagated it in cells 
 We tested the rate of IFN induction by each viral stock using the reporter cells.
 \FIG{validation} shows that five of the eight mutant viral stocks induced IFN more frequently than wild type.
 The strongest IFN induction was by the NS1stop virus, but the PB1 internal deletion and three of the point-mutant viruses (PB1-D27N, PB1-T677A, and NS1-A122V) also induced IFN significantly more frequently than wild type.
-These results show that the viral defects in single IFN+ cells often cause increased IFN production.
+Therefore, the viral defects in single IFN+ cells often cause increased IFN production.
 
-It is tempting to compare the rates of IFN induction measured in \FIG{validation} with the enrichment of particular viral defects among the IFN+ cells in the single-cell data.
+It is tempting to compare the rates of IFN induction measured in \FIG{validation} with the enrichment of viral defects among the IFN+ cells in the single-cell data.
 However, these comparisons are confounded by the fact that the measurements in \FIG{validation} use \emph{bulk} stocks of each viral mutant---and, as shown by the single-cell data in \FIG{genotypes}, many virions in each stock will also have additional mutations.
-For instance, our single-cell experiment used a ``wild-type'' viral stock, but most IFN+ cells (31 of 40) still had viral defects (\FIGSUPP[genotypes]{genotypes_by_ifn}). 
 So although increased IFN induction by the mutant viral stocks does indicate the mutations are causally associated with IFN, it is impossible to know how many of the IFN+ cells induced by each stock are infected by virions that also have other defects.
-The rate of IFN induction by any given viral mutant can therefore only be accurately quantified by single-cell virus-sequencing.
+The rate of IFN induction by any given viral mutant can only be accurately quantified by single-cell virus-sequencing.
 
 \subsection{Distinct characteristics of IFN induction by different viral variants}
 
@@ -702,8 +697,8 @@ This result indicates that high levels of viral transcription promote IFN induct
 \section{Discussion}
 We have determined the full sequences of all viral genes expressed in single influenza-infected cells, and examined how viral mutations and gene-expression defects associate with infection outcome in each cell.
 Methodologically, our major advance is to measure the \emph{genotypes} of viruses in addition to the abundance of viral components (i.e., transcripts, proteins, or progeny virions) as has been done by prior single-cell studies~\citep{russell2018extreme, zanini2018single, zanini2018virus, steuerman2018dissection, saikia2018simultaneous, zhu2009growth, schulte2014single, akpinar2016high, heldt2015single, brooke2013most}.
-Our method builds on the observations by \citet{saikia2018simultaneous} and \citet{zanini2018virus} that fragmentary viral genetic information can be obtained by more standard single-cell transcriptomic techniques.
-To make this information complete, we have coupled a single-cell transcriptomic technique with long-read PacBio sequencing of viral genes, a strategy analogous to that used by \cite{gupta2018single} to obtain full-length isoforms of some cellular genes in single cells.
+Our method builds on the observation by \citet{saikia2018simultaneous} and \citet{zanini2018virus} that fragmentary viral genetic information can be obtained by more standard single-cell transcriptomic techniques.
+To make this information complete, we have coupled single-cell transcriptomics with long-read PacBio sequencing of viral genes, a strategy analogous to that used by \cite{gupta2018single} to obtain full-length isoforms of some cellular genes in single cells.
 
 This viral genetic information turns out to be crucial for understanding infection outcome and innate-immune induction.
 Despite the fact that we used a low-passage viral stock generated from plasmids encoding a ``wild-type'' influenza genome, most infected cells do not express wild-type copies of all viral genes.
@@ -729,13 +724,15 @@ Larger-scale studies similar to the one performed here should be useful for furt
 
 But although viral variation is clearly important, it still only partially explains heterogeneity among influenza-infected cells.
 We find substantial breadth in viral transcriptional burden and occasional IFN induction even among cells infected with fully wild-type virions.
-Of course, our single-cell virus sequencing only calls mutations present in a cell at relatively high frequency, so there could be low-frequency mutations that affect cells expressing predominantly wild-type viral genes.
+Of course, our single-cell virus sequencing only calls mutations present in a cell at relatively high frequency, so there could be low-frequency mutations in cells expressing predominantly wild-type viral genes.
 However, we suspect that stochasticity or pre-existing cellular states also affect the outcome of infection, since heterogeneity in IFN induction is present even among cells treated with synthetic innate-immune ligands~\citep{shalek2013single, shalek2014single, wimmers2018single, bhushal2017cell}.
 
 Perhaps the most intriguing question is how the heterogeneity that we have described ultimately affects the macroscopic outcome of infection.
 Real human influenza infections are established by just a handful of virions~\citep{mccrone2018stochastic, xue2018reconciling, varble2014influenza} that then undergo exponential growth, and early IFN responses are amplified by paracrine signaling~\citep{stetson2006type,honda2006type}.
 It is therefore plausible that genetic variation in the founding viral population could have a large effect on downstream events.
-Extending our approaches to more complex systems could shed further light on how this viral genetic variation interacts with cell-to-cell heterogeneity to shape the race between virus and immune system.
+Extending our approaches to more complex systems could shed further light on how viral genetic variation interacts with cell-to-cell heterogeneity to shape the race between virus and immune system.
+
+\clearpage
 
 
 \section{Methods and Materials}
@@ -753,7 +750,7 @@ To create the type III interferon reporters, a 1.2kb region upstream of the huma
 Downstream of this promoter we cloned LNGFR$\Delta$C linked to ZsGreen via a P2A linker.
 The sequence of this construct is provided in \FIGDATA[IFNrare]{reporter_sequences}.
  
-We used these constructs to generate lentiviral vectors~\citep{oconnell2010lentiviral} which were used to transduce of A549 cells in the presence of 5 $\mu$g polybrene.
+We used these constructs to generate lentiviral vectors and transduce of A549 cells in the presence of 5 $\mu$g polybrene.
 We then sorted single transduced cells and expanded them.
 A portion of the expanded cells were tested for reporter activity by transfecting poly(I:C) (a potent agonist of the RIG-I pathway), and we retained clones with strong activation.
 Importantly, the cells that we retained for further use were not the same portion that were tested by poly(I:C) treatment, but rather a separate split of the same population---this avoids any selection on the cells from transient activation of IFN.
@@ -773,7 +770,7 @@ These genes were cloned into the pHW2000~\citep{hoffmann2000dna} reverse-genetic
 
 Both viral strains were generated by reverse genetics using the pHW18* series of bi-directional plasmids~\citep{hoffmann2000dna}.
 We controlled the durations and MOI during viral passaging since these factors can greatly affect the accumulation of defective viral particles~\citep{xue2016propagation}.
-The viruses were generated by reverse genetics in co-cultures of 293T and MDCK-SIAT1 in influenza growth media (Opti-MEM supplemented with 0.01\% heat-inactivated FBS, 0.3\% BSA, 100 U of penicillin/ml, 100 $\mu$g of streptomycin/ml, and 100 $\mu$g of calcium chloride/ml) and then propagated in MDCK-SIAT1 cells in influenza growth media using the same basic procedures detailed in \citet{russell2018extreme}.
+The viruses were generated by reverse genetics in co-cultures of 293T and MDCK-SIAT1 cells in influenza growth media (Opti-MEM supplemented with 0.01\% heat-inactivated FBS, 0.3\% BSA, 100 U of penicillin/ml, 100 $\mu$g of streptomycin/ml, and 100 $\mu$g of calcium chloride/ml) and then propagated in MDCK-SIAT1 cells in influenza growth media using the same basic procedures detailed in \citet{russell2018extreme}.
 Specifically, after generation by reverse genetics, the wild-type variant was expanded at an MOI of 0.001 for 72 hours twice in MDCK-SIAT1 cells, and the synonymously barcoded variant was expanded once at an MOI of 0.01 for 60 hours.
 The MOIs for this passaging are based on titers determined using TCID50 assays via the formula of \citet{reed1938simple} as implemented at \url{https://github.com/jbloomlab/reedmuenchcalculator}.
 
@@ -795,7 +792,7 @@ To enrich IFN+ cells, the cells were then incubated with anti-LNGFR MACSelect Mi
 This MACS sorting is expected to give approximately the enrichment for IFN+ cells shown in \FIGSUPP[workflow]{MACS}.
 The original, unsorted, population was then added back in to $\sim$10\% of the final cell fraction in order to ensure the presence of interferon negative cells. 
 At this point, uninfected canine (MDCK-SIAT1) cells were also added to $\sim$5\% of the final cell fraction to enable quantification of the cell multiplet rate (\FIG{transcriptomics}A) and background viral mRNA in uninfected cells (\FIG{transcriptomics}C). 
-We begin this entire process of cell collection and enrichment at 12 hours post-infection, but the process (which was performed at room temperature) took about an hour, and thus we consider the cells to have been analyzed at 13 hours post-infection.
+We began this entire process of cell collection and enrichment at 12 hours post-infection, but the process (which was performed at room temperature) took about an hour, and thus we consider the cells to have been analyzed at 13 hours post-infection.
 The final cell suspension was counted using a disposable hemocytometer and loaded on the 10x Genomics Chromium instrument~\citep{zheng2017massively}, targeting capture of $\sim$1,500 cells. 
 
 This sample was then processed to create libraries for Illumina 3'-end sequencing according to the 10X Genomics protocol using the Chromium Single Cell 3' Library and Gel Bead Kit v2 with one important modification: rather than process all full-length cDNA through enzymatic fragmentation, several nanograms were retained for targeted full-length viral cDNA sequencing as described below.
@@ -806,7 +803,7 @@ The single-cell transcriptomics library was sequenced on an Illumina HiSeq 2500,
 We amplified virus-derived molecules from the small amount of cDNA retained from the 10X Genomics protocol for PacBio sequencing of the full-length cDNA.
 All molecules in this cDNA have at their 3' end the cell barcode and UMI plus the constant adaptor sequence that is added during the 10X protocol (see \FIG{workflow} for simple schematic, or the detailed analysis notebook at \url{https://github.com/jbloomlab/IFNsorted_flu_single_cell/blob/master/pacbio_analysis.ipynb} or Supplementary~file~\ref{suppfile:pacbio_analysis} for at detailed schematic).
 However, we only wanted to PacBio sequence cDNA molecules derived from virus, since it would be prohibitively expensive to sequence all molecules.
-We therefore needed to enrich for the viral molecules, a process made more challenging by the fact that the need to also retain the 10X adaptor / UMI / cell barcode at the 3' end means that an enrichment PCR could only be semi-specific (the primer at the 5' end can be specific, but that the 3' end must bind the common 10X adaptor shared among all molecules).
+We therefore needed to enrich for the viral molecules, a process made challenging by the need to also retain the 10X adaptor / UMI / cell barcode at the 3' end (the primer at the 5' end can be specific, but the one at the 3' end must bind the common 10X adaptor shared among all molecules).
 
 We first performed a multiplex PCR reaction on 1 ng of the full-length 10X cDNA using a 3' primer complementary to the common 10X adaptor, and a multiplex mix of eight 5' primers, one specific for the mRNAs from each of the eight viral gene segments (although some viral segments produce multiple splice forms, all mRNAs from a given segment share the same 5' end).
 The sequences of these primers are in \FIGDATA[genotypes]{primer_sequences}.
@@ -816,7 +813,7 @@ Emulsion PCR involves encapsidating DNA template molecules in a reverse-phase em
 This process physically separates disparate template molecules, preventing strand exchange and allowing each molecule to be amplified to exhaustion of its droplet's reagents without competing with the broader pool of PCR-amenable molecules~\citep{Boers:2015emulsion}.
 We performed the PCRs using Kapa HiFi Hotstart ReadyMix, supplementing the reactions with additional BSA to a final concentration of 0.1 mg/ml and using a volume 100$\mu$l .
 Both the common 3' primer and the multiplex mix of eight 5' primers were added to a final concentration of 0.5$\mu$M.
-We performed 30 cycles of PCR, using an extension time of 2 minutes 15 seconds at 67$^{\circ}$C, and a melting temperature of 95$^{\circ}C$.
+We performed 30 cycles of PCR, using an extension time of 2 minutes 15 seconds at 67$^{\circ}$C, and a melting temperature of 95$^{\circ}$C.
 This melting temperature is lower than the standard 98$^{\circ}$C melting step suggested by the manufacturer for Kapa HiFi because we wanted to avoid collapse of emulsion integrity at high temperature.
 We performed 30 cycles in order to saturate the reagents in each emulsion---unlike for open PCR reactions, the physical occlusion of amplified material in emulsion PCR reduces artifacts at high cycle numbers.
 
@@ -851,7 +848,7 @@ As is shown in the PacBio analysis notebook at \url{https://github.com/jbloomlab
 
 The computational analyses of the full-length viral gene sequences described below used the combination of the data from all of these reactions.
 The number of sequences obtained for each gene after pooling the data from all reactions is shown in \FIGSUPP[genotypes]{CCSs}, which also indicates that the net rate of strand exchange is very low (see \FIGSUPP[genotypes]{StrandExchange} for an illustration of how this is determined).
-A more detailed breakdown of the coverage of each gene and data showing a consistently low rate of strand exchange for all PacBio run is at \url{https://github.com/jbloomlab/IFNsorted_flu_single_cell/blob/master/pacbio_analysis.ipynb} (see also Supplementary~file~\ref{suppfile:pacbio_analysis}).
+A more detailed breakdown of the coverage of each gene and data showing a consistently low rate of strand exchange for all PacBio runs is at \url{https://github.com/jbloomlab/IFNsorted_flu_single_cell/blob/master/pacbio_analysis.ipynb} (see also Supplementary~file~\ref{suppfile:pacbio_analysis}).
 Importantly, the various PCR biases and enrichment schemes mean that the coverage of molecules by the PacBio sequencing is not proportional to their original abundance in the starting mRNA.
 However, as described in the computational analysis section below, the final analyses use the cell barcodes and UMIs in conjunction with the standard 10X Illumina sequencing to ensure that none of the conclusions are affected by the disproportionate amplification of some molecules during the PacBio library preparation (for instance, duplicate UMIs are removed from the PacBio data, and all conclusions about gene abundance or absence are based on the Illumina data).
 
@@ -860,7 +857,7 @@ We performed qPCR on reverse-transcribed mRNA for influenza HA (to quantify vira
 For the qPCR, we used the SYBR Green PCR Master Mix (Thermo Fisher) according to the manufacturer's protocol using oligo-dT primers.
 The qPCR primers were: HA primer 1, 5'-\texttt{GGCCCAACCACACATTCAAC}-3'; HA primer 2, 5'-\texttt{GCTCATCACTGCTAGACGGG}-3'; IFNB1 primer 1, 5'-\texttt{AAACTCATGAGCAGTCTGCA}-3'; IFNB1 primer 2, 5'-\texttt{AGGAGATCTTCAGTTTCGGAGG}-3'; L32 primer 1, 5'-\texttt{AGCTCCCAAAAATAGACGCAC}-3'; L32 primer 2, 5'-\texttt{TTCATAGCAGTAGGCACAAAGG}-3'. 
 
-For the qPCR in \FIGSUPP[validation]{delqPCR} and \FIGSUPP[mutantcomparison]{cycloheximide}, A549 cells were seeded at a density of 10,000$10^4$ cells/well in a 96-well plate in D10 media 24 hours prior to infection, with four independent wells seeded per experimental treatment. 
+For the qPCR in \FIGSUPP[validation]{delqPCR} and \FIGSUPP[mutantcomparison]{cycloheximide}, A549 cells were seeded at a density of $10^4$ cells/well in a 96-well plate in D10 media 24 hours prior to infection, with four independent wells seeded per experimental treatment. 
 Immediately prior to infection D10 media was removed and replaced with influenza growth media and infected with the indicated influenza strains at a MOI of 0.4 based on TCID50 in MDCK-SIAT1 cells.
 For the cells with cycloheximide added to block protein expression (and hence secondary transcription), cycloheximide was added to a final concentration of 50 $\mu$g/ml~\citep[a concentration sufficient to block secondary transcription;][]{killip2014activation} at the time of infection.
 After 8 hours, mRNA was harvested using the CellAmp Direct RNA Prep Kit for RT-PCR, reverse-transcribed using an oligo-dT primer, and qPCR was performed as described above.
@@ -900,12 +897,6 @@ This passaging was necessary as viral titers from transfections were too low to 
 The wild-type and NS1stop viruses were titered by TCID50 on MDCK-SIAT1 cells, and the PB1 deletion viruses were titered on the MDCK-SIAT1 cells constitutively expressing PB1.
 The infections in \FIGSUPP[validation]{delflow} were performed at equivalent TCID50s as described in the legend to that figure.
 That these equivalent TCID50s were also roughly equivalent in terms of particles capable of undergoing primary transcription is shown in \FIGSUPP[validation]{delqPCR}.
-
-\subsection{\jdbcomment{Not yet used, can add when section with this virus is added}}
-To generate pseudovirus that expresses fluorescent mCherry instead of HA, a plasmid was generated similarly to a previously-described eGFP-expressing pseudovirus~\citep{russell2018extreme}. 
-To rescue this virus, we used MDCK-SIAT1 cells transduced to constituitively express HA and included an HA protein expression plasmid in our reverse-genetics transfection mixture.
-Virus was harvested from transfections at 72h and passaged for 48 at an MOI of 0.01 on MDCK-SIAT1 cells that express HA. 
-This virus was titered on complementing MDCK-SIAT1 cells.
 
 \subsection{Computational analysis of single-cell transcriptomic and viral sequence data}
 A computational pipeline that performs all steps in the data analysis is available at \url{https://github.com/jbloomlab/IFNsorted_flu_single_cell}~\citep{russell2018github}. 
@@ -960,7 +951,7 @@ The plot in \FIG{genotypes} summarizes all of the genotypic information, and was
 
 
 \section{Acknowledgments}
-We thank Cole Trapnell, Jason Underwood, Robert Bradley, Daniel Stetson, and AJ Velthuis for helpful scientific suggestions.
+We thank Cole Trapnell, Jason Underwood, Robert Bradley, Daniel Stetson, and AJ Velthuis for helpful suggestions.
 We thank Andy Marty and the Fred Hutch Genomics Core for performing the deep sequencing.
 We thank Katherine Xue, David Bacsik, and Hannah Itell for comments on the manuscript.
 This work was supported by the NIAID of the NIH under grant R01 AI127893 and a Burroughs Wellcome Fund Young Investigator in the Pathogenesis of Infectious Diseases grant to JDB.
