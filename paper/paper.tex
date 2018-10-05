@@ -65,7 +65,7 @@ If innate immunity is activated sufficiently rapidly, it can reduce viral replic
 
 Unfortunately for the host, influenza infection only rarely triggers IFN production by infected cells early in infection~\citep{kallfass2013visualizing, killip2017single}.
 This rareness of IFN induction is just one form of the extreme cell-to-cell heterogeneity that characterizes infection: cells also vary widely in their production of viral mRNA, proteins, and progeny virions~\citep{russell2018extreme,steuerman2018dissection,sjaastad2018distinct,heldt2015single}.
-Because viral growth and the IFN response are both feed-forward processes, early cell-to-cell heterogeneity could have significant downstream consequences for the race between virus and immune system---especially since real infections are typically initiated by just a few virions entering a few cells~\citep{mccrone2018stochastic, xue2018reconciling, varble2014influenza}.
+Because viral growth and the IFN response are both feed-forward processes, early cell-to-cell heterogeneity could have significant downstream consequences for the race between virus and immune system---especially since natural human infections are typically initiated by just a few virions entering a few cells~\citep{mccrone2018stochastic, xue2018reconciling, varble2014influenza}.
 
 It is unclear why only some infected cells trigger innate-immune responses.
 Two possible contributors are pure stochasticity and pre-existing variation in cellular state.
@@ -83,7 +83,7 @@ To do this, we first enrich for rare IFN+ cells, and then perform both standard 
 We obtain transcriptomes and sequences of all expressed viral genes in 150 infected cells, 40 of which express IFN.
 Even though we used a ``wild-type'' stock of virus, two-thirds of cells are infected by virions that have a mutation or defect in gene expression.
 This viral diversity is a major contributor to cell-to-cell heterogeneity, with cells infected by truly wild-type virions having a tighter distribution of viral transcriptional burden.
-Viral defects are especially common in IFN+ cells, and we identify at least four type of defects that cause increased IFN induction.
+Viral defects are especially common in IFN+ cells, and we identify at least four types of defects that cause increased IFN induction.
 However, viral genetic variation does not fully explain the heterogeneity, as even wild-type virions sometimes induce IFN.
 Therefore, viral diversity is an important but not exclusive cause of cell-to-cell heterogeneity during influenza infection.
 
@@ -91,15 +91,8 @@ Therefore, viral diversity is an important but not exclusive cause of cell-to-ce
 
 \subsection{A system to identify and enrich for rare IFN+ positive cells}
 A challenge in studying IFN induction by influenza virus is the rareness with which infection triggers its expression.
-For instance, we previously performed single-cell transcriptomics on hundreds of influenza-infected A549 human lung epithelial cells at early times (6 to 10 hours) post-infection~\citep{russell2018extreme}.
-Only 1 of 368 infected cells expressed detectable type I or type III IFN (\FIG{IFNrare}A).
-This paucity of IFN+ cells was not due simply to a poor detection threshold, since $>$100 IFN transcripts were detected in the one IFN+ cell~\citep{russell2018extreme}.
-
-This rareness of IFN induction is not merely a feature of A549 cells in culture.
-Prior studies using reporters have found that IFN expression is rare in influenza-infected mice at 24 and even 48 hours post-infection~\citep{kallfass2013visualizing}.
-In support of these findings, we re-analyzed the single-cell transcriptomics of influenza-infected mice by \citet{steuerman2018dissection}.
-As shown in \FIGSUPP[IFNrare]{mice}, many infected cells in the mice expressed IFN-stimulated genes (ISGs), which are induced by autocrine and paracrine signaling~\citep{stetson2006type,honda2006type}.
-But just a handful of cells detectably expressed IFN itself, which is only induced by direct cellular detection of viral infection~\citep{stetson2006type,honda2006type}.
+For instance, we previously performed single-cell transcriptomics on hundreds of influenza-infected A549 human lung epithelial cells at early times (6 to 10 hours) post-infection~\citep{russell2018extreme}, and found that only 1 of 368 infected cells expressed detectable type I or type III IFN (\FIG{IFNrare}A).
+Prior studies using reporters have found that IFN expression is also rare in influenza-infected mice at 24 and even 48 hours post-infection~\citep{kallfass2013visualizing}, a conclusion supported by our own re-analysis of the single-cell transcriptomics of influenza-infected mice by \citet{steuerman2018dissection} (see \FIGSUPP[IFNrare]{mice}).
 
 %%% start IFNrare figure %%%
 \begin{figure}
@@ -113,7 +106,6 @@ But just a handful of cells detectably expressed IFN itself, which is only induc
 \caption{
 IFN expression is rare in influenza-infected cells.
 {\bf (A)} Number of infected and IFN+ A549 cells in our prior single-cell transcriptomics~\citep{russell2018extreme}.
-\FIGSUPP[IFNrare]{mice} shows that IFN+ cells were also rare in the single-cell transcriptomics of influenza-infected mice by \citet{steuerman2018dissection}.
 {\bf (B)} An A549 reporter cell line to identify cells expressing IFN.
 The reporter consists of an IFN promoter that drives expression of a cell-surface protein amenable to MACS and a fluorescent protein.
 We created reporters with type I and type III IFN promoters (\FIGDATA[IFNrare]{reporter_sequences}).
@@ -131,8 +123,8 @@ Specifically, we downloaded the data from \citet{steuerman2018dissection} and id
 Here we show statistics for the cells from the influenza-infected wild-type C57BL/6J mice, which were collected at 48 hours (two replicates) or 72 hours (one replicate)---we do not show cells from the control mice.
 As shown in the left-most panel, the sequencing depth of \citet{steuerman2018dissection} was quite low, with only $\sim$1,500 mRNA counts per cell on average (this is 10 to 15-fold lower than the sequencing depth in \citet{russell2018extreme} and the current study, respectively).
 An important caveat is that this low sequencing depth could lead to a simple failure to detect IFN transcripts in some cells.
-Nonetheless, there is detectable expression of key ISGs in the majority of infected cells (the middle panel shows the total counts of IFIT1, ISG15, CCL5, and Mx1).
-However, only 5 of 1220 cells express any detectable type I (IFN-$\alpha$ and IFN-$\beta$) or type III (IFN-$\lambda$) mRNAs, and only at low levels (one transcript detected).
+Nonetheless, there is detectable expression of key ISGs---which are induced by autocrine and paracrine signaling~\citep{stetson2006type,honda2006type}---in the majority of infected cells (the middle panel shows the total counts of IFIT1, ISG15, CCL5, and Mx1).
+However, only 5 of 1220 cells express any detectable type I (IFN-$\alpha$ and IFN-$\beta$) or type III (IFN-$\lambda$) mRNAs, which are only induced by direct cellular detection of viral infection~\citep{stetson2006type,honda2006type}.
 The full code that performs the re-analysis shown in this figure is at \url{https://github.com/jbloomlab/IFNsorted_flu_single_cell/tree/master/paper/figures/IFN_stochastic/SteuermanReanalysis/}.
 }
 {\includegraphics[width=\textwidth]{figures/IFN_stochastic/SteuermanReanalysis/plots/p_mRNA_counts.pdf}}
@@ -176,15 +168,12 @@ For the uninfected and Sendai-virus infected, the percentage IFN+ was calculated
 \end{figure}
 %%% end IFNrare figure %%%
 
-To efficiently identify and enrich rare IFN+ cells, we integrated IFN reporters into the genome of A549 cells (\FIG{IFNrare}B) using lentiviral transduction and expanded cell lines from single clones.
-These reporters consisted of a type I (\textit{IFNB1}) or type III (\textit{IFNL1}) promoter driving expression of a cell-surface protein~\citep[LNGFR$\Delta$C;][]{bonini1997hsv,ruggieri1997cell} followed by a fluorescent protein.
-Cells that activate the IFN reporter can enriched by magnetic-activated cell sorting (MACS) for the cell-surface protein, or identified by flow cytometry for the fluorescent protein.
-The reporters were efficiently activated by a strain of Sendai virus~\citep{strahle2006sendai} that potently induces IFN (\FIGSUPP[IFNrare]{reporter_validation}), and activation of the type I and type III IFN reporters was highly correlated in single influenza-infected A549 cells (\FIGSUPP[IFNrare]{type_I_vs_III}; further validated by the single-cell transcriptomics described below).
+To efficiently identify and enrich rare IFN+ cells, we created A549 cells that carried IFN reporters consisting of a type I (\textit{IFNB1}) or type III (\textit{IFNL1}) promoter driving expression of a cell-surface protein~\citep[LNGFR$\Delta$C;][]{bonini1997hsv,ruggieri1997cell} followed by a fluorescent protein (\FIG{IFNrare}B).
+Cells that activate the IFN reporter can be enriched by magnetic-activated cell sorting (MACS) or identified by flow cytometry.
+The reporters were efficiently activated by a strain of Sendai virus~\citep{strahle2006sendai} that potently induces IFN (\FIGSUPP[IFNrare]{reporter_validation}), and activation of the type I and type III IFN reporters was highly correlated in our cells (\FIGSUPP[IFNrare]{type_I_vs_III}; further validated by the single-cell transcriptomics below).
 Therefore, for the rest of this paper, we use ``IFN expression'' to refer to combined expression of type I and III IFNs. 
 
-We used the reporter cells to quantify the frequency of IFN induction in A549 cells infected with the A/WSN/1933 (H1N1) strain of influenza (hereafter referred to as ``WSN'').
-As shown in \FIG{IFNrare}C, $\sim$0.5\% of infected cells activated the IFN reporter at 13 hours post-infection.
-This frequency of IFN induction is roughly comparable to that observed in our prior single-cell transcriptomics of influenza-infected cells (\FIG{IFNrare}B).
+We generated a stock of ``wild-type'' A/WSN/1933 (H1N1) influenza (hereafter referred to as ``WSN''), and found that it activated the IFN reporter in $\sim$0.5\% of infected cells---a frequency roughly comparable to that in our prior single-cell transcriptomics of influenza-infected cells (\FIG{IFNrare}A).
 
 \subsection{Combined transcriptomics and virus-sequencing of single infected cells}
 We next developed a method to determine if features of the infecting virions are responsible for the heterogeneous outcome of infection in single cells.
