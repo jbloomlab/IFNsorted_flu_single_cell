@@ -5,3 +5,4 @@
 *.suppinfo
 *.synctex.gz
 paper.pdf
+*$*
