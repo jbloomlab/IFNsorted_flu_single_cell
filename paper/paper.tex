@@ -176,8 +176,6 @@ Therefore, for the rest of this paper, we use ``IFN expression'' to refer to com
 We generated a stock of ``wild-type'' A/WSN/1933 (H1N1) influenza (hereafter referred to as ``WSN''), and found that it activated the IFN reporter in $\sim$0.5\% of infected cells---a frequency roughly comparable to that in our prior single-cell transcriptomics of influenza-infected cells (\FIG{IFNrare}A).
 
 \subsection{Combined transcriptomics and virus-sequencing of single infected cells}
-We next developed a method to determine if features of the infecting virions are responsible for the heterogeneous outcome of infection in single cells.
-Standard single-cell transcriptomic techniques are inadequate for this purpose, since they just use 3'-end sequencing of poly-adenylated mRNAs to measure the abundance of each transcript~\citep{klein2015droplet, macosko2015highly, zheng2017massively, cao2017comprehensive, gierahn2017seq}, and do not reveal if the virions that infect individual cells have mutations. 
 
 %%% start workflow figure
 \begin{figure}
@@ -191,7 +189,7 @@ Approach for combined transcriptomic and viral sequencing of single influenza-in
 IFN reporter A549 cells are infected with a mix of wild-type and synonymously barcoded viruses.
 IFN+ cells are enriched by MACS (\FIGSUPP[workflow]{MACS}), and pooled with non-enriched cells and uninfected canine cells that serve as an internal control for multiplets and mRNA leakage.
 {\bf (B)}
-The mRNAs from individual cells are converted to cDNAs tagged with cell-specific barcodes using the 10X Chromium platform.
+The mRNAs from individual cells are converted to cDNAs tagged with cell-specific barcodes.
 {\bf (C)}
 Cellular transcriptomes are quantified using standard single-cell 3'-end Illumina sequencing, and 
 {\bf (D)}
@@ -226,17 +224,15 @@ The qPCR was performed in quadruplicate (hence the four points for each sample).
 \end{figure}
 %%% end workflow figure
 
-We therefore developed the approach in \FIG{workflow} to determine the entire transcriptome \emph{and} the full sequences of the infecting virions in single cells.
+To determine if mutations or other features of the infecting virions contribute to the heterogeneous outcome of infection, we developed the approach in \FIG{workflow} to determine the entire transcriptome \emph{and} the full sequences of all viral genes in single cells.
 First, we generated a stock of virus that consisted of a mix of wild-type WSN and a ``synonymously barcoded'' variant that contained two engineered synonymous mutations near each termini of each gene (\FIGDATA[workflow]{virus_seqs}).
-These viral barcodes allow us to identify co-infection of individual cells from single-cell transcriptomic data~\citep{russell2018extreme}, and also provide an important control for PCR artifacts during full-length sequencing of viral transcripts (see below).
-
-We next used this viral stock to infect A549 IFN reporter cells (\FIG{workflow}A) at a dose that led to detectable viral transcription in about a quarter of the cells.
-From 12 to 13 hours post-infection, we used MACS to enrich cells that had activated the IFN reporter.
-Based on pilot experiments, we expected this MACS to enrich IFN+ cells to $\sim$5\% to 30\% of the total (\FIGSUPP[workflow]{MACS}).
-To ensure the presence of IFN- cells after MACS enrichment, we added back non-enriched cells to $\sim$10\% of the total.
+These viral barcodes allow us to identify co-infections from single-cell transcriptomic data~\citep{russell2018extreme}, and provide an important control for PCR artifacts during full-length sequencing of viral transcripts (see below).
+We used this viral stock to infect A549 IFN reporter cells (\FIG{workflow}A) at a dose that led to detectable viral transcription in about a quarter of cells.
+From 12 to 13 hours post-infection, we used MACS to enrich cells that had activated the IFN reporter (\FIGSUPP[workflow]{MACS}).
+To ensure the presence of IFN- cells, we added back non-enriched cells to $\sim$10\% of the total.
 We also added uninfected canine cells to $\sim$5\% of the total as a control for multiplets and to estimate the background amount of viral mRNA detected in truly uninfected cells.
 
-We processed the cells on a commercially available platform~\citep[the 10X Chromium;][]{zheng2017massively} that physically isolates cells in droplets and reverse transcribes polyadenylated mRNAs to append a unique cell barcode to all cDNAs in each droplet, and a unique molecular identifier (UMI) to each cDNA molecule (\FIG{workflow}B).
+We processed the cells on a commercially available platform~\citep{zheng2017massively} that isolates cells in droplets and reverse transcribes polyadenylated mRNAs to append a unique cell barcode to all cDNAs in each droplet, and a unique molecular identifier (UMI) to each cDNA molecule (\FIG{workflow}B).
 Because influenza virus mRNAs are polyadenylated~\citep{robertson1981polyadenylation}, this process appends cell barcodes to both cellular and viral mRNAs.
 Furthermore, because virtually the entire influenza genome is transcribed, the cell-barcoded cDNA spans almost all 13,581 nucleotides in the segmented viral genome: the only portions not covered are one universally conserved nucleotide upstream of the transcription start site~\citep{koppstein2015sequencing} and 17 to 22 highly conserved nucleotides downstream of the polyadenylation site~\citep{robertson1981polyadenylation} in each of the eight viral gene segments.
 
