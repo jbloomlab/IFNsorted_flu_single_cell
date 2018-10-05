@@ -1,4 +1,4 @@
-# Single-cell virus sequencing of influenza variants that trigger innate immunity
+# Single-cell virus sequencing of influenza infections that trigger innate immunity
 
 ## Authors
 Alistair Russell and [Jesse Bloom](https://research.fhcrc.org/bloom/en.html).
