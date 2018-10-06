@@ -437,10 +437,9 @@ Note also that this plot is limited to the cells that were called as infected (\
 
 We next used PacBio sequencing (\FIG{workflow}D) to determine the full sequences of the viral genes expressed in single infected cells.
 Using PCR enrichment (see Methods), we obtained over 200,000 high-quality PacBio CCSs that mapped to an influenza gene and contained a cell barcode and UMI (\FIGSUPP[genotypes]{CCSs}).
-Crucially, the synonymous viral barcodes at both termini of each gene enabled us to estimate the rate of PCR strand exchange (\FIGSUPP[genotypes]{StrandExchange}).
-Less then 3\% of the cDNAs experienced strand exchange that we were not able to identify and filter (\FIGSUPP[genotypes]{CCSs}), meaning that the vast majority of CCSs correctly link the sequence of the viral transcript to cell barcodes and UMIs that identify the cell and molecule of origin.
+Crucially, the synonymous viral barcodes at both termini of each gene enabled us to confirm that PCR strand exchange (\FIGSUPP[genotypes]{StrandExchange}) was rare  (\FIGSUPP[genotypes]{CCSs}), meaning that the vast majority of CCSs correctly link the sequence of the viral transcript to cell barcodes and UMIs that identify the cell and molecule of origin.
 
-We called a mutation in a viral gene if it was found in least two CCSs originating from different mRNAs (unique UMIs) in that cell, and was also present in at least 30\% of all CCSs for that gene in that cell.
+We called a mutation in a viral gene if it was found in least two CCSs originating from different mRNAs (unique UMIs) and at least 30\% of all CCSs for that gene in that cell.
 For cells co-infected with both viral barcode variants, we called mutations separately for each viral variant.
 This strategy reliably identifies mutations in virions that initiate infection of cells infected with at most one virion of each viral barcode variant ($\sim$75\% of infected cells), as well as high-abundance mutations in cells co-infected with multiple virions of the same viral barcode.
 It will not identify mutations that arise within a cell after the first few rounds of viral genome replication, since such mutations will not reach 30\% frequency in that cell.
@@ -455,7 +454,7 @@ Simple visual inspection of this figure reveals a wealth of information.
 For instance, the cell with the highest viral burden (\textit{cell 1} in \FIG{genotypes}, which has 65\% of its mRNA from virus) was infected by a virion that expressed wild-type copies all eight genes and did not induce detectable IFN.
 But 12 of the other 13 cells with at least 50\% of their mRNA from virus were infected by virions that had a mutation or failed to express at least one gene, and five of these cells expressed IFN.
 The two cells that expressed the most IFN (\textit{cell 13} and \textit{cell 123}) both lacked the viral NS gene, and many other IFN+ cells had different defects such as large internal deletions (e.g., \textit{cell 5} and \textit{cell 89}) or amino-acid mutations (e.g., \textit{cell 9}, \textit{cell 28}, and many others).
-However, expressing unmutated copies of all eight genes did not guarantee a favorable outcome for the virus: for instance, the apparently flawless virion that infected \textit{cell 139} only managed to express viral mRNA to 6\% of the total transcriptome, and the apparently flawless virion that infected \textit{cell 105} still induced IFN.
+However, expressing unmutated copies of all eight genes did not guarantee a favorable outcome for the virus: for instance, the wild-type virion that infected \textit{cell 139} only managed to express viral mRNA to 6\% of the total transcriptome, and the wild-type virion that infected \textit{cell 105} still induced IFN.
 
 \subsection{Viral defects associated with infection outcome in single cells}
 
