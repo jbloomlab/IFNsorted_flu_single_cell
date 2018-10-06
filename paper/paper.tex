@@ -604,9 +604,6 @@ We tested the rate of IFN induction by each viral stock using the reporter cells
 The strongest IFN induction was by the NS1stop virus, but the PB1 internal deletion and three of the point-mutant viruses (PB1-D27N, PB1-T677A, and NS1-A122V) also induced IFN significantly more frequently than wild type.
 The other three point mutants (PB1-G206S, PB1-K279R, and NS2-E47G) did not increase IFN induction---an unsurprising finding, since we also expect some mutations without an IFN-enhancing effect to be found in IFN+ cells by chance.
 But overall, the results in \FIG{validation} validate that the viral defects in single IFN+ cells often cause increased IFN production.
-Curiously, none of the mutations tested induce interferon deterministically (ie in all infected cells), indicating additional heterogeneity in response driven by unsampled heterogeneity in viral samples or host signaling pathways.
-Due to our single-cell approach, we can determine that it is unlikely that this heterogeneity is simply a summation of those immunostimulatory genetic features described here, as neither of the immunostimulatory PB1 mutations were identified in interferon-producing infections lacking the NS gene segment or possessing an internally-deleted segment, two of the NS null infections found in interferon positive cells wherein infection was  otherwise entirely wild-type in sequence, and the PB1 deletion was found in an infection that was wild-type other than a mutation in NA, unlikely to have precipitated interferon induction.
-Therefore there remains considerable heterogeneity in interferon induction beyond those genetic features identified here.
 
 \section{Discussion}
 We have determined the full sequences of all viral genes expressed in single influenza-infected cells, and examined how viral mutations and gene-expression defects associate with infection outcome in each cell.
@@ -628,15 +625,11 @@ Given the extensive prior work describing such deletions, it is perhaps surprisi
 There may be several reasons: we used relatively pure viral stocks~\citep{xue2016propagation} at modest MOI; our experiments preferentially captured cells with higher viral transcriptional load; and most prior studies have used techniques that can detect large deletions but not subtle point mutations.
 The relative importance of different types of viral defects for IFN induction likely varies across infection conditions, viral strains, and cell types---so it remains an open question as to which defects are most relevant for early immune detection of actual viral infections in humans.
 
-Our results also indicate that different viral defects induce IFN by somewhat distinct processes.
-For instance, higher viral transcription is associated with IFN induction only in cells infected by virions with deficiencies in NS.
-This finding is consistent with the suggestion by \citet{sjaastad2018distinct} that viral genetic variation relates to cell-to-cell variability in gene expression.
-Larger-scale studies similar to the one performed here should be useful for further elucidating the extent that virions with different defects cause cells to launch distinct transcriptional programs.
-
 But although viral variation is clearly important, it still only partially explains heterogeneity among influenza-infected cells.
 We find substantial breadth in viral transcriptional burden and occasional IFN induction even among cells infected with fully wild-type virions.
-Of course, our single-cell virus sequencing only calls mutations present in a cell at relatively high frequency, so there could be low-frequency mutations in cells expressing predominantly wild-type viral genes.
-However, we suspect that stochasticity or pre-existing cellular states also affect the outcome of infection, since heterogeneity in IFN induction is present even among cells treated with synthetic innate-immune ligands~\citep{shalek2013single, shalek2014single, wimmers2018single, bhushal2017cell}.
+Additionally, none of the viral defects in IFN+ cells induce IFN deterministically in our validation experiments---and the apparently most immunostimulatory defect (absence of NS) also occurs in multiple IFN- cells in our single-cell dataset.
+Of course, our single-cell virus sequencing only calls mutations present in a cell at relatively high frequency, and so could overlook low-frequency mutations that might contribute to IFN induction.
+However, we suspect that stochasticity or pre-existing cellular states also affect the outcome of infection, since heterogeneity in IFN induction is present even among cells treated with synthetic innate-immune ligands~\citep{shalek2013single, shalek2014single, wimmers2018single, bhushal2017cell}, as well as for other viruses~\citep{oneal2018west}.
 
 Perhaps the most intriguing question is how the heterogeneity that we have described ultimately affects the macroscopic outcome of infection.
 Natural human influenza infections are established by just a handful of virions~\citep{mccrone2018stochastic, xue2018reconciling, varble2014influenza} that then undergo exponential growth, and early IFN responses are amplified by paracrine signaling~\citep{stetson2006type,honda2006type}.
