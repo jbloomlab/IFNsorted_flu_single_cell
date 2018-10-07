@@ -325,11 +325,11 @@ We obtained transcriptomes for 1,614 human (A549) cells, and 50 of the uninfecte
 We also obtained 12 transcriptomes with a mix of human and canine transcripts; from the number of such mixed cell-type transcriptomes, we estimate~\citep{bloom2018estimating} that $\sim$11\% of the transcriptomes are derived from multiple cells.
 To remove some of these multiplets, we filtered transcriptomes with unusually high or low numbers of cellular transcripts (\FIG{transcriptomics}B), retaining the 1,490 human cells that passed this filtering.
 
-To identify infected cells, we examined the fraction of each transcriptome derived from virus (\FIG{transcriptomics}B).
+To identify infected cells, we examined the fraction of each transcriptome derived from virus (\FIG{transcriptomics}C).
 As expected, only a small fraction ($\sim$0.7\%) of transcripts in the uninfected canine cells were from influenza; this low-level background is likely from lysed cells that release ambient viral mRNA that is captured in droplets during reverse-transcription.
-We tested whether each cell contained significantly more viral transcripts than expected under a Poisson model given this background fraction, and classified 290 human cells as definitively infected with influenza (\FIG{transcriptomics}B).
+We tested whether each cell contained significantly more viral transcripts than expected under a Poisson model given this background fraction, and classified 290 human cells as definitively infected with influenza (\FIG{transcriptomics}C).
 We classified the other cells as uninfected, although it is possible that some were infected with virions that produced too little mRNA to be detected in our experiment.
-The distribution of the amount of viral mRNA across infected cells is shown in the inset in \FIG{transcriptomics}B.
+The distribution of the amount of viral mRNA across infected cells is shown in the inset in \FIG{transcriptomics}C.
 As in our prior work~\citep{russell2018extreme}, the distribution is extremely heterogeneous: many infected cells have only a few percent of mRNA derived from virus, but viral mRNA comprises over half the transcriptome of a few cells.
 
 We then called the presence or absence of each viral gene in each infected cell, again using a Poisson model parameterized by background fractions estimated from uninfected canine cells.
@@ -348,7 +348,7 @@ This discrepancy could arise if the MACS for IFN+ cells also enriches co-infecte
 This moderately high rate of co-infection may also explain why more cells in our experiment express all eight viral genes compared to some prior studies, as a co-infecting virion can complement a missing viral gene~\citep{russell2018extreme}. 
 
 We next examined expression of IFN and ISGs (\FIG{transcriptomics}G and \FIGSUPP[transcriptomics]{ISG}).
-Over 20\% of  infected cells were IFN+ given the heuristic thresholds in \FIG{transcriptomics}C, indicating that the MACS successfully enriched IFN+ cells far beyond their initial frequency of $\sim$0.5\% (\FIG{IFNrare}C) among infected cells.
+Over 20\% of  infected cells were IFN+ given the heuristic thresholds in \FIG{transcriptomics}G, indicating that the MACS successfully enriched IFN+ cells far beyond their initial frequency of $\sim$0.5\% (\FIG{IFNrare}C) among infected cells.
 Few ($\sim$1.3\%) uninfected cells were IFN+; the few that were present might be because the MACS enriched for rare cells that spontaneously activated IFN, or because some cells that we classified as uninfected were actually infected at low levels.
 Many more cells expressed ISGs than IFN itself: the ratio of ISG+ to IFN+ cells was 1.8 among infected cells, and 7 among uninfected cells (\FIGSUPP[transcriptomics]{ISG}A).
 The IFN+ cells were a subset of the ISG+ cells: IFN+ cells always expressed ISGs, but many ISG+ cells did not express IFN (\FIGSUPP[transcriptomics]{ISG}B).
@@ -616,7 +616,7 @@ Despite the fact that we used a low-passage viral stock generated from plasmids 
 Although our study is certainly not the first to note that influenza has a high mutation rate~\citep{parvin1986measurement, suarez1992heterogeneity, suarez1994estimation, bloom2014experimentally, pauly2017novel} and sometimes fails to express genes~\citep{brooke2013most, heldt2015single, dou2017analysis, russell2018extreme}, it is the first to directly observe the full spectrum of these defects across single cells.
 Visual inspection of \FIG{genotypes} shows how any experiment that does not sequence viral genes in single cells is averaging across a vast number of hidden viral defects.
 
-It turns out that these viral defects substantially contribute to the heterogeneity observed in prior single-cell studies of influenza~\citep{russell2018extreme, steuerman2018dissection, heldt2015single, sjaastad2018distinct}, including helping determine if an infected triggers an IFN response.
+It turns out that these viral defects substantially contribute to the heterogeneity observed in prior single-cell studies of influenza~\citep{russell2018extreme, steuerman2018dissection, heldt2015single, sjaastad2018distinct}, including helping determine if a cell triggers an IFN response.
 We identified four types of viral defects in single IFN+ cells that we validated to increase IFN induction. 
 Two types of defects---absence of the NS gene and amino-acid mutation to the NS1 protein---presumably impair NS1's well-known ability to antagonize innate-immune pathways~\citep{garcia1998influenza, hale2008multifunctional}.
 The third type of defect, amino-acid mutations in the PB1 protein, is consistent with recent work by \citet{velthuis2018mini} showing that mutations to the viral polymerase affect generation of mini-viral RNAs that activate the innate-immune sensor RIG-I.
@@ -851,7 +851,7 @@ The plot in \FIG{genotypes} summarizes all of the genotypic information, and was
 
 
 \section{Acknowledgments}
-We thank Cole Trapnell, Jason Underwood, Robert Bradley, Daniel Stetson, AJ Velthuis, and Katherine Xue for helpful suggestions.
+We thank Cole Trapnell, Jason Underwood, Robert Bradley, Daniel Stetson, AJ Velthuis, Katherine Xue, and Hannah Itell for helpful suggestions.
 We thank Andy Marty and the Fred Hutch Genomics Core for performing the deep sequencing.
 This work was supported by the NIAID of the NIH under grant R01 AI127893 and a Burroughs Wellcome Fund Young Investigator in the Pathogenesis of Infectious Diseases grant to JDB.
 ABR was supported by a postdoctoral fellowship from the Damon Runyon Cancer Research Foundation.
