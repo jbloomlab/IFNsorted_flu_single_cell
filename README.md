@@ -1,7 +1,7 @@
 # Single-cell virus sequencing of influenza infections that trigger innate immunity
 
-## Authors
-Alistair Russell and [Jesse Bloom](https://research.fhcrc.org/bloom/en.html).
+This is the GitHub repository for the paper.
+The pre-print of the paper is on _bioRxiv_ at [DOI 10.1101/437277](https://doi.org/10.1101/437277).
 
 ## Overview
 Single-cell transcriptomics and full-length virus sequencing of single influenza-infected A549 cells that have been enriched for IFN+ cells.
