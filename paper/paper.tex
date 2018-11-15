@@ -99,9 +99,9 @@ Reporter cells to identify and enrich IFN+ cells.
 {\bf (A)} An A549 IFN reporter cell line.
 The reporter consists of an IFN promoter that drives expression of a cell-surface protein amenable to MACS and a fluorescent protein.
 We created reporters with type I and type III IFN promoters (\SUPPFILE{reporter_sequences}).
-The reporters were efficiently activated by an IFN-inducing strain of Sendai virus (\SUPPFIG{reporter_validation}).
+The reporters were efficiently activated by an IFN-inducing strain of Sendai virus (\SUPPFIG{reportervalidation}A).
 {\bf (B)}
-Frequency of IFN induction upon infection with the influenza virus stock used in the single-cell studies in this paper, as quantified using the type III IFN reporter cell line (see \SUPPFIG{flow} for details).
+Frequency of IFN induction upon infection with the influenza virus stock used in the single-cell studies in this paper, as quantified using the type III IFN reporter cell line (see \SUPPFIG{reportervalidation}C for details).
 The plot also shows uninfected cells, and cells infected with saturating amounts of Sendai virus.
 The limit of detection of 0.05\% is indicated with a dashed line, and numbers show the median of three measurements.
 }
@@ -111,7 +111,7 @@ The limit of detection of 0.05\% is indicated with a dashed line, and numbers sh
 
 To efficiently identify and enrich rare IFN+ cells, we created A549 cells that carried IFN reporters consisting of a type I (\textit{IFNB1}) or type III (\textit{IFNL1}) promoter driving expression of a cell-surface protein~\citep[LNGFR$\Delta$C;][]{bonini1997hsv,ruggieri1997cell} followed by a fluorescent protein (\FIG{IFNrare}A).
 Cells that activate the IFN reporter can be enriched by magnetic-activated cell sorting (MACS) or identified by flow cytometry.
-The reporters were efficiently activated by a strain of Sendai virus~\citep{strahle2006sendai} that potently induces IFN (\SUPPFIG{reporter_validation}), and activation of the type I and type III IFN reporters was highly correlated in our cells (\SUPPFIG{type_I_vs_III}; further validated by the single-cell transcriptomics below).
+The reporters were efficiently activated by a strain of Sendai virus~\citep{strahle2006sendai} that potently induces IFN (\SUPPFIG{reportervalidation}A), and activation of the type I and type III IFN reporters was highly correlated in our cells (\SUPPFIG{reportervalidation}B; further validated by the single-cell transcriptomics below).
 Therefore, for the rest of this paper, we use ``IFN expression'' to refer to combined expression of type I and III IFNs. 
 
 We generated a stock of ``wild-type'' A/WSN/1933 (H1N1) influenza (hereafter referred to as ``WSN''), and found that it activated the IFN reporter in $\sim$0.5\% of infected cells  (\FIG{IFNrare}B), a frequency roughly comparable to that in our prior single-cell transcriptomics of influenza-infected cells.
@@ -419,10 +419,10 @@ We used these constructs to generate lentiviral vectors and transduce of A549 ce
 We then sorted single transduced cells and expanded them.
 A portion of the expanded cells were tested for reporter activity by transfecting poly(I:C) (a potent agonist of the RIG-I pathway), and we retained clones with strong activation.
 Importantly, the cells that we retained for further use were not the same portion that were tested by poly(I:C) treatment, but rather a separate split of the same population---this avoids any selection on the cells from transient activation of IFN.
-For the dual type I / type III reporter used in \SUPPFIG{type_I_vs_III}, a single-cell clone of the type III reporter cell line was transduced with the type I reporter bearing the mCherry fluorescent marker, and then isolated and propagated as a single cell clone for the other cell lines.
+For the dual type I / type III reporter used in \SUPPFIG{reportervalidation}B, a single-cell clone of the type III reporter cell line was transduced with the type I reporter bearing the mCherry fluorescent marker, and then isolated and propagated as a single cell clone for the other cell lines.
 All reporter lines tested negative for mycoplasma contamination by the Fred Hutch Genomics Core.
 
-\SUPPFIG{reporter_validation} shows validation of the reporter cell lines using infection with saturating amounts of the Cantell strain of Sendai virus (obtained from Charles River Laboratories).
+\SUPPFIG{reportervalidation}A shows validation of the reporter cell lines using infection with saturating amounts of the Cantell strain of Sendai virus (obtained from Charles River Laboratories).
 For detection of the cell-surface bound LNGFR$\Delta$C, cells were stained with PE-conjugated anti-LNGFR (CD271) antibody from Miltenyi Biotec.
 
 \subsection{Viruses for single-cell experiments}
@@ -560,7 +560,7 @@ The infections in \SUPPFIG{validationflow}B were performed at equivalent TCID50s
 That these equivalent TCID50s were also roughly equivalent in terms of particles capable of undergoing primary transcription is shown in \SUPPFIG{delqPCR}.
 
 \subsection{Computational analysis of single-cell transcriptomic and viral sequence data}
-A computational pipeline that performs all steps in the data analysis is available at \url{https://github.com/jbloomlab/IFNsorted_flu_single_cell}~\citep{russell2018github}. 
+A computational pipeline that performs all steps in the data analysis is available at \url{https://github.com/jbloomlab/IFNsorted_flu_single_cell}. 
 This pipeline is orchestrated by \texttt{Snakemake}~\citep{koster2012snakemake}, and begins with the raw sequencing data and ends by generating the figures shown in this paper.
 The sequencing data and annotated cell-gene matrix are available on the GEO repository under accession GSE120839 (\url{https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE120839}).
 
@@ -647,34 +647,37 @@ The full code that performs the re-analysis shown in this figure is at \url{http
 \clearpage
 
 \begin{suppfig}
-\includegraphics[width=0.5\textwidth]{figures/IFN_stochastic/IFN_reporter/Sendai_validation.pdf}
-\caption{To validate the IFN reporter cell lines, they were infected at high MOI with the Cantell strain of Sendai virus, which strongly activates IFN expression~\citep{strahle2006sendai}.
+\begin{minipage}[t]{0.52\textwidth}
+{\bf \Large A}
+
+\includegraphics[width=0.9\textwidth, valign=t]{figures/IFN_stochastic/IFN_reporter/Sendai_validation.pdf}
+\end{minipage}
+\begin{minipage}[t]{0.48\textwidth}
+{\bf \Large B}
+
+\includegraphics[width=0.7\textwidth, valign=t]{figures/IFN_stochastic/IFN_reporter/IFNbeta_IFN_lambda_correlated.pdf}
+
+{\bf \Large C}
+
+\includegraphics[width=0.9\textwidth]{figures/IFN_stochastic/Flow/flow_plot.pdf}
+
+\end{minipage}
+
+\caption{Details about the reporter cell lines (\FIG{IFNrare}A) to identify IFN+ cells.
+{\bf (A)}
+To validate the IFN reporter cell lines, they were infected at high MOI with the Cantell strain of Sendai virus, which strongly activates IFN expression~\citep{strahle2006sendai}.
 The name of each of reporter cell line is indicated at the top of each row of plots.
 At 13 hours post-infection, activation of the IFN reporter was then monitored by flow cytometry using the marker indicated at the bottom of each plot (either a fluorescent protein or antibody staining for the cell-surface LNGFR$\Delta$C using a PE-conjugated anti-LNGFR antibody from Miltenyi Biotec).
 Sendai infection efficiently activated the IFN reporter in all cases, with the strongest signal from the IFN-$\lambda$ reporter driving ZsGreen.
-}
-\label{suppfig:reporter_validation}
-\end{suppfig}
-
-\clearpage
-
-\begin{suppfig}
-\includegraphics[width=0.5\textwidth]{figures/IFN_stochastic/IFN_reporter/IFNbeta_IFN_lambda_correlated.pdf}
-\caption{
-Expression of type I and type III IFN is highly correlated in A549 cells.
+{\bf (B)}
+The type I and type III IFN reporters are highly correlated in their activation.
 An A549 cell line was generated by transduction with both the IFN-$\beta$ and IFN-$\lambda$ reporters driving expression of mCherry and ZsGreen, respectively.
 The cells were then infected with two different stocks of ``wild-type'' WSN influenza, or stocks with a deletion in PB1 or stop codons in NS1 (described later in the paper).
 After 13 hours, cells were analyzed by flow cytometry.
 Cells positive for either fluorescent reporter were further analyzed.
-As shown in the FACS plots, expression of the \textit{IFNB1} and \textit{IFNL1} reporters is highly correlated in all cases.}
-\label{suppfig:type_I_vs_III}
-\end{suppfig}
-
-\clearpage
-
-\begin{suppfig}
-\includegraphics[width=0.75\textwidth]{figures/IFN_stochastic/Flow/flow_plot.pdf}
-\caption{Flow cytometry data for \FIG{IFNrare}B.
+As shown in the FACS plots, expression of the \textit{IFNB1} and \textit{IFNL1} reporters is highly correlated in all cases.
+{\bf (C)}
+Flow cytometry data for \FIG{IFNrare}B.
 The A549 cells with the \textit{IFNL1} reporter driving LNGFR$\Delta$C-ZsGreen were not infected, infected with saturating amounts of the Cantell strain of Sendai virus~\citep{strahle2006sendai}, or infected the same stock of influenza virus used in the single-cell experiment at a target MOI of 0.3.
 After 13 hours, the cells were stained for expression of HA protein and analyzed by FACS for HA and expression of the ZsGreen driven by the \textit{IFNL1} reporter.
 Each condition was done in triplicate.
@@ -683,7 +686,7 @@ Cells were classified as HA+ or IFN+ based on gates set to put 0.05\% of the uni
 For the influenza-infected cells, the percentage IFN+ was calculated only among the HA+ cells (since these are the ones that are infected).
 For the uninfected and Sendai-virus infected, the percentage IFN+ was calculated among all cells, since these cells do not express HA.
 }
-\label{suppfig:flow}
+\label{suppfig:reportervalidation}
 \end{suppfig}
 
 \clearpage
