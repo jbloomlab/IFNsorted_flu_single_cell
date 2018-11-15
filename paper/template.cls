@@ -405,6 +405,7 @@
 % Other desired commands
 \renewcommand{\equationautorefname}{Eq.}
 %% Added autoref support for \figsupp, \figdata, \video, \videosupp
+\newcommand{\suppfileautorefname}{Supplementary File}
 \newcommand{\figsuppautorefname}{Figure Supplement}
 \newcommand{\dataautorefname}{source data}
 \newcommand{\videoautorefname}{Video}
@@ -423,6 +424,7 @@
 }
 \newcommand{\FIG}[1]{\autoref{fig:#1}}
 \newcommand{\TABLE}[1]{\autoref{tab:#1}}
+\newcommand{\SUPPFILE}[1]{\autoref{suppfile:#1}}
 \newcommand{\VIDEO}[1]{\autoref{video:#1}}
 \newcommand{\EQ}[1]{\autoref{eq:#1}}
 \newcommand{\BOX}[1]{\autoref{box:#1}}
