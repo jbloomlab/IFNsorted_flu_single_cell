@@ -299,36 +299,12 @@ Specific viral defects associated with IFN induction.
 The top panel show the percent of IFN- and IFN+ cells that fail to express each viral gene.
 The middle and bottom panels show the percent of IFN- and IFN+ cells that have a deletion or amino-acid substitution in each gene, conditioned on the cell expressing that gene.
 Numbers give P-values (Fisher's exact test) for rejecting the null hypothesis that percents are equal among IFN- and IFN+ cells. 
-\FIGSUPP[mutations]{allcells} and \FIGSUPP[mutations]{isg} show that the trends are similar if we include infected cells with incomplete viral sequence information, or categorize cells by ISG expression rather than IFN expression.
 {\bf (D)}
 There is no association between IFN induction and the amount of viral mRNA in cells that express NS, but viral burden is associated with IFN induction among cells that lack NS.
 Throughout this figure, we only consider substitutions that are non-synonymous.
 Insertions are not shown as a mutation type as they are extremely rare (\FIG{genotypes}).
 }
 \label{fig:mutations}
-
-\figsupp[Analysis as in \FIG{mutations}C but including infected cells with incomplete viral sequence information.]
-{This plot differs from \FIG{mutations}C in that it also includes data from cells for which some viral genes were not fully sequenced.
-For incompletely sequenced cells, deletions and substitutions are included in the counts when that particular viral gene is sequenced.
-The major trends in \FIG{mutations}C are also true for the larger dataset in this figure.
-In addition, there is now a modest trend for infected cells that fail to express PB2 and PA \emph{not} to express IFN.
-}
-{\includegraphics[width=\textwidth]{figures/single_cell_figures/p_muts_ifn_all.pdf}}
-\label{figsupp:allcells}
-
-\figsupp[Association of viral genetic variation and ISG expression.]
-{This plot shows the same information as panels \FIG{mutations}B-D except that it shows the association of viral gene absence / mutations with ISG expression rather than IFN expression.
-Cells are classified as ISG+ or ISG- as in \SUPPFIG{ISG}.
-The major viral features that associate with IFN induction also associate with ISG expression.
-Specifically, cells that express wild-type copies of all eight viral genes tend to express ISGs less frequently and at lower levels
-The absence of NS is strongly associated with higher ISG expression.
-Viral burden is not associated with ISG expression levels in NS-sufficient infections, but is in NS-deficient infections.
-}
-{\includegraphics[width=\textwidth]{figures/single_cell_figures/p_mutations_isg.pdf}}
-\label{figsupp:isg}
-
-\figdata{A CSV file giving the viral mutations and related information in \FIG{mutations} is at \url{https://github.com/jbloomlab/IFNsorted_flu_single_cell/blob/master/paper/figures/single_cell_figures/mutations.csv}.}
-\label{figdata:mutations}
 
 \end{fullwidth}
 \end{figure}
@@ -893,8 +869,13 @@ Genbank files giving sequences of the wild-type and synonymously barcoded viruse
 \end{suppfile}
 
 \begin{suppfile}
-\caption{A CSV file giving the genotypes is at \url{https://github.com/jbloomlab/IFNsorted_flu_single_cell/blob/master/paper/figures/single_cell_figures/genotypes.csv}.}
+\caption{A CSV file giving the genotypes in \FIG{genotypes} is at \url{https://github.com/jbloomlab/IFNsorted_flu_single_cell/blob/master/paper/figures/single_cell_figures/genotypes.csv}.}
 \label{suppfile:genotypes}
+\end{suppfile}
+
+\begin{suppfile}
+\caption{A CSV file giving the viral mutations and related information in \FIG{mutations} is at \url{https://github.com/jbloomlab/IFNsorted_flu_single_cell/blob/master/paper/figures/single_cell_figures/mutations.csv}.}
+\label{suppfile:mutations}
 \end{suppfile}
 
 \begin{suppfile}
