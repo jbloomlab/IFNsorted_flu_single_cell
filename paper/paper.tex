@@ -242,7 +242,7 @@ Cells expressing high levels of viral genes, IFN, and ISGs cluster together---an
 \begin{figure}
 \begin{fullwidth}
 {\centering
-\includegraphics[height=0.78\textheight]{figures/single_cell_figures/p_genotypes.pdf}
+\includegraphics[height=0.9\textheight]{figures/single_cell_figures/p_genotypes.pdf}
 }
 \caption{
 Viral genotypes and infection outcomes in single cells.
@@ -254,68 +254,13 @@ Orange boxes show the percent of cellular mRNA derived from IFN, with orange box
 }
 \label{fig:genotypes}
 
-\figsupp[Number of PacBio CCSs and PCR strand exchange rate.]
-{
-The number of PacBio CCSs that passed quality-control steps and aligned to an influenza virus gene.
-Note that these sequences were obtained using several PacBio runs, most of which were intentionally loaded with different amounts of the various viral genes in order to increase coverage on genes that were needed in order to obtain the full sequences of virions infecting cells.
-(For exhaustive details, see the Jupyter notebook at \url{https://github.com/jbloomlab/IFNsorted_flu_single_cell/blob/master/pacbio_analysis.ipynb} and in \SUPPFILE{pacbio_analysis}.)
-Because of this unequal loading and the inherently different PCR amplification efficiencies of different viral genes, unlike the transcriptomic data in \FIG{transcriptomics}, the numbers of CCSs for different genes should \emph{not} be taken as an indicator of their abundance in the infected cells.
-Especially for the polymerase genes (PB2, PB1, and PA), many CCSs corresponded to genes with internal deletions, since these shorter forms of the genes were preferentially amplified during PCR.
-Therefore, the plot is faceted by the number of CCSs for any length of the gene, and for full-length genes.
-Note that the disproportionate sequencing of the shorter internally deleted genes should not greatly affect the genotype calling in \FIG{genotypes} since UMIs were used to collapse duplicate sequences derived from the same cDNA, and cell barcodes were used to collapse duplicate sequences from the same cell.
-The bars in the plot are colored by whether the sequence is derived from the wild-type viral variant, the synonymously barcoded viral variant, or represents a mixed-barcode molecule (see \FIGSUPP[genotypes]{StrandExchange} for more explanation).
-From the frequencies of these different forms, we estimate~\citep{bloom2018estimating} that 5.7\% of molecules are chimeric due to PCR strand exchange.
-Note that about half of these PCR chimeras could be identified by the presence of mixed viral barcodes and removed from subsequent analyses, leaving $\sim$3\% un-identified chimeras.
-Note also that for some molecules (mostly polymerase genes with internal deletions) one of the barcode sites was deleted from the molecule and so the barcode identity could only be partially called.
-A negligible number of molecules have low-accuracy sequence or unexpected nucleotide identities at the sites of the viral barcodes.
-}
-{\includegraphics[width=\textwidth]{figures/pacbio_single_cell_figures/ccs_per_viralbarcode.pdf}}
-\label{figsupp:CCSs}
-
-\figsupp[Strategy for detecting strand exchange during sequencing of full-length viral genes.]
-{The library preparation for PacBio sequencing of the cDNA for the full-length viral genes required many cycles of PCR.
-A major concern is that strand exchange during this PCR could scramble mutations and 10X cell barcodes / UMIs from different molecules.
-We can detect PCR strand exchange by leveraging the fact that our cells were infected with a mix of wild-type virus and virus carrying synonymous barcodes near both termini of each gene.
-If there is no strand exchange, all molecules should either be wild-type or have the synonymous barcoding mutations at \emph{both} termini.
-But strand exchange will create some molecules that have wild-type nucleotides at one termini and synonymous barcoding mutations at the other termini.
-\FIGSUPP[genotypes]{CCSs} shows the frequencies with which these different types of molecules were observed during the PacBio sequencing.
-Note that since the rate of homologous recombination in influenza virus in negligible~\citep{boni2008homologous}, such mixed-barcode molecules are \emph{not} expected to be generated naturally during co-infection.
-}
-{\includegraphics[width=0.6\textwidth]{figures/StrandExchangeSchematic/StrandExchangeSchematic.pdf}}
-\label{figsupp:StrandExchange}
-
-\figsupp[Number of cells for which genotype(s) of infecting viruses were completely determined.]
-{Cells for which we could determine the full sequences of all genes expressed by the infecting virion(s).
-{\bf (A)} We could call the complete genotypes of the infecting virion(s) for the majority of cells infected with just a single viral barcode variant, but only a minority of cells co-infected with both viral barcodes.
-{\bf (B)} The cells for which we could call complete viral genotypes tended to have higher expression of viral mRNA than cells for which we could not call complete genotypes.
-Both facts makes sense.
-Cells with more viral mRNA are more likely to have their viral cDNA captured in the PacBio sequencing, which is only captures a small fraction of the total transcripts identified by the 3'-end sequencing transcriptomic sequencing.
-The lower calling rate for dual-barcode co-infections is probably because these co-infections have more viral genes that must be sequenced (potentially a copy of each viral gene from each viral variant), increasing the chances that one of these genes is missed by the PacBio sequencing. 
-An important implication of this plot is that the cells for which we call complete viral genotypes are \emph{not} a random subsampling of all infected cells in the experiment, but are rather enriched for cells that have high levels of viral mRNA and do not have dual-barcode viral infections.
-Note also that this plot is limited to the cells that were called as infected (\FIG{transcriptomics}C) and could clearly be classified as IFN- or IFN+ (\FIG{transcriptomics}G).
-}
-{\includegraphics[width=0.8\textwidth]{figures/single_cell_figures/p_cells_complete.pdf}}
-\label{figsupp:ncells}
-
-\figsupp[Genotypes and infection outcomes plotted separately for IFN+ and IFN- cells.]
-{This plot shows the same data as \FIG{genotypes}, but with cells separated into columns based on whether they are IFN- (left column) or IFN+ (right column).}
-{\includegraphics[width=\textwidth]{figures/single_cell_figures/p_genotypes_by_ifn.pdf}}
-\label{figsupp:genotypes_by_ifn}
-
-\figdata{A text file giving the primers used to amplify the influenza cDNAs for PacBio sequencing is at \url{https://github.com/jbloomlab/IFNsorted_flu_single_cell/tree/master/paper/figures/WorkflowSchematic/PacBio_primer_list.txt} 
-}
-\label{figdata:primer_sequences}
-
-\figdata{A CSV file giving the genotypes is at \url{https://github.com/jbloomlab/IFNsorted_flu_single_cell/blob/master/paper/figures/single_cell_figures/genotypes.csv}.}
-\label{figdata:genotypes}
-
 \end{fullwidth}
 \end{figure}
 %%% end genotypes figure %%%
 
 We next used PacBio sequencing (\FIG{workflow}D) to determine the full sequences of the viral genes expressed in single infected cells.
-Using PCR enrichment (see Methods), we obtained over 200,000 high-quality PacBio CCSs that mapped to an influenza gene and contained a cell barcode and UMI (\FIGSUPP[genotypes]{CCSs}).
-Crucially, the synonymous viral barcodes at both termini of each gene enabled us to confirm that PCR strand exchange (\FIGSUPP[genotypes]{StrandExchange}) was rare  (\FIGSUPP[genotypes]{CCSs}), meaning that the vast majority of CCSs correctly link the sequence of the viral transcript to cell barcodes and UMIs that identify the cell and molecule of origin.
+Using PCR enrichment (see Methods), we obtained over 200,000 high-quality PacBio CCSs that mapped to an influenza gene and contained a cell barcode and UMI (\SUPPFIG{CCSs}).
+Crucially, the synonymous viral barcodes at both termini of each gene enabled us to confirm that PCR strand exchange (\SUPPFIG{StrandExchange}) was rare (\SUPPFIG{CCSs}), meaning that the vast majority of CCSs correctly link the sequence of the viral transcript to cell barcodes and UMIs that identify the cell and molecule of origin.
 
 We called a mutation in a viral gene if it was found in least two CCSs originating from different mRNAs (unique UMIs) and at least 30\% of all CCSs for that gene in that cell.
 For cells co-infected with both viral barcode variants, we called mutations separately for each viral variant.
@@ -323,8 +268,8 @@ This strategy reliably identifies mutations in virions that initiate infection o
 It will not identify mutations that arise within a cell after the first few rounds of viral genome replication, since such mutations will not reach 30\% frequency in that cell.
 Therefore, analogous to somatic variant calling in tumor sequencing~\citep{xu2014comparison, cibulskis2013sensitive}, there is a limit to our detection threshold: we cannot identify mutations that occur on just a small fraction of transcripts in a cell. 
 
-We could call the sequences of all expressed viral genes in the majority of infected cells (\FIGSUPP[genotypes]{ncells}).
-We were most effective at calling full viral genotypes in cells that expressed high amounts of viral mRNA and were infected by only one viral barcode variant (\FIGSUPP[genotypes]{ncells}).
+We could call the sequences of all expressed viral genes in the majority of infected cells (\SUPPFIG{ncells}).
+We were most effective at calling full viral genotypes in cells that expressed high amounts of viral mRNA and were infected by only one viral barcode variant (\SUPPFIG{ncells}).
 But we also called full genotypes for many cells that had low viral burden or were co-infected by both viral barcode variants.
 
 The 150 cells for which we called the full viral genotypes are shown in \FIG{genotypes}.
@@ -546,7 +491,7 @@ For detection of the cell-surface bound LNGFR$\Delta$C, cells were stained with 
 We performed the single-cell experiments using the A/WSN/1933 (H1N1) strain of influenza virus.
 We used both the wild-type virus and a variant of the virus where synonymous mutations were added within a few 100 nucleotides of each termini of each gene segment.
 We have used a similar synonymous viral barcoding strategy in our prior single-cell work~\citep{russell2018extreme} as it allows us to detect about half of co-infected cells based on the expression of both viral barcode variants.
-In the current work, we extended this approach by placing synonymous barcodes near \emph{both} termini of the gene segments in order to quantify strand exchange during PacBio sequencing (\FIGSUPP[genotypes]{StrandExchange}).
+In the current work, we extended this approach by placing synonymous barcodes near \emph{both} termini of the gene segments in order to quantify strand exchange during PacBio sequencing (\SUPPFIG{StrandExchange}).
 The sequences of all gene segments from the wild-type and synonymously barcoded viral strains are in \SUPPFILE{virus_seqs}.
 These genes were cloned into the pHW2000~\citep{hoffmann2000dna} reverse-genetics plasmid.
 
@@ -588,8 +533,8 @@ However, we only wanted to PacBio sequence cDNA molecules derived from virus, si
 We therefore needed to enrich for the viral molecules, a process made challenging by the need to also retain the 10X adaptor / UMI / cell barcode at the 3' end (the primer at the 5' end can be specific, but the one at the 3' end must bind the common 10X adaptor shared among all molecules).
 
 We first performed a multiplex PCR reaction on 1 ng of the full-length 10X cDNA using a 3' primer complementary to the common 10X adaptor, and a multiplex mix of eight 5' primers, one specific for the mRNAs from each of the eight viral gene segments (although some viral segments produce multiple splice forms, all mRNAs from a given segment share the same 5' end).
-The sequences of these primers are in \FIGDATA[genotypes]{primer_sequences}.
-A major concern during these PCRs is strand exchange (see \FIGSUPP[genotypes]{StrandExchange}) which would scramble the cell barcodes and mutations on viral cDNAs.
+The sequences of these primers are in \SUPPFILE{primer_sequences}.
+A major concern during these PCRs is strand exchange (see \SUPPFIG{StrandExchange}) which would scramble the cell barcodes and mutations on viral cDNAs.
 To reduce strand-exchange and hopefully obtain more even PCR amplification across segments, we performed emulsion PCRs using the Micellula DNA Emulsion Kit (Roboklon).
 Emulsion PCR involves encapsidating DNA template molecules in a reverse-phase emulsion, with each template positive droplet serving as a microreactor.
 This process physically separates disparate template molecules, preventing strand exchange and allowing each molecule to be amplified to exhaustion of its droplet's reagents without competing with the broader pool of PCR-amenable molecules~\citep{Boers:2015emulsion}.
@@ -619,17 +564,17 @@ To further to improve recovery of full-length PB1, PB2, and PA, we therefore too
 Specifically, we circularized the template molecules (including the full length of genes plus the cell barcode, UMI, and 10X adaptor), and then used two segment-specific primers that annealed in apposition near the center of each polymerase gene to linearize these circular molecules.
 Only molecules that contain the middle of the polymerase genes (which are typically full-length) are linearized by this process.
 In the downstream computational analysis, we can then determine the full sequence of the gene as well as the cell barcode of the initial molecule from which the linearized molecule is derived.
-Specifically, we first used 2.5 ng of our already-amplified segment-specific material in a 10-cycle PCR to append circularization adapters (see \FIGDATA[genotypes]{primer_sequences} for sequences), and cleaned the resultant mixture using SPRIselect beads at a volume ratio of 0.4.
+Specifically, we first used 2.5 ng of our already-amplified segment-specific material in a 10-cycle PCR to append circularization adapters (see \SUPPFILE{primer_sequences} for sequences), and cleaned the resultant mixture using SPRIselect beads at a volume ratio of 0.4.
 We then used 10 ng of this amplified material in a 20$\mu$l NEBuilder reaction using an extended reaction time of 50 minutes in order to circularize the molecules.
 We next incubated these reactions for 1 hour at 37$^{\circ}$C with exonuclease V and additional ATP to a final increase in concentration of 1 mM to digest all non-circularized molecules.
 The circularized and digested material was then cleaned using SPRIselect beads at a volume ratio of 0.4.
-This material was then used as template for three non-emulsion PCRs specific to PB2, PB1, or PA, using two segment-specific primers that align to the central portion of each gene but in apposition to each another (see \FIGDATA[genotypes]{primer_sequences} for sequences).
+This material was then used as template for three non-emulsion PCRs specific to PB2, PB1, or PA, using two segment-specific primers that align to the central portion of each gene but in apposition to each another (see \SUPPFILE{primer_sequences} for sequences).
 These linearization reactions used 20 (PB2) or 26 (PB1 and PA) PCR cycles, and the resulting products were cleaned using SPRIselect beads at a volume ratio of 1.0.
 This material was pooled to produce an equimolar mixture of full-length PB1, PA, and PB2 and sequenced in an additional SMRT Cell of PacBio Sequel. 
 As is shown in the PacBio analysis notebook at \url{https://github.com/jbloomlab/IFNsorted_flu_single_cell/blob/master/pacbio_analysis.ipynb} (see also \SUPPFILE{pacbio_analysis}), this process efficiently yielded many full-length polymerase variants.
 
 The computational analyses of the full-length viral gene sequences described below used the combination of the data from all of these reactions.
-The number of sequences obtained for each gene after pooling the data from all reactions is shown in \FIGSUPP[genotypes]{CCSs}, which also indicates that the net rate of strand exchange is very low (see \FIGSUPP[genotypes]{StrandExchange} for an illustration of how this is determined).
+The number of sequences obtained for each gene after pooling the data from all reactions is shown in \SUPPFIG{CCSs}, which also indicates that the net rate of strand exchange is very low (see \SUPPFIG{StrandExchange} for an illustration of how this is determined).
 A more detailed breakdown of the coverage of each gene and data showing a consistently low rate of strand exchange for all PacBio runs is at \url{https://github.com/jbloomlab/IFNsorted_flu_single_cell/blob/master/pacbio_analysis.ipynb} (see also \SUPPFILE{pacbio_analysis}).
 Importantly, the various PCR biases and enrichment schemes mean that the coverage of molecules by the PacBio sequencing is not proportional to their original abundance in the starting mRNA.
 However, as described in the computational analysis section below, the final analyses use the cell barcodes and UMIs in conjunction with the standard 10X Illumina sequencing to ensure that none of the conclusions are affected by the disproportionate amplification of some molecules during the PacBio library preparation (for instance, duplicate UMIs are removed from the PacBio data, and all conclusions about gene abundance or absence are based on the Illumina data).
@@ -697,7 +642,7 @@ A Jupyter notebook that performs these analyses is at \url{https://github.com/jb
 We refer the reader to this notebook for a detailed description and extensive plots showing the results at each step.
 Here is a brief summary: we filtered for CCSs that had the expected 5' termini (from the influenza-specific primers) and 3' termini (corresponding to the 10X adaptor), and for which we could identify the cell barcode, UMI, and polyA tail.
 We aligned the cDNAs flanked by these termini to the influenza transcriptome, and performed a variety of quality control steps.
-At this point, we examined whether cDNAs had the synonymous viral barcodes at both ends or neither end as expected in the absence of strand exchange (\FIGSUPP[genotypes]{StrandExchange}), and reassuringly found that strand exchange was rare (\FIGSUPP[genotypes]{CCSs}).
+At this point, we examined whether cDNAs had the synonymous viral barcodes at both ends or neither end as expected in the absence of strand exchange (\SUPPFIG{StrandExchange}), and reassuringly found that strand exchange was rare (\SUPPFIG{CCSs}).
 The small number of CCSs with identifiable strand exchange were filtered from further analysis.
 We then further filtered for CCSs that contained valid cell barcodes as identified by the \texttt{cellranger} pipeline, and kept just one CCS per UMI (preferentially retaining high-quality CCSs that aligned to full-length cDNAs).
 We then removed from the CCSs the barcoding synonymous mutations that we had engineered into one of the two viral variants.
@@ -710,8 +655,8 @@ We called mutations (insertions, deletions, and substitutions) in the viral gene
 \item If at least two and $>$30\% of the CCSs had a specific mutation, then call that mutation as present and note its frequency among the CCSs. The exception was single-nucleotide indels in homopolymers, for which we required three CCSs to call a mutation (the reason is that the main mode of PacBio sequencing errors is short indels in homopolymers).
 \end{enumerate}
 The plots in \url{https://github.com/jbloomlab/IFNsorted_flu_single_cell/blob/master/pacbio_analysis.ipynb} or \SUPPFILE{pacbio_analysis} indicate that these are reasonable mutation-calling criteria.
-We could call the sequences of all expressed viral genes in about half of the infected cells (\FIGSUPP[genotypes]{ncells}).
-The mutations called using this pipeline are shown in \FIG{genotypes}, and \FIGDATA[genotypes]{genotypes} gives the number of CCSs supporting each mutation call.
+We could call the sequences of all expressed viral genes in about half of the infected cells (\SUPPFIG{ncells}).
+The mutations called using this pipeline are shown in \FIG{genotypes}, and \SUPPFILE{genotypes} gives the number of CCSs supporting each mutation call.
 The called sequences of the viral genes were added to the annotated cell-gene matrix.
 
 Finally, we process the annotated cell-gene matrix in R to generate the plots shown in this paper.
@@ -878,6 +823,56 @@ As is clear from this plot, expression of influenza, IFN, and ISG genes contribu
 
 \clearpage
 
+\begin{suppfig}
+\includegraphics[width=\textwidth]{figures/pacbio_single_cell_figures/ccs_per_viralbarcode.pdf}
+\caption{
+The number of PacBio CCSs that passed quality-control steps and aligned to an influenza virus gene.
+Note that these sequences were obtained using several PacBio runs, most of which were intentionally loaded with different amounts of the various viral genes in order to increase coverage on genes that were needed in order to obtain the full sequences of virions infecting cells.
+(For exhaustive details, see the Jupyter notebook at \url{https://github.com/jbloomlab/IFNsorted_flu_single_cell/blob/master/pacbio_analysis.ipynb} and in \SUPPFILE{pacbio_analysis}.)
+Because of this unequal loading and the inherently different PCR amplification efficiencies of different viral genes, unlike the transcriptomic data in \FIG{transcriptomics}, the numbers of CCSs for different genes should \emph{not} be taken as an indicator of their abundance in the infected cells.
+Especially for the polymerase genes (PB2, PB1, and PA), many CCSs corresponded to genes with internal deletions, since these shorter forms of the genes were preferentially amplified during PCR.
+Therefore, the plot is faceted by the number of CCSs for any length of the gene, and for full-length genes.
+Note that the disproportionate sequencing of the shorter internally deleted genes should not greatly affect the genotype calling in \FIG{genotypes} since UMIs were used to collapse duplicate sequences derived from the same cDNA, and cell barcodes were used to collapse duplicate sequences from the same cell.
+The bars in the plot are colored by whether the sequence is derived from the wild-type viral variant, the synonymously barcoded viral variant, or represents a mixed-barcode molecule (see \SUPPFIG{StrandExchange} for more explanation).
+From the frequencies of these different forms, we estimate~\citep{bloom2018estimating} that 5.7\% of molecules are chimeric due to PCR strand exchange.
+Note that about half of these PCR chimeras could be identified by the presence of mixed viral barcodes and removed from subsequent analyses, leaving $\sim$3\% un-identified chimeras.
+Note also that for some molecules (mostly polymerase genes with internal deletions) one of the barcode sites was deleted from the molecule and so the barcode identity could only be partially called.
+A negligible number of molecules have low-accuracy sequence or unexpected nucleotide identities at the sites of the viral barcodes.
+}
+\label{suppfig:CCSs}
+\end{suppfig}
+
+\begin{suppfig}
+\includegraphics[width=0.6\textwidth]{figures/StrandExchangeSchematic/StrandExchangeSchematic.pdf}
+\caption{
+Strategy for detecting strand exchange during sequencing of full-length viral genes.
+The library preparation for PacBio sequencing of the cDNA for the full-length viral genes required many cycles of PCR.
+A major concern is that strand exchange during this PCR could scramble mutations and 10X cell barcodes / UMIs from different molecules.
+We can detect PCR strand exchange by leveraging the fact that our cells were infected with a mix of wild-type virus and virus carrying synonymous barcodes near both termini of each gene.
+If there is no strand exchange, all molecules should either be wild-type or have the synonymous barcoding mutations at \emph{both} termini.
+But strand exchange will create some molecules that have wild-type nucleotides at one termini and synonymous barcoding mutations at the other termini.
+\SUPPFIG{CCSs} shows the frequencies with which these different types of molecules were observed during the PacBio sequencing.
+Note that since the rate of homologous recombination in influenza virus in negligible~\citep{boni2008homologous}, such mixed-barcode molecules are \emph{not} expected to be generated naturally during co-infection.
+}
+\label{suppfig:StrandExchange}
+\end{suppfig}
+
+\begin{suppfig}
+\includegraphics[width=0.8\textwidth]{figures/single_cell_figures/p_cells_complete.pdf}
+\caption{Number of cells for which we could determine the full sequences of all genes expressed by the infecting virion(s).
+{\bf (A)} We could call the complete genotypes of the infecting virion(s) for the majority of cells infected with just a single viral barcode variant, but only a minority of cells co-infected with both viral barcodes.
+{\bf (B)} The cells for which we could call complete viral genotypes tended to have higher expression of viral mRNA than cells for which we could not call complete genotypes.
+Both facts makes sense.
+Cells with more viral mRNA are more likely to have their viral cDNA captured in the PacBio sequencing, which is only captures a small fraction of the total transcripts identified by the 3'-end sequencing transcriptomic sequencing.
+The lower calling rate for dual-barcode co-infections is probably because these co-infections have more viral genes that must be sequenced (potentially a copy of each viral gene from each viral variant), increasing the chances that one of these genes is missed by the PacBio sequencing. 
+An important implication of this plot is that the cells for which we call complete viral genotypes are \emph{not} a random subsampling of all infected cells in the experiment, but are rather enriched for cells that have high levels of viral mRNA and do not have dual-barcode viral infections.
+Note also that this plot is limited to the cells that were called as infected (\FIG{transcriptomics}C) and could clearly be classified as IFN- or IFN+ (\FIG{transcriptomics}G).
+}
+\label{suppfig:ncells}
+\end{suppfig}
+
+\clearpage
+
 \begin{suppfile}
 \caption{Sequences of the IFN reporters in \FIG{IFNrare}A are at \url{https://github.com/jbloomlab/IFNsorted_flu_single_cell/tree/master/paper/figures/IFN_stochastic/IFN_reporter/plasmids}.
 }
@@ -888,6 +883,18 @@ As is clear from this plot, expression of influenza, IFN, and ISG genes contribu
 \caption{
 Genbank files giving sequences of the wild-type and synonymously barcoded viruses are in \url{https://github.com/jbloomlab/IFNsorted_flu_single_cell/blob/master/data/flu_sequences/flu-wsn.gb} and \url{https://github.com/jbloomlab/IFNsorted_flu_single_cell/blob/master/data/flu_sequences/flu-wsn-double-syn.gb}.}
 \label{suppfile:virus_seqs}
+\end{suppfile}
+
+
+\begin{suppfile}
+\caption{A text file giving the primers used to amplify the influenza cDNAs for PacBio sequencing is at \url{https://github.com/jbloomlab/IFNsorted_flu_single_cell/tree/master/paper/figures/WorkflowSchematic/PacBio_primer_list.txt} 
+}
+\label{suppfile:primer_sequences}
+\end{suppfile}
+
+\begin{suppfile}
+\caption{A CSV file giving the genotypes is at \url{https://github.com/jbloomlab/IFNsorted_flu_single_cell/blob/master/paper/figures/single_cell_figures/genotypes.csv}.}
+\label{suppfile:genotypes}
 \end{suppfile}
 
 \begin{suppfile}
