@@ -82,7 +82,7 @@ Therefore, viral diversity is an important but not exclusive cause of cell-to-ce
 
 \section{Results}
 
-\subsection{A system to identify and enrich for rare IFN+ positive cells}
+\subsection{A system to identify and enrich for rare IFN+ cells}
 A challenge in studying IFN induction by influenza virus is the rareness with which infection triggers its expression.
 We previously performed single-cell transcriptomics on influenza-infected A549 human lung epithelial cells, and found that only 1 of 368 infected cells expressed detectable type I or type III IFN~\citep{russell2018extreme}.
 Prior studies using reporters have found that IFN expression is also rare in influenza-infected cells~\citep{killip2017single} and mice~\citep{kallfass2013visualizing}, a conclusion supported by our own re-analysis of \citet{steuerman2018dissection}'s single-cell transcriptomics of influenza-infected mice (\SUPPFIG{mice}).
@@ -90,20 +90,17 @@ Prior studies using reporters have found that IFN expression is also rare in inf
 %%% start IFNrare figure %%%
 \begin{figure}
 \centerline{
-{\bf \Large A}\includegraphics[width=0.28\textwidth,valign=t]{figures/IFN_stochastic/RussellVenn/venn_diagram.pdf}
+{\bf \Large A}\includegraphics[width=0.35\textwidth,valign=t]{figures/IFN_stochastic/IFN_reporter/IFN_reporter.pdf}
 \hspace{0.02\textwidth}
-{\bf \Large B}\includegraphics[width=0.35\textwidth,valign=t]{figures/IFN_stochastic/IFN_reporter/IFN_reporter.pdf}
-\hspace{0.02\textwidth}
-{\bf \Large C} \includegraphics[width=0.23\textwidth,valign=t]{figures/IFN_stochastic/Flow/ifn_percent.pdf}
+{\bf \Large B} \includegraphics[width=0.23\textwidth,valign=t]{figures/IFN_stochastic/Flow/ifn_percent.pdf}
 }
 \caption{
-IFN expression is rare in influenza-infected cells.
-{\bf (A)} Number of infected and IFN+ A549 cells in our prior single-cell transcriptomics~\citep{russell2018extreme}.
-{\bf (B)} An A549 reporter cell line to identify cells expressing IFN.
+Reporter cells to identify and enrich IFN+ cells.
+{\bf (A)} An A549 IFN reporter cell line.
 The reporter consists of an IFN promoter that drives expression of a cell-surface protein amenable to MACS and a fluorescent protein.
-We created reporters with type I and type III IFN promoters (\FIGDATA[IFNrare]{reporter_sequences}).
+We created reporters with type I and type III IFN promoters (\SUPPFILE{reporter_sequences}).
 The reporters were efficiently activated by an IFN-inducing strain of Sendai virus (\FIGSUPP[IFNrare]{reporter_validation}).
-{\bf (C)}
+{\bf (B)}
 Frequency of IFN induction upon infection with the influenza virus stock used in the single-cell studies in this paper, as quantified using the type III IFN reporter cell line (see \FIGSUPP[IFNrare]{flow} for details).
 The plot also shows uninfected cells, and cells infected with saturating amounts of Sendai virus.
 The limit of detection of 0.05\% is indicated with a dashed line, and numbers show the median of three measurements.
@@ -141,10 +138,6 @@ For the uninfected and Sendai-virus infected, the percentage IFN+ was calculated
 }
 {\includegraphics[width=0.75\textwidth]{figures/IFN_stochastic/Flow/flow_plot.pdf}}
 \label{figsupp:flow}
-
-\figdata{Sequences of the reporters in \FIG{IFNrare}B are at \url{https://github.com/jbloomlab/IFNsorted_flu_single_cell/tree/master/paper/figures/IFN_stochastic/IFN_reporter/plasmids}.
-}
-\label{figdata:reporter_sequences}
 
 \end{figure}
 %%% end IFNrare figure %%%
@@ -629,11 +622,11 @@ The cells were maintained in D10 media (DMEM supplemented with 10\% heat-inactiv
 
 To create the type I interferon reporters, a 1kb promoter region upstream of the human IFNB1 gene were cloned into the pHAGE2 lentiviral vector~\citep{oconnell2010lentiviral}, with a NotI site immediately downstream of the promoter serving as an artificial Kozak sequence. 
 Downstream of this NotI site, each of the following reporter constructs was cloned: mCherry, mNeonGreen, and low-affinity nerve growth factor lacking the C-terminal signaling domain (LNGFR$\Delta$C)~\citep{bonini1997hsv,ruggieri1997cell} linked to mNeonGreen by a P2A linker~\citep{kim2011high}.
-The sequence of the last of these constructs is provided in \FIGDATA[IFNrare]{reporter_sequences}.
+The sequence of the last of these constructs is provided in \SUPPFILE{reporter_sequences}.
 
 To create the type III interferon reporters, a 1.2kb region upstream of the human IL29 (IFNL1) gene was cloned into the pHAGE2 vector, with the native Kozak sequence retained at the 3' end. 
 Downstream of this promoter we cloned LNGFR$\Delta$C linked to ZsGreen via a P2A linker.
-The sequence of this construct is provided in \FIGDATA[IFNrare]{reporter_sequences}.
+The sequence of this construct is provided in \SUPPFILE{reporter_sequences}.
  
 We used these constructs to generate lentiviral vectors and transduce of A549 cells in the presence of 5 $\mu$g polybrene.
 We then sorted single transduced cells and expanded them.
@@ -866,6 +859,12 @@ The full code that performs the re-analysis shown in this figure is at \url{http
 \end{suppfig}
 
 \clearpage
+
+\begin{suppfile}
+\caption{Sequences of the IFN reporters in \FIG{IFNrare}B are at \url{https://github.com/jbloomlab/IFNsorted_flu_single_cell/tree/master/paper/figures/IFN_stochastic/IFN_reporter/plasmids}.
+}
+\label{suppfile:reporter_sequences}
+\end{suppfile}
 
 \begin{suppfile}
 \caption{\label{suppfile:pacbio_analysis}
