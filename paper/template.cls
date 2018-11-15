@@ -82,7 +82,7 @@
 \RequirePackage{booktabs}
 \RequirePackage{authblk}
 
-\RequirePackage[left=6cm,%
+\RequirePackage[left=5.5cm,%
                 marginparwidth=4cm,%
                 marginparsep=0.5cm,%
                 right=1.3cm,%
@@ -233,13 +233,13 @@
 % custom title page 
 %
 \renewcommand{\Authfont}{\bfseries\large\raggedright}
-\renewcommand{\Affilfont}{\mdseries\large\raggedright}
+\renewcommand{\Affilfont}{\mdseries\normalsize\raggedright}
 \renewcommand{\Authands}{, }
 \setlength{\affilsep}{16pt}
 \renewcommand{\AB@affilsepx}{; \protect\Affilfont}
 
 \newcommand{\themetadata}{%
-    \textbf{*For correspondence:\\}  \@correspondence\par
+    \textbf{Correspondence:\\}  \@correspondence\par
     \ifx\empty\@contribution\else
     \bigskip\@contribution\par\fi
     \ifx\empty\@presentaddress\else
@@ -253,7 +253,7 @@
 
 \renewcommand{\maketitle}{%
   \vskip36pt%
-  {\color{eLifeDarkBlue}\raggedright\bfseries\fontsize{22}{27}\selectfont \@title\par}%
+  {\raggedright\bfseries\fontsize{19}{22}\selectfont \@title\par}%
   \vskip16pt
   {\@author\par}
   \vskip8pt
@@ -263,7 +263,7 @@
    \setlength{\parindent}{0pt}\raggedright
    \textcolor{eLifeMediumGrey}{\rule{\textwidth}{2pt}}
    \vskip16pt
-   \textcolor{eLifeLightBlue}{\large\bfseries\abstractname\space}
+   \textcolor{eLifeMediumGrey}{\large\bfseries Summary\space}
 }{%   
    \vskip8pt
    \textcolor{eLifeMediumGrey}{\rule{\textwidth}{2pt}}

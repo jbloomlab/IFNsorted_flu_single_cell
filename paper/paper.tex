@@ -49,11 +49,11 @@ Our work shows that the genetic variation present in influenza virus populations
 
 \section{Introduction}
 Infection with an acute virus such as influenza initiates a race between the virus and immune system.
-As the virus spreads, some infected cells trigger innate immunity and begin producing interferon (IFN).
+As the virus spreads, some cells detect infection and begin producing interferon (IFN).
 This IFN directs expression of anti-viral interferon-stimulated genes (ISGs) in the infected cell and its neighbors via autocrine and paracrine signaling, as well as helping launch a broader immune response~\citep{stetson2006type,honda2006type}.
-If innate immunity is activated sufficiently rapidly, it can reduce viral replication and disease severity~\citep{solov1969results,treanor1987intranasally,beilharz2007protection,kugel2009intranasal,steel2010transmission}---although excessive immune responses later in infection can actually be associated with immunopathology and more severe disease~\citep{la2007question, iwasaki2014innate}.
+If innate immunity is activated sufficiently rapidly, it can reduce viral replication and disease severity~\citep{solov1969results,treanor1987intranasally,beilharz2007protection,kugel2009intranasal,steel2010transmission}---although excessive immune responses later in infection can actually be associated with immunopathology and severe disease~\citep{la2007question, iwasaki2014innate}.
 
-Unfortunately for the host, influenza infection only rarely triggers IFN production by infected cells early in infection~\citep{kallfass2013visualizing, killip2017single}.
+Unfortunately for the host, influenza initially only rarely triggers IFN production by infected cells~\citep{kallfass2013visualizing, killip2017single}.
 This rareness of IFN induction is just one form of the extreme cell-to-cell heterogeneity that characterizes infection: cells also vary widely in their production of viral mRNA, proteins, and progeny virions~\citep{russell2018extreme,steuerman2018dissection,sjaastad2018distinct,heldt2015single}.
 Because viral growth and the IFN response are both feed-forward processes, early cell-to-cell heterogeneity could have significant downstream consequences for the race between virus and immune system---especially since natural human infections are typically initiated by just a few virions entering a few cells~\citep{mccrone2018stochastic, xue2018reconciling, varble2014influenza}.
 
@@ -106,6 +106,19 @@ The plot also shows uninfected cells, and cells infected with saturating amounts
 The limit of detection of 0.05\% is indicated with a dashed line, and numbers show the median of three measurements.
 }
 \label{fig:IFNrare}
+
+\figsupp[Few cells express detectable IFN in influenza-infected mice.]
+{A re-analysis of the data from \citet{steuerman2018dissection}'s single-cell transcriptomics of cells from influenza-infected mice shows that only 5 of 1220 virus-infected cells express \emph{detectable} type I or type III IFN transcripts \textit{in vivo}.
+Specifically, we downloaded the data from \citet{steuerman2018dissection} and identified influenza-infected cells using criteria similar to those described in \citet{steuerman2018dissection}.
+Here we show statistics for the cells from the influenza-infected wild-type C57BL/6J mice, which were collected at 48 hours (two replicates) or 72 hours (one replicate)---we do not show cells from the control mice.
+As shown in the left-most panel, the sequencing depth of \citet{steuerman2018dissection} was quite low, with only $\sim$1,500 mRNA counts per cell on average (this is 10 to 15-fold lower than the sequencing depth in \citet{russell2018extreme} and the current study, respectively).
+An important caveat is that this low sequencing depth could lead to a simple failure to detect IFN transcripts in some cells.
+Nonetheless, there is detectable expression of key ISGs---which are induced by autocrine and paracrine signaling~\citep{stetson2006type,honda2006type}---in the majority of infected cells (the middle panel shows the total counts of IFIT1, ISG15, CCL5, and Mx1).
+However, only 5 of 1220 cells express any detectable type I (IFN-$\alpha$ and IFN-$\beta$) or type III (IFN-$\lambda$) mRNAs, which are only induced by direct cellular detection of viral infection~\citep{stetson2006type,honda2006type}.
+The full code that performs the re-analysis shown in this figure is at \url{https://github.com/jbloomlab/IFNsorted_flu_single_cell/tree/master/paper/figures/IFN_stochastic/SteuermanReanalysis/}.
+}
+{\includegraphics[width=\textwidth]{figures/IFN_stochastic/SteuermanReanalysis/plots/p_mRNA_counts.pdf}}
+\label{figsupp:mice}
 
 \figsupp[Validation of IFN reporter cell lines.]
 {To validate the IFN reporter cell lines, they were infected at high MOI with the Cantell strain of Sendai virus, which strongly activates IFN expression~\citep{strahle2006sendai}.
