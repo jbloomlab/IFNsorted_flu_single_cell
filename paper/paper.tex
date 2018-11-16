@@ -54,7 +54,7 @@ Our work shows that the genetic variation present in influenza virus populations
 Infection with an acute virus such as influenza initiates a race between the virus and immune system.
 As the virus spreads, some cells detect infection and begin producing interferon (IFN).
 This IFN directs expression of anti-viral interferon-stimulated genes (ISGs) in the infected cell and its neighbors via autocrine and paracrine signaling, as well as helping launch a broader immune response~\citep{stetson2006type,honda2006type}.
-If innate immunity is activated sufficiently rapidly, it can reduce viral replication and disease severity~\citep{solov1969results,treanor1987intranasally,beilharz2007protection,kugel2009intranasal,steel2010transmission}---although excessive immune responses later in infection can actually be associated with immunopathology and severe disease~\citep{la2007question, iwasaki2014innate}.
+If innate immunity is activated sufficiently rapidly, it can reduce viral replication and disease~\citep{solov1969results,treanor1987intranasally,beilharz2007protection,kugel2009intranasal,steel2010transmission}---although excessive immune responses later in infection can actually be associated with immunopathology and severe disease~\citep{la2007question, iwasaki2014innate}.
 
 Unfortunately for the host, influenza initially only rarely triggers IFN production by infected cells~\citep{kallfass2013visualizing, killip2017single}.
 This rareness of IFN induction is just one form of the extreme cell-to-cell heterogeneity that characterizes infection: cells also vary widely in their production of viral mRNA, proteins, and progeny virions~\citep{russell2018extreme,steuerman2018dissection,sjaastad2018distinct,heldt2015single}.
@@ -83,12 +83,9 @@ Therefore, viral diversity is an important but not exclusive cause of cell-to-ce
 \section{Results}
 
 \subsection{A system to identify and enrich for rare IFN+ cells}
-A challenge in studying IFN induction by influenza virus is the rareness with which infection triggers its expression.
-We previously performed single-cell transcriptomics on influenza-infected A549 human lung epithelial cells, and found that only 1 of 368 infected cells expressed detectable type I or type III IFN~\citep{russell2018extreme}.
-Prior studies using reporters have also found that IFN expression is rare in influenza-infected cells~\citep{killip2017single} and mice~\citep{kallfass2013visualizing}, a conclusion supported by our own re-analysis of \citet{steuerman2018dissection}'s single-cell transcriptomics of influenza-infected mice (\SUPPFIG{mice}).
 
 %%% start IFNrare figure %%%
-\begin{figure}
+\begin{figure}[b!]
 \centerline{
 {\bf \Large A}\includegraphics[width=0.35\textwidth,valign=t]{figures/IFN_stochastic/IFN_reporter/IFN_reporter.pdf}
 \hspace{0.02\textwidth}
@@ -96,18 +93,21 @@ Prior studies using reporters have also found that IFN expression is rare in inf
 }
 \caption{
 Reporter cells to identify and enrich IFN+ cells.
-{\bf (A)} An A549 IFN reporter cell line.
-The reporter consists of an IFN promoter that drives expression of a cell-surface protein amenable to MACS and a fluorescent protein.
+{\bf (A)} The reporter consists of an IFN promoter that drives expression of a cell-surface protein amenable to MACS and a fluorescent protein.
 We created reporters with type I and type III IFN promoters (\SUPPFILE{reporter_sequences}).
-The reporters were efficiently activated by an IFN-inducing strain of Sendai virus (\SUPPFIG{reportervalidation}A).
+In A549 cells, the reporters were efficiently activated by an IFN-inducing strain of Sendai virus (\SUPPFIG{reportervalidation}A).
 {\bf (B)}
-Frequency of IFN induction upon infection with the influenza virus stock used in the single-cell studies in this paper, as quantified using the type III IFN reporter cell line (see \SUPPFIG{reportervalidation}C for details).
-The plot also shows uninfected cells, and cells infected with saturating amounts of Sendai virus.
+Frequency of IFN induction upon infection with the influenza virus stock used in the single-cell studies in this paper, as quantified using the type III IFN reporter (\SUPPFIG{reportervalidation}C).
+The plot also shows uninfected cells, and cells infected with Sendai virus.
 The limit of detection of 0.05\% is indicated with a dashed line, and numbers show the median of three measurements.
 }
 \label{fig:IFNrare}
 \end{figure}
 %%% end IFNrare figure %%%
+
+A challenge in studying IFN induction by influenza virus is the rareness with which infection triggers its expression.
+Studies using reporters~\citep{killip2017single} and our own previous single-cell transcriptomics~\citep{russell2018extreme} have found that IFN induction is rare in cell lines infected with influenza.
+IFN expression also appears to be rare among cells in influenza-infected mice~\citep{kallfass2013visualizing}, a conclusion supported by our re-analysis of \citet{steuerman2018dissection}'s single-cell transcriptomics of influenza-infected mice (\SUPPFIG{mice}).
 
 To efficiently identify and enrich rare IFN+ cells, we created A549 cells that carried IFN reporters consisting of a type I (\textit{IFNB1}) or type III (\textit{IFNL1}) promoter driving expression of a cell-surface protein~\citep[LNGFR$\Delta$C;][]{bonini1997hsv,ruggieri1997cell} followed by a fluorescent protein (\FIG{IFNrare}A).
 Cells that activate the IFN reporter can be enriched by magnetic-activated cell sorting (MACS) or identified by flow cytometry.
@@ -119,7 +119,7 @@ We generated a stock of ``wild-type'' A/WSN/1933 (H1N1) influenza (hereafter ref
 \subsection{Combined transcriptomics and virus-sequencing of single infected cells}
 
 %%% start workflow figure
-\begin{figure}
+\begin{figure}[b!]
 \begin{fullwidth}
 
 \includegraphics[width=\linewidth, valign=t]{figures/WorkflowSchematic/SchematicForPaper.pdf}
@@ -144,7 +144,7 @@ The result is a matrix giving the expression of each gene in each cell, as well 
 \end{figure}
 %%% end workflow figure
 
-To determine if mutations or other features of the infecting virions contribute to the heterogeneous outcome of infection, we developed the approach in \FIG{workflow} to determine the entire transcriptome \emph{and} the full sequences of all viral genes in single cells.
+To determine if mutations or other features of the infecting virions contribute to the heterogeneous outcome of infection, we developed the approach in \FIG{workflow} to obtain the entire transcriptome \emph{and} the full sequences of all viral genes in single cells.
 First, we generated a stock of virus that consisted of a mix of wild-type WSN and a ``synonymously barcoded'' variant that contained two engineered synonymous mutations near each termini of each gene (\SUPPFILE{virus_seqs}).
 These viral barcodes allow us to identify co-infections from single-cell transcriptomic data~\citep{russell2018extreme}, and provide an important control for PCR artifacts during full-length sequencing of viral transcripts (see below).
 We used this viral stock to infect A549 IFN reporter cells (\FIG{workflow}A) at a dose that led to detectable viral transcription in about a quarter of cells.
@@ -223,7 +223,7 @@ By examining the synonymous viral barcodes near the 3' termini of transcripts, w
 From \FIG{transcriptomics}F, we estimate~\citep{bloom2018estimating} that 63\% of infected cells are co-infected, implying that 25\% are co-infected with two virions with the same viral barcode (such co-infections cannot be identified from transcriptomic data).
 Interestingly, this co-infection rate is higher than expected from the relative numbers of infected and uninfected cells (\FIG{transcriptomics}C) if infection is Poisson.
 This discrepancy could arise if the MACS for IFN+ cells also enriches co-infected cells, if infection is not truly Poisson, or if co-infection increases the likelihood that we identify a cell as infected given the thresholds in \FIG{transcriptomics}C.
-This moderately high rate of co-infection may also explain why more cells in our experiment express all eight viral genes compared to some prior studies, as a co-infecting virion can complement a missing viral gene~\citep{russell2018extreme}. 
+This moderately high rate of co-infection may also explain why more cells in our experiment express all eight viral genes compared to some prior studies, as a co-infecting virion can complement a missing viral gene. 
 
 We next examined expression of IFN and ISGs (\FIG{transcriptomics}G and \SUPPFIG{ISG}).
 Over 20\% of infected cells were IFN+ given the heuristic thresholds in \FIG{transcriptomics}G, indicating that the MACS successfully enriched IFN+ cells far beyond their initial frequency of $\sim$0.5\% (\FIG{IFNrare}B) among infected cells.
