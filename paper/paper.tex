@@ -259,8 +259,8 @@ Orange boxes show the percent of cellular mRNA derived from IFN, with orange box
 %%% end genotypes figure %%%
 
 We next used PacBio sequencing (\FIG{workflow}D) to determine the full sequences of the viral genes expressed in single infected cells.
-Using PCR enrichment (see Methods), we obtained over 200,000 high-quality PacBio CCSs that mapped to an influenza gene and contained a cell barcode and UMI (\SUPPFIG{CCSs}).
-Crucially, the synonymous viral barcodes at both termini of each gene enabled us to confirm that PCR strand exchange (\SUPPFIG{StrandExchange}) was rare (\SUPPFIG{CCSs}), meaning that the vast majority of CCSs correctly link the sequence of the viral transcript to cell barcodes and UMIs that identify the cell and molecule of origin.
+Using PCR enrichment (see Methods), we obtained over 200,000 high-quality PacBio CCSs that mapped to an influenza gene and contained a cell barcode and UMI (\SUPPFIG{CCSs}A).
+Crucially, the synonymous viral barcodes at both termini of each gene enabled us to confirm that PCR strand exchange was rare (\SUPPFIG{CCSs}B), meaning that the vast majority of CCSs correctly link the sequence of the viral transcript to cell barcodes and UMIs that identify the cell and molecule of origin.
 
 We called a mutation in a viral gene if it was found in least two CCSs originating from different mRNAs (unique UMIs) and at least 30\% of all CCSs for that gene in that cell.
 For cells co-infected with both viral barcode variants, we called mutations separately for each viral variant.
@@ -429,7 +429,7 @@ For detection of the cell-surface bound LNGFR$\Delta$C, cells were stained with 
 We performed the single-cell experiments using the A/WSN/1933 (H1N1) strain of influenza virus.
 We used both the wild-type virus and a variant of the virus where synonymous mutations were added within a few 100 nucleotides of each termini of each gene segment.
 We have used a similar synonymous viral barcoding strategy in our prior single-cell work~\citep{russell2018extreme} as it allows us to detect about half of co-infected cells based on the expression of both viral barcode variants.
-In the current work, we extended this approach by placing synonymous barcodes near \emph{both} termini of the gene segments in order to quantify strand exchange during PacBio sequencing (\SUPPFIG{StrandExchange}).
+In the current work, we extended this approach by placing synonymous barcodes near \emph{both} termini of the gene segments in order to quantify strand exchange during PacBio sequencing (\SUPPFIG{CCSs}B).
 The sequences of all gene segments from the wild-type and synonymously barcoded viral strains are in \SUPPFILE{virus_seqs}.
 These genes were cloned into the pHW2000~\citep{hoffmann2000dna} reverse-genetics plasmid.
 
@@ -472,7 +472,7 @@ We therefore needed to enrich for the viral molecules, a process made challengin
 
 We first performed a multiplex PCR reaction on 1 ng of the full-length 10X cDNA using a 3' primer complementary to the common 10X adaptor, and a multiplex mix of eight 5' primers, one specific for the mRNAs from each of the eight viral gene segments (although some viral segments produce multiple splice forms, all mRNAs from a given segment share the same 5' end).
 The sequences of these primers are in \SUPPFILE{primer_sequences}.
-A major concern during these PCRs is strand exchange (see \SUPPFIG{StrandExchange}) which would scramble the cell barcodes and mutations on viral cDNAs.
+A major concern during these PCRs is strand exchange (see \SUPPFIG{CCSs}B) which would scramble the cell barcodes and mutations on viral cDNAs.
 To reduce strand-exchange and hopefully obtain more even PCR amplification across segments, we performed emulsion PCRs using the Micellula DNA Emulsion Kit (Roboklon).
 Emulsion PCR involves encapsidating DNA template molecules in a reverse-phase emulsion, with each template positive droplet serving as a microreactor.
 This process physically separates disparate template molecules, preventing strand exchange and allowing each molecule to be amplified to exhaustion of its droplet's reagents without competing with the broader pool of PCR-amenable molecules~\citep{Boers:2015emulsion}.
@@ -512,7 +512,7 @@ This material was pooled to produce an equimolar mixture of full-length PB1, PA,
 As is shown in the PacBio analysis notebook at \url{https://github.com/jbloomlab/IFNsorted_flu_single_cell/blob/master/pacbio_analysis.ipynb} (see also \SUPPFILE{pacbio_analysis}), this process efficiently yielded many full-length polymerase variants.
 
 The computational analyses of the full-length viral gene sequences described below used the combination of the data from all of these reactions.
-The number of sequences obtained for each gene after pooling the data from all reactions is shown in \SUPPFIG{CCSs}, which also indicates that the net rate of strand exchange is very low (see \SUPPFIG{StrandExchange} for an illustration of how this is determined).
+The number of sequences obtained for each gene after pooling the data from all reactions is shown in \SUPPFIG{CCSs}A, which also indicates that the net rate of strand exchange is very low (see \SUPPFIG{CCSs}B for an illustration of how this is determined).
 A more detailed breakdown of the coverage of each gene and data showing a consistently low rate of strand exchange for all PacBio runs is at \url{https://github.com/jbloomlab/IFNsorted_flu_single_cell/blob/master/pacbio_analysis.ipynb} (see also \SUPPFILE{pacbio_analysis}).
 Importantly, the various PCR biases and enrichment schemes mean that the coverage of molecules by the PacBio sequencing is not proportional to their original abundance in the starting mRNA.
 However, as described in the computational analysis section below, the final analyses use the cell barcodes and UMIs in conjunction with the standard 10X Illumina sequencing to ensure that none of the conclusions are affected by the disproportionate amplification of some molecules during the PacBio library preparation (for instance, duplicate UMIs are removed from the PacBio data, and all conclusions about gene abundance or absence are based on the Illumina data).
@@ -580,7 +580,7 @@ A Jupyter notebook that performs these analyses is at \url{https://github.com/jb
 We refer the reader to this notebook for a detailed description and extensive plots showing the results at each step.
 Here is a brief summary: we filtered for CCSs that had the expected 5' termini (from the influenza-specific primers) and 3' termini (corresponding to the 10X adaptor), and for which we could identify the cell barcode, UMI, and polyA tail.
 We aligned the cDNAs flanked by these termini to the influenza transcriptome, and performed a variety of quality control steps.
-At this point, we examined whether cDNAs had the synonymous viral barcodes at both ends or neither end as expected in the absence of strand exchange (\SUPPFIG{StrandExchange}), and reassuringly found that strand exchange was rare (\SUPPFIG{CCSs}).
+At this point, we examined whether cDNAs had the synonymous viral barcodes at both ends or neither end as expected in the absence of strand exchange (\SUPPFIG{CCSs}B), and reassuringly found that strand exchange was rare (\SUPPFIG{CCSs}A).
 The small number of CCSs with identifiable strand exchange were filtered from further analysis.
 We then further filtered for CCSs that contained valid cell barcodes as identified by the \texttt{cellranger} pipeline, and kept just one CCS per UMI (preferentially retaining high-quality CCSs that aligned to full-length cDNAs).
 We then removed from the CCSs the barcoding synonymous mutations that we had engineered into one of the two viral variants.
@@ -614,13 +614,18 @@ The plot in \FIG{genotypes} summarizes all of the genotypic information, and was
 \section{Acknowledgments}
 We thank Cole Trapnell, Jason Underwood, Robert Bradley, Daniel Stetson, AJ Velthuis, Katherine Xue, and Hannah Itell for helpful suggestions.
 We thank Andy Marty and the Fred Hutch Genomics Core for performing the deep sequencing.
-%This work was supported by the NIAID of the NIH under grant R01 AI127893 and a Burroughs Wellcome Fund Young Investigator in the Pathogenesis of Infectious Diseases grant to JDB.
-%ABR was supported by a postdoctoral fellowship from the Damon Runyon Cancer Research Foundation.
-%JRK was supported by a Washington Research Foundation Undergraduate Research Fellowship and a Mary Gates undergraduate research scholarship from the University of Washington.
-%JDB is an Investigator of the Howard Hughes Medical Institute.
-%The funders had no role in study design, data collection and interpretation, or the decision to submit the work for publication.
+This work was supported by the NIAID of the NIH under grant R01 AI127893 and a Burroughs Wellcome Fund Young Investigator in the Pathogenesis of Infectious Diseases grant to JDB.
+ABR was supported by a postdoctoral fellowship from the Damon Runyon Cancer Research Foundation.
+JRK was supported by a Washington Research Foundation Undergraduate Research Fellowship and a Mary Gates undergraduate research scholarship from the University of Washington.
+JDB is an Investigator of the Howard Hughes Medical Institute.
+The funders had no role in study design, data collection and interpretation, or the decision to submit the work for publication.
 
-\section{Competing Interests}
+\section{Author Contributions}
+ABR and JDB designed the project.
+ABR performed the experiments with assistance from JRK.
+ABR and JDB computationally analyzed the data and wrote the paper.
+
+\section{Declaration of Interests}
 The authors declare that no competing interests exist.
 
 \nolinenumbers
@@ -765,37 +770,36 @@ As is clear from this plot, expression of influenza, IFN, and ISG genes contribu
 \clearpage
 
 \begin{suppfig}
-\includegraphics[width=\textwidth]{figures/pacbio_single_cell_figures/ccs_per_viralbarcode.pdf}
+{\bf \Large A}
+\includegraphics[width=0.85\textwidth, valign=t]{figures/pacbio_single_cell_figures/ccs_per_viralbarcode.pdf}
+
+{\bf \Large B}
+\includegraphics[width=0.5\textwidth, valign=t]{figures/StrandExchangeSchematic/StrandExchangeSchematic.pdf}
 \caption{
+Details about PacBio sequencing.
+{\bf (A)}
 The number of PacBio CCSs that passed quality-control steps and aligned to an influenza virus gene.
-Note that these sequences were obtained using several PacBio runs, most of which were intentionally loaded with different amounts of the various viral genes in order to increase coverage on genes that were needed in order to obtain the full sequences of virions infecting cells.
-(For exhaustive details, see the Jupyter notebook at \url{https://github.com/jbloomlab/IFNsorted_flu_single_cell/blob/master/pacbio_analysis.ipynb} and in \SUPPFILE{pacbio_analysis}.)
+These sequences were obtained using several PacBio runs, most of which were intentionally loaded with different amounts of the various viral genes to increase coverage on genes that were needed in order to obtain the full sequences of virions infecting cells (see \SUPPFILE{pacbio_analysis}).
 Because of this unequal loading and the inherently different PCR amplification efficiencies of different viral genes, unlike the transcriptomic data in \FIG{transcriptomics}, the numbers of CCSs for different genes should \emph{not} be taken as an indicator of their abundance in the infected cells.
 Especially for the polymerase genes (PB2, PB1, and PA), many CCSs corresponded to genes with internal deletions, since these shorter forms of the genes were preferentially amplified during PCR.
 Therefore, the plot is faceted by the number of CCSs for any length of the gene, and for full-length genes.
-Note that the disproportionate sequencing of the shorter internally deleted genes should not greatly affect the genotype calling in \FIG{genotypes} since UMIs were used to collapse duplicate sequences derived from the same cDNA, and cell barcodes were used to collapse duplicate sequences from the same cell.
-The bars in the plot are colored by whether the sequence is derived from the wild-type viral variant, the synonymously barcoded viral variant, or represents a mixed-barcode molecule (see \SUPPFIG{StrandExchange} for more explanation).
+Note that the disproportionate sequencing of the shorter internally deleted genes does not greatly affect the genotype calling in \FIG{genotypes} since UMIs were used to collapse sequences derived from the same cDNA, and cell barcodes were used to collapse sequences from the same cell.
+The bars in the plot are colored by whether the sequence is derived from the wild-type viral variant, the synonymously barcoded viral variant, or represents a mixed-barcode molecule (see panel B).
 From the frequencies of these different forms, we estimate~\citep{bloom2018estimating} that 5.7\% of molecules are chimeric due to PCR strand exchange.
-Note that about half of these PCR chimeras could be identified by the presence of mixed viral barcodes and removed from subsequent analyses, leaving $\sim$3\% un-identified chimeras.
-Note also that for some molecules (mostly polymerase genes with internal deletions) one of the barcode sites was deleted from the molecule and so the barcode identity could only be partially called.
+About half of these PCR chimeras could be identified by the presence of mixed viral barcodes and removed from subsequent analyses, leaving $\sim$3\% un-identified chimeras.
+For some molecules (mostly polymerase genes with internal deletions) one of the barcode sites was deleted from the molecule and so the barcode identity could only be partially called.
 A negligible number of molecules have low-accuracy sequence or unexpected nucleotide identities at the sites of the viral barcodes.
-}
-\label{suppfig:CCSs}
-\end{suppfig}
-
-\begin{suppfig}
-\includegraphics[width=0.6\textwidth]{figures/StrandExchangeSchematic/StrandExchangeSchematic.pdf}
-\caption{
+{\bf (B)}
 Strategy for detecting strand exchange during sequencing of full-length viral genes.
 The library preparation for PacBio sequencing of the cDNA for the full-length viral genes required many cycles of PCR.
 A major concern is that strand exchange during this PCR could scramble mutations and 10X cell barcodes / UMIs from different molecules.
-We can detect PCR strand exchange by leveraging the fact that our cells were infected with a mix of wild-type virus and virus carrying synonymous barcodes near both termini of each gene.
+We detect PCR strand exchange by leveraging the fact that our cells were infected with a mix of wild-type virus and virus carrying synonymous barcodes near both termini of each gene.
 If there is no strand exchange, all molecules should either be wild-type or have the synonymous barcoding mutations at \emph{both} termini.
-But strand exchange will create some molecules that have wild-type nucleotides at one termini and synonymous barcoding mutations at the other termini.
-\SUPPFIG{CCSs} shows the frequencies with which these different types of molecules were observed during the PacBio sequencing.
+Strand exchange will create some molecules that have wild-type nucleotides at one termini and synonymous barcoding mutations at the other termini.
+\SUPPFIG{CCSs}A shows the frequencies with which these different types of molecules were observed during the PacBio sequencing.
 Note that since the rate of homologous recombination in influenza virus in negligible~\citep{boni2008homologous}, such mixed-barcode molecules are \emph{not} expected to be generated naturally during co-infection.
 }
-\label{suppfig:StrandExchange}
+\label{suppfig:CCSs}
 \end{suppfig}
 
 \begin{suppfig}
