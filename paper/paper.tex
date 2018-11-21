@@ -244,7 +244,14 @@ Our work shows that the genetic variation present in influenza virus populations
 % Use first person. PLOS ONE authors please skip this step. 
 % Author Summary not valid for PLOS ONE submissions.   
 \section*{Author summary}
-{\color{red} add this}
+Because influenza virus has a high mutation rate, many cells are infected by mutated virions.
+But so far, it has been impossible to fully characterize the genetic properties of the virions infecting any given cell, since the conventional techniques of flow cytometry and single-cell RNA-seq only detect if a protein or transcript is present---not whether it has mutations.
+Here we develop a new approach that uses long-read PacBio sequencing to determine the full sequences of the virions infecting individual cells.
+Most cells are infected by virions that have a mutation or some other defect.
+This viral genetic variation explains a substantial amount of the cell-to-cell variability in how much viral mRNA is produced in infected cells, and helps determine whether a cell activates an innate-immune response.
+However, our results also show that viral genetic defects do not completely explain cell-to-cell variation in the outcome of infection.
+Overall, this study provides the first complete picture of how viral mutations affect the outcome of infection in single cells.
+
 
 \linenumbers
 
@@ -284,7 +291,7 @@ Therefore, viral diversity is an important but not exclusive cause of cell-to-ce
 \subsection*{A system to identify and enrich for rare IFN+ cells}
 
 %%% start IFNrare figure %%%
-\begin{figure}[b!]
+\begin{figure}
 \centerline{
 {\bf \Large A}\includegraphics[width=0.35\textwidth,valign=t]{figures/IFN_stochastic/IFN_reporter/IFN_reporter.pdf}
 \hspace{0.02\textwidth}
@@ -318,7 +325,7 @@ We generated a stock of ``wild-type'' A/WSN/1933 (H1N1) influenza (hereafter ref
 \subsection*{Combined transcriptomics and virus-sequencing of single infected cells}
 
 %%% start workflow figure
-\begin{figure}[b!]
+\begin{figure}
 \begin{fullwidth}
 
 \includegraphics[width=\linewidth, valign=t]{figures/WorkflowSchematic/SchematicForPaper.pdf}
@@ -809,19 +816,11 @@ The plot in \FIG{genotypes} summarizes all of the genotypic information, and was
 \section*{Acknowledgments}
 We thank Cole Trapnell, Jason Underwood, Robert Bradley, Daniel Stetson, AJ Velthuis, Katherine Xue, and Hannah Itell for helpful suggestions.
 We thank Andy Marty and the Fred Hutch Genomics Core for performing the deep sequencing.
-This work was supported by the NIAID of the NIH under grant R01 AI127893 and a Burroughs Wellcome Fund Young Investigator in the Pathogenesis of Infectious Diseases grant to JDB.
-ABR was supported by a postdoctoral fellowship from the Damon Runyon Cancer Research Foundation.
-JRK was supported by a Washington Research Foundation Undergraduate Research Fellowship and a Mary Gates undergraduate research scholarship from the University of Washington.
-JDB is an Investigator of the Howard Hughes Medical Institute.
-The funders had no role in study design, data collection and interpretation, or the decision to submit the work for publication.
-
-\section*{Author Contributions}
-ABR and JDB designed the project.
-ABR performed the experiments with assistance from JRK.
-ABR and JDB computationally analyzed the data and wrote the paper.
-
-\section*{Declaration of Interests}
-The authors declare that no competing interests exist.
+%This work was supported by the NIAID of the NIH under grant R01 AI127893 and a Burroughs Wellcome Fund Young Investigator in the Pathogenesis of Infectious Diseases grant to JDB.
+%ABR was supported by a postdoctoral fellowship from the Damon Runyon Cancer Research Foundation.
+%JRK was supported by a Washington Research Foundation Undergraduate Research Fellowship and a Mary Gates undergraduate research scholarship from the University of Washington.
+%JDB is an Investigator of the Howard Hughes Medical Institute.
+%The funders had no role in study design, data collection and interpretation, or the decision to submit the work for publication.
 
 \bibliography{references}
 
@@ -1020,16 +1019,16 @@ A549 cells with the \textit{IFNL1} reporter driving LNGFR$\Delta$C-ZsGreen were 
 After 13 hours, cells were stained for HA protein and analyzed by FACS.
 Contour plots show density of all cells, and IFN+ cells are also indicated by orange dots.
 Cells were classified as HA+ or IFN+ based on gates set to put 0.05\% of uninfected cells in these populations.
-For infected cells, the percentage IFN+ was calculated only among the HA+ cells (since these are the ones that are infected).
-For the uninfected cells, the percentage IFN+ was calculated among all cells, since uninfected cells do not express HA.
-For each viral mutant, two independent stocks were assayed in duplicate (i.e., \#1a and \#1b are replicates of one viral stock, and \#2a and \#2b are replicates of the other).
+For infected cells, the percentage IFN+ was calculated among the HA+ cells (since these are the ones that are infected).
+For uninfected cells, the percentage IFN+ was calculated among all cells, since uninfected cells do not express HA.
+For each viral mutant, two independent stocks were assayed in duplicate (i.e., \#1a and \#1b are one viral stock, and \#2a and \#2b are the other).
 The infections with replicate \#1 of the wild-type virus were performed at an MOI of 0.1 as determined by TCID50, and all other viruses were infected at an equivalent particle number as determined by HI assay. 
 {\bf (B)}
 Data for \FIG{validation}B.
-The virus with the deletion in PB1 cannot be normalized by HA expression since it expresses lower levels of HA due to the lack of secondary transcription.
-Therefore, all cells were infected at an equivalent MOI of 0.3 as determined by TCID50 on MDCK-SIAT1 cells for the wild-type and NS1stop viruses, and on MDCK-SIAT1 cells expressing PB1~\cite{bloom2010permissive} for the PB1del385to2163 virus.
+The virus with the deletion in PB1 cannot be normalized by HA expression since it expresses less HA due to the lack of secondary transcription.
+Therefore, all cells were infected at an equivalent MOI of 0.3 as determined by TCID50 on MDCK-SIAT1 cells for wild type and NS1stop, and on MDCK-SIAT1 cells expressing PB1~\cite{bloom2010permissive} for PB1del385to2163.
 \SUPPFIG{delqPCR} shows that at these equivalent TCID50s, all variants had similar amounts of transcriptionally active virus in the absence of secondary transcription.
-The percent IFN+ was calculated for \emph{all} cells (HA+ and HA-) since that is a more fair comparison for the PB1del385to2163 virus.
+The percent IFN+ was calculated for \emph{all} cells (HA+ and HA-) since that is a more fair comparison for PB1del385to2163.
 }
 \label{suppfig:validationflow}
 \end{suppfig}
