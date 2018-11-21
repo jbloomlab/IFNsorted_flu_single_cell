@@ -134,6 +134,9 @@
 
 % Added by Jesse Bloom for figures
 \renewcommand{\floatpagefraction}{.9}
+\setcounter{topnumber}{8}
+\setcounter{bottomnumber}{8}
+\setcounter{totalnumber}{8}
 
 \newfloat{suppfile}{thp}{lofsupfile}
 \floatname{suppfile}{File}
@@ -293,7 +296,7 @@ Therefore, viral diversity is an important but not exclusive cause of cell-to-ce
 We created reporters with type I and type III IFN promoters (\SUPPFILE{reporter_sequences}).
 In A549 cells, the reporters were efficiently activated by an IFN-inducing strain of Sendai virus (\SUPPFIG{reportervalidation}A).
 {\bf (B)}
-Frequency of IFN induction upon infection with the influenza virus stock used in the single-cell studies in this paper, as quantified using the type III IFN reporter (\SUPPFIG{reportervalidation}C).
+Frequency of IFN induction upon infection with the influenza virus stock used in the single-cell studies in this paper, as quantified using the type III IFN reporter (see \SUPPFIG{IFNrare_flow} for full flow cytometry data).
 The plot also shows uninfected cells, and cells infected with Sendai virus.
 The limit of detection of 0.05\% is indicated with a dashed line, and numbers show the median of three measurements.
 }
@@ -438,7 +441,7 @@ Cells expressing high levels of viral genes, IFN, and ISGs cluster together---an
 \begin{figure}
 \begin{fullwidth}
 {\centering
-\includegraphics[height=0.9\textheight]{figures/single_cell_figures/p_genotypes.pdf}
+\includegraphics[height=0.92\textheight]{figures/single_cell_figures/p_genotypes.pdf}
 }
 \caption{
 {\bf Viral genotypes and infection outcomes in single cells.}
@@ -455,8 +458,8 @@ Orange boxes show the percent of cellular mRNA derived from IFN, with orange box
 %%% end genotypes figure %%%
 
 We next used PacBio sequencing (\FIG{workflow}D) to determine the full sequences of the viral genes expressed in single infected cells.
-Using PCR enrichment (see Methods), we obtained over 200,000 high-quality PacBio CCSs that mapped to an influenza gene and contained a cell barcode and UMI (\SUPPFIG{CCSs}A).
-Crucially, the synonymous viral barcodes at both termini of each gene enabled us to confirm that PCR strand exchange was rare (\SUPPFIG{CCSs}B), meaning that the vast majority of CCSs correctly link the sequence of the viral transcript to cell barcodes and UMIs that identify the cell and molecule of origin.
+Using PCR enrichment (see Methods), we obtained over 200,000 high-quality PacBio CCSs that mapped to an influenza gene and contained a cell barcode and UMI (\SUPPFIG{CCSs}).
+Crucially, the synonymous viral barcodes at both termini of each gene enabled us to confirm that PCR strand exchange was rare (\SUPPFIG{StrandExchange}), meaning that the vast majority of CCSs correctly link the sequence of the viral transcript to cell barcodes and UMIs that identify the cell and molecule of origin.
 
 We called a mutation in a viral gene if it was found in least two CCSs originating from different mRNAs (unique UMIs) and at least 30\% of all CCSs for that gene in that cell.
 For cells co-infected with both viral barcode variants, we called mutations separately for each viral variant.
@@ -621,7 +624,7 @@ For detection of the cell-surface bound LNGFR$\Delta$C, cells were stained with 
 We performed the single-cell experiments using the A/WSN/1933 (H1N1) strain of influenza virus.
 We used both the wild-type virus and a variant of the virus where synonymous mutations were added within a few 100 nucleotides of each termini of each gene segment.
 We have used a similar synonymous viral barcoding strategy in our prior single-cell work~\cite{russell2018extreme} as it allows us to detect about half of co-infected cells based on the expression of both viral barcode variants.
-In the current work, we extended this approach by placing synonymous barcodes near \emph{both} termini of the gene segments in order to quantify strand exchange during PacBio sequencing (\SUPPFIG{CCSs}B).
+In the current work, we extended this approach by placing synonymous barcodes near \emph{both} termini of the gene segments in order to quantify strand exchange during PacBio sequencing (\SUPPFIG{StrandExchange}).
 The sequences of all gene segments from the wild-type and synonymously barcoded viral strains are in \SUPPFILE{virus_seqs}.
 These genes were cloned into the pHW2000~\cite{hoffmann2000dna} reverse-genetics plasmid.
 
@@ -664,7 +667,7 @@ We therefore needed to enrich for the viral molecules, a process made challengin
 
 We first performed a multiplex PCR reaction on 1 ng of the full-length 10X cDNA using a 3' primer complementary to the common 10X adaptor, and a multiplex mix of eight 5' primers, one specific for the mRNAs from each of the eight viral gene segments (although some viral segments produce multiple splice forms, all mRNAs from a given segment share the same 5' end).
 The sequences of these primers are in \SUPPFILE{primer_sequences}.
-A major concern during these PCRs is strand exchange (see \SUPPFIG{CCSs}B) which would scramble the cell barcodes and mutations on viral cDNAs.
+A major concern during these PCRs is strand exchange (see \SUPPFIG{StrandExchange}) which would scramble the cell barcodes and mutations on viral cDNAs.
 To reduce strand-exchange and hopefully obtain more even PCR amplification across segments, we performed emulsion PCRs using the Micellula DNA Emulsion Kit (Roboklon).
 Emulsion PCR involves encapsidating DNA template molecules in a reverse-phase emulsion, with each template positive droplet serving as a microreactor.
 This process physically separates disparate template molecules, preventing strand exchange and allowing each molecule to be amplified to exhaustion of its droplet's reagents without competing with the broader pool of PCR-amenable molecules~\cite{Boers:2015emulsion}.
@@ -704,7 +707,7 @@ This material was pooled to produce an equimolar mixture of full-length PB1, PA,
 As is shown in the PacBio analysis notebook at \url{https://github.com/jbloomlab/IFNsorted_flu_single_cell/blob/master/pacbio_analysis.ipynb} (see also \SUPPFILE{pacbio_analysis}), this process efficiently yielded many full-length polymerase variants.
 
 The computational analyses of the full-length viral gene sequences described below used the combination of the data from all of these reactions.
-The number of sequences obtained for each gene after pooling the data from all reactions is shown in \SUPPFIG{CCSs}A, which also indicates that the net rate of strand exchange is very low (see \SUPPFIG{CCSs}B for an illustration of how this is determined).
+The number of sequences obtained for each gene after pooling the data from all reactions is shown in \SUPPFIG{CCSs}, which also indicates that the net rate of strand exchange is very low (see \SUPPFIG{StrandExchange} for an illustration of how this is determined).
 A more detailed breakdown of the coverage of each gene and data showing a consistently low rate of strand exchange for all PacBio runs is at \url{https://github.com/jbloomlab/IFNsorted_flu_single_cell/blob/master/pacbio_analysis.ipynb} (see also \SUPPFILE{pacbio_analysis}).
 Importantly, the various PCR biases and enrichment schemes mean that the coverage of molecules by the PacBio sequencing is not proportional to their original abundance in the starting mRNA.
 However, as described in the computational analysis section below, the final analyses use the cell barcodes and UMIs in conjunction with the standard 10X Illumina sequencing to ensure that none of the conclusions are affected by the disproportionate amplification of some molecules during the PacBio library preparation (for instance, duplicate UMIs are removed from the PacBio data, and all conclusions about gene abundance or absence are based on the Illumina data).
@@ -772,7 +775,7 @@ A Jupyter notebook that performs these analyses is at \url{https://github.com/jb
 We refer the reader to this notebook for a detailed description and extensive plots showing the results at each step.
 Here is a brief summary: we filtered for CCSs that had the expected 5' termini (from the influenza-specific primers) and 3' termini (corresponding to the 10X adaptor), and for which we could identify the cell barcode, UMI, and polyA tail.
 We aligned the cDNAs flanked by these termini to the influenza transcriptome, and performed a variety of quality control steps.
-At this point, we examined whether cDNAs had the synonymous viral barcodes at both ends or neither end as expected in the absence of strand exchange (\SUPPFIG{CCSs}B), and reassuringly found that strand exchange was rare (\SUPPFIG{CCSs}A).
+At this point, we examined whether cDNAs had the synonymous viral barcodes at both ends or neither end as expected in the absence of strand exchange (\SUPPFIG{StrandExchange}), and reassuringly found that strand exchange was rare (\SUPPFIG{CCSs}).
 The small number of CCSs with identifiable strand exchange were filtered from further analysis.
 We then further filtered for CCSs that contained valid cell barcodes as identified by the \texttt{cellranger} pipeline, and kept just one CCS per UMI (preferentially retaining high-quality CCSs that aligned to full-length cDNAs).
 We then removed from the CCSs the barcoding synonymous mutations that we had engineered into one of the two viral variants.
@@ -822,6 +825,7 @@ The authors declare that no competing interests exist.
 
 \bibliography{references}
 
+\clearpage
 \section*{Supporting information}
 
 \begin{suppfig}
@@ -839,8 +843,6 @@ The full code that performs the re-analysis shown in this figure is at \url{http
 \label{suppfig:mice}
 \end{suppfig}
 
-\clearpage
-
 \begin{suppfig}
 \begin{minipage}[t]{0.52\textwidth}
 {\bf \Large A}
@@ -852,14 +854,10 @@ The full code that performs the re-analysis shown in this figure is at \url{http
 
 \includegraphics[width=0.7\textwidth, valign=t]{figures/IFN_stochastic/IFN_reporter/IFNbeta_IFN_lambda_correlated.pdf}
 
-{\bf \Large C}
-
-\includegraphics[width=0.9\textwidth]{figures/IFN_stochastic/Flow/flow_plot.pdf}
-
 \end{minipage}
 
 \caption{
-{\bf Details about the reporter cell lines (\FIG{IFNrare}A) to identify IFN+ cells.}
+{\bf Validation of reporter cell lines (\FIG{IFNrare}A) to identify IFN+ cells.}
 {\bf (A)}
 To validate the IFN reporter cell lines, they were infected at high MOI with the Cantell strain of Sendai virus, which strongly activates IFN expression~\cite{strahle2006sendai}.
 The name of each of reporter cell line is indicated at the top of each row of plots.
@@ -872,8 +870,14 @@ The cells were then infected with two different stocks of ``wild-type'' WSN infl
 After 13 hours, cells were analyzed by flow cytometry.
 Cells positive for either fluorescent reporter were further analyzed.
 As shown in the FACS plots, expression of the \textit{IFNB1} and \textit{IFNL1} reporters is highly correlated in all cases.
-{\bf (C)}
-Flow cytometry data for \FIG{IFNrare}B.
+}
+\label{suppfig:reportervalidation}
+\end{suppfig}
+
+\begin{suppfig}
+\includegraphics[width=0.9\textwidth]{figures/IFN_stochastic/Flow/flow_plot.pdf}
+\caption{
+{\bf Flow cytometry data for \FIG{IFNrare}B.}
 The A549 cells with the \textit{IFNL1} reporter driving LNGFR$\Delta$C-ZsGreen were not infected, infected with saturating amounts of the Cantell strain of Sendai virus~\cite{strahle2006sendai}, or infected the same stock of influenza virus used in the single-cell experiment at a target MOI of 0.3.
 After 13 hours, the cells were stained for expression of HA protein and analyzed by FACS for HA and expression of the ZsGreen driven by the \textit{IFNL1} reporter.
 Each condition was done in triplicate.
@@ -882,10 +886,9 @@ Cells were classified as HA+ or IFN+ based on gates set to put 0.05\% of the uni
 For the influenza-infected cells, the percentage IFN+ was calculated only among the HA+ cells (since these are the ones that are infected).
 For the uninfected and Sendai-virus infected, the percentage IFN+ was calculated among all cells, since these cells do not express HA.
 }
-\label{suppfig:reportervalidation}
+\label{suppfig:IFNrare_flow}
 \end{suppfig}
 
-\clearpage
 
 \begin{suppfig}
 \includegraphics[width=\textwidth]{figures/MACS/MACS.pdf}
@@ -905,8 +908,6 @@ The qPCR was performed in quadruplicate (hence the four points for each sample).
 }
 \label{suppfig:MACS}
 \end{suppfig}
-
-\clearpage
 
 \begin{suppfig}
 \includegraphics[width=0.5\textwidth]{figures/single_cell_figures/p_frac_has_gene.pdf}
@@ -959,18 +960,10 @@ As is clear from this plot, expression of influenza, IFN, and ISG genes contribu
 \label{suppfig:tSNE}
 \end{suppfig}
 
-\clearpage
-
 \begin{suppfig}
-{\bf \Large A}
-\includegraphics[width=0.85\textwidth, valign=t]{figures/pacbio_single_cell_figures/ccs_per_viralbarcode.pdf}
-
-{\bf \Large B}
-\includegraphics[width=0.5\textwidth, valign=t]{figures/StrandExchangeSchematic/StrandExchangeSchematic.pdf}
+\includegraphics[width=\textwidth]{figures/pacbio_single_cell_figures/ccs_per_viralbarcode.pdf}
 \caption{
-{\bf Details about PacBio sequencing.}
-{\bf (A)}
-The number of PacBio CCSs that passed quality-control steps and aligned to an influenza virus gene.
+{\bf The number of PacBio CCSs that passed quality-control steps and aligned to an influenza virus gene.}
 These sequences were obtained using several PacBio runs, most of which were intentionally loaded with different amounts of the various viral genes to increase coverage on genes that were needed in order to obtain the full sequences of virions infecting cells (see \SUPPFILE{pacbio_analysis}).
 Because of this unequal loading and the inherently different PCR amplification efficiencies of different viral genes, unlike the transcriptomic data in \FIG{transcriptomics}, the numbers of CCSs for different genes should \emph{not} be taken as an indicator of their abundance in the infected cells.
 Especially for the polymerase genes (PB2, PB1, and PA), many CCSs corresponded to genes with internal deletions, since these shorter forms of the genes were preferentially amplified during PCR.
@@ -981,17 +974,23 @@ From the frequencies of these different forms, we estimate~\cite{bloom2018estima
 About half of these PCR chimeras could be identified by the presence of mixed viral barcodes and removed from subsequent analyses, leaving $\sim$3\% un-identified chimeras.
 For some molecules (mostly polymerase genes with internal deletions) one of the barcode sites was deleted from the molecule and so the barcode identity could only be partially called.
 A negligible number of molecules have low-accuracy sequence or unexpected nucleotide identities at the sites of the viral barcodes.
-{\bf (B)}
-Strategy for detecting strand exchange during sequencing of full-length viral genes.
+}
+\label{suppfig:CCSs}
+\end{suppfig}
+
+\begin{suppfig}
+\includegraphics[width=0.8\textwidth]{figures/StrandExchangeSchematic/StrandExchangeSchematic.pdf}
+\caption{
+{\bf Strategy for detecting strand exchange during sequencing of full-length viral genes.}
 The library preparation for PacBio sequencing of the cDNA for the full-length viral genes required many cycles of PCR.
 A major concern is that strand exchange during this PCR could scramble mutations and 10X cell barcodes / UMIs from different molecules.
 We detect PCR strand exchange by leveraging the fact that our cells were infected with a mix of wild-type virus and virus carrying synonymous barcodes near both termini of each gene.
 If there is no strand exchange, all molecules should either be wild-type or have the synonymous barcoding mutations at \emph{both} termini.
 Strand exchange will create some molecules that have wild-type nucleotides at one termini and synonymous barcoding mutations at the other termini.
-\SUPPFIG{CCSs}A shows the frequencies with which these different types of molecules were observed during the PacBio sequencing.
+\SUPPFIG{CCSs} shows the frequencies with which these different types of molecules were observed during the PacBio sequencing.
 Note that since the rate of homologous recombination in influenza virus in negligible~\cite{boni2008homologous}, such mixed-barcode molecules are \emph{not} expected to be generated naturally during co-infection.
 }
-\label{suppfig:CCSs}
+\label{suppfig:StrandExchange}
 \end{suppfig}
 
 \begin{suppfig}
@@ -1009,28 +1008,25 @@ Note also that this plot is limited to the cells that were called as infected (\
 \label{suppfig:ncells}
 \end{suppfig}
 
-\clearpage
-
 \begin{suppfig}
-{\bf \Large A}\includegraphics[width=0.5\textwidth, valign=t]{figures/Validation_Figure/SNP_flow_plot.pdf}
+{\bf \Large A}\includegraphics[width=0.48\textwidth, valign=t]{figures/Validation_Figure/SNP_flow_plot.pdf}
 \hspace{0.02\textwidth}
-{\bf \Large B} \includegraphics[width=0.4\textwidth, valign=t]{figures/Validation_Figure/del_flow_plot.pdf}
+{\bf \Large B} \includegraphics[width=0.39\textwidth, valign=t]{figures/Validation_Figure/del_flow_plot.pdf}
 \caption{
 {\bf Flow cytometry data for \FIG{validation}.}
 {\bf (A)}
 Data for \FIG{validation}A.
-A549 cells with the \textit{IFNL1} reporter driving LNGFR$\Delta$C-ZsGreen were infected with stocks of the indicated viral mutant.
+A549 cells with the \textit{IFNL1} reporter driving LNGFR$\Delta$C-ZsGreen were infected with stocks of the indicated mutant.
 After 13 hours, cells were stained for HA protein and analyzed by FACS.
 Contour plots show density of all cells, and IFN+ cells are also indicated by orange dots.
 Cells were classified as HA+ or IFN+ based on gates set to put 0.05\% of uninfected cells in these populations.
-For influenza-infected cells, the percentage IFN+ was calculated only among the HA+ cells (since these are the ones that are infected).
+For infected cells, the percentage IFN+ was calculated only among the HA+ cells (since these are the ones that are infected).
 For the uninfected cells, the percentage IFN+ was calculated among all cells, since uninfected cells do not express HA.
 For each viral mutant, two independent stocks were assayed in duplicate (i.e., \#1a and \#1b are replicates of one viral stock, and \#2a and \#2b are replicates of the other).
 The infections with replicate \#1 of the wild-type virus were performed at an MOI of 0.1 as determined by TCID50, and all other viruses were infected at an equivalent particle number as determined by HI assay. 
-The HA staining indicates that the number of transcriptionally active viral units was similar across most mutants, and calculating percentage IFN+ only among HA+ cells corrects for modest variation in titer across mutants.
 {\bf (B)}
 Data for \FIG{validation}B.
-The virus with the deletion in PB1 cannot be effectively normalized by HA expression since it expresses lower levels of HA due to the lack of secondary transcription.
+The virus with the deletion in PB1 cannot be normalized by HA expression since it expresses lower levels of HA due to the lack of secondary transcription.
 Therefore, all cells were infected at an equivalent MOI of 0.3 as determined by TCID50 on MDCK-SIAT1 cells for the wild-type and NS1stop viruses, and on MDCK-SIAT1 cells expressing PB1~\cite{bloom2010permissive} for the PB1del385to2163 virus.
 \SUPPFIG{delqPCR} shows that at these equivalent TCID50s, all variants had similar amounts of transcriptionally active virus in the absence of secondary transcription.
 The percent IFN+ was calculated for \emph{all} cells (HA+ and HA-) since that is a more fair comparison for the PB1del385to2163 virus.
@@ -1099,18 +1095,16 @@ See \url{https://github.com/jbloomlab/IFNsorted_flu_single_cell/tree/master/pape
 
 \begin{suppfile}
 \caption{\label{suppfile:pacbio_analysis}
-{\bf An HTML rendering of the Jupyter notebook that analyzes the PacBio data to call the viral sequences in infected cells.}
+{\bf HTML rendering of Jupyter notebook that analyzes the PacBio data.}
 See \url{https://github.com/jbloomlab/IFNsorted_flu_single_cell/raw/master/paper/figures/pacbio_single_cell_figures/pacbio_analysis.html}.
-This notebook contains detailed descriptions of each step and plots illustrating the results, and is the best way to understand this part of the analysis in detail.
-The actual Jupyter notebook rendered here is available at \url{https://github.com/jbloomlab/IFNsorted_flu_single_cell/blob/master/pacbio_analysis.ipynb}.}
+The actual Jupyter notebook is at \url{https://github.com/jbloomlab/IFNsorted_flu_single_cell/blob/master/pacbio_analysis.ipynb}.}
 \end{suppfile}
 
 \begin{suppfile}
 \caption{\label{suppfile:monocle_analysis}
-{\bf An HTML rendering of the Jupyter notebook that analyzes the annotated cell-gene matrix to generate the figures in this paper.}
+{\bf HTML rendering of Jupyter notebook that analyzes the annotated cell-gene matrix.}
 See \url{https://github.com/jbloomlab/IFNsorted_flu_single_cell/raw/master/paper/figures/single_cell_figures/monocle_analysis.html}.
-This notebook contains detailed descriptions of each step and plots illustrating the results, and is the best way to understand this part of the analysis in detail.
-The actual Jupyter notebook rendered here is available at \url{https://github.com/jbloomlab/IFNsorted_flu_single_cell/blob/master/monocle_analysis.ipynb}.}
+The actual Jupyter notebook is at \url{https://github.com/jbloomlab/IFNsorted_flu_single_cell/blob/master/monocle_analysis.ipynb}.}
 \end{suppfile}
 
 \end{document}
