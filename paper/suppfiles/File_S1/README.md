@@ -1,12 +1,13 @@
-# Genbank plasmid maps of plasmids
+# Genbank sequences of plasmids and viruses
 
-All plasmid maps are in Genbank file format.
+All files are in Genbank file format.
 
 ## Plasmid maps for IFN reporters
 
 The reporters are:
 
  - [1517_pHAGE2_IFNbeta_prom_LNGFR_P2A_mNeongreen.gb](1517_pHAGE2_IFNbeta_prom_LNGFR_P2A_mNeongreen.gb)
+
  - [1767_pHAGE2_IL29_promnkozak_LNGFR_P2A_zsGreen.gb](1767_pHAGE2_IL29_promnkozak_LNGFR_P2A_zsGreen.gb)
 
 ## Plasmid maps for viral mutants
@@ -32,3 +33,10 @@ Amino-acid mutations are numbered in sequential in 1, 2, ... numbering as well.
  - [2290_pHW182-PB1_A2053G.gb](2290_pHW182-PB1_A2053G.gb): encodes PB1 from WSN strain with nucleotide mutation A2053G, which introduces amino-acid mutation Thr677Ala in PB1.
 
  - [2292_pHW188-NS_C391T.gb](2292_pHW188-NS_C391T.gb): encodes NS from WSN strain with nucleotide mutation C391T, which introduces amino-cid mutation Ala122Val in NS1.
+
+## Sequences of wildtype and synonymously barcoded WSN influenza
+Genbank files giving the sequences of the viral RNAs (in the orientation of the mRNA, so reverse complement of actual negative-sense viral RNA) for the wildtype and synonymous barcoded WSN influenza variants:
+
+ - [flu-wsn.gb](flu-wsn.gb): viral RNAs for wild-type WSN influenza.
+
+ - [flu-wsn-double-syn.gb](flu-wsn-double-syn.gb): viral RNAs for synonymously barcoded WSN influenza.
