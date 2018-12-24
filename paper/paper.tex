@@ -217,37 +217,38 @@ Therefore, viral diversity is an important but not exclusive cause of cell-to-ce
 
 \section*{RESULTS}
 
-\subsection*{A system to identify and enrich for rare IFN+ cells}
+\subsection*{A system to identify and enrich rare IFN+ cells}
 
 %%% start IFNrare figure %%%
 \begin{figure}
 \centerline{
-{\bf \Large A}\includegraphics[width=0.35\textwidth,valign=t]{figures/IFN_stochastic/IFN_reporter/IFN_reporter.pdf}
+{\bf \Large A}\includegraphics[width=0.34\textwidth,valign=t]{figures/IFN_stochastic/IFN_reporter/IFN_reporter.pdf}
 \hspace{0.02\textwidth}
-{\bf \Large B} \includegraphics[width=0.23\textwidth,valign=t]{figures/IFN_stochastic/Flow/ifn_percent.pdf}
+{\bf \Large B} \includegraphics[width=0.22\textwidth,valign=t]{figures/IFN_stochastic/Flow/ifn_percent.pdf}
 }
 \caption{
 {\bf Reporter cells to identify and enrich infections that activate IFN expression.}
 {\bf (A)} The reporter consists of an IFN promoter that drives expression of a cell-surface protein amenable to MACS and a fluorescent protein.
-We created reporters with type I and type III IFN promoters (\SUPPFILE{reporter_sequences}).
+We created reporters with type I and type III IFN promoters (\SUPPFILE{plasmids}).
 In A549 cells, the reporters were efficiently activated by an IFN-inducing strain of Sendai virus (\SUPPFIG{reportervalidation}A).
 {\bf (B)}
 Frequency of IFN induction upon infection with the influenza virus stock used in the single-cell studies in this paper, as quantified using the type III IFN reporter (see \SUPPFIG{IFNrare_flow} for full flow cytometry data).
-The plot also shows uninfected cells, and cells infected with Sendai virus.
+The plot also shows uninfected cells, and cells infected with saturating amounts of Sendai virus.
 The limit of detection of 0.05\% is indicated with a dashed line, and numbers show the median of three measurements.
 }
 \label{fig:IFNrare}
 \end{figure}
 %%% end IFNrare figure %%%
 
-A challenge in studying IFN induction by influenza virus is the rareness with which infection triggers its expression.
-Studies using reporters~\citep{killip2017single,kallfass2013visualizing} and our own previous single-cell transcriptomics~\citep{russell2018extreme} have found that IFN induction is rare among influenza-infected cells, at least early in infection prior to extensive paracrine signaling and the accumulation of defective viral particles.
-Therefore, to efficiently identify and enrich rare IFN+ cells, we created A549 cells that carried IFN reporters consisting of a type I (\textit{IFNB1}) or type III (\textit{IFNL1}) promoter driving expression of a cell-surface protein (LNGFR$\Delta$C~\citep{bonini1997hsv,ruggieri1997cell}) followed by a fluorescent protein (\FIG{IFNrare}A).
+A challenge in studying IFN induction by influenza virus is its rareness at the level of single cells.
+Studies using reporters~\citep{killip2017single,kallfass2013visualizing} and our own previous single-cell transcriptomics~\citep{russell2018extreme} have found that at early timepoints IFN induction occurs in $<$1\% of influenza-infected cells.
+To efficiently identify and enrich these rare IFN+ cells, we created A549 cells that carried IFN reporters consisting of a type I (\textit{IFNB1}) or type III (\textit{IFNL1}) promoter driving expression of a cell-surface protein ~\citep[LNGFR$\Delta$C;][]{bonini1997hsv,ruggieri1997cell} followed by a fluorescent protein (\FIG{IFNrare}A).
 Cells that activate the IFN reporter can be enriched by magnetic-activated cell sorting (MACS) or identified by flow cytometry.
-The reporters were efficiently activated by a strain of Sendai virus~\citep{strahle2006sendai} that potently induces IFN (\SUPPFIG{reportervalidation}A), and activation of the type I and type III IFN reporters was highly correlated in our cells (\SUPPFIG{reportervalidation}B; further validated by the single-cell transcriptomics below).
+The reporters were efficiently activated by infection with saturating amounts of a strain of Sendai virus~\citep{strahle2006sendai} that potently induces IFN (\SUPPFIG{reportervalidation}A), and activation of the type I and type III IFN reporters was highly correlated in our cells (\SUPPFIG{reportervalidation}B; further validated by the single-cell transcriptomics below).
 For the rest of this paper, we use ``IFN expression'' to refer to combined expression of type I and III IFNs. 
 
-We generated a stock of ``wild-type'' A/WSN/1933 (H1N1) influenza (hereafter referred to as ``WSN''), and found that it activated the IFN reporter in $\sim$0.5\% of infected cells  (\FIG{IFNrare}B), a frequency roughly comparable to that in our prior single-cell transcriptomics of influenza-infected cells.
+We generated a stock of A/WSN/1933 (H1N1) influenza (hereafter referred to as ``WSN''), and found that it activated the IFN reporter in $\sim$0.5\% of infected cells  (\FIG{IFNrare}B), a frequency roughly comparable to that in our prior single-cell transcriptomics of influenza-infected cells~\citep{russell2018extreme}.
+
 
 \subsection*{Combined transcriptomics and virus-sequencing of single infected cells}
 
@@ -679,9 +680,9 @@ We also created a mutant virus that contained the internal deletion in PB1 found
 In addition, we created a virus with an inactivated NS1 to mimic the infections that failed to express NS (we were unable to use complementing cells to generate a viral stock that completely lacked the NS segment).
 This NS1stop virus contained six nucleotide changes resulting in the addition of five in-frame stop codons in NS1 starting 10 nucleotides downstream of the 5' splice donor site, thereby disrupting NS1 while leaving NS2 (NEP) intact.
 All of these mutants were cloned into the pHW2000 bi-directional reverse-genetics plasmid~\citep{hoffmann2000dna} in order to enable generation of viruses encoding the mutant genes.
- \SUPPFILE{validation_sequences} provides the full sequences for all of these plasmids.
+ \SUPPFILE{plasmids} provides the full sequences for all of these plasmids.
 
-We generated the wild-type and point-mutant viruses for the validation experiments in \FIG{validation}A by reverse genetics using the pHW18* series of WSN reverse genetics plasmids~\citep{hoffmann2000dna}, but substituting the appropriate mutant plasmid listed in \SUPPFILE{validation_sequences} for the wild-type plasmid for that gene.
+We generated the wild-type and point-mutant viruses for the validation experiments in \FIG{validation}A by reverse genetics using the pHW18* series of WSN reverse genetics plasmids~\citep{hoffmann2000dna}, but substituting the appropriate mutant plasmid listed in \SUPPFILE{plasmids} for the wild-type plasmid for that gene.
 To generate the viruses from these plasmids, we transfected an equimolar mix of all eight plasmids into co-cultures of 293T and MDCK-SIAT1 cells seeded at a ratio of 8:1.
 At 24 hours post-transfection, we changed media from D10 to influenza growth media. 
 At 50 hours post-transfection (for the replicate 1 viruses in \SUPPFIG{validationflow}A) or 72 hours (for the replicate 2 viruses in \SUPPFIG{validationflow}), we harvested the virus-containing supernatant, clarified this supernatant by centrifugation at 300$\times$g for 4 min, and stored aliquots of the clarified viral supernatant at -80$^{\circ}$C.
@@ -955,10 +956,11 @@ Each measurement was performed in quadruplicate.
 \clearpage
 
 \begin{suppfile}
-\caption{{\bf Sequences of the IFN reporters in \FIG{IFNrare}A.}
-%See \url{https://github.com/jbloomlab/IFNsorted_flu_single_cell/tree/master/paper/figures/IFN_stochastic/IFN_reporter/plasmids}.
+\caption{{\bf Sequences of the plasmids used in this study.}
+The plasmid maps are for the IFN reporters in \FIG{IFNrare}A and the mutant viral genes cloned into the pHW* bi-directional reverse genetics plasmid~\citep{hoffmann2000dna}.
+%See \url{https://github.com/jbloomlab/IFNsorted_flu_single_cell/tree/master/paper/figures/IFN_stochastic/IFN_reporter/plasmids} and \url{https://github.com/jbloomlab/IFNsorted_flu_single_cell/tree/master/paper/figures/FluVariantPlasmidMaps}.
 }
-\label{suppfile:reporter_sequences}
+\label{suppfile:plasmids}
 \end{suppfile}
 
 \begin{suppfile}
@@ -991,14 +993,6 @@ Each measurement was performed in quadruplicate.
 %See \url{https://github.com/jbloomlab/IFNsorted_flu_single_cell/blob/master/paper/figures/single_cell_figures/mutations.csv}.
 }
 \label{suppfile:mutations}
-\end{suppfile}
-
-\begin{suppfile}
-\caption{
-{\bf Genbank plasmid maps for the mutant genes cloned into the pHW* bi-directional reverse genetics plasmid~\citep{hoffmann2000dna}.}
-%See \url{https://github.com/jbloomlab/IFNsorted_flu_single_cell/tree/master/paper/figures/FluVariantPlasmidMaps}
-}
-\label{suppfile:validation_sequences}
 \end{suppfile}
 
 \begin{suppfile}
