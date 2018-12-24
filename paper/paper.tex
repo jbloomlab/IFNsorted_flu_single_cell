@@ -301,13 +301,11 @@ The limit of detection of 0.05\% is indicated with a dashed line, and numbers sh
 %%% end IFNrare figure %%%
 
 A challenge in studying IFN induction by influenza virus is the rareness with which infection triggers its expression.
-Studies using reporters~\citep{killip2017single} and our own previous single-cell transcriptomics~\citep{russell2018extreme} have found that IFN induction is rare in cell lines infected with influenza.
-IFN expression also appears to be rare among cells in influenza-infected mice~\citep{kallfass2013visualizing}, a conclusion supported by our re-analysis of single-cell transcriptomics of influenza-infected mice by Steuerman et al~\citep{steuerman2018dissection} (\SUPPFIG{mice}).
-
-To efficiently identify and enrich rare IFN+ cells, we created A549 cells that carried IFN reporters consisting of a type I (\textit{IFNB1}) or type III (\textit{IFNL1}) promoter driving expression of a cell-surface protein (LNGFR$\Delta$C~\citep{bonini1997hsv,ruggieri1997cell}) followed by a fluorescent protein (\FIG{IFNrare}A).
+Studies using reporters~\citep{killip2017single,kallfass2013visualizing} and our own previous single-cell transcriptomics~\citep{russell2018extreme} have found that IFN induction is rare among influenza-infected cells, at least early in infection prior to extensive paracrine signaling and the accumulation of defective viral particles.
+Therefore, to efficiently identify and enrich rare IFN+ cells, we created A549 cells that carried IFN reporters consisting of a type I (\textit{IFNB1}) or type III (\textit{IFNL1}) promoter driving expression of a cell-surface protein (LNGFR$\Delta$C~\citep{bonini1997hsv,ruggieri1997cell}) followed by a fluorescent protein (\FIG{IFNrare}A).
 Cells that activate the IFN reporter can be enriched by magnetic-activated cell sorting (MACS) or identified by flow cytometry.
 The reporters were efficiently activated by a strain of Sendai virus~\citep{strahle2006sendai} that potently induces IFN (\SUPPFIG{reportervalidation}A), and activation of the type I and type III IFN reporters was highly correlated in our cells (\SUPPFIG{reportervalidation}B; further validated by the single-cell transcriptomics below).
-Therefore, for the rest of this paper, we use ``IFN expression'' to refer to combined expression of type I and III IFNs. 
+For the rest of this paper, we use ``IFN expression'' to refer to combined expression of type I and III IFNs. 
 
 We generated a stock of ``wild-type'' A/WSN/1933 (H1N1) influenza (hereafter referred to as ``WSN''), and found that it activated the IFN reporter in $\sim$0.5\% of infected cells  (\FIG{IFNrare}B), a frequency roughly comparable to that in our prior single-cell transcriptomics of influenza-infected cells.
 
@@ -569,7 +567,7 @@ Visual inspection of \FIG{genotypes} shows how any experiment that does not sequ
 It turns out that these viral defects substantially contribute to the heterogeneity observed in prior single-cell studies of influenza~\citep{russell2018extreme, steuerman2018dissection, heldt2015single, sjaastad2018distinct}, including helping determine if a cell triggers an IFN response.
 We identified four types of viral defects in single IFN+ cells that we validated to increase IFN induction. 
 Two types of defects---absence of the NS gene and amino-acid mutation to the NS1 protein---presumably impair NS1's well-known ability to antagonize innate-immune pathways~\citep{garcia1998influenza, hale2008multifunctional}.
-The third type of defect, amino-acid mutations in the PB1 protein, is consistent with recent work by showing that mutations to the viral polymerase affect generation of mini-viral RNAs that activate the innate-immune sensor RIG-I~\citep{velthuis2018mini} .
+The third type of defect, amino-acid mutations in the PB1 protein, is consistent with recent work by showing that mutations to the viral polymerase affect generation of mini-viral RNAs that activate the innate-immune sensor RIG-I~\citep{velthuis2018mini}.
 Finally, we found an internal deletion in the PB1 gene that enhances IFN induction, consistent with a large body of prior work showing that such deletions are immunostimulatory~\citep{baum2010preference, tapia2013defective, boergeling2015evidence, dimmock2015cloned}.
 Given the extensive prior work describing such deletions, it is perhaps surprising we did not identify more of them in our single IFN+ cells.
 There may be several reasons: we used relatively pure viral stocks~\citep{xue2016propagation} at modest MOI; our experiments preferentially captured cells with higher viral transcriptional load; and most prior studies have used techniques that can detect large deletions but not subtle point mutations.
@@ -820,21 +818,6 @@ The plot in \FIG{genotypes} summarizes all of the genotypic information, and was
 \normalsize
 
 \section*{Supporting information}
-
-\begin{suppfig}
-\includegraphics[width=\textwidth]{figures/IFN_stochastic/SteuermanReanalysis/plots/p_mRNA_counts.pdf}
-\caption{
-{\bf Re-analysis of a published single-cell transcriptomic study~\citep{steuerman2018dissection} of influenza-infected mice shows that only 5 of 1220 virus-infected cells express \emph{detectable} type I or type III IFN transcripts \textit{in vivo}.}
-Specifically, we downloaded the data from \citep{steuerman2018dissection} and identified influenza-infected cells using criteria similar to those described in \citep{steuerman2018dissection}.
-Here we show statistics for the cells from the influenza-infected wild-type C57BL/6J mice, which were collected at 48 hours (two replicates) or 72 hours (one replicate)---we do not show cells from the control mice.
-As shown in the left-most panel, the sequencing depth of \citep{steuerman2018dissection} was quite low, with only $\sim$1,500 mRNA counts per cell on average (this is 10 to 15-fold lower than the sequencing depth in the current study).
-An important caveat is that this low sequencing depth could lead to a simple failure to detect IFN transcripts in some cells.
-Nonetheless, there is detectable expression of key ISGs---which are induced by autocrine and paracrine signaling~\citep{stetson2006type,honda2006type}---in the majority of infected cells (the middle panel shows the total counts of IFIT1, ISG15, CCL5, and Mx1).
-However, only 5 of 1220 cells express any detectable type I (IFN-$\alpha$ and IFN-$\beta$) or type III (IFN-$\lambda$) mRNAs, which are only induced by direct cellular detection of viral infection~\citep{stetson2006type,honda2006type}.
-The full code that performs the re-analysis shown in this figure is at \url{https://github.com/jbloomlab/IFNsorted_flu_single_cell/tree/master/paper/figures/IFN_stochastic/SteuermanReanalysis/}.
-}
-\label{suppfig:mice}
-\end{suppfig}
 
 \begin{suppfig}
 \begin{minipage}[t]{0.52\textwidth}
