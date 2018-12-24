@@ -310,7 +310,7 @@ Combining this information with the 3'-end sequencing determines the entire tran
 {\bf Single-cell transcriptomics of IFN-enriched influenza-infected cells.}
 {\bf (A)} 
 Number of cells for which transcriptomes were obtained.
-From these numbers, we estimate~\citep{bloom2018estimating} that $\approx$11\% of the transcriptomes are actually multiplets derived from multiple cells. 
+%From these numbers, we estimate~\citep{bloom2018estimating} that $\approx$11\% of the transcriptomes are actually multiplets derived from multiple cells. 
 {\bf (B)} The number of cellular and viral mRNAs detected for each cell is plotted as a point.
 Green lines show the distribution of cellular mRNAs per cell.
 Cells outside the dashed magenta lines have unusually low or high amounts of cellular mRNA (likely low-quality emulsions or multiplets), and are excluded from subsequent analyses.
@@ -336,36 +336,37 @@ Many cells that do not express IFN still express ISGs (\SUPPFIG{ISG}).
 
 We obtained transcriptomes for 1,614 human (A549) cells, and 50 of the uninfected canine cells that were spiked into the experiment as a control (\FIG{transcriptomics}A).
 We also obtained 12 transcriptomes with a mix of human and canine transcripts; from the number of such mixed cell-type transcriptomes, we estimate~\citep{bloom2018estimating} that $\sim$11\% of the transcriptomes are derived from multiple cells.
-To remove some of these multiplets, we filtered transcriptomes with unusually high or low numbers of cellular transcripts (\FIG{transcriptomics}B), retaining the 1,490 human cells that passed this filtering.
+To remove some of these multiplets along with low-quality droplets, we filtered transcriptomes with unusually high or low numbers of cellular transcripts as is commonly done in analysis of single-cell RNA-seq data~\citep{haque2017practical}.
+After this filtering, we retained 1,490 human cells for further analysis (\FIG{transcriptomics}B).
 
 To identify infected cells, we examined the fraction of each transcriptome derived from virus (\FIG{transcriptomics}C).
-As expected, only a small fraction ($\sim$0.7\%) of transcripts in the uninfected canine cells were from influenza; this low-level background is likely from lysed cells that release ambient viral mRNA that is captured in droplets during reverse-transcription.
-We tested whether each cell contained significantly more viral transcripts than expected under a Poisson model given this background fraction, and classified 290 human cells as definitively infected with influenza (\FIG{transcriptomics}C).
-We classified the other cells as uninfected, although it is possible that some were infected with virions that produced too little mRNA to be detected in our experiment.
-The distribution of the amount of viral mRNA across infected cells is shown in the inset in \FIG{transcriptomics}C.
+As expected, only a small fraction ($\sim$0.7\%) of transcripts in the uninfected canine cells were from influenza; this low-level background is from lysed cells that release ambient viral mRNA that is captured in droplets prior to reverse-transcription.
+We tested whether each cell contained more viral transcripts than expected under a Poisson model given this background fraction, and classified 290 human cells as definitively infected by virus (\FIG{transcriptomics}C).
+We classified the other cells as uninfected, although it is possible that some were infected with virions that produced very little mRNA.
+The distribution of the amount of viral mRNA across infected cells is in the inset in \FIG{transcriptomics}C.
 As in our prior work~\citep{russell2018extreme}, the distribution is extremely heterogeneous: many infected cells have only a few percent of mRNA derived from virus, but viral mRNA comprises over half the transcriptome of a few cells.
 
-We then called the presence or absence of each viral gene in each infected cell, again using a Poisson model parameterized by background fractions estimated from uninfected canine cells.
-We called presence / absence of genes rather than transcripts, since the two influenza genes that encode multiple transcripts (M1 / M2 from the M gene, and NS1 / NS2 from the NS gene) do so via alternative splicing that leaves both isoforms with the same termini, making them indistinguishable by 3'-end sequencing.
-\FIG{transcriptomics}D (top panel) shows that most (162 of 290) infected cells express all eight genes, although a substantial minority fail to express one or more genes (see \SUPPFIG{frac_has_gene} for frequencies at which individual genes are present).
-This measured frequency of infected cells expressing all eight genes is slightly higher than in our own prior work~\citep{russell2018extreme} and studies by others~\citep{brooke2013most, heldt2015single, dou2017analysis}, which have estimated that only 13\% to 50\% of infected cells express all genes. 
+We called the presence or absence of each viral gene in each infected cell, again using a Poisson model parameterized by background fractions estimated from uninfected canine cells.
+%We called presence / absence of genes rather than transcripts, since the two influenza genes that encode multiple transcripts (M1 / M2 from the M gene, and NS1 / NS2 from the NS gene) do so via alternative splicing that leaves both isoforms with the same termini, making them indistinguishable by 3'-end sequencing.
+\FIG{transcriptomics}D (top panel) shows that a slight majority (162 of 290) of infected cells express all eight genes (see \SUPPFIG{frac_has_gene} for frequencies for individual genes).
+This measured frequency of infected cells expressing all eight genes is slightly higher than in our prior work~\citep{russell2018extreme} and studies by others~\citep{brooke2013most, heldt2015single, dou2017analysis}, which estimated that only 13\% to 50\% of infected cells express all genes. 
 
-The amount of viral mRNA tended to be lower in cells that failed to express viral genes (\FIG{transcriptomics}D, bottom panel).
-However, viral burden remained highly variable even after conditioning on the number of viral genes: some cells that failed to express one or even two genes still derived $>$50\% of their mRNA from virus, while other cells that expressed all genes had only a few percent of their mRNA from virus (\FIG{transcriptomics}D, bottom panel).
-Consistent with our prior work~\citep{russell2018extreme}, despite the wide variation in absolute expression of viral genes, their \emph{relative} expression was fairly consistent (\FIG{transcriptomics}E) and generally matched values from older bulk studies~\citep{hatada1989control}.
+The amount of viral mRNA tended to be lower in cells that failed to express viral genes (\FIG{transcriptomics}D, bottom).
+However, viral burden remained variable even after conditioning on the number of viral genes: some cells that failed to express one or even two genes still derived $>$50\% of their mRNA from virus, while other cells that expressed all genes had only a few percent of their mRNA from virus.
+Consistent with prior work~\citep{russell2018extreme}, despite the wide variation in absolute expression of viral genes, their \emph{relative} expression was fairly consistent (\FIG{transcriptomics}E) and similar to values from older bulk studies~\citep{hatada1989control}.
 
 By examining the synonymous viral barcodes near the 3' termini of transcripts, we determined that 38\% of cells were co-infected with wild-type and synonymously barcoded virions (\FIG{transcriptomics}F; cells called as co-infected if a binomial test rejected null hypothesis that $\ge$95\% of viral mRNA is from one viral barcode variant).
 From \FIG{transcriptomics}F, we estimate~\citep{bloom2018estimating} that 63\% of infected cells are co-infected, implying that 25\% are co-infected with two virions with the same viral barcode (such co-infections cannot be identified from transcriptomic data).
-Interestingly, this co-infection rate is higher than expected from the relative numbers of infected and uninfected cells (\FIG{transcriptomics}C) if infection is Poisson.
+This co-infection rate is higher than expected from the relative numbers of infected and uninfected cells (\FIG{transcriptomics}C) if infection is Poisson.
 This discrepancy could arise if the MACS for IFN+ cells also enriches co-infected cells, if infection is not truly Poisson, or if co-infection increases the likelihood that we identify a cell as infected given the thresholds in \FIG{transcriptomics}C.
 This moderately high rate of co-infection may also explain why more cells in our experiment express all eight viral genes compared to some prior studies, as a co-infecting virion can complement a missing viral gene. 
 
 We next examined expression of IFN and ISGs (\FIG{transcriptomics}G and \SUPPFIG{ISG}).
-Over 20\% of infected cells were IFN+ given the heuristic thresholds in \FIG{transcriptomics}G, indicating that the MACS successfully enriched IFN+ cells far beyond their initial frequency of $\sim$0.5\% (\FIG{IFNrare}B) among infected cells.
+Over 20\% of infected cells were IFN+ given the heuristic thresholds in \FIG{transcriptomics}G, indicating that the MACS enriched IFN+ cells far beyond their initial frequency of $\sim$0.5\% (\FIG{IFNrare}B) among infected cells.
 Few ($\sim$1.3\%) uninfected cells were IFN+; the few that were present might be because the MACS enriched for rare cells that spontaneously activated IFN, or because some cells that we classified as uninfected were actually infected at low levels.
 Many more cells expressed ISGs than IFN itself: the ratio of ISG+ to IFN+ cells was 1.8 among infected cells, and 7 among uninfected cells (\SUPPFIG{ISG}A).
 The IFN+ cells were a subset of the ISG+ cells: IFN+ cells always expressed ISGs, but many ISG+ cells did not express IFN (\SUPPFIG{ISG}B).
-These results are consistent with the established knowledge that IFN is expressed only in cells that directly detect infection, but that ISGs are also expressed via paracrine signaling in cells that do not themselves detect infection~\citep{stetson2006type,honda2006type}.
+These results are consistent with the established knowledge that IFN is expressed only in cells that directly detect infection, but that ISGs are also expressed via paracrine signaling in cells that do not directly detect infection~\citep{stetson2006type,honda2006type}.
 
 \subsection*{Full genotypes of viruses infecting single IFN+ and IFN- cells}
 
@@ -806,7 +807,7 @@ For uninfected and Sendai-infected cells, the percentage IFN+ was calculated amo
 \begin{suppfig}
 \includegraphics[width=\textwidth]{figures/MACS/MACS.pdf}
 \caption{
-{\bf Example MACS enrichments of IFN+ influenza-infected cells.}
+{\bf Example MACS enrichments of IFN+ influenza-infected cells, related to \FIG{workflow}.}
 A549 cells with the \textit{IFNB1} LNGFR$\Delta$C-mNeonGreen reporter were infected with wild-type WSN influenza (two different viral stocks) at a target MOI of 0.1 TCID50 per cell.
 After infection had proceeded for 12 hours, the cells were twice magnetically sorted for LNGFR$\Delta$C expression over magnetic columns as detailed in the methods for the single-cell sequencing experiment.
 {\bf (A)}
