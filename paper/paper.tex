@@ -427,10 +427,6 @@ Many more cells expressed ISGs than IFN itself: the ratio of ISG+ to IFN+ cells 
 The IFN+ cells were a subset of the ISG+ cells: IFN+ cells always expressed ISGs, but many ISG+ cells did not express IFN (\SUPPFIG{ISG}B).
 These results are consistent with the established knowledge that IFN is expressed only in cells that directly detect infection, but that ISGs are also expressed via paracrine signaling in cells that do not themselves detect infection~\citep{stetson2006type,honda2006type}.
 
-Finally, we qualitatively examined how expression of viral genes, IFN, and ISGs relate to the overall structure of the high-dimensional transcriptomic data.
-\SUPPFIG{tSNE} shows unsupervised t-SNE clustering~\citep{maaten2008visualizing} of the cells.
-Cells expressing high levels of viral genes, IFN, and ISGs cluster together---and most of the structure in the t-SNE plot that is not associated with these genes involves uninfected and IFN- cells.
-
 \subsection*{Full genotypes of viruses infecting single IFN+ and IFN- cells}
 
 %%% start genotypes figure %%%
@@ -943,18 +939,6 @@ IFN and ISG expression are more correlated for infected than uninfected cells, p
 Among both the infected and uninfected populations, there are many cells with high expression of ISGs and little expression of IFN, but no cells that express high levels of IFN without also substantially expressing ISGs.
 }
 \label{suppfig:ISG}
-\end{suppfig}
-
-\begin{suppfig}
-\includegraphics[width=\textwidth]{figures/single_cell_figures/p_tsne.pdf}
-\caption{
-{\bf Unsupervised t-SNE clustering shows that cell-to-cell variation in expression of influenza, IFN, and ISG transcripts substantially contributes to the structure of the data.}
-To generate an unbiased representation of the factors that distinguished the transcriptomes of the cells in our experiments, we used unsupervised t-SNE clustering~\citep{maaten2008visualizing} as implemented in \texttt{Monocle}~\citep{qiu2017reversed, trapnell2014dynamics} to generate a two-dimensional representation of the data.
-In the t-SNE plot, each point is a different cell, and cells with similar transcriptomes are closer together.
-Each panel shows the same t-SNE plot, but the cells are colored differently in each panel based on the amount of viral, IFN, or ISG mRNA, shown on a log (top) or linear (bottom) scale.
-As is clear from this plot, expression of influenza, IFN, and ISG genes contributes substantially to the structure of the data, since cells with high expression of these genes clearly group together.
-}
-\label{suppfig:tSNE}
 \end{suppfig}
 
 \begin{suppfig}
