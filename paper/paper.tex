@@ -374,15 +374,17 @@ These results are consistent with the established knowledge that IFN is expresse
 \begin{figure}
 \begin{fullwidth}
 {\centering
-\includegraphics[height=0.92\textheight]{figures/single_cell_figures/p_genotypes.pdf}
+\includegraphics[height=0.9\textheight]{figures/single_cell_figures/p_genotypes.pdf}
 }
 \caption{
 {\bf Viral genotypes and infection outcomes in single cells.}
-Arrows indicate presence of a viral gene from one (light blue) or both viral barcode variants (dark blue).
-Circles and boxes indicate mutations or indels as described in the legend, with circle areas and box heights proportional to the fraction of CCSs with that mutation.
-For dual-barcode infections, mutations / indels for the wild-type and synonymously barcoded viral variants are shown in the top and bottom half of the arrows, respectively. 
-Green boxes at left show the percent of all mRNA in that cell derived from virus.
-Orange boxes show the percent of cellular mRNA derived from IFN, with orange box frames indicating cells classified as IFN+ in \FIG{transcriptomics}G.
+Green and orange boxes at the left show the percent of all mRNA in that cell derived from virus and the percent of all cellular mRNA derived from IFN, respectively.
+The second box is framed in orange for cells classified as IFN+ in \FIG{transcriptomics}G.
+Blue arrows indicate the presence of a viral gene from one (light blue) or both (dark blue) viral barcode variants; a dark blue arrow therefore means that a cell was co-infected.
+Circles and boxes on the arrows indicate mutations or indels as described in the legend at right.
+The circle areas and box heights are proportional to the fraction of CCSs with that mutation.
+For dual-barcode infections, mutations / indels for the wild-type and synonymously barcoded viral variants are shown in the top and bottom half of the arrows, respectively.
+For instance, \textit{cell 5} was co-infected by a virion with one wild-type and one internally deleted copy of PB1. 
 }
 \label{fig:genotypes}
 
@@ -394,22 +396,28 @@ We next used PacBio sequencing (\FIG{workflow}D) to determine the full sequences
 Using PCR enrichment (see Methods), we obtained over 200,000 high-quality PacBio CCSs that mapped to an influenza gene and contained a cell barcode and UMI (\SUPPFIG{PacBio_supp}A).
 Crucially, the synonymous viral barcodes at both termini of each gene enabled us to confirm that PCR strand exchange was rare (\SUPPFIG{PacBio_supp}B), meaning that the vast majority of CCSs correctly link the sequence of the viral transcript to cell barcodes and UMIs that identify the cell and molecule of origin.
 
-We called a mutation in a viral gene if it was found in least two CCSs originating from different mRNAs (unique UMIs) and at least 30\% of all CCSs for that gene in that cell.
-For cells co-infected with both viral barcode variants, we called mutations separately for each viral variant.
-This strategy reliably identifies mutations in virions that initiate infection of cells infected with at most one virion of each viral barcode variant ($\sim$75\% of infected cells), as well as high-abundance mutations in cells co-infected with multiple virions of the same viral barcode.
+After calling the presence / absence of each viral gene in each cell using the transcriptomic data as described in the previous section, we called mutations if they were found in at least two CCSs originating from different mRNAs (unique UMIs) and at least 30\% of all CCSs for that gene in that cell.
+For cells co-infected with both viral barcode variants, we called mutations separately for each variant.
+This strategy identifies mutations in virions that initiate infection of cells infected with at most one virion of each viral barcode variant ($\sim$75\% of infected cells), as well as high-abundance mutations in cells co-infected with multiple virions of the same viral barcode.
 It will not identify mutations that arise within a cell after the first few rounds of viral genome replication, since such mutations will not reach 30\% frequency in that cell.
 Therefore, analogous to somatic variant calling in tumor sequencing~\citep{xu2014comparison, cibulskis2013sensitive}, there is a limit to our detection threshold: we cannot identify mutations that occur on just a small fraction of transcripts in a cell. 
 
-We could call the sequences of all expressed viral genes in the majority of infected cells (\SUPPFIG{ncells}).
-We were most effective at calling full viral genotypes in cells that expressed high amounts of viral mRNA and were infected by only one viral barcode variant (\SUPPFIG{ncells}).
-But we also called full genotypes for many cells that had low viral burden or were co-infected by both viral barcode variants.
+We called the sequences of all expressed viral genes in the majority of infected cells (\SUPPFIG{ncells}).
+We were most effective at calling viral genotypes in cells that expressed high amounts of viral mRNA and were infected by only one viral barcode variant (\SUPPFIG{ncells}).
+But we also called genotypes for many cells that had low viral burden or were co-infected by both viral barcode variants.
 
-The 150 cells for which we called the full viral genotypes are shown in \FIG{genotypes}.
-Simple visual inspection of this figure reveals a wealth of information.
-For instance, the cell with the highest viral burden (\textit{cell 1} in \FIG{genotypes}, which has 65\% of its mRNA from virus) was infected by a virion that expressed wild-type copies all eight genes and did not induce detectable IFN.
-But 12 of the other 13 cells with at least 50\% of their mRNA from virus were infected by virions that had a mutation or failed to express at least one gene, and five of these cells expressed IFN.
-The two cells that expressed the most IFN (\textit{cell 13} and \textit{cell 123}) both lacked the viral NS gene, and many other IFN+ cells had different defects such as large internal deletions (e.g., \textit{cell 5} and \textit{cell 89}) or amino-acid mutations (e.g., \textit{cell 9}, \textit{cell 28}, and many others).
-However, expressing unmutated copies of all eight genes did not guarantee a favorable outcome for the virus: for instance, the wild-type virion that infected \textit{cell 139} only managed to express viral mRNA to 6\% of the total transcriptome, and the wild-type virion that infected \textit{cell 105} still induced IFN.
+The 150 cells for which we called the viral genotypes are shown in \FIG{genotypes}.
+Inspection of this figure reveals a wealth of anecdotal relationships between viral genotype and infection outcome.
+For instance, the cell with the highest viral burden (\textit{cell 1} in \FIG{genotypes}, which has 65\% of its mRNA from virus) was infected by a virion that expressed unmutated copies all genes and did not induce detectable IFN.
+But 12 of the other 13 cells with at least 50\% of their mRNA from virus were infected by virions that had a mutation or failed to express a gene, and five of these cells expressed IFN.
+As expected, all cells infected by virions that failed to express a component of the viral polymerase complex (PB2, PB1, PA, or NP) expressed low amounts of viral mRNA since they are limited to primary transcription off the incoming proteins (e.g., \textit{cell 132} and \textit{cell 143}).
+The two cells that expressed the most IFN (\textit{cell 13} and \textit{cell 123}) both lacked the viral NS gene that encodes the virus's primary IFN antagonist~\citep{garcia1998influenza, hale2008multifunctional}, and many other IFN+ cells had different defects such as large internal deletions (e.g., \textit{cell 5} and \textit{cell 89}) or amino-acid mutations (e.g., \textit{cell 9}, \textit{cell 28}, and many others).
+
+However, \FIG{genotypes} also reveals stochasticity that is independent of viral genotype.
+This stochasticity sometimes acts to the detriment of the virus, and sometimes to the detriment of the cell.
+As an example of the former case, expressing unmutated copies of all eight genes does not guarantee a favorable outcome for the virus: for instance, the unmutated virion that infected \textit{cell 139} only expressed viral mRNA to 6\% of the total transcriptome, and the unmutated virion that infected \textit{cell 105} still induced IFN.
+But in other cases, the stochasticity allows a clearly defective virus to still escape immune recognition.
+For instance, there are a number of cells (e.g., \textit{cell 62} and \textit{cell 78}) that fail to activate IFN despite being infected by virions that fail to express NS.
 
 \subsection*{Viral defects associated with infection outcome in single cells}
 
