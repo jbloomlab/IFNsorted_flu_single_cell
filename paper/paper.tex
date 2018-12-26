@@ -319,14 +319,14 @@ Cells called as infected are in blue, while other cells are in green.
 The inset shows the amount of viral mRNA in the human cells that are called as infected.
 {\bf (D)} Number of influenza genes detected per infected cell, and the amount of viral mRNA in cells expressing each number of viral genes.
 The majority of cells express all eight gene segments, but a substantial minority fail to express at least one gene.
-\SUPPFIG{frac_has_gene} shows the frequency that each viral gene is detected.
+\SUPPFIG{transcriptomics_supp}A shows the frequency that each viral gene is detected.
 {\bf (E)} Relative expression of viral genes, quantified as the fraction of all viral mRNA in each infected cell that is derived from each gene.
 {\bf (F)} Number of cells infected with wild-type virus, synonymously barcoded virus, or both.
 From the cells infected with both viral barcodes, we estimate~\citep{bloom2018estimating} that 63\% of infected cells are co-infected.
 {\bf (G)} Fraction of cellular mRNA from IFN across cells, faceted by whether the cells are infected.
 Cells to the left of the first dashed magenta line are classified as IFN-, and cells to the right of the second line are classified as IFN+.
 A pseudocount is added to the number of IFN transcripts detected in each cell, which is why none of the fractions are zero.
-Many cells that do not express IFN still express ISGs (\SUPPFIG{ISG}).
+Many cells that do not express IFN still express ISGs (\SUPPFIG{transcriptomics_supp}C,D).
 }
 \label{fig:transcriptomics}
 
@@ -348,7 +348,7 @@ As in our prior work~\citep{russell2018extreme}, the distribution is extremely h
 
 We called the presence or absence of each viral gene in each infected cell, again using a Poisson model parameterized by background fractions estimated from uninfected canine cells.
 %We called presence / absence of genes rather than transcripts, since the two influenza genes that encode multiple transcripts (M1 / M2 from the M gene, and NS1 / NS2 from the NS gene) do so via alternative splicing that leaves both isoforms with the same termini, making them indistinguishable by 3'-end sequencing.
-\FIG{transcriptomics}D (top panel) shows that a slight majority (162 of 290) of infected cells express all eight genes (see \SUPPFIG{frac_has_gene} for frequencies for individual genes).
+\FIG{transcriptomics}D (top panel) shows that a slight majority (162 of 290) of infected cells express all eight genes (see \SUPPFIG{transcriptomics_supp}A for frequencies for individual genes).
 This measured frequency of infected cells expressing all eight genes is slightly higher than in our prior work~\citep{russell2018extreme} and studies by others~\citep{brooke2013most, heldt2015single, dou2017analysis}, which estimated that only 13\% to 50\% of infected cells express all genes. 
 
 The amount of viral mRNA tended to be lower in cells that failed to express viral genes (\FIG{transcriptomics}D, bottom).
@@ -361,12 +361,12 @@ This co-infection rate is higher than expected from the relative numbers of infe
 This discrepancy could arise if the MACS for IFN+ cells also enriches co-infected cells, if infection is not truly Poisson, or if co-infection increases the likelihood that we identify a cell as infected given the thresholds in \FIG{transcriptomics}C.
 This moderately high rate of co-infection may also explain why more cells in our experiment express all eight viral genes compared to some prior studies, as a co-infecting virion can complement a missing viral gene. 
 
-We next examined expression of IFN and ISGs (\FIG{transcriptomics}G and \SUPPFIG{ISG}).
+We next examined expression of IFN and ISGs (\FIG{transcriptomics}G and \SUPPFIG{transcriptomics_supp}B-D).
 Over 20\% of infected cells were IFN+ given the heuristic thresholds in \FIG{transcriptomics}G, indicating that the MACS enriched IFN+ cells far beyond their initial frequency of $\sim$0.5\% (\FIG{IFNrare}B) among infected cells.
 Few ($\sim$1.3\%) uninfected cells were IFN+; the few that were present might be because the MACS enriched for rare cells that spontaneously activated IFN, or because some cells that we classified as uninfected were actually infected at low levels.
-Many more cells expressed ISGs than IFN itself: the ratio of ISG+ to IFN+ cells was 1.8 among infected cells, and 7 among uninfected cells (\SUPPFIG{ISG}A).
-The IFN+ cells were a subset of the ISG+ cells: IFN+ cells always expressed ISGs, but many ISG+ cells did not express IFN (\SUPPFIG{ISG}B).
-These results are consistent with the established knowledge that IFN is expressed only in cells that directly detect infection, but that ISGs are also expressed via paracrine signaling in cells that do not directly detect infection~\citep{stetson2006type,honda2006type}.
+Many more cells expressed ISGs than IFN itself: the ratio of ISG+ to IFN+ cells was 1.8 among infected cells, and 7 among uninfected cells (\SUPPFIG{transcriptomics_supp}C).
+The IFN+ cells were a subset of the ISG+ cells: IFN+ cells always expressed ISGs, but many ISG+ cells did not express IFN (\SUPPFIG{transcriptomics_supp}D).
+These results are consistent with the established knowledge that IFN is expressed only in cells that directly detect infection, but that ISGs are also expressed via paracrine signaling in other cells~\citep{stetson2006type,honda2006type}.
 
 \subsection*{Full genotypes of viruses infecting single IFN+ and IFN- cells}
 
@@ -555,11 +555,11 @@ The cells were maintained in D10 media (DMEM supplemented with 10\% heat-inactiv
 
 To create the type I interferon reporters, a 1kb promoter region upstream of the human IFNB1 gene were cloned into the pHAGE2 lentiviral vector~\citep{oconnell2010lentiviral}, with a NotI site immediately downstream of the promoter serving as an artificial Kozak sequence. 
 Downstream of this NotI site, each of the following reporter constructs was cloned: mCherry, mNeonGreen, and low-affinity nerve growth factor lacking the C-terminal signaling domain (LNGFR$\Delta$C)~\citep{bonini1997hsv,ruggieri1997cell} linked to mNeonGreen by a P2A linker~\citep{kim2011high}.
-The sequence of the last of these constructs is provided in \SUPPFILE{reporter_sequences}.
+The sequence of the last of these constructs is provided in \SUPPFILE{plasmids}.
 
 To create the type III interferon reporters, a 1.2kb region upstream of the human IL29 (IFNL1) gene was cloned into the pHAGE2 vector, with the native Kozak sequence retained at the 3' end. 
 Downstream of this promoter we cloned LNGFR$\Delta$C linked to ZsGreen via a P2A linker.
-The sequence of this construct is provided in \SUPPFILE{reporter_sequences}.
+The sequence of this construct is provided in \SUPPFILE{plasmids}.
  
 We used these constructs to generate lentiviral vectors and transduce of A549 cells in the presence of 5 $\mu$g polybrene.
 We then sorted single transduced cells and expanded them.
@@ -749,10 +749,10 @@ A Jupyter notebook that performs these analyses is at \url{https://github.com/jb
 We refer the reader to this notebook for a detailed description and a variety of additional plots not included in the paper.
 Briefly, we first filtered cells that were extreme outliers in the amount of mRNA as shown in \FIG{transcriptomics}B.
 We used the uninfected canine cells to estimate the percentage of total mRNA in a cell that would come from influenza purely due to background (e.g., from cell lysis) in the absence of infection, and called as infected the human cells for which significantly more than this amount of mRNA was derived from influenza under a Poisson model (\FIG{transcriptomics}C).
-We next used a Poisson model parameterized by the amount of expected background mRNA for each influenza gene to call the presence or absence of each influenza gene in each infected cell (\FIG{transcriptomics}D and \SUPPFIG{frac_has_gene}). 
+We next used a Poisson model parameterized by the amount of expected background mRNA for each influenza gene to call the presence or absence of each influenza gene in each infected cell (\FIG{transcriptomics}D and \SUPPFIG{transcriptomics_supp}A). 
 To identify cells that were co-infected with both viral barcodes (\FIG{transcriptomics}F), we used a binomial test to identify cells for which we could reject the null hypothesis that at least 95\% of viral mRNA was derived from the more common viral barcode.
-We called IFN+ and ISG+ cells using the heuristic thresholds shown in \FIG{transcriptomics}G and \SUPPFIG{ISG}, respectively.
-We counted IFN mRNAs as any IFN-$\alpha$, IFN-$\beta$, or IFN-$\lambda$ transcripts.
+We called IFN+ and ISG+ cells using the heuristic thresholds shown in \FIG{transcriptomics}G and \SUPPFIG{transcriptomics_supp}C,D, respectively.
+We counted IFN mRNAs as any IFN-$\alpha$, IFN-$\beta$, or IFN-$\lambda$ transcripts, since type I and type III IFN were highly correlated (\SUPPFIG{transcriptomics_supp}B).
 We counted ISG mRNAs as any of CCL5, IFIT1, ISG15, or Mx1.
 The plot in \FIG{genotypes} summarizes all of the genotypic information, and was created in substantial part using \texttt{gggenes} (\url{https://github.com/wilkox/gggenes}).
 
@@ -824,42 +824,31 @@ The qPCR was performed in quadruplicate (hence the four points for each sample).
 \end{suppfig}
 
 \begin{suppfig}
-\includegraphics[width=0.5\textwidth]{figures/single_cell_figures/p_frac_has_gene.pdf}
+\includegraphics[width=0.9\textwidth]{figures/single_cell_figures/p_cell_summary_supp.pdf}
 \caption{
-{\bf The fraction of infected cells that are called as expressing each viral gene.}
-The gray dashed line is at one (the fraction that would be observed if all viral genes are expressed in all infected cells).
-Each viral gene is detected in $\sim$80-90\% of the infected cells, roughly in line with prior estimates~\citep{brooke2013most, heldt2015single, dou2017analysis, russell2018extreme}.
+{\bf Additional plots from analysis of transcriptomic data, related to \FIG{transcriptomics}.}
+{\bf (A)}
+Fraction of infected cells that are called as expressing each viral gene.
+The gray dashed line is at one.
+Each gene is detected in $\sim$80-90\% of cells, roughly in line with prior estimates~\citep{brooke2013most, heldt2015single, dou2017analysis, russell2018extreme}.
 The exception is NP, which is detected in virtually all infected cells.
-The much higher frequency of detecting NP could reflect a biological phenomenon, but we suspect it is more likely that cells lacking NP tend to have much lower viral gene expression overall and so are not reliably called as being infected in our experiments because the number of viral mRNAs is below the detection limit.}
-\label{suppfig:frac_has_gene}
-\end{suppfig}
-
-\begin{suppfig}
-\includegraphics[width=0.7\textwidth]{figures/single_cell_figures/p_ifn_genes_corr.pdf}
-\caption{
-{\bf The correlation between the fraction of cellular mRNA derived from type I and type III IFN in the A549 cells in our single-cell transcriptomics.}
+The higher frequency of detecting NP could reflect a biological phenomenon, but we suspect it is more likely that cells lacking NP tend to have lower viral gene expression and so are not reliably called as infected in our experiments because the number of viral mRNAs is below the detection limit.
+{\bf (B)}
+Correlation between the fraction of cellular mRNA derived from type I and type III IFN in the A549 cells in our single-cell transcriptomics.
 Each point represents one cell.
 The plots are faceted by whether the cells are called as infected, and the Pearson correlation coefficient is shown.
-Because type I and type III IFN expression are highly correlated, for the remainder of the paper we group them together and refer to their combined expression as the level of IFN.
-}
-\label{suppfig:type_I_III_correlation}
-\end{suppfig}
-
-\begin{suppfig}
-\includegraphics[width=0.8\textwidth]{figures/single_cell_figures/p_isg.pdf}
-\caption{
-{\bf Expression of ISGs in single infected and uninfected cells.}
+{\bf (C)}
+Distribution of ISGs expression across single infected and uninfected cells. 
 For each cell, we quantified ISG expression as the total fraction of cellular mRNAs derived from four prototypical ISGs (IFIT1, ISG15, CCL5, and Mx1). 
-{\bf (A)} The histograms show the distribution of ISG expression taken across infected (top) and uninfected (bottom) cells.
-We heuristically classify as ISG+ cells with $>10^{-3}$ of their cellular mRNA from ISGs, and color these cells red.
-Comparison to \FIG{transcriptomics}G shows that substantially more cells are ISG+ than IFN+, both among infected and uninfected cells.
-This is probably because paracrine signaling can induce ISG expression in cells that are not themselves expressing IFN~\citep{stetson2006type,honda2006type}.
-{\bf (B)} Correlation between the fraction of cellular mRNA derived from IFN and ISGs.
-Each point represents one cell, and the Pearson correlation coefficient is shown.
+We heuristically classify as ISG+ cells with $>10^{-3}$ of their cellular mRNA from these ISGs, and color these cells red.
+Comparison to \FIG{transcriptomics}G shows that more cells are ISG+ than IFN+, probably because paracrine signaling can induce ISG expression in cells that do not themselves express IFN~\citep{stetson2006type,honda2006type}.
+{\bf (D)} 
+Correlation between the fraction of cellular mRNA derived from IFN and ISGs.
+Each point is one cell, and the Pearson correlation coefficient is shown.
 IFN and ISG expression are more correlated for infected than uninfected cells, probably because in the latter the ISG expression is more often due to paracrine signaling that does not induce expression of IFN itself.
-Among both the infected and uninfected populations, there are many cells with high expression of ISGs and little expression of IFN, but no cells that express high levels of IFN without also substantially expressing ISGs.
+Among both the infected and uninfected populations, there are many cells that express ISGs but not IFN, but no cells that express IFN but not ISGs.
 }
-\label{suppfig:ISG}
+\label{suppfig:transcriptomics_supp}
 \end{suppfig}
 
 \begin{suppfig}
