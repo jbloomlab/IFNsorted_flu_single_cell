@@ -419,7 +419,7 @@ However, \FIG{genotypes} also reveals stochasticity that is independent of viral
 This stochasticity sometimes acts to the detriment of the virus, and sometimes to the detriment of the cell.
 As an example of the former case, expressing unmutated copies of all eight genes does not guarantee a favorable outcome for the virus: for instance, the unmutated virion that infected \textit{cell 139} only expressed viral mRNA to 6\% of the total transcriptome, and the unmutated virion that infected \textit{cell 105} still induced IFN.
 But in other cases, the stochasticity allows a clearly defective virus to still escape immune recognition.
-For instance, there are a number of cells (e.g., \textit{cell 62} and \textit{cell 78}) that fail to activate IFN despite being infected by virions that fail to express NS.
+For instance, there are a number of cells (e.g., \textit{cell 62} and \textit{cell 78}) that fail to activate IFN despite being infected by virions that fail to express NS, the viral gene segment encoding the major interferon antagonist, NS1.
 
 \subsection*{Viral defects associated with infection outcome in single cells}
 
@@ -492,7 +492,7 @@ To test if the viral defects identified in single IFN+ cells directly increase I
 
 The viral defect most strongly associated with IFN induction was failure to express the NS gene (\FIG{genotypes}, \FIG{mutations}C).
 Although it is sometimes possible to use complementing cells to generate influenza viruses lacking a specific gene~\citep{fujii2003selective,marsh2007specific}, we were unable to generate viruses that lacked NS.
-The NS gene encodes two proteins (NS1 and NS2), the first of which is influenza's primary innate-immune antagonist~\citep{garcia1998influenza, hale2008multifunctional}.
+The NS gene encodes two proteins (NS1 and NS2), the first of which, as mentioned, is influenza's primary innate-immune antagonist~\citep{garcia1998influenza, hale2008multifunctional}.
 We therefore mimicked the effect of absence of NS by creating a mutant virus (NS1stop) that had multiple stop codons early in the NS1 coding sequence.
 
 The single-cell data also showed that amino-acid substitutions in PB1 and NS were enriched in IFN+ cells (\FIG{genotypes}, \FIG{mutations}C), so we created mutant viruses with some of the substitutions found in these genes among IFN+ cells: PB1-D27N, PB1-G206S, PB1-K279R, PB1-T677A, NS1-A122V, and NS2-E47G.
@@ -550,7 +550,7 @@ Despite the fact that we used a low-passage viral stock generated from plasmids 
 Although our study is certainly not the first to note that influenza has a high mutation rate~\citep{parvin1986measurement, suarez1992heterogeneity, bloom2014experimentally, pauly2017novel} and sometimes fails to express genes~\citep{brooke2013most, heldt2015single, dou2017analysis, russell2018extreme}, it is the first to directly observe the full spectrum of defects across single cells.
 Inspection of \FIG{genotypes} shows how any experiment that does not sequence viral genes in single cells is averaging across a vast number of hidden viral defects.
 
-These viral defects substantially contribute to the heterogeneity observed in prior single-cell studies of influenza~\citep{russell2018extreme, steuerman2018dissection, heldt2015single, sjaastad2018distinct}, including helping determine if a cell triggers an IFN response.
+These viral defects substantially contribute to the heterogeneity observed in prior single-cell studies of influenza~\citep{russell2018extreme, steuerman2018dissection, heldt2015single, sjaastad2018distinct}, including the probability that a cell triggers an IFN response.
 We identified four types of defects in single IFN+ cells that we validated increase IFN induction. 
 Two types of defects---absence of NS and mutations to the NS1 protein---presumably impair NS1's well-known ability to antagonize innate-immune pathways~\citep{garcia1998influenza, hale2008multifunctional}.
 The third type of defect, amino-acid mutations in the PB1 protein, is consistent with recent work by showing that mutations to the viral polymerase affect generation of mini-viral RNAs that activate the innate-immune sensor RIG-I~\citep{velthuis2018mini}.
@@ -559,7 +559,7 @@ Given the extensive prior work describing such deletions, it is perhaps surprisi
 There may be several reasons: we used relatively pure viral stocks~\citep{xue2016propagation} at modest MOI; our experiments preferentially captured cells with higher viral transcriptional load; and most prior studies have used techniques that can detect large deletions but not subtle point mutations.
 The relative importance of different types of viral defects also likely varies across infection conditions, viral strains, and cell types---so it remains an open question as to which defects are most relevant for early immune detection of actual viral infections in humans.
 
-But although viral variation is clearly important, it still only partially explains heterogeneity among influenza-infected cells.
+But although variation within viral populations is clearly important, it still only partially explains heterogeneity among influenza-infected cells.
 We find substantial breadth in viral transcriptional burden and occasional IFN induction even among cells infected with unmutated virions.
 Additionally, none of the viral defects in IFN+ cells induce IFN deterministically---and the most immunostimulatory defect (absence of NS) also occurs in multiple IFN- cells in our single-cell dataset.
 Of course, our single-cell virus sequencing only calls mutations present in a cell at relatively high frequency, and so could overlook low-frequency mutations that contribute to IFN induction.
@@ -567,7 +567,7 @@ However, we suspect that stochasticity or pre-existing cellular states explain m
 
 Perhaps the most intriguing question is how the heterogeneity that we have described ultimately affects the macroscopic outcome of infection.
 Natural human influenza infections are initiated by just a handful of virions~\citep{mccrone2018stochastic, xue2018reconciling, varble2014influenza} that then undergo exponential growth, and early IFN responses are amplified by paracrine signaling~\citep{stetson2006type,honda2006type}.
-It is therefor eplausible that early heterogeneity could have a large effect on downstream events.
+It is therefore plausible that early heterogeneity could have a large effect on downstream events.
 Extending our approaches to more complex systems could shed further light on how viral variation interacts with cell-to-cell heterogeneity to shape the race between virus and immune system.
 
 \small
@@ -575,7 +575,7 @@ Extending our approaches to more complex systems could shed further light on how
 We thank Cole Trapnell, Jason Underwood, Robert Bradley, Daniel Stetson, AJ Velthuis, Katherine Xue, and Hannah Itell for helpful suggestions.
 We thank Andy Marty and the Fred Hutch Genomics Core for performing the deep sequencing.
 This work was supported by the NIAID of the NIH under grant R01 AI127893 and a Burroughs Wellcome Fund Young Investigator in the Pathogenesis of Infectious Diseases grant to JDB.
-ABR was supported by a postdoctoral fellowship from the Damon Runyon Cancer Research Foundation.
+ABR was supported by a postdoctoral fellowship from the Damon Runyon Cancer Research Foundation (DRG-2227-15).
 JRK was supported by a Washington Research Foundation Undergraduate Research Fellowship and a Mary Gates undergraduate research scholarship from the University of Washington.
 JDB is an Investigator of the Howard Hughes Medical Institute.
 
