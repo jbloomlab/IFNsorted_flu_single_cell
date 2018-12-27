@@ -514,6 +514,28 @@ Of course, these mutant virus stocks are themselves genetically heterogeneous, a
 But IFN induction is stochastic at the single-cell level even for infections that share the same defect,such as absence of NS (e.g., compare \textit{cell 62} and \textit{cell 69} in \FIG{genotypes}).
 Therefore, the experiments in this section not only validate some specific viral defects that increase IFN induction, but also show that induction is stochastic even with these defects.
 
+%%% begin mutantcomparison figure %%%
+\begin{figure}
+\centerline{\includegraphics[width=0.85\textwidth]{figures/MutantComparison/p_merged.pdf}}
+\caption{
+Higher viral gene expression is strongly associated with more IFN induction only in NS1-deficient infections.
+{\bf (A)}
+For viruses with defects in NS1, there is more IFN induction among infected cells that express higher levels of HA protein.
+The y-axis shows the ratio of the percent of IFN+ cells in the highest HA-expression quartile relative to the lowest HA-expression quartile as determined by flow cytometry.
+Points indicate replicates, and lines indicate the mean.
+See \SUPPFIG{mutantcomparison_supp}A for details.
+{\bf (B)}
+Blocking viral secondary transcription strongly decreases IFN in cells infected with NS1stop virus, but not cells infected with virus carrying a deletion in PB1.
+A549 cells were infected at doses that induced equivalent IFN, and ribavirin was added at a concentration (100 $\mu$M) sufficient to block secondary transcription~\citep{Vanderlinden:2016ec,reuther2015generation,Scholtissek:1976wg}.
+After eight hours, IFNB1 transcript was quantified relative to the housekeeping gene L32 by qPCR. 
+The dashed gray line indicates the limit of detection.
+\SUPPFIG{mutantcomparison_supp}B shows that results are similar if secondary transcription is instead blocked with cycloheximide.
+}
+\label{fig:mutantcomparison}
+\end{figure}
+%%% end mutantcomparison figure%%%
+
+
 \jdbcomment{Perhaps also add NS+ / NS- data here}
  
 
@@ -693,6 +715,10 @@ For the qPCR in \SUPPFIG{validation_supp}C, A549 cells were seeded at a density 
 Immediately prior to infection D10 media was removed and replaced with influenza growth media and infected with the indicated influenza strains at a MOI of 0.4 based on TCID50 in MDCK-SIAT1 cells.
 For the cells with cycloheximide added to block protein expression (and hence secondary transcription), cycloheximide was added to a final concentration of 50 $\mu$g/ml (a concentration sufficient to block secondary transcription~\citep{killip2014activation}) at the time of infection.
 After 8 hours, mRNA was harvested using the CellAmp Direct RNA Prep Kit for RT-PCR, reverse-transcribed using an oligo-dT primer, and qPCR was performed as described above.
+
+For the qPCR in \FIG{mutantcomparison}B, A549 cells were infected with the NS1stop virus at a MOI of 0.1 (based on TCID50) in MDCK-SIAT1 and with the PB1del385to2163 virus at a dose that induced equivalent IFN in the absence of ribavirin.
+The ribavirin was added to cells at the time of infection to a final concentration of 100$\mu$M, which is sufficient to block secondary transcription~\citep{Vanderlinden:2016ec,reuther2015generation,Scholtissek:1976wg}.
+All other steps were performed as for the cycloheximide experiments described immediately above..
 
 \subsection*{Viruses and experiments for validation experiments}
 In \FIG{validation}, we tested the IFN inducing capacity of a variety of viral mutants identified in the single-cell experiments.
@@ -956,6 +982,43 @@ But in the presence of cycloheximide, all viruses produced similar amounts of vi
 Each measurement was performed in quadruplicate.
 }
 \label{suppfig:validation_supp}
+\end{suppfig}
+
+\begin{suppfig}
+\begin{minipage}[t]{0.55\textwidth}
+{\bf A}
+\includegraphics[width=0.9\textwidth, valign=t]{figures/MutantComparison/p_ifn_vs_ha.pdf}
+\end{minipage}
+\hspace{0.02\textwidth}
+\begin{minipage}[t]{0.43\textwidth}
+{\bf B}
+\includegraphics[width=0.9\textwidth, valign=t]{figures/MutantComparison/cyclo_qPCR_plot.pdf}
+\end{minipage}
+
+\caption{
+{\bf Additional data for comparison of IFN induction as a function of viral load, related to \FIG{mutantcomparison}.}
+{\bf (A)}
+Detailed analysis of the relationship among HA expression and IFN induction for different viral mutants that is summarized in \FIG{mutantcomparison}A.
+We re-analyzed all the infected cells in \SUPPFIG{validation_supp}A (defining ``infected'' using the same HA-gating scheme in \SUPPFIG{validation_supp}A) for the wild-type virus, the NS1stop virus, and the three amino-acid mutants with significantly increased IFN induction.
+For each virus and replicate, we binned the infected cells into HA expression quartiles.
+We then calculated the percent of cells that were IFN+ in each quartile (defining ``IFN+'' using the same gating scheme in \SUPPFIG{validation_supp}A).
+The plots show the mean HA expression in each quartile versus the percent of cells that are IFN+.
+The results clearly indicate that for the NS1stop virus, increased viral burden (more HA) correlates with IFN induction.
+A similar trend also holds for the virus with an amino-acid substitution in NS1 (NS1-A122V). 
+But for wild type and the two PB1 mutants, there is no clear trend for higher viral burden to correlate with IFN induction.
+\FIG{mutantcomparison}A summarizes the data in this figure by simply showing the ratio of the percent IFN+ of the highest HA-expression quartile to the lowest HA-expression quartile for each sample and replicate.
+{\bf (B)}
+Similar to \FIG{mutantcomparison}B, but uses cycloheximide rather than ribavirin.
+Preventing viral secondary transcription using cycloheximide also decreases IFN induction by the NS1stop virus relative to the PB1 deletion virus, corroborating the result in \FIG{mutantcomparison}B with a different inhibitor.
+However, the results are more complex here, since cycloheximide alone increases IFN production~\citep{raj1981analysis, maroteaux1983cycloheximide, killip2014activation}.
+Therefore, we see an increase in IFN levels upon cycloheximide treatment for uninfected cells and cells infected with the PB1 deletion virus, but a decrease for cells infected with the NS1stop virus.
+This plot shows qPCR results for the same samples as in \SUPPFIG{validation_supp}C, but with the qPCR for expression of IFNB1 transcripts relative to the housekeeping gene L32.
+As described in \SUPPFIG{validation_supp}C, A549 cells were infected at an MOI of 0.4, such that HA expression was equivalent between viral variants when secondary transcription was blocked, and some of the samples treated with 50 $\mu$g/ml of cycloheximide~\citep[a concentration sufficient to block secondary transcription;][]{killip2014activation}.
+After 8 hours, transcript levels were quantified by qPCR.
+Points indicate four replicates, and lines indicate the mean.
+The dashed line shows the limit of detection, and points below this limit where set to that value.
+}
+\label{suppfig:mutantcomparison_supp}
 \end{suppfig}
 
 \clearpage
