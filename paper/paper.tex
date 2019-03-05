@@ -262,7 +262,7 @@ As the virus spreads, some cells detect infection and produce interferon (IFN).
 This IFN directs expression of anti-viral interferon-stimulated genes (ISGs) in the infected cell and its neighbors via autocrine and paracrine signaling, as well as helping launch a broader immune response~\cite{stetson2006type,honda2006type}.
 If innate immunity is activated sufficiently rapidly, it can reduce viral replication and disease~\cite{solov1969results,treanor1987intranasally,beilharz2007protection,kugel2009intranasal,steel2010transmission}---although excessive immune responses later in infection can actually be associated with immunopathology and severe disease~\cite{la2007question, iwasaki2014innate}.
 
-Unfortunately for the host, influenza initially only rarely triggers IFN production by infected cells~\cite{kallfass2013visualizing, killip2017single}.
+Unfortunately for the host, influenza only rarely triggers IFN production by infected cells~\cite{kallfass2013visualizing, killip2017single}.
 This rareness of IFN induction is just one form of the extreme cell-to-cell heterogeneity that characterizes infection: cells also vary widely in their production of viral mRNA, proteins, and progeny virions~\cite{russell2018extreme,steuerman2018dissection,sjaastad2018distinct,heldt2015single}.
 Because viral growth and the IFN response are both feed-forward processes, early cell-to-cell heterogeneity could have significant downstream consequences for the race between virus and immune system---especially since natural human infections are typically initiated by just a few virions entering a few cells~\cite{mccrone2018stochastic, xue2018reconciling, varble2014influenza}.
 
@@ -315,9 +315,9 @@ A challenge in studying IFN induction by influenza virus is its rareness at the 
 Studies using reporters~\cite{killip2017single} and our own previous single-cell transcriptomics~\cite{russell2018extreme} have found that IFN induction occurs at a frequency of $<$1\% in cell lines infected with influenza.
 IFN expression also appears to be rare among cells in influenza-infected mice~\cite{kallfass2013visualizing}, a conclusion supported by our re-analysis of single-cell transcriptomics of influenza-infected mice by Steuerman et al~\cite{steuerman2018dissection} (\SUPPFIG{mice}).
 
-To efficiently identify and enrich rare IFN+ cells, we created A549 cells that carried IFN reporters consisting of a type I (\textit{IFNB1}) or type III (\textit{IFNL1}) promoter driving expression of a cell-surface protein (LNGFR$\Delta$C~\cite{bonini1997hsv,ruggieri1997cell}) followed by a fluorescent protein (\FIG{IFNrare}A).
-Cells that activate the IFN reporter can be enriched by magnetic-activated cell sorting (MACS) or identified by flow cytometry.
-The reporters were efficiently activated by infection with saturating amounts of a strain of Sendai virus~\cite{strahle2006sendai} that potently induces IFN (\SUPPFIG{reportervalidation}A), and activation of the type I and type III IFN reporters was highly correlated in our cells (\SUPPFIG{reportervalidation}B; further validated by the single-cell transcriptomics below).
+To identify and enrich rare IFN+ cells, we created A549 cells that carried IFN reporters consisting of a type I (\textit{IFNB1}) or type III (\textit{IFNL1}) promoter driving expression of a cell-surface protein (LNGFR$\Delta$C~\cite{bonini1997hsv,ruggieri1997cell}) followed by a fluorescent protein (\FIG{IFNrare}A).
+Cells that activate the reporter can be enriched by magnetic-activated cell sorting (MACS) or identified by flow cytometry.
+The reporters were efficiently activated by infection with saturating amounts of a strain of Sendai virus~\cite{strahle2006sendai} that potently induces IFN (\SUPPFIG{reportervalidation}A), and activation of the type I and type III IFN reporters was highly correlated (\SUPPFIG{reportervalidation}B; further validated by the single-cell transcriptomics below).
 For the rest of this paper, we use ``IFN expression'' to refer to combined expression of type I and III IFNs. 
 
 We generated a stock of A/WSN/1933 (H1N1) influenza (hereafter referred to as ``WSN''), and found that it activated the IFN reporter in $\sim$0.5\% of infected cells  (\FIG{IFNrare}B), a frequency roughly comparable to that in our prior single-cell transcriptomics of influenza-infected cells.
@@ -364,10 +364,10 @@ Furthermore, because virtually the entire influenza genome is transcribed, the c
 
 We used a portion of the cell-barcoded cDNA for standard single-cell transcriptomics by Illumina 3'-end sequencing (\FIG{workflow}C).
 But we also took a portion and enriched for full-length viral molecules by PCR (\FIG{workflow}D).
-We performed PacBio sequencing on these full-length viral cDNAs to generate high-accuracy circular consensus sequences (CCSs~\cite{travers2010flexible}).
+We performed PacBio sequencing on these viral cDNAs to generate high-accuracy circular consensus sequences (CCSs~\cite{travers2010flexible}).
 These CCSs retain the cell barcodes, and with sufficient sequencing depth we obtain CCSs from multiple unique UMI-tagged cDNAs for each viral gene in each cell.
 Because most cells are infected by just one or two virions, we can build a consensus of CCSs for each viral gene in each cell to determine the sequence(s) of these virions.
-Combining this information with the 3'-end sequencing determines the entire transcriptome and the full sequences of the infecting virions in single cells (\FIG{workflow}E).
+Combining this information with the 3'-end sequencing determines the entire transcriptome and full sequences of the infecting virions in single cells (\FIG{workflow}E).
 
 \subsection*{Transcriptomic analyses of single IFN+ and IFN- influenza-infected cells}
 
@@ -411,8 +411,8 @@ To remove some of these multiplets along with low-quality droplets, we filtered 
 After this filtering, we retained 1,490 human cells for further analysis (\FIG{transcriptomics}B)
 
 To identify infected cells, we examined the fraction of each transcriptome derived from virus (\FIG{transcriptomics}C).
-As expected, only a small fraction ($\sim$0.7\%) of transcripts in the uninfected canine cells were from influenza; this low-level background is from lysed cells that release ambient viral mRNA that is captured in droplets during reverse-transcription.
-We tested whether each cell contained more viral transcripts than expected under a Poisson model given this background fraction, and classified 290 human cells as definitively infected with influenza (\FIG{transcriptomics}C).
+As expected, only a small fraction ($\sim$0.7\%) of transcripts in the uninfected canine cells were viral; this low-level background is from lysed cells that release ambient viral mRNA that is captured in droplets during reverse-transcription.
+We tested if each cell contained more viral transcripts than expected under a Poisson model given this background fraction, and classified 290 human cells as definitively infected with influenza (\FIG{transcriptomics}C).
 We classified the other cells as uninfected, although it is possible that some were infected with virions that produced very little mRNA.
 The distribution of the amount of viral mRNA across infected cells is in the inset in \FIG{transcriptomics}C.
 As in our prior work~\cite{russell2018extreme}, the distribution is extremely heterogeneous: many infected cells have only a few percent of mRNA derived from virus, but viral mRNA comprises over half the transcriptome of a few cells.
@@ -422,7 +422,7 @@ We called presence / absence of genes rather than transcripts, since the two inf
 \FIG{transcriptomics}D (top panel) shows that most (162 of 290) infected cells express all eight genes (see \SUPPFIG{frac_has_gene} for frequencies for individual genes).
 This measured frequency of infected cells expressing all eight genes is slightly higher than in our own prior work~\cite{russell2018extreme} and studies by others~\cite{brooke2013most, heldt2015single, dou2017analysis}, which have estimated that only 13\% to 50\% of infected cells express all genes. 
 
-The amount of viral mRNA tended to be lower in cells that failed to express viral genes (\FIG{transcriptomics}D, bottom).
+The amount of viral mRNA was lower in cells that failed to express viral genes (\FIG{transcriptomics}D, bottom).
 However, viral burden remained variable even after conditioning on the number of viral genes: some cells that failed to express one or even two genes still derived $>$50\% of their mRNA from virus, while other cells that expressed all genes had only a few percent of their mRNA from virus (\FIG{transcriptomics}D, bottom panel).
 Consistent with prior work~\cite{russell2018extreme}, despite the wide variation in absolute expression of viral genes, their \emph{relative} expression was fairly consistent (\FIG{transcriptomics}E) and generally matched values from older bulk studies~\cite{hatada1989control}.
 
@@ -433,7 +433,7 @@ This discrepancy could arise if the MACS for IFN+ cells also enriches co-infecte
 This moderately high rate of co-infection may also explain why more cells in our experiment express all eight viral genes compared to some prior studies, as a co-infecting virion can complement a missing viral gene. 
 
 We next examined expression of IFN and ISGs (\FIG{transcriptomics}G and \SUPPFIG{ISG}).
-Over 20\% of infected cells were IFN+ given the heuristic thresholds in \FIG{transcriptomics}G, indicating that the MACS enriched IFN+ cells far beyond their initial frequency of $\sim$0.5\% (\FIG{IFNrare}B) among infected cells.
+Over 20\% of infected cells were IFN+ given the heuristic thresholds in \FIG{transcriptomics}G, indicating that the MACS enriched IFN+ cells far beyond their initial frequency.
 Few ($\sim$1.3\%) uninfected cells were IFN+; the few that were present might be because the MACS enriched for rare cells that spontaneously activated IFN, or because some cells that we classified as uninfected were actually infected at low levels.
 Many more cells expressed ISGs than IFN itself: the ratio of ISG+ to IFN+ cells was 1.8 among infected cells, and 7 among uninfected cells (\SUPPFIG{ISG}A).
 The IFN+ cells were a subset of the ISG+ cells: IFN+ cells always expressed ISGs, but many ISG+ cells did not express IFN (\SUPPFIG{ISG}B).
@@ -486,13 +486,14 @@ Inspection of this figure reveals a wealth of anecdotal relationships between vi
 For instance, the cell with the highest viral burden (\textit{cell 1} in \FIG{genotypes}, which has 65\% of its mRNA from virus) was infected by a virion that expressed unmutated copies all eight genes and did not induce detectable IFN.
 But 12 of the other 13 cells with at least 50\% of their mRNA from virus were infected by virions that had a mutation or failed to express a gene, and five of these cells expressed IFN.
 As expected, all cells infected by virions that failed to express a component of the viral polymerase complex (PB2, PB1, PA, or NP) expressed low amounts of viral mRNA since they are limited to primary transcription off the incoming proteins (e.g., \textit{cell 132} and \textit{cell 143}).
-The two cells that expressed the most IFN (\textit{cell 13} and \textit{cell 123}) both lacked the viral NS gene that encodes the virus's primary IFN antagonist~\cite{garcia1998influenza, hale2008multifunctional}, and many other IFN+ cells had different defects such as large internal deletions (e.g., \textit{cell 5} and \textit{cell 89}) or amino-acid mutations (e.g., \textit{cell 9}, \textit{cell 28}, and many others).
+The two cells that expressed the most IFN (\textit{cell 13} and \textit{cell 123}) both lacked the viral NS gene that encodes the virus's primary IFN antagonist~\cite{garcia1998influenza, hale2008multifunctional}.
+Many other IFN+ cells had different defects such as large internal deletions (e.g., \textit{cell 5} and \textit{cell 89}) or amino-acid mutations (e.g., \textit{cell 9}, \textit{cell 28}, and many others).
 
 However, \FIG{genotypes} also reveals stochasticity that is independent of viral genotype.
 This stochasticity sometimes acts to the detriment of the virus, and sometimes to the detriment of the cell.
 As an example of the former case, expressing unmutated copies of all eight genes did not guarantee a favorable outcome for the virus: for instance, the unmutated virion that infected \textit{cell 139} only managed to express viral mRNA to 6\% of the total transcriptome, and the unmutated virion that infected \textit{cell 105} still induced IFN.
 But in other cases, the stochasticity allows a clearly defective virus to still escape immune recognition.
-For instance, there are a number of cells (e.g., \textit{cell 62} and \textit{cell 78}) that fail to activate IFN despite being infected by virions that fail to express NS.
+For instance, there are a number of cells (e.g., \textit{cell 62} and \textit{cell 78}) that do not activate IFN despite being infected by virions that fail to express NS.
 
 \subsection*{Viral defects associated with infection outcome in single cells}
 
@@ -603,16 +604,15 @@ These viral defects substantially contribute to the heterogeneity observed in pr
 We identified four types of viral defects in single IFN+ cells that we validated increase IFN induction. 
 Two types of defects---absence of the NS gene and mutations to the NS1 protein---presumably impair NS1's well-known ability to antagonize innate-immune pathways~\cite{garcia1998influenza, hale2008multifunctional}.
 The third type of defect, amino-acid mutations in the PB1 protein, is consistent with recent work by showing that mutations to the viral polymerase affect generation of mini-viral RNAs that activate the innate-immune sensor RIG-I~\cite{velthuis2018mini}.
-Finally, we found an internal deletion in the PB1 gene that enhances IFN induction, consistent with prior work showing that such deletions can be immunostimulatory~\cite{baum2010preference, tapia2013defective, boergeling2015evidence, dimmock2015cloned}.
-Given the extensive prior work describing such deletions, it is perhaps surprising we did not identify more of them in our single IFN+ cells.
+Finally, we found an internal deletion in PB1 that enhances IFN induction, consistent with prior work showing that such deletions can be immunostimulatory~\cite{baum2010preference, tapia2013defective, boergeling2015evidence, dimmock2015cloned}.
+Given the extensive prior work describing such deletions, it is surprising we did not identify more of them in our single IFN+ cells.
 There may be several reasons: we used relatively pure viral stocks~\cite{xue2016propagation} at modest MOI; our experiments preferentially captured cells with higher viral transcriptional load; and most prior studies have used techniques that can detect large deletions but not subtle point mutations.
-The relative importance of different types of viral defects also likely varies across infection conditions, viral strains, and cell types---so it remains an open question as to which defects are most relevant for early immune detection of actual viral infections in humans.
+The relative importance of different defects also likely varies across infection conditions, viral strains, and cell types---so it remains an open question as to which defects are most relevant for early immune detection of actual viral infections in humans.
 
-But although viral variation is clearly important, it still only partially explains heterogeneity among influenza-infected cells.
+But although variation in viral populations is clearly important, it only partially explains heterogeneity among influenza-infected cells.
 We find substantial breadth in viral transcriptional burden and occasional IFN induction even among cells infected with unmutated virions.
-Additionally, none of the viral defects in IFN+ cells induce IFN deterministically---and the apparently most immunostimulatory defect (absence of NS) also occurs in multiple IFN- cells in our single-cell dataset.
-Of course, our single-cell virus sequencing only calls mutations present in a cell at relatively high frequency, and so could overlook low-frequency mutations that contribute to IFN induction.
-However, we suspect that stochasticity or pre-existing cellular states explain most remaining heterogeneity, since IFN induction is heterogeneous even among cells treated with synthetic innate-immune ligands~\cite{shalek2013single, shalek2014single, wimmers2018single, bhushal2017cell} or other viruses~\cite{oneal2018west}.
+Additionally, no viral defect induces IFN deterministically---and the most immunostimulatory defect (absence of NS) also occurs in multiple IFN- cells in our single-cell dataset.
+We suspect that stochasticity or pre-existing cellular states explain most remaining heterogeneity, since IFN induction is heterogeneous even among cells treated with synthetic innate-immune ligands~\cite{shalek2013single, shalek2014single, wimmers2018single, bhushal2017cell} or other viruses~\cite{oneal2018west}.
 
 Perhaps the most intriguing question is how the heterogeneity that we have described ultimately affects the macroscopic outcome of infection.
 Natural human influenza infections are initiated by just a handful of virions~\cite{mccrone2018stochastic, xue2018reconciling, varble2014influenza} that then undergo exponential growth, and early IFN responses are amplified by paracrine signaling~\cite{stetson2006type,honda2006type}.
@@ -835,7 +835,7 @@ The plot in \FIG{genotypes} summarizes all of the genotypic information, and was
 We thank Cole Trapnell, Jason Underwood, Robert Bradley, Daniel Stetson, AJ Velthuis, Katherine Xue, and Hannah Itell for helpful suggestions.
 We thank Andy Marty and the Fred Hutch Genomics Core for performing the deep sequencing.
 %This work was supported by the NIAID of the NIH under grant R01 AI127893 and a Burroughs Wellcome Fund Young Investigator in the Pathogenesis of Infectious Diseases grant to JDB.
-%ABR was supported by a postdoctoral fellowship from the Damon Runyon Cancer Research Foundation.
+%ABR was supported by a postdoctoral fellowship from the Damon Runyon Cancer Research Foundation (DRG-2227-15).
 %JRK was supported by a Washington Research Foundation Undergraduate Research Fellowship and a Mary Gates undergraduate research scholarship from the University of Washington.
 %JDB is an Investigator of the Howard Hughes Medical Institute.
 %The funders had no role in study design, data collection and interpretation, or the decision to submit the work for publication.
