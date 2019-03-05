@@ -60,8 +60,7 @@ rule make_paper:
         join(PAPER_DIR, PAPER) + '.tex',
         R_FIGS,
         PYTHON_FIGS,
-        join(PAPER_DIR, 'references.bib'),
-        join(PAPER_DIR, 'elife.cls')
+        join(PAPER_DIR, 'references.bib')
     output:
         join(PAPER_DIR, PAPER) + '.pdf'
     shell:
