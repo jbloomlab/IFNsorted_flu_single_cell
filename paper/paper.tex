@@ -1,136 +1,16 @@
-% Template for PLoS
-% Version 3.5 March 2018
-%
-% % % % % % % % % % % % % % % % % % % % % %
-%
-% -- IMPORTANT NOTE
-%
-% This template contains comments intended 
-% to minimize problems and delays during our production 
-% process. Please follow the template instructions
-% whenever possible.
-%
-% % % % % % % % % % % % % % % % % % % % % % % 
-%
-% Once your paper is accepted for publication, 
-% PLEASE REMOVE ALL TRACKED CHANGES in this file 
-% and leave only the final text of your manuscript. 
-% PLOS recommends the use of latexdiff to track changes during review, as this will help to maintain a clean tex file.
-% Visit https://www.ctan.org/pkg/latexdiff?lang=en for info or contact us at latex@plos.org.
-%
-%
-% There are no restrictions on package use within the LaTeX files except that 
-% no packages listed in the template may be deleted.
-%
-% Please do not include colors or graphics in the text.
-%
-% The manuscript LaTeX source should be contained within a single file (do not use \input, \externaldocument, or similar commands).
-%
-% % % % % % % % % % % % % % % % % % % % % % %
-%
-% -- FIGURES AND TABLES
-%
-% Please include tables/figure captions directly after the paragraph where they are first cited in the text.
-%
-% DO NOT INCLUDE GRAPHICS IN YOUR MANUSCRIPT
-% - Figures should be uploaded separately from your manuscript file. 
-% - Figures generated using LaTeX should be extracted and removed from the PDF before submission. 
-% - Figures containing multiple panels/subfigures must be combined into one image file before submission.
-% For figure citations, please use "Fig" instead of "Figure".
-% See http://journals.plos.org/plosone/s/figures for PLOS figure guidelines.
-%
-% Tables should be cell-based and may not contain:
-% - spacing/line breaks within cells to alter layout or alignment
-% - do not nest tabular environments (no tabular environments within tabular environments)
-% - no graphics or colored text (cell background color/shading OK)
-% See http://journals.plos.org/plosone/s/tables for table guidelines.
-%
-% For tables that exceed the width of the text column, use the adjustwidth environment as illustrated in the example table in text below.
-%
-% % % % % % % % % % % % % % % % % % % % % % % %
-%
-% -- EQUATIONS, MATH SYMBOLS, SUBSCRIPTS, AND SUPERSCRIPTS
-%
-% IMPORTANT
-% Below are a few tips to help format your equations and other special characters according to our specifications. For more tips to help reduce the possibility of formatting errors during conversion, please see our LaTeX guidelines at http://journals.plos.org/plosone/s/latex
-%
-% For inline equations, please be sure to include all portions of an equation in the math environment.  For example, x$^2$ is incorrect; this should be formatted as $x^2$ (or $\mathrm{x}^2$ if the romanized font is desired).
-%
-% Do not include text that is not math in the math environment. For example, CO2 should be written as CO\textsubscript{2} instead of CO$_2$.
-%
-% Please add line breaks to long display equations when possible in order to fit size of the column. 
-%
-% For inline equations, please do not include punctuation (commas, etc) within the math environment unless this is part of the equation.
-%
-% When adding superscript or subscripts outside of brackets/braces, please group using {}.  For example, change "[U(D,E,\gamma)]^2" to "{[U(D,E,\gamma)]}^2". 
-%
-% Do not use \cal for caligraphic font.  Instead, use \mathcal{}
-%
-% % % % % % % % % % % % % % % % % % % % % % % % 
-%
-% Please contact latex@plos.org with any questions.
-%
-% % % % % % % % % % % % % % % % % % % % % % % %
+\documentclass[lineno]{asm-article}
 
-\documentclass[10pt,letterpaper]{article}
-\usepackage[top=0.85in,left=2.75in,footskip=0.75in]{geometry}
+\usepackage{blindtext}
 
-% amsmath and amssymb packages, useful for mathematical formulas and symbols
-\usepackage{amsmath,amssymb}
-
-% Use adjustwidth environment to exceed column width (see example table in text)
-\usepackage{changepage}
-
-% Use Unicode characters when possible
-\usepackage[utf8x]{inputenc}
-
-% textcomp package and marvosym package for additional characters
-\usepackage{textcomp,marvosym}
-
-% cite package, to clean up citations in the main text. Do not remove.
-\usepackage{cite}
+\usepackage[version=4]{mhchem}
+\usepackage{siunitx}
 
 % Use nameref to cite supporting information files (see Supporting Information section for more info)
 \usepackage{nameref,hyperref}
 
-% line numbers
-\usepackage[right]{lineno}
-
-% ligatures disabled
-\usepackage{microtype}
-\DisableLigatures[f]{encoding = *, family = * }
-
-% color can be used to apply background shading to table cells only
-\usepackage[table]{xcolor}
-
-% array package and thick rules for tables
-\usepackage{array}
-
-% create "+" rule type for thick vertical lines
-\newcolumntype{+}{!{\vrule width 2pt}}
-
-% create \thickcline for thick horizontal lines of variable length
-\newlength\savedwidth
-\newcommand\thickcline[1]{%
-  \noalign{\global\savedwidth\arrayrulewidth\global\arrayrulewidth 2pt}%
-  \cline{#1}%
-  \noalign{\vskip\arrayrulewidth}%
-  \noalign{\global\arrayrulewidth\savedwidth}%
-}
-
-% \thickhline command for thick horizontal lines that span the table
-\newcommand\thickhline{\noalign{\global\savedwidth\arrayrulewidth\global\arrayrulewidth 2pt}%
-\hline
-\noalign{\global\arrayrulewidth\savedwidth}}
-
 % additional packages imported by Jesse Bloom
 \usepackage[export]{adjustbox}
 \usepackage{float}
-
-% added by Jesse Bloom for full-width figures
-\newenvironment{fullwidth}{%
-  \begin{adjustwidth}{-2.3in}{}
-}{\end{adjustwidth}}
 
 % Added by Jesse Bloom for figures
 \renewcommand{\floatpagefraction}{.9}
@@ -139,99 +19,49 @@
 \setcounter{totalnumber}{8}
 
 \newfloat{suppfile}{thp}{lofsupfile}
-\floatname{suppfile}{File}
-\renewcommand{\thesuppfile}{S\arabic{suppfile}}
+\floatname{suppfile}{\bf FILE}
+\renewcommand{\thesuppfile}{\bf S\arabic{suppfile}}
 
 \newfloat{suppfig}{thp}{lofsupfile}
-\floatname{suppfig}{Fig}
-\renewcommand{\thesuppfig}{S\arabic{suppfig}}
+\floatname{suppfig}{\bf FIG}
+\renewcommand{\thesuppfig}{\bf S\arabic{suppfig}}
 
-\renewcommand{\figureautorefname}{Fig}
+\renewcommand{\figureautorefname}{Fig.}
 \newcommand{\FIG}[1]{\autoref{fig:#1}}
 
 \newcommand{\suppfileautorefname}{File}
 \newcommand{\SUPPFILE}[1]{\autoref{suppfile:#1}}
 
-\newcommand{\suppfigautorefname}{Fig}
+\newcommand{\suppfigautorefname}{Fig.}
 \newcommand{\SUPPFIG}[1]{\autoref{suppfig:#1}}
 
-% Remove comment for double spacing
-%\usepackage{setspace} 
-%\doublespacing
 
-% Text layout
-\raggedright
-\setlength{\parindent}{0.5cm}
-\textwidth 5.25in 
-\textheight 8.75in
+\title{Single-cell virus sequencing of influenza infections that trigger innate immunity} 
 
-% Bold the 'Figure #' in the caption and separate it from the title/caption with a period
-% Captions will be left justified
-\usepackage[aboveskip=1pt,labelfont=bf,labelsep=period,justification=raggedright,singlelinecheck=off]{caption}
-\renewcommand{\figurename}{Fig}
+\author{
+  Alistair B. Russell,\afn{a}
+  Jacob R. Kowalsky,\afn{a}
+  Jesse D. Bloom\afn{a,b,c,\authfn{1}}
+}
 
-% Use the PLoS provided BiBTeX style
-\bibliographystyle{plos2015}
+\affil{
+  Basic Sciences Division and Computational Biology Program, Fred Hutchinson Cancer Research Center, Seattle, United States\afn{a};
+  Department of Genome Sciences, University of Washington, Seattle, United States\afn{b};
+  Howard Hughes Medical Institute, Seattle, United States\afn{c}
+}
 
-% Remove brackets from numbering in List of References
-\makeatletter
-\renewcommand{\@biblabel}[1]{\quad#1.}
-\makeatother
+\runningauthor{Russell et al.}
+\runningtitle{Single-cell virus sequencing of influenza infections that trigger innate immunity}
 
+\corraddress{Jesse D. Bloom, jbloom@fredhutch.org}
 
-% Header and Footer with logo
-\usepackage{lastpage,fancyhdr,graphicx}
-\usepackage{epstopdf}
-%\pagestyle{myheadings}
-\pagestyle{fancy}
-\fancyhf{}
-%\setlength{\headheight}{27.023pt}
-%\lhead{\includegraphics[width=2.0in]{PLOS-submission.eps}}
-\rfoot{\thepage/\pageref{LastPage}}
-\renewcommand{\headrulewidth}{0pt}
-\renewcommand{\footrule}{\hrule height 2pt \vspace{2mm}}
-\fancyheadoffset[L]{2.25in}
-\fancyfootoffset[L]{2.25in}
-\lfoot{\today}
-
-%% Include all macros below
-
-\newcommand{\lorem}{{\bf LOREM}}
-\newcommand{\ipsum}{{\bf IPSUM}}
-
-%% END MACROS SECTION
-
+\papertype{Research Article}
 
 \begin{document}
-\vspace*{0.2in}
 
-% Title must be 250 characters or less.
-\begin{flushleft}
-{\Large
-\textbf\newline{Single-cell virus sequencing of influenza infections that trigger innate immunity} % Please use "sentence case" for title and headings (capitalize only the first word in a title (or heading), the first word in a subtitle (or subheading), and any proper nouns).
-}
-\newline
-% Insert author names, affiliations and corresponding author email (do not include titles, positions, or degrees).
-\\
-Alistair B. Russell\textsuperscript{1},
-Jacob R. Kowalsky\textsuperscript{2},
-Jesse D. Bloom\textsuperscript{1,2,3*}
-\\
-\bigskip
-\textbf{1} Basic Sciences Division and Computational Biology Program, Fred Hutchinson Cancer Research Center, Seattle, United States
-\\
-\textbf{2} Department of Genome Sciences, University of Washington, Seattle, United States
-\\
-\textbf{3} Howard Hughes Medical Institute, Seattle, United States
-\\
-\bigskip
+\maketitle
 
-% Use the asterisk to denote corresponding authorship and provide email address in note below.
-* jbloom@fredhutch.org
-
-\end{flushleft}
-% Please keep the abstract below 300 words
-\section*{Abstract}
+\begin{abstract}
 The outcome of viral infection is extremely heterogeneous, with infected cells only sometimes activating innate immunity.
 Here we develop a new method to assess how the genetic variation inherent in viral populations contributes to this heterogeneity.
 We do this by determining both the transcriptome and full-length sequences of all viral genes in single influenza-infected cells.
@@ -239,11 +69,7 @@ Infections that activate an innate-immune response in single cells are often ini
 However, immune activation remains stochastic in cells infected by virions with these defects, and sometimes occurs even in cells infected by virions that express unmutated copies of all genes.
 Our work shows that the genetic variation present in influenza virus populations contributes to but does not fully explain the heterogeneity in infection outcome and immune activation in single infected cells.
 
-
-% Please keep the Author Summary between 150 and 200 words
-% Use first person. PLOS ONE authors please skip this step. 
-% Author Summary not valid for PLOS ONE submissions.   
-\section*{Author summary}
+\begin{importance}
 Because influenza virus has a high mutation rate, many cells are infected by mutated virions.
 But so far, it has been impossible to fully characterize the genetic properties of the virions infecting any given cell, since the conventional techniques of flow cytometry and single-cell RNA-seq only detect if a protein or transcript is present---not its sequence.
 Here we develop a new approach that uses long-read PacBio sequencing to determine the full sequences of the virions infecting individual cells.
@@ -251,12 +77,13 @@ Most cells are infected by virions that have a mutation or some other defect.
 This viral genetic variation explains a substantial amount of the cell-to-cell variability in how much viral mRNA is produced in infected cells, and some viral mutations make a cell more likely to activate an innate-immune response.
 However, our results also show that viral genetic defects do not completely explain cell-to-cell variation in the outcome of infection.
 Overall, this study provides the first complete picture of how viral mutations affect the outcome of infection in single cells.
+\end{importance}
 
+\end{abstract}
 
-\linenumbers
+\keywords{influenza virus; interferon; PacBio; single-cell RNAseq; 10X Chromium; NS1; PB1; mini viral RNA; heterogeneity}
 
-% Use "Eq" instead of "Equation" for equation citations.
-\section*{Introduction}
+\section{Introduction}
 Infection with an acute virus such as influenza initiates a race between the virus and immune system.
 As the virus spreads, some cells detect infection and begin producing interferon (IFN).
 This IFN directs expression of anti-viral interferon-stimulated genes (ISGs) in the infected cell and its neighbors via autocrine and paracrine signaling, as well as helping launch a broader immune response~\cite{stetson2006type,honda2006type}.
@@ -286,16 +113,16 @@ We identify several types of viral defects that increase IFN induction.
 However, viral genetic variation does not fully explain the heterogeneity, and even unmutated virions sometimes induce IFN.
 Therefore, viral diversity is an important but not exclusive cause of cell-to-cell heterogeneity during influenza infection.
 
-\section*{Results}
+\section{Results}
 
-\subsection*{A system to identify and enrich rare IFN+ cells}
+\subsection{A system to identify and enrich rare IFN+ cells}
 
 %%% start IFNrare figure %%%
 \begin{figure}
 \centerline{
-{\bf \Large A}\includegraphics[width=0.35\textwidth,valign=t]{figures/IFN_stochastic/IFN_reporter/IFN_reporter.pdf}
-\hspace{0.02\textwidth}
-{\bf \Large B} \includegraphics[width=0.23\textwidth,valign=t]{figures/IFN_stochastic/Flow/ifn_percent.pdf}
+{\bf \Large A}\includegraphics[width=0.4\textwidth,valign=t]{figures/IFN_stochastic/IFN_reporter/IFN_reporter.pdf}
+\hspace{0.03\textwidth}
+{\bf \Large B} \includegraphics[width=0.26\textwidth,valign=t]{figures/IFN_stochastic/Flow/ifn_percent.pdf}
 }
 \caption{
 {\bf Reporter cells to identify and enrich infections that activate IFN expression.}
@@ -322,7 +149,7 @@ Therefore, for the rest of this paper, we use ``IFN expression'' to refer to com
 
 We generated a stock of A/WSN/1933 (H1N1) influenza (hereafter referred to as ``WSN''), and found that it activated the IFN reporter in $\sim$0.5\% of infected cells  (\FIG{IFNrare}B), a frequency roughly comparable to that in our prior single-cell transcriptomics of influenza-infected cells.
 
-\subsection*{Combined transcriptomics and virus-sequencing of single infected cells}
+\subsection{Combined transcriptomics and virus-sequencing of single infected cells}
 
 %%% start workflow figure
 \begin{figure}
@@ -369,7 +196,7 @@ These CCSs retain the cell barcodes, and with sufficient sequencing depth we obt
 Because most cells are infected by just one or two virions, we can build a consensus of CCSs for each viral gene in each cell to determine the sequence(s) of these virions.
 Combining this information with the 3'-end sequencing determines the entire transcriptome and the full sequences of the infecting virions in single cells (\FIG{workflow}E).
 
-\subsection*{Transcriptomic analyses of single IFN+ and IFN- influenza-infected cells}
+\subsection{Transcriptomic analyses of single IFN+ and IFN- influenza-infected cells}
 
 %%% start transcriptomics figure
 \begin{figure}
@@ -443,13 +270,13 @@ Finally, we qualitatively examined how expression of viral genes, IFN, and ISGs 
 \SUPPFIG{tSNE} shows unsupervised t-SNE clustering~\cite{maaten2008visualizing} of the cells.
 Cells expressing high levels of viral genes, IFN, and ISGs cluster together---and most of the structure in the t-SNE plot that is not associated with these genes involves uninfected and IFN- cells.
 
-\subsection*{Full genotypes of viruses infecting single IFN+ and IFN- cells}
+\subsection{Full genotypes of viruses infecting single IFN+ and IFN- cells}
 
 %%% start genotypes figure %%%
 \begin{figure}
 \begin{fullwidth}
 {\centering
-\includegraphics[height=0.9\textheight]{figures/single_cell_figures/p_genotypes.pdf}
+\includegraphics[height=0.85\textheight]{figures/single_cell_figures/p_genotypes.pdf}
 }
 \caption{
 {\bf Viral genotypes and infection outcomes in single cells.}
@@ -495,7 +322,7 @@ As an example of the former case, expressing unmutated copies of all eight genes
 But in other cases, the stochasticity allows a clearly defective virus to still escape immune recognition.
 For instance, there are a number of cells (e.g., \textit{cell 62} and \textit{cell 78}) that do not activate IFN despite being infected by virions that fail to express NS.
 
-\subsection*{Viral defects associated with infection outcome in single cells}
+\subsection{Viral defects associated with infection outcome in single cells}
 
 %%% begin mutations figure %%%
 \begin{figure}
@@ -539,12 +366,12 @@ The validation experiments in the next section show that many of the viral mutat
 One other interesting trend emerges from the single-cell data.
 There is no difference in the amount of viral mRNA between IFN+ and IFN- cells that express NS---but among cells that lack NS, the IFN+ ones have significantly more viral mRNA (\FIG{mutations}D).
 
-\subsection*{Validation that viral defects in single IFN+ cells often increase IFN induction}
+\subsection{Validation that viral defects in single IFN+ cells often increase IFN induction}
 
 %%% begin validation figure %%%
 \begin{figure}
 
-\centerline{\includegraphics[width=0.85\textwidth]{figures/Validation_Figure/ifn_plot.pdf}}
+\centerline{\includegraphics[width=0.9\textwidth]{figures/Validation_Figure/ifn_plot.pdf}}
 \caption{
 {\bf Validation that IFN induction is increased by some of the mutations identified in the single-cell virus sequencing of IFN+ cells.}
 {\bf (A)}
@@ -595,7 +422,7 @@ For the NS1stop and NS1-A122V mutants, there is a strong association between HA 
 Taken together with the single-cell data, this fact suggests that only in the absence of functional NS1 does higher viral gene expression predispose an infected cell to induce IFN.
 Therefore, viral variation influences both the rate of IFN induction and which factors contribute to this induction.
 
-\section*{Discussion}
+\section{Discussion}
 We have determined the full sequences of all viral genes expressed in single influenza-infected cells, and examined how viral mutations and gene-expression defects associate with infection outcome in each cell.
 Methodologically, our major advance is to measure the \emph{genotypes} of viruses in addition to the abundance of viral components (i.e., transcripts, proteins, or progeny virions) as has been done by prior single-cell studies~\cite{russell2018extreme, zanini2018single, zanini2018virus, steuerman2018dissection, saikia2018simultaneous, oneal2018west, zhu2009growth, schulte2014single, akpinar2016high, heldt2015single, brooke2013most}.
 Our method builds on the observation that fragmentary viral genetic information can be obtained by more standard single-cell transcriptomic techniques~\cite{saikia2018simultaneous, zanini2018virus}.
@@ -627,9 +454,9 @@ It is therefore plausible that early heterogeneity could have a large effect on 
 Extending our approaches to more complex systems could shed further light on how viral genetic variation interacts with cell-to-cell heterogeneity to shape the race between virus and immune system.
 
 
-\section*{Methods and Materials}
-
-\subsection*{IFN reporter cell lines}
+\section{Materials and Methods}
+\small
+\subsection{IFN reporter cell lines}
 We created IFN reporter variants of the A549 human lung epithelial cell line (\FIG{IFNrare}A).
 The parental A549 cell line used to create these reporters was obtained from ATCC (CCL-185), and was tested as negative for mycoplasma contamination by the Fred Hutch Genomics Core and authenticated using the ATCC STR profiling service.
 The cells were maintained in D10 media (DMEM supplemented with 10\% heat-inactivated fetal bovine serum, 2 mM L-glutamine, 100 U of penicillin / ml, and 100 $\mu$g of streptomycin / ml) at 37$^{\circ}$C and 5\% carbon dioxide.
@@ -652,7 +479,7 @@ All reporter lines tested negative for mycoplasma contamination by the Fred Hutc
 \SUPPFIG{reportervalidation}A shows validation of the reporter cell lines using infection with saturating amounts of the Cantell strain of Sendai virus (obtained from Charles River Laboratories).
 For detection of the cell-surface bound LNGFR$\Delta$C, cells were stained with PE-conjugated anti-LNGFR (CD271) antibody from Miltenyi Biotec.
 
-\subsection*{Viruses for single-cell experiments}
+\subsection{Viruses for single-cell experiments}
 We performed the single-cell experiments using the A/WSN/1933 (H1N1) strain of influenza virus.
 We used both the wild-type virus and a variant of the virus where synonymous mutations were added within a few 100 nucleotides of each termini of each gene segment.
 We have used a similar synonymous viral barcoding strategy in our prior single-cell work~\cite{russell2018extreme} as it allows us to detect about half of co-infected cells based on the expression of both viral barcode variants.
@@ -666,13 +493,13 @@ The viruses were generated by reverse genetics in co-cultures of 293T and MDCK-S
 Specifically, after generation by reverse genetics, the wild-type variant was expanded at an MOI of 0.001 for 72 hours twice in MDCK-SIAT1 cells, and the synonymously barcoded variant was expanded once at an MOI of 0.01 for 60 hours.
 The MOIs for this passaging are based on titers determined using TCID50 assays via the formula of Reed and Muench~\cite{reed1938simple} as implemented at \url{https://github.com/jbloomlab/reedmuenchcalculator}.
 
-\subsection*{Flow cytometry analyses for HA expression}
+\subsection{Flow cytometry analyses for HA expression}
 For the single-cell experiments (which only examine the transcriptional results of a single cycle of infection), we were most interested in the titer of viral particles that are transcriptionally active for a single round of infection of A549 cells.
 We estimated titers of transcriptionally active virions by staining for HA expression in virus-infected A549 cells.
 Specifically, we infected A549 cells (or one of the A549 reporter cell line variants as indicated) in influenza growth medium, and at 13 to 14 hours post-infection, we trypsinized cells, re-suspended in phosphate-buffered saline (PBS) supplemented with 2\% heat-inactivated fetal bovine serum (FBS), and stained with 10 $\mu$g/ml of H17-L19, a mouse monoclonal antibody previously shown to bind to the HA from the A/WSN/1933 strain of virus~\cite{doud2017complete}.
 After washing in PBS supplemented with 2\% FBS, the cells were stained with a goat anti-mouse IgG antibody conjugated to APC, washed, fixed in 1\% formaldehyde in PBS, washed again, and then analyzed by flow cytometry to determine the fraction expressing detectable HA protein.
 
-\subsection*{Single-cell transcriptomics of IFN-enriched infected cells using 10X Chromium}
+\subsection{Single-cell transcriptomics of IFN-enriched infected cells using 10X Chromium}
 The single-cell transcriptomics and virus sequencing was performed using the A549 cells with the \textit{IFNB1} LNGFR$\Delta$C-P2A-mNeonGreen reporter.
 A schematic of the experiment is shown in \FIG{workflow}.
 
@@ -691,7 +518,7 @@ This sample was then processed to create libraries for Illumina 3'-end sequencin
 The single-cell transcriptomics library was sequenced on an Illumina HiSeq 2500, and the data analyzed as described below.
 
 
-\subsection*{Enrichment and preparation of viral cDNA for PacBio sequencing}
+\subsection{Enrichment and preparation of viral cDNA for PacBio sequencing}
 We amplified virus-derived molecules from the small amount of cDNA retained from the 10X Genomics protocol for PacBio sequencing of the full-length cDNA.
 All molecules in this cDNA have at their 3' end the cell barcode and UMI plus the constant adaptor sequence that is added during the 10X protocol (see \FIG{workflow} for simple schematic, or the detailed analysis notebook at \url{https://github.com/jbloomlab/IFNsorted_flu_single_cell/blob/master/pacbio_analysis.ipynb} or \SUPPFILE{pacbio_analysis} for at detailed schematic).
 However, we only wanted to PacBio sequence cDNA molecules derived from virus, since it would be prohibitively expensive to sequence all molecules.
@@ -744,7 +571,7 @@ A more detailed breakdown of the coverage of each gene and data showing a consis
 Importantly, the various PCR biases and enrichment schemes mean that the coverage of molecules by the PacBio sequencing is not proportional to their original abundance in the starting mRNA.
 However, as described in the computational analysis section below, the final analyses use the cell barcodes and UMIs in conjunction with the standard 10X Illumina sequencing to ensure that none of the conclusions are affected by the disproportionate amplification of some molecules during the PacBio library preparation (for instance, duplicate UMIs are removed from the PacBio data, and all conclusions about gene abundance or absence are based on the Illumina data).
 
-\subsection*{qPCR for viral genes and IFN}
+\subsection{qPCR for viral genes and IFN}
 We performed qPCR on reverse-transcribed mRNA for influenza HA (to quantify viral transcription), IFNB1 (to quantify IFN induction), and L32 (a cellular housekeeping gene for normalization).
 For the qPCR, we used the SYBR Green PCR Master Mix (Thermo Fisher) according to the manufacturer's protocol using oligo-dT primers.
 The qPCR primers were: HA primer 1, 5'-\texttt{GGCCCAACCACACATTCAAC}-3'; HA primer 2, 5'-\texttt{GCTCATCACTGCTAGACGGG}-3'; IFNB1 primer 1, 5'-\texttt{AAACTCATGAGCAGTCTGCA}-3'; IFNB1 primer 2, 5'-\texttt{AGGAGATCTTCAGTTTCGGAGG}-3'; L32 primer 1, 5'-\texttt{AGCTCCCAAAAATAGACGCAC}-3'; L32 primer 2, 5'-\texttt{TTCATAGCAGTAGGCACAAAGG}-3'. 
@@ -754,7 +581,7 @@ Immediately prior to infection D10 media was removed and replaced with influenza
 For the cells with cycloheximide added to block protein expression (and hence secondary transcription), cycloheximide was added to a final concentration of 50 $\mu$g/ml (a concentration sufficient to block secondary transcription~\cite{killip2014activation}) at the time of infection.
 After 8 hours, mRNA was harvested using the CellAmp Direct RNA Prep Kit for RT-PCR, reverse-transcribed using an oligo-dT primer, and qPCR was performed as described above.
 
-\subsection*{Viruses and experiments for validation experiments}
+\subsection{Viruses and experiments for validation experiments}
 In \FIG{validation}, we tested the IFN inducing capacity of a variety of viral mutants identified in the single-cell experiments.
 For point-mutant viruses, we created variants for all amino-acid substitutions found in PB1 and NS among IFN+ cells that did not also lack NS.
 One of these mutants (amino-acid substitution S704P in PB1) did not reach sufficient titers in a single attempt to generate it by reverse genetics, and so was dropped from the experiment (note that we did not attempt replicates of the reverse genetics for this mutant, and so are \emph{not} confident in drawing strong conclusions about its actual attenuation).
@@ -786,7 +613,7 @@ The wild-type and NS1stop viruses were titered by TCID50 on MDCK-SIAT1 cells, an
 The infections in \SUPPFIG{validationflow}B were performed at equivalent TCID50s as described in the legend to that figure.
 That these equivalent TCID50s were also roughly equivalent in terms of particles capable of undergoing primary transcription is shown in \SUPPFIG{delqPCR}.
 
-\subsection*{Computational analysis of single-cell transcriptomic and viral sequence data}
+\subsection{Computational analysis of single-cell transcriptomic and viral sequence data}
 A computational pipeline that performs all steps in the data analysis is available at \url{https://github.com/jbloomlab/IFNsorted_flu_single_cell}. 
 This pipeline is orchestrated by \texttt{Snakemake}~\cite{koster2012snakemake}, and begins with the raw sequencing data and ends by generating the figures shown in this paper.
 The sequencing data and annotated cell-gene matrix are available on the GEO repository under accession GSE120839 (\url{https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE120839}).
@@ -837,20 +664,21 @@ We counted IFN mRNAs as any IFN-$\alpha$, IFN-$\beta$, or IFN-$\lambda$ transcri
 We counted ISG mRNAs as any of CCL5, IFIT1, ISG15, or Mx1.
 The plot in \FIG{genotypes} summarizes all of the genotypic information, and was created in substantial part using \texttt{gggenes} (\url{https://github.com/wilkox/gggenes}).
 
+\normalsize
 
-\section*{Acknowledgments}
+\section{Acknowledgments}
 We thank Cole Trapnell, Jason Underwood, Robert Bradley, Daniel Stetson, AJ Velthuis, Katherine Xue, and Hannah Itell for helpful suggestions.
 We thank Andy Marty and the Fred Hutch Genomics Core for performing the deep sequencing.
-%This work was supported by the NIAID of the NIH under grant R01 AI127893 and a Burroughs Wellcome Fund Young Investigator in the Pathogenesis of Infectious Diseases grant to JDB.
-%ABR was supported by a postdoctoral fellowship from the Damon Runyon Cancer Research Foundation (DRG-2227-15).
-%JRK was supported by a Washington Research Foundation Undergraduate Research Fellowship and a Mary Gates undergraduate research scholarship from the University of Washington.
-%JDB is an Investigator of the Howard Hughes Medical Institute.
-%The funders had no role in study design, data collection and interpretation, or the decision to submit the work for publication.
+This work was supported by the NIAID of the NIH under grant R01 AI127893 and a Burroughs Wellcome Fund Young Investigator in the Pathogenesis of Infectious Diseases grant to JDB.
+ABR was supported by a postdoctoral fellowship from the Damon Runyon Cancer Research Foundation (DRG-2227-15).
+JRK was supported by a Washington Research Foundation Undergraduate Research Fellowship and a Mary Gates undergraduate research scholarship from the University of Washington.
+JDB is an Investigator of the Howard Hughes Medical Institute.
+The funders had no role in study design, data collection and interpretation, or the decision to submit the work for publication.
 
 \bibliography{references}
 
 \clearpage
-\section*{Supporting information}
+\section{Supplemental Material}
 
 \begin{suppfig}
 \includegraphics[width=\textwidth]{figures/IFN_stochastic/SteuermanReanalysis/plots/p_mRNA_counts.pdf}
