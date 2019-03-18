@@ -38,19 +38,22 @@
 
 \title{Single-cell virus sequencing of influenza infections that trigger innate immunity} 
 
-\author{
-  Alistair B. Russell,\afn{a}
-  Elizaveta Elshina,\afn{b}
-  Jacob R. Kowalsky,\afn{a}
-  Aartjan J. W. te Velthuis,\afn{b}
-  Jesse D. Bloom\afn{a,c,d,\authfn{1}}
+\author{%
+Alistair B. Russell,\afn{a}
+Elizaveta Elshina,\afn{b}
+Jacob R. Kowalsky,\afn{a}
+Aartjan J. W. te Velthuis,\afn{b}
+Jesse D. Bloom\afn{a,c,d,\authfn{1}}
 }
 
-\affil{
-  Basic Sciences Division and Computational Biology Program, Fred Hutchinson Cancer Research Center, Seattle, United States\afn{a};
-  Division of Virology, Department of Pathology, Addenbrooke's Hospital, University of Cambridge, Cambridge, United Kingdom;
-  Department of Genome Sciences, University of Washington, Seattle, United States\afn{c};
-  Howard Hughes Medical Institute, Seattle, United States\afn{d}
+\affil{%
+\afn{a}Basic Sciences and Computational Biology, Fred Hutchinson Cancer Research Center, Seattle, United States
+  
+\afn{b} Division of Virology, Department of Pathology, University of Cambridge, Cambridge, United Kingdom
+  
+\afn{c} Department of Genome Sciences, University of Washington, Seattle, United States
+  
+\afn{d} Howard Hughes Medical Institute, Seattle, United States
 }
 
 \runningauthor{Russell et al.}
@@ -66,25 +69,24 @@
 
 \begin{abstract}
 The outcome of viral infection is extremely heterogeneous, with infected cells only sometimes activating innate immunity.
-Here we develop a new method to assess how the genetic variation inherent in viral populations contributes to this heterogeneity.
-We do this by determining both the transcriptome and full-length sequences of all viral genes in single influenza-infected cells.
-Infections that activate an innate-immune response in single cells are often initiated by virions with defects that include amino-acid mutations, internal deletions, and failure to express key genes.
-However, immune activation remains stochastic in cells infected by virions with these defects, and sometimes occurs even in cells infected by virions that express unmutated copies of all genes.
-Our work shows that the genetic variation present in influenza virus populations contributes to but does not fully explain the heterogeneity in infection outcome and immune activation in single infected cells.
+Here we develop a new method to assess how the genetic variation in viral populations contributes to this heterogeneity.
+We do this by determining the transcriptome and full-length sequences of all viral genes in single influenza-infected cells.
+Most cells are infected by virions with defects, some of which increase the frequency of innate-immune activation.
+These immunostimulatory defects are diverse, and include mutations that perturb the function of the viral polymerase protein PB1, large internal deletions in viral genes, and failure to express the virus's interferon antagonist NS1.
+However, immune activation remains stochastic in cells infected by virions with these defects, and occasionally is triggered even by virions that express unmutated copies of all genes.
+Our work shows that the diverse spectrum of defects in influenza virus populations contributes to---but does not completely explain---the heterogeneity in infection outcome and immune activation in single infected cells.
 
 \begin{importance}
 Because influenza virus has a high mutation rate, many cells are infected by mutated virions.
-But so far, it has been impossible to fully characterize the genetic properties of the virions infecting any given cell, since the conventional techniques of flow cytometry and single-cell RNA-seq only detect if a protein or transcript is present---not its sequence.
-Here we develop a new approach that uses long-read PacBio sequencing to determine the full sequences of the virions infecting individual cells.
-Most cells are infected by virions that have a mutation or some other defect.
-This viral genetic variation explains a substantial amount of the cell-to-cell variability in how much viral mRNA is produced in infected cells, and some viral mutations make a cell more likely to activate an innate-immune response.
-However, our results also show that viral genetic defects do not completely explain cell-to-cell variation in the outcome of infection.
-Overall, this study provides the first complete picture of how viral mutations affect the outcome of infection in single cells.
+But so far, it has been impossible to fully characterize the sequence of the virion infecting any given cell, since conventional techniques like flow cytometry and single-cell RNA-seq only detect if a protein or transcript is present---not its sequence.
+Here we develop a new approach that uses long-read PacBio sequencing to determine the sequences of virions infecting single cells.
+We show that viral genetic variation explains some but not all of the cell-to-cell variability in infection outcome.
+Overall, our study provides the first complete picture of how viral mutations affect the course of infection in single cells.
 \end{importance}
 
 \end{abstract}
 
-\keywords{influenza virus; interferon; PacBio; single-cell RNAseq; 10X Chromium; NS1; PB1; mini viral RNA; heterogeneity}
+\keywords{influenza virus; interferon; PacBio; single-cell RNAseq; 10X Chromium; NS1; PB1; mini viral RNA; mvRNA; heterogeneity}
 
 \section{Introduction}
 Infection with an acute virus such as influenza initiates a race between the virus and immune system.
