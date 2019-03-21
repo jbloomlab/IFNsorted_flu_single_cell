@@ -101,7 +101,7 @@ This IFN directs expression of anti-viral interferon-stimulated genes (ISGs) in 
 If innate immunity is activated sufficiently rapidly, it can reduce viral replication and disease~\cite{solov1969results,treanor1987intranasally,beilharz2007protection,kugel2009intranasal,steel2010transmission}---although excessive immune responses later in infection can actually be associated with immunopathology and severe disease~\cite{la2007question, iwasaki2014innate}.
 
 Unfortunately for the host, influenza initially only rarely triggers IFN production by infected cells~\cite{kallfass2013visualizing, killip2017single}.
-This rareness of IFN induction is just one form of the extreme cell-to-cell heterogeneity that characterizes infection: cells also vary widely in their production of viral mRNA, proteins, and progeny virions~\cite{russell2018extreme,steuerman2018dissection,sjaastad2018distinct,heldt2015single,wang2018cell}.
+This rareness of IFN induction is just one form of the extreme cell-to-cell heterogeneity that characterizes infection: cells also vary widely in their production of viral mRNA, proteins, and progeny virions~\cite{russell2018extreme,steuerman2018dissection,sjaastad2018distinct,heldt2015single,wang2018cell,sjaastad2018distinct}.
 Because viral growth and the IFN response are both feed-forward processes, early cell-to-cell heterogeneity could have significant downstream consequences for the race between virus and immune system---especially since natural human infections are typically initiated by just a few virions entering a few cells~\cite{mccrone2018stochastic, xue2018reconciling, varble2014influenza}.
 
 It is unclear why only some infected cells trigger innate-immune responses.
@@ -109,10 +109,10 @@ Two possible contributors are pure stochasticity and pre-existing variation in c
 For instance, only some cells induce IFN even upon treatment with synthetic innate-immune ligands~\cite{shalek2013single, shalek2014single, wimmers2018single}, and the frequency of IFN induction may depend on a cell's pre-existing chromatin state~\cite{bhushal2017cell}.
 But for influenza, a third possible contributor also looms large: viral genetic diversity.
 Because influenza has a high mutation rate, individual virions often have genetic defects~\cite{parvin1986measurement, suarez1992heterogeneity, suarez1994estimation, bloom2014experimentally, pauly2017novel}.
-Indeed, many studies have identified mutations that increase IFN induction when engineered into a viral population~\cite{killip2017single, velthuis2018mini, du2018genome, perez2014unbiased}, and viral stocks that are rich in internal deletions in the polymerase genes induce more IFN~\cite{wang2018cell, baum2010preference, tapia2013defective, boergeling2015evidence, dimmock2015cloned}.
+Indeed, many studies have identified mutations that increase IFN induction when engineered into a viral population~\cite{killip2017single, velthuis2018mini, du2018genome, perez2014unbiased}, and viral stocks that are rich in internal deletions in the polymerase genes induce more IFN~\cite{wang2018cell, baum2010preference, tapia2013defective, boergeling2015evidence, dimmock2015cloned, liu2019inhibition}.
 
 However, existing techniques are inadequate to determine how viral genetic diversity contributes to cell-to-cell heterogeneity during infection.
-Flow cytometry and fluorescent reporters only measure protein levels~\cite{brooke2013most, guo2017single}, and current single-cell transcriptomic techniques measure abundance of transcripts and provide only fragmentary information on their sequences~\cite{russell2018extreme, steuerman2018dissection, wang2018cell, zanini2018single, zanini2018virus, saikia2018simultaneous, oneal2018west}.
+Flow cytometry and fluorescent reporters only measure protein levels~\cite{brooke2013most, guo2017single, sjaastad2018distinct}, and current single-cell transcriptomic techniques measure abundance of transcripts and provide only fragmentary information on their sequences~\cite{russell2018extreme, steuerman2018dissection, wang2018cell, zanini2018single, zanini2018virus, saikia2018simultaneous, oneal2018west}.
 None of these techniques reliably reveal if the virion infecting a specific cell has some idiosyncratic mutation.
 
 Here we develop a new approach measure both the full transcriptome and sequences of all viral genes in single influenza-infected cells.
@@ -403,7 +403,7 @@ We therefore mimicked the absence of NS by creating a mutant virus (which we ter
 The single-cell data also showed that amino-acid substitutions in proteins encoded by the PB1 and NS genes were enriched in IFN+ cells (\FIG{genotypes}, \FIG{mutations}C), so we created mutant viruses with some of these substitutions:
 PB1-D27N, PB1-G206S, PB1-K279R, PB1-T677A, NS1-A122V, and NS2-E47G.
 
-Finally, prior work has suggested that virions with internal deletions in the polymerase genes can induce higher levels of IFN~\cite{wang2018cell, baum2010preference, tapia2013defective, boergeling2015evidence, dimmock2015cloned}.
+Finally, prior work has suggested that virions with internal deletions in the polymerase genes can induce higher levels of IFN~\cite{wang2018cell, baum2010preference, tapia2013defective, boergeling2015evidence, dimmock2015cloned, liu2019inhibition}.
 Although such deletions are not significantly enriched among IFN+ cells in our single-cell data (\FIG{mutations}C), there is a co-infected IFN+ cell where one viral variant has a deletion in PB1 spanning nucleotides 385 to 2163 (\textit{cell 5} in \FIG{genotypes}).
 We therefore created a virus carrying this deletion, and propagated it in cells constitutively expressing PB1 protein.
 
@@ -421,7 +421,7 @@ But our single-cell data show that IFN induction is stochastic even for infectio
 Therefore, the experiments in this section not only validate some specific viral defects that increase IFN induction, but also show that induction remains stochastic even with these defects.
 
 \subsection{The IFN-inducing viral defects act by diverse mechanisms.}
-Some of the viral defects in IFN+ are easy to reconcile with existing knowledge: for instance, NS1 is the virus's primary IFN antagonist~\cite{garcia1998influenza, hale2008multifunctional}, and internal deletions are prevalent in immunostimulatory viral stocks~\cite{wang2018cell, baum2010preference, tapia2013defective, boergeling2015evidence, dimmock2015cloned}.
+Some of the viral defects in IFN+ are easy to reconcile with existing knowledge: for instance, NS1 is the virus's primary IFN antagonist~\cite{garcia1998influenza, hale2008multifunctional}, and internal deletions are prevalent in immunostimulatory viral stocks~\cite{wang2018cell, baum2010preference, tapia2013defective, boergeling2015evidence, dimmock2015cloned, liu2019inhibition}.
 Other defects are more surprising: for instance, it is not obvious why amino-acid mutations in PB1 increase IFN induction.
 We therefore designed experiments to interrogate some of these defects.
 
@@ -467,7 +467,7 @@ Both polymerase mutations increased IFN expression in this assay (\FIG{PB1}B), i
 We next directly measured polymerase activity on the full-length vRNA template by extracting total RNA and quantifying replication (vRNA) and transcription (mRNA) products by primer extension.
 Both immunostimulatory PB1 mutations had activities that were significantly different from wild type, despite being expressed at wild-type protein levels (\FIG{PB1}B).
 Specifically, T677A had higher levels of both activities, whereas D27N had reduced levels of both---although D27N still retained activity far in excess of a control active-site mutant (\FIG{PB1}C).
-We speculated that the mutations might reduce polymerase processivity, leading to accumulation of mvRNAs~\cite{velthuis2018mini} or other aberrant short RNA products that might activate the innate immune system~\cite{baum2010preference, tapia2013defective, boergeling2015evidence, dimmock2015cloned}.
+We speculated that the mutations might reduce polymerase processivity, leading to accumulation of mvRNAs~\cite{velthuis2018mini} or other aberrant short RNA products that might activate the innate immune system~\cite{baum2010preference, tapia2013defective, boergeling2015evidence, dimmock2015cloned, liu2019inhibition}.
 We therefore repeated the activity assays using a short 246-nucleotide template~\cite{velthuis2018mini} in place of the full-length NA vRNA (\FIG{PB1}D).
 On this shorter template, the activity of the D27N mutant was now similar to wild type, while the activity of the T677A mutant remained higher than wildtype (although not significantly so in three biological repeats). 
 Therefore, the two immunostimulatory PB1 mutations have distinct effects on the polymerase: D27N reduces processivity thereby favoring shorter RNA products, whereas T677A increases overall activity which could also lead to accumulation of aberrant RNA products.
@@ -495,7 +495,7 @@ Therefore, the diverse range of viral defects that induce IFN act by diverse pro
 
 \section{Discussion}
 We have determined the full sequences of all viral genes in single influenza-infected cells.
-Methodologically, our major advance is to measure the \emph{genotypes} of viruses in addition to the abundance of viral components (i.e., transcripts, proteins, or progeny virions) as has been done by prior single-cell studies~\cite{russell2018extreme, steuerman2018dissection, heldt2015single, wang2018cell, brooke2013most, zanini2018single, zanini2018virus, saikia2018simultaneous, oneal2018west, zhu2009growth, schulte2014single, akpinar2016high}.
+Methodologically, our major advance is to measure the \emph{genotypes} of viruses in addition to the abundance of viral components (i.e., transcripts, proteins, or progeny virions) as has been done by prior single-cell studies~\cite{russell2018extreme, steuerman2018dissection, heldt2015single, wang2018cell, sjaastad2018distinct, brooke2013most, zanini2018single, zanini2018virus, saikia2018simultaneous, oneal2018west, zhu2009growth, schulte2014single, akpinar2016high}.
 Our method builds on the observation that fragmentary viral genetic information can be obtained by more standard single-cell transcriptomic techniques~\cite{wang2018cell, zanini2018virus, saikia2018simultaneous}.
 To make this information complete, we have coupled single-cell transcriptomics with long-read PacBio sequencing of viral genes, a strategy analogous to that used by \cite{gupta2018single} to obtain full-length isoforms of some cellular genes in single cells.
 
@@ -509,7 +509,7 @@ Two types of defects---absence of the NS gene and amino-acid mutations to the NS
 A third type of defect, amino-acid mutations in PB1, was more surprising since this protein has not been described as a major player in innate-immune detection.
 We characterized two IFN-inducing PB1 mutations, and showed that one impaired polymerase processivity whereas the other increased overall activity.
 We speculate that these alterations increase production of aberrant immunostimulatory products such as mini-viral RNAs~\cite{velthuis2018mini} or other deleted forms of vRNAs.
-Finally, we found an internal deletion in PB1 that enhances IFN induction, consistent with prior work showing such deletions are immunostimulatory~\cite{baum2010preference, tapia2013defective, boergeling2015evidence, dimmock2015cloned}.
+Finally, we found an internal deletion in PB1 that enhances IFN induction, consistent with prior work showing such deletions are immunostimulatory~\cite{baum2010preference, tapia2013defective, boergeling2015evidence, dimmock2015cloned, liu2019inhibition}.
 In fact, given the extensive prior work on deletions, we were surprised not to identify more of them in our IFN+ cells.
 There may be several reasons: we used pure viral stocks~\cite{xue2016propagation} at modest MOI; our experiments preferentially captured cells with higher viral transcriptional load; and most prior studies have used techniques that can detect large deletions but not subtle point mutations.
 Additionally, the relative importance of different defects likely varies across infection conditions, viral strains, and cell types: it remains an open question which defects are most relevant for immune detection during actual human infections.
