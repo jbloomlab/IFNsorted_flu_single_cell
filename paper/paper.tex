@@ -421,68 +421,62 @@ But our single-cell data show that IFN induction is stochastic even for infectio
 Therefore, the experiments in this section not only validate some specific viral defects that increase IFN induction, but also show that induction remains stochastic even with these defects.
 
 \subsection{The IFN-inducing viral defects act by diverse mechanisms.}
-Some of the viral defects in IFN+ are easy to reconcile with existing knowledge: for instance, NS1 is the virus's primary IFN antagonist~\cite{garcia1998influenza, hale2008multifunctional}, and internal deletions are known to be prevalent in immunostimulatory viral stocks~\cite{wang2018cell, baum2010preference, tapia2013defective, boergeling2015evidence, dimmock2015cloned}.
+Some of the viral defects in IFN+ are easy to reconcile with existing knowledge: for instance, NS1 is the virus's primary IFN antagonist~\cite{garcia1998influenza, hale2008multifunctional}, and internal deletions are prevalent in immunostimulatory viral stocks~\cite{wang2018cell, baum2010preference, tapia2013defective, boergeling2015evidence, dimmock2015cloned}.
 Other defects are more surprising: for instance, it is not obvious why amino-acid mutations in PB1 increase IFN induction.
-We therefore designed experiments to interrogate the mechanisms of some of these defects.
+We therefore designed experiments to interrogate some of these defects.
 
 We first focused on the PB1 mutations.
-Recent research has shown that mutations to the PB2 polymerase subunit of the WSN viral strain can enhance IFN induction by leading to the production of aberrant mini viral RNAs (mvRNAs) that trigger RIG-I~\cite{velthuis2018mini}.
-To investigate if the PB1 mutations act by a similar mechanism, we first examined their location in a structural model of the polymerase complex (\FIG{PB1}A).
-The IFN-enhancing PB1 mutation T677A occurs at the tip of a helix that interacts with the 3' terminus of the RNA template as it enters the channel above the PB1 active site, whereas the IFN-enhancing D27N mutation is deeper in the polymerase and close to the binding pocket of the 5' terminus of the template. 
-Therefore, both mutations could plausibly affect the polymerase's activity by changing its interactions with the RNA template.
+Recent research has shown that mutations to the PB2 polymerase subunit of the WSN viral strain can enhance IFN induction by leading to production of aberrant mini viral RNAs (mvRNAs) that trigger RIG-I~\cite{velthuis2018mini}.
+To investigate if the PB1 mutations might similarly perturb polymerase activity, we examined their location in a structural model of the polymerase complex (\FIG{PB1}A).
+The IFN-enhancing PB1 mutation T677A occurs at the tip of a helix that interacts with the 3' terminus of the RNA template as it enters the channel above the active site, whereas the IFN-enhancing D27N mutation is deeper in the polymerase close to the binding pocket of the 5' terminus of the template. 
+Therefore, both mutations could plausibly alter the polymerase's interactions with the RNA template.
 
 %%% begin PB1 figure %%%
 \begin{figure}
 
-\centerline{\includegraphics[width=0.7\textwidth]{figures/PB1_figure.png}}
+\centerline{\includegraphics[width=\textwidth]{figures/PB1_figure/PB1_figure.pdf}}
 \caption{
-IFN-inducing mutations D27N and T677A in the PB1 protein affect polymerase activity \textit{in vitro}. 
-(A) Model of bat influenza A virus RNA polymerase (PDB 4WSB)~\cite{reich2014structural} superposed with the influenza B virus RNA polymerase (PDB 5MSG)~\cite{reich2017vitro}.
+IFN-inducing mutations D27N and T677A in the PB1 protein affect polymerase activity. 
+(A) Model of bat influenza A virus polymerase (PDB 4WSB)~\cite{reich2014structural} superposed with the influenza B virus polymerase (PDB 5MSG)~\cite{reich2017vitro}.
 The locations of PB1 D27 and T677 (both red) relative to the 5' (blue) and 3' (orange) termini of the RNA template and the PB1 active site (grey; PB1 act) are indicated.
 The PA endonuclease (green; PA endo) and PB2 cap binding domain (pink; PB2 cap) are also indicated. 
 Part of the fingers subdomain of PB1 is hidden to reveal the template in the entry channel. 
-(B) Polymerase activity on full-length NA vRNA template in 293T cells.
+(B) IFN-beta promoter activity measured using a dual luciferase reporter assay in 293T cells transfected with plasmids expressing the indicated PB1 protein, the other polymerase complex proteins (PB2, PA, and NP), and a full-length NA vRNA template.
+PB1a is a catalytically inactive PB1 active site control.
+Points show three biological replicates; ``n.d.'' indicates not detectable and points in orange were significantly greater than wild type by a two-sided t-test.
+(C) Polymerase activity in 293T cells transfected as in panel (B).
 Steady-state RNA levels were measured by primer extension, denaturing PAGE, and phosphorimaging. 
-A PB1 active site control (PB1a) was used as negative control and background correction. 
+PB1a was used as negative control and background correction. 
 The 5S rRNA signal was used as loading control. 
 Other panels show Western blot analysis of PB1, NP and GAPDH protein expression. 
 Graph shows the average of three biological repeats. 
-(C) Panel shows PAGE analysis of RT-PCR of mvRNAs.
-The same amount of total input RNA was used for each sample.
-The length of the mmvRNAs was extended by the adapters (adapt) present in the primers.
-Graph shows the IFN-beta promoter activity in transfected 293T cells as measured using a dual luciferase reporter assay.
+Error bars indicate standard deviation.
+P-values were determined by two-sided t-test.
 (D) Polymerase activity on a short 246-nucleotide vRNA template. 
 The top panel shows the steady state levels of vRNA template as determined by primer extension and denaturing PAGE. 
 The other two panels show the PB1 and tubulin expression levels analyzed by western blot. 
-The top graph shows the average of three biological repeats. 
-The second graph shows the IFN-beta promoter activity in transfected HEK 293T cells as measured using a dual luciferase reporter assay. 
-Error bars indicate standard deviation. 
-P-values were determined by two-sided t-test.
-{\color{red} Legend will be further edited and figure possibly re-arranged after all data are added.}
+Graph shows the average of three biological repeats. 
 }
 \label{fig:PB1}
 
 \end{figure}
 %%% end PB1 figure %%%
 
-To test if the PB1 mutations affect polymerase activity on a full-length viral RNA template, we expressed wild-type or mutant PB1 protein along with the other proteins in the polymerase complex (PB2, PA, and NP) and the viral RNA (vRNA) for the NA segment in 293T cells.
-Twenty-four hours after transfection, we extracted total RNA and analyzed replication (vRNA level) and transcription (mRNA level) activity by primer extension.
-Both mutations had activities that were significantly different from wild type, despite being expressed at wild-type protein levels (\FIG{PB1}B).
-Specifically, T677A had higher levels of both activities, whereas D27N had reduced levels of both activities---although D27N still retained activity far in excess of a control active-site mutant (\FIG{PB1}B).
-To test if these activity changes increased production of immunostimulatory mvRNAs~\cite{velthuis2018mini}, we fractionated the total RNA to enrich for small species (17-200 nt long) and used reverse transcription followed by PCR (RT-PCR) to amplify species with both the 3' and 5' vRNA termini. 
-The D27N mutant produced more mvRNAs than wild type, while the T667A mutant produced the same low levels of mvRNAs as wild type (\FIG{PB1}C).
-{\color{red} Analysis of the IFN levels in these cells showed that... \textit{(Still need to figure out how to work this in after experiments done.)} }
-
-Because the D27N PB1 mutant might produced more mvRNAs and had reduced activity on a full-length vRNA template, we speculated that it might have reduced polymerase processivity.
-To confirm this, we repeated the \textit{in vitro} polymerase activity assays using a short 246-nucleotide template~\cite{velthuis2018mini} in place of the full-length NA vRNA (\FIG{PB1}D).
-On this shorter template, the activity of the D27N mutant was similar to wild type, while the activity of the T677A mutant remained higher than wildtype (although not significantly higher in three biological repeats). 
-{\color{red} Analysis of the IFN expression level in response to viral replication on the short template showed higher IFN induction by both PB1 mutants. \textit{(Need to work in prior sentence and add a wrap up sentence; will wait to do this until we have all the IFN results. End with something about how even PB1 point mutants act by different mechanisms (more activity versus more mvRNAs) to tie into next paragraph.)}}
+To test if the PB1 mutations affect activity, we transfected 293T cells with plasmids that express wild-type or mutant PB1 protein along with the other proteins in the polymerase complex (PB2, PA, and NP) and full-length viral RNA (vRNA) for the NA segment.
+Both polymerase mutations increased IFN expression in this assay (\FIG{PB1}B), indicating that they have an immunostimulatory effect in the context of an active viral polymerase even when other viral components are absent.
+We next directly measured polymerase activity on the full-length vRNA template by extracting total RNA and quantifying replication (vRNA) and transcription (mRNA) products by primer extension.
+Both immunostimulatory PB1 mutations had activities that were significantly different from wild type, despite being expressed at wild-type protein levels (\FIG{PB1}B).
+Specifically, T677A had higher levels of both activities, whereas D27N had reduced levels of both---although D27N still retained activity far in excess of a control active-site mutant (\FIG{PB1}C).
+We speculated that the mutations might reduce polymerase processivity, leading to accumulation of mvRNAs~\cite{velthuis2018mini} or other aberrant short RNA products that might activate the innate immune system~\cite{baum2010preference, tapia2013defective, boergeling2015evidence, dimmock2015cloned}.
+We therefore repeated the activity assays using a short 246-nucleotide template~\cite{velthuis2018mini} in place of the full-length NA vRNA (\FIG{PB1}D).
+On this shorter template, the activity of the D27N mutant was now similar to wild type, while the activity of the T677A mutant remained higher than wildtype (although not significantly so in three biological repeats). 
+Therefore, the two immunostimulatory PB1 mutations have distinct effects on the polymerase: D27N reduces processivity thereby favoring shorter RNA products, whereas T677A increases overall activity which could also lead to accumulation of aberrant RNA products.
 
 %%%%% begin IFN_vs_HA figure %%%%%%%%
 \begin{figure}
 \centerline{\includegraphics[width=0.35\textwidth, valign=t]{figures/MutantComparison/p_foldchange.pdf}}
 \caption{
-Cells that express higher levels of HA protein are much more likely to induce IFN expression only if they are infected by virus with defects in NS1.
+Infected cells that express higher levels of HA protein are much more likely to induce IFN expression only if they are infected by virus with defects in NS1.
 The y-axis shows the ratio of the percent of IFN+ cells in the highest HA-expression quartile relative to the lowest HA-expression quartile among infected cells as determined by flow cytometry.
 Points indicate replicates, and lines indicate the mean.
 This figure is based on joint analysis of the IFN reporter and HA staining for all infected cells in the flow cytometry data in \SUPPFIG{validationflow}; see \SUPPFIG{IFN_vs_HA} for a more detailed breakdown of the frequency of IFN induction as a function of HA expression.
@@ -754,7 +748,7 @@ For the experimental analysis of the PB1 mutants in \FIG{PB1}, we used plasmids 
 To construct plasmids expressing mutant PB1 proteins D27N and T677A, the plasmid pcDNA-PB1 was subjected to site-directed mutagenesis. 
 PB1 expression was analysed by western blot using antibody GTX125923 (GeneTex).
 
-To analyse the activity of the PB1 mutants in cell culture, the plasmids expressing the WSN PA, PB2, NP and PB1 proteins were transfected into 293T cells together with the plasmid expressing the wildtype NA vRNA or a 246-nt long segment 5-based template~\cite{velthuis2018mini}.
+To analyze the activity of the PB1 mutants in cell culture, the plasmids expressing the WSN PA, PB2, NP and PB1 proteins were transfected into 293T cells together with the plasmid expressing the wildtype NA vRNA or a 246-nt long segment NP-based template~\cite{velthuis2018mini}.
 Twenty-four hours post transfection, the RNA was extracted using Trizol (Invitrogen), and the steady state RNA levels assessed using reverse transcription with 32P-labelled oligonucleotides against the viral RNA species and ribosomal 5S RNA as described previously~\cite{velthuis2018mini, velthuis2016role}.
 32P-derived signals were imaged using phosphorimaging on a Typhoon scanner and analysed using Prism (GraphPad).
 In all experiments, the apparent RNA levels were background corrected using the PB1a mutant and normalized to the 5S rRNA loading control.
@@ -762,7 +756,6 @@ In all experiments, the apparent RNA levels were background corrected using the 
 To measure the induction of the IFN-beta promoter during these RNP reconstitution assays, they were carried out in the presence of a plasmid expressing Renilla luciferase from a CMV promoter and a plasmid expressing Firefly luciferase from the IFN-beta promoter~\cite{velthuis2018mini}.
 Twenty-four hours post transfection, cells were harvested, lysed and analysed using a DualGlo luciferase kit (Promega) according to the manufacturer’s instructions.
 Samples were analysed using a GloMax (Promega).
-
 
 
 \normalsize
