@@ -101,7 +101,7 @@ This IFN directs expression of anti-viral interferon-stimulated genes (ISGs) in 
 If innate immunity is activated sufficiently rapidly, it can reduce viral replication and disease~\cite{solov1969results,treanor1987intranasally,beilharz2007protection,kugel2009intranasal,steel2010transmission}---although excessive immune responses later in infection can actually be associated with immunopathology and severe disease~\cite{la2007question, iwasaki2014innate}.
 
 Unfortunately for the host, influenza initially only rarely triggers IFN production by infected cells~\cite{kallfass2013visualizing, killip2017single}.
-This rareness of IFN induction is just one form of the extreme cell-to-cell heterogeneity that characterizes infection: cells also vary widely in their production of viral mRNA, proteins, and progeny virions~\cite{russell2018extreme,steuerman2018dissection,sjaastad2018distinct,heldt2015single,wang2018cell,sjaastad2018distinct}.
+This rareness of IFN induction is just one form of the extreme cell-to-cell heterogeneity that characterizes infection: cells also vary widely in their production of viral mRNA, proteins, and progeny virions~\cite{russell2018extreme,steuerman2018dissection,sjaastad2018distinct,heldt2015single,wang2018cell}.
 Because viral growth and the IFN response are both feed-forward processes, early cell-to-cell heterogeneity could have significant downstream consequences for the race between virus and immune system---especially since natural human infections are typically initiated by just a few virions entering a few cells~\cite{mccrone2018stochastic, xue2018reconciling, varble2014influenza}.
 
 It is unclear why only some infected cells trigger innate-immune responses.
@@ -112,7 +112,7 @@ Because influenza has a high mutation rate, individual virions often have geneti
 Indeed, many studies have identified mutations that increase IFN induction when engineered into a viral population~\cite{killip2017single, velthuis2018mini, du2018genome, perez2014unbiased}, and viral stocks that are rich in internal deletions in the polymerase genes induce more IFN~\cite{wang2018cell, baum2010preference, tapia2013defective, boergeling2015evidence, dimmock2015cloned, liu2019inhibition}.
 
 However, existing techniques are inadequate to determine how viral genetic diversity contributes to cell-to-cell heterogeneity during infection.
-Flow cytometry and fluorescent reporters only measure protein levels~\cite{brooke2013most, guo2017single, sjaastad2018distinct}, and current single-cell transcriptomic techniques measure abundance of transcripts and provide only fragmentary information on their sequences~\cite{russell2018extreme, steuerman2018dissection, wang2018cell, zanini2018single, zanini2018virus, saikia2018simultaneous, oneal2018west}.
+Flow cytometry and fluorescent reporters only measure protein levels~\cite{sjaastad2018distinct, brooke2013most, guo2017single}, and current single-cell transcriptomic techniques measure abundance of transcripts and provide only fragmentary information on their sequences~\cite{russell2018extreme, steuerman2018dissection, wang2018cell, zanini2018single, zanini2018virus, saikia2018simultaneous, oneal2018west}.
 None of these techniques reliably reveal if the virion infecting a specific cell has some idiosyncratic mutation.
 
 Here we develop a new approach measure both the full transcriptome and sequences of all viral genes in single influenza-infected cells.
@@ -512,7 +512,7 @@ We speculate that these alterations increase production of aberrant immunostimul
 Finally, we found an internal deletion in PB1 that enhances IFN induction, consistent with prior work showing such deletions are immunostimulatory~\cite{baum2010preference, tapia2013defective, boergeling2015evidence, dimmock2015cloned, liu2019inhibition}.
 In fact, given the extensive prior work on deletions, we were surprised not to identify more of them in our IFN+ cells.
 There may be several reasons: we used pure viral stocks~\cite{xue2016propagation} at modest MOI; our experiments preferentially captured cells with higher viral transcriptional load; and most prior studies have used techniques that can detect large deletions but not subtle point mutations.
-Additionally, the relative importance of different defects likely varies across infection conditions, viral strains, and cell types: it remains an open question which defects are most relevant for immune detection during actual human infections.
+Additionally, the relative importance of different defects likely varies across infection conditions, viral strains, and cell types: it is an open question which defects are most relevant for immune detection during actual human infections.
 
 However, the greatest value of our work is not as a screen for IFN-inducing defects, but rather as a relatively unbiased survey of the breadth of viral variation in individual infected cells.
 This survey shows that no single type of viral defect determines whether a cell induces IFN: even the most immunostimulatory defect (absence of NS) occurs in only about a quarter of IFN+ cells.
@@ -520,7 +520,7 @@ Therefore, innate-immune detection of influenza is a multi-faceted process that 
 
 Our results further show that viral genetic defects only partially explain the heterogeneity among influenza-infected cells.
 There is substantial breadth in viral transcriptional burden and occasional IFN induction even among cells infected with unmutated virions.
-Additionally, no viral defect induces IFN deterministically: every type of immunostimulatory defect we characterize is also observed in IFN- cells in our single-cell dataset.
+Additionally, no viral defect induces IFN deterministically: every type of immunostimulatory defect that we characterize is also observed in IFN- cells in our single-cell dataset.
 This fact shows that stochasticity or pre-existing cellular states play a major role in affecting the outcome of infection---a finding that concords with the fact that IFN induction is heterogeneous even among cells treated with synthetic innate-immune ligands~\cite{shalek2013single, shalek2014single, wimmers2018single, bhushal2017cell}, as well as for other viruses~\cite{oneal2018west}.
 
 Perhaps the most intriguing question is how the heterogeneity that we have described ultimately affects the macroscopic outcome of infection.
@@ -594,41 +594,37 @@ The single-cell transcriptomics library was sequenced on an Illumina HiSeq 2500,
 
 
 \subsection{Enrichment and preparation of viral cDNA for PacBio sequencing.}
-We amplified virus-derived molecules from the small amount of cDNA retained from the 10X Genomics protocol for PacBio sequencing of the full-length cDNA.
-All molecules in this cDNA have at their 3' end the cell barcode and UMI plus the constant adaptor sequence that is added during the 10X protocol (see \FIG{workflow} for simple schematic, or the detailed analysis notebook at \url{https://github.com/jbloomlab/IFNsorted_flu_single_cell/blob/master/pacbio_analysis.ipynb} or \SUPPFILE{pacbio_analysis} for at detailed schematic).
-However, we only wanted to PacBio sequence cDNA molecules derived from virus, since it would be prohibitively expensive to sequence all molecules.
-We therefore needed to enrich for the viral molecules, a process made challenging by the need to also retain the 10X adaptor / UMI / cell barcode at the 3' end (the primer at the 5' end can be specific, but the one at the 3' end must bind the common 10X adaptor shared among all molecules).
+We amplified virus-derived molecules from cDNA retained from the 10X Genomics protocol for PacBio sequencing of the full-length cDNA.
+These cDNA have at their 3' end the cell barcode and UMI plus the adaptor sequence that is added during the 10X protocol (see \FIG{workflow} for simple schematic, and \SUPPFILE{pacbio_analysis} for more details). 
+We only wanted to PacBio sequence cDNA molecules derived from virus.
+We therefore needed to enrich for the viral molecules while retaining the 10X adaptor / UMI / cell barcode at the 3' end.
 
-We first performed a multiplex PCR reaction on 1 ng of the full-length 10X cDNA using a 3' primer complementary to the common 10X adaptor, and a multiplex mix of eight 5' primers, one specific for the mRNAs from each of the eight viral gene segments (although some viral segments produce multiple splice forms, all mRNAs from a given segment share the same 5' end).
-The sequences of these primers are in \SUPPFILE{primer_sequences}.
+We first performed a multiplex PCR reaction on 1 ng of the full-length 10X cDNA using a 3' primer complementary to the common 10X adaptor, and a multiplex mix of eight 5' primers, one specific for the mRNAs from each of the eight viral gene segments (\SUPPFILE{primer_sequences}).
 A major concern during these PCRs is strand exchange (see \SUPPFIG{StrandExchange}) which would scramble the cell barcodes and mutations on viral cDNAs.
-To reduce strand-exchange and hopefully obtain more even PCR amplification across segments, we performed emulsion PCRs using the Micellula DNA Emulsion Kit (Roboklon).
-Emulsion PCR involves encapsidating DNA template molecules in a reverse-phase emulsion, with each template positive droplet serving as a microreactor.
-This process physically separates disparate template molecules, preventing strand exchange and allowing each molecule to be amplified to exhaustion of its droplet's reagents without competing with the broader pool of PCR-amenable molecules~\cite{boers2015micelle}.
+To reduce strand-exchange and obtain more even PCR amplification across segments, we performed emulsion PCRs using the Micellula DNA Emulsion Kit (Roboklon), which physically separates disparate template molecules, preventing strand exchange and allowing each molecule to be amplified to exhaustion of its droplet's reagents~\cite{boers2015micelle}.
 We performed the PCRs using Kapa HiFi Hotstart ReadyMix, supplementing the reactions with additional BSA to a final concentration of 0.1 mg/ml and using a volume of 100$\mu$l.
 Both the common 3' primer and the multiplex mix of eight 5' primers were added to a final concentration of 0.5$\mu$M.
 We performed 30 cycles of PCR, using an extension time of 2 minutes 15 seconds at 67$^{\circ}$C, and a melting temperature of 95$^{\circ}$C.
 This melting temperature is lower than the standard 98$^{\circ}$C melting step suggested by the manufacturer for Kapa HiFi because we wanted to avoid collapse of emulsion integrity at high temperature.
-We performed 30 cycles in order to saturate the reagents in each emulsion---unlike for open PCR reactions, the physical occlusion of amplified material in emulsion PCR reduces artifacts at high cycle numbers.
 
-Because were were concerned that the multiplex PCR would still result in highly uneven amplification of different influenza cDNAs due to differences in their expression levels and lengths, the product of this multiplex PCR was subjected to eight additional individual emulsion PCR reactions, each using only a single segment-specific 5' primer as well as the common 3' primer, using 1 ng of material in each reaction.
+The product of this multiplex PCR was subjected to eight additional individual emulsion PCR reactions, each using only a single segment-specific 5' primer as well as the common 3' primer, using 1 ng of material in each reaction.
 The material from these eight segment-specific PCRs was then pooled with the goal of obtaining a equimolar ratio of segments, and sequenced on one SMRT Cell in a PacBio RS II and one SMRT Cell of a PacBio Sequel. 
-Detailed results from the analysis of these first two sequencing runs is shown in the PacBio analysis notebook at \url{https://github.com/jbloomlab/IFNsorted_flu_single_cell/blob/master/pacbio_analysis.ipynb} and \SUPPFILE{pacbio_analysis}.
-These results showed that although the PCRs substantially enriched for influenza molecules, the relative coverage of the different viral genes was still very uneven, with the longer genes (especially the polymerase genes) severely under-sampled.
+Detailed results from the analysis of these first two sequencing runs is shown in \SUPPFILE{pacbio_analysis}.
+These results showed that although the PCRs substantially enriched for influenza molecules, the relative coverage of the different viral genes was still uneven, with the longer genes under-sampled.
 
-To try to improve coverage of the polymerase genes, we produced two new sequencing pools: one consisting of the five shortest viral segments (HA, NP, NA, M, and NS) from the aforementioned segment-specific emulsion PCRs, and the other consisting of the three longer polymerase segments (PB2, PB1, and PA).
+To improve coverage of the polymerase genes, we produced two new sequencing pools: one consisting of the five shortest viral segments (HA, NP, NA, M, and NS) from the aforementioned segment-specific emulsion PCRs, and the other consisting of the three longer polymerase segments (PB2, PB1, and PA).
 The former was sequenced on one cell of a single SMRT Cell of a PacBio Sequel, and the latter on two additional SMRT Cells of a PacBio Sequel. 
-As is shown in the PacBio analysis notebook at \url{https://github.com/jbloomlab/IFNsorted_flu_single_cell/blob/master/pacbio_analysis.ipynb} (see also \SUPPFILE{pacbio_analysis}), even with these new sequencing runs the coverage remained relatively low for the polymerase genes---and most of the reads we did obtain were dominated by shorter internally deleted variants of the polymerase genes, which arise commonly during influenza replication~\cite{xue2016propagation} and are presumably preferentially amplified during PCR.
+As is shown \SUPPFILE{pacbio_analysis}, the coverage remained relatively low for the polymerase genes---and most of the reads we did obtain were dominated by shorter internally deleted variants of the polymerase genes~\cite{xue2016propagation} which are preferentially amplified during PCR.
 
-To obtain more reads for longer full-length polymerase variants, we therefore subjected 10 ng of our amplified material for each polymerase segment to a bead selection using SPRIselect beads at a volume ratio of 0.4 to select for larger molecules. 
+To obtain more reads for longer full-length polymerase variants, we therefore subjected 10 ng of our amplified material for each polymerase segment to a bead selection using SPRIselect beads at a volume ratio of 0.4. 
 This selection removes most low-molecular weight DNA species including internally-deleted defective segments.
-Material from this selection was then amplified using 16 (PB1) or 14 (PB2 and PA) cycles of a non-emulsion PCR using the standard conditions recommended by the Kapa HiFi Hotstart ReadyMix (extension at 67$^{\circ}$C for 2 minutes 15 seconds, and melting at 98$^{\circ}C$).
-The use of relatively few PCR cycles was designed to prevent the occurrence of the artifacts (including strand exchange) that occur in non-emulsion PCRs as the reactions approach saturation.
+Material from this selection was amplified using 16 (PB1) or 14 (PB2 and PA) cycles of a non-emulsion PCR using the standard conditions recommended by the Kapa HiFi Hotstart ReadyMix (extension at 67$^{\circ}$C for 2 minutes 15 seconds, and melting at 98$^{\circ}C$).
+The use of relatively few PCR cycles was designed to prevent the occurrence of the artifacts (including strand exchange) that occur in non-emulsion PCRs.
 We pooled the products of these reactions from this size-selection and sequenced on a SMRT Cell of a PacBio Sequel.
-As is shown in the PacBio analysis notebook at \url{https://github.com/jbloomlab/IFNsorted_flu_single_cell/blob/master/pacbio_analysis.ipynb} (see also \SUPPFILE{pacbio_analysis}), this sequencing yielded modestly more full-length polymerase variants, but they were still heavily undersampled compared to other viral genes.
+As is shown in \SUPPFILE{pacbio_analysis}, this sequencing yielded more full-length polymerase variants, but they were still undersampled compared to other viral genes.
 
-To further to improve recovery of full-length PB1, PB2, and PA, we therefore took an alternative approach that allowed us to perform a specific PCR for full-length polymerase variants.
-Specifically, we circularized the template molecules (including the full length of genes plus the cell barcode, UMI, and 10X adaptor), and then used two segment-specific primers that annealed in apposition near the center of each polymerase gene to linearize these circular molecules.
+To further to improve recovery of full-length PB1, PB2, and PA, we use an approach that allowed us to perform a specific PCR for full-length polymerase variants.
+We circularized the template molecules, and then used two segment-specific primers that annealed in apposition near the center of each polymerase gene to linearize these circular molecules.
 Only molecules that contain the middle of the polymerase genes (which are typically full-length) are linearized by this process.
 In the downstream computational analysis, we can then determine the full sequence of the gene as well as the cell barcode of the initial molecule from which the linearized molecule is derived.
 Specifically, we first used 2.5 ng of our already-amplified segment-specific material in a 10-cycle PCR to append circularization adapters (see \SUPPFILE{primer_sequences} for sequences), and cleaned the resultant mixture using SPRIselect beads at a volume ratio of 0.4.
@@ -638,12 +634,12 @@ The circularized and digested material was then cleaned using SPRIselect beads a
 This material was then used as template for three non-emulsion PCRs specific to PB2, PB1, or PA, using two segment-specific primers that align to the central portion of each gene but in apposition to each another (see \SUPPFILE{primer_sequences} for sequences).
 These linearization reactions used 20 (PB2) or 26 (PB1 and PA) PCR cycles, and the resulting products were cleaned using SPRIselect beads at a volume ratio of 1.0.
 This material was pooled to produce an equimolar mixture of full-length PB1, PA, and PB2 and sequenced in an additional SMRT Cell of PacBio Sequel. 
-As is shown in the PacBio analysis notebook at \url{https://github.com/jbloomlab/IFNsorted_flu_single_cell/blob/master/pacbio_analysis.ipynb} (see also \SUPPFILE{pacbio_analysis}), this process efficiently yielded many full-length polymerase variants.
+As is shown in \SUPPFILE{pacbio_analysis}, this process yielded many full-length polymerase variants.
 
-The computational analyses of the full-length viral gene sequences described below used the combination of the data from all of these reactions.
+The computational analyses of the full-length viral gene sequences described below combined the data from all these reactions.
 The number of sequences obtained for each gene after pooling the data from all reactions is shown in \SUPPFIG{CCSs}, which also indicates that the net rate of strand exchange is very low (see \SUPPFIG{StrandExchange} for an illustration of how this is determined).
-A more detailed breakdown of the coverage of each gene and data showing a consistently low rate of strand exchange for all PacBio runs is at \url{https://github.com/jbloomlab/IFNsorted_flu_single_cell/blob/master/pacbio_analysis.ipynb} (see also \SUPPFILE{pacbio_analysis}).
-Importantly, the various PCR biases and enrichment schemes mean that the coverage of molecules by the PacBio sequencing is not proportional to their original abundance in the starting mRNA.
+A detailed breakdown of the coverage of each gene and PacBio run is in \SUPPFILE{pacbio_analysis}.
+Importantly, the PCR biases mean that the coverage of molecules by the PacBio sequencing is not proportional to their abundance in the starting mRNA.
 However, as described in the computational analysis section below, the final analyses use the cell barcodes and UMIs in conjunction with the standard 10X Illumina sequencing to ensure that none of the conclusions are affected by the disproportionate amplification of some molecules during the PacBio library preparation (for instance, duplicate UMIs are removed from the PacBio data, and all conclusions about gene abundance or absence are based on the Illumina data).
 
 \subsection{qPCR for viral genes and IFN.}
@@ -721,7 +717,7 @@ We called mutations (insertions, deletions, and substitutions) in the viral gene
 \item If any CCSs for a particular viral-barcode variant of gene in a cell had a mutation, then require at least two CCSs to call the sequence.
 \item If at least two and $>$30\% of the CCSs had a specific mutation, then call that mutation as present and note its frequency among the CCSs. The exception was single-nucleotide indels in homopolymers, for which we required three CCSs to call a mutation (the reason is that the main mode of PacBio sequencing errors is short indels in homopolymers).
 \end{enumerate}
-The plots in \url{https://github.com/jbloomlab/IFNsorted_flu_single_cell/blob/master/pacbio_analysis.ipynb} or \SUPPFILE{pacbio_analysis} indicate that these are reasonable mutation-calling criteria.
+The plots in \SUPPFILE{pacbio_analysis} indicate that these are reasonable mutation-calling criteria.
 We could call the sequences of all expressed viral genes in about half of the infected cells (\SUPPFIG{ncells}).
 The mutations called using this pipeline are shown in \FIG{genotypes}, and \SUPPFILE{genotypes} gives the number of CCSs supporting each mutation call.
 The called sequences of the viral genes were added to the annotated cell-gene matrix.
