@@ -76,7 +76,7 @@ Jesse D. Bloom\afn{a,c,d,\authfn{1}}
 \begin{abstract}
 The outcome of viral infection is extremely heterogeneous, with infected cells only sometimes activating innate immunity.
 Here we develop a new method to assess how the genetic variation in viral populations contributes to this heterogeneity.
-We do this by determining the transcriptome and full-length sequences of all viral genes in single influenza-infected cells.
+We do this by determining the transcriptome and full-length sequences of all viral genes in single cells infected with a well-defined stock of influenza virus.
 Most cells are infected by virions with defects, some of which increase the frequency of innate-immune activation.
 These immunostimulatory defects are diverse, and include mutations that perturb the function of the viral polymerase protein PB1, large internal deletions in viral genes, and failure to express the virus's interferon antagonist NS1.
 However, immune activation remains stochastic in cells infected by virions with these defects, and occasionally is triggered even by virions that express unmutated copies of all genes.
@@ -92,7 +92,7 @@ Overall, our study provides the first complete picture of how viral mutations af
 
 \end{abstract}
 
-\keywords{influenza virus; interferon; PacBio; single-cell RNAseq; 10X Chromium; NS1; PB1; mini viral RNA; heterogeneity}
+\keywords{influenza virus; interferon; PacBio; single-cell RNAseq; 10X Chromium; NS1; PB1; defective virus; heterogeneity}
 
 \section{Introduction}
 Infection with an acute virus such as influenza initiates a race between the virus and immune system.
@@ -115,7 +115,7 @@ However, existing techniques are inadequate to determine how viral genetic diver
 Flow cytometry and fluorescent reporters only measure protein levels~\cite{sjaastad2018distinct, brooke2013most, guo2017single}, and current single-cell transcriptomic techniques measure abundance of transcripts and provide only fragmentary information on their sequences~\cite{russell2018extreme, steuerman2018dissection, wang2018cell, zanini2018single, zanini2018virus, saikia2018simultaneous, oneal2018west}.
 None of these techniques reliably reveal if the virion infecting a specific cell has some idiosyncratic mutation.
 
-Here we develop a new approach measure both the full transcriptome and sequences of all viral genes in single influenza-infected cells.
+Here we develop a new approach to measure both the full transcriptome and sequences of all viral genes in single influenza-infected cells.
 To do this, we perform both standard Illumina-based transcriptomics and full-length PacBio sequencing of viral genes from single cells.
 Two-thirds of cells are infected by virions that have a mutation or defect in gene expression.
 We identify several types of viral defects that increase IFN induction, but also show that viral diversity is insufficient to fully explain cell-to-cell heterogeneity during influenza infection.
@@ -151,10 +151,21 @@ Cells that activate the IFN reporters can be enriched by magnetic-activated cell
 The reporters were efficiently activated by infection with a strain of Sendai virus~\cite{strahle2006sendai} that potently induces IFN (\SUPPFIG{reportervalidation}A), and activation of the type I and type III IFN reporters was highly correlated in our cells (\SUPPFIG{reportervalidation}B; further validated by the single-cell transcriptomics below).
 Therefore, for the rest of this paper, we use ``IFN expression'' to refer to combined expression of type I and III IFNs. 
 
-We generated a stock of A/WSN/1933 (H1N1) influenza (hereafter referred to as ``WSN''), and found that it activated the IFN reporter in $\sim$0.5\% of infected cells  (\FIG{IFNrare}B), a frequency roughly comparable to that reported in prior studies~\cite{killip2017single, russell2018extreme}.
+We generated a stock of A/WSN/1933 (H1N1) influenza (hereafter referred to as ``WSN'') directly from reverse-genetics plasmids~\cite{hoffmann2000dna}, and passaged this stock at low multiplicity of infection (MOI).
+This process ensures that the viral stock that is relatively ``pure'', with only low levels of the large internal deletions and other defects that arise in stocks passaged at high MOI~\cite{xue2016propagation}.
+As described in the next subsection, our stock actually consisted of a mix of two viruses: wild-type WSN and a variant of this virus that carries synonymous viral ``barcodes'' near the termini of each gene.
+This viral stock activated the IFN reporter in $\sim$0.5\% of infected cells  (\FIG{IFNrare}B), a frequency roughly comparable to that reported in prior studies~\cite{killip2017single, russell2018extreme}.
 We also validated that MACS for the cell-surface protein driven by the IFN reporter enriched the IFN+ cells by $>$50-fold (\SUPPFIG{MACS}).
 
 \subsection{Combined transcriptomics and virus-sequencing of single infected cells.}
+
+We developed the approach in \FIG{workflow} to obtain the entire transcriptome \emph{and} the full sequences of all viral genes in single cells.
+First, we generated the viral stock described in the previous subsection, which consisted of a mix of wild-type WSN and a ``synonymously barcoded'' variant that contained two engineered synonymous mutations near each termini of each gene (\SUPPFILE{virus_seqs}).
+These viral barcodes allow us to identify co-infections from single-cell transcriptomic data~\cite{russell2018extreme}, and provide a control for PCR artifacts during full-length sequencing of viral transcripts (see below).
+We used this viral stock to infect A549 IFN reporter cells (\FIG{workflow}A) at a dose that led to detectable viral transcription in $\sim$25\% of cells.
+From 12 to 13 hours post-infection, we used MACS to enrich cells that activated the IFN reporter.
+To ensure the presence of IFN- cells, we added back non-enriched cells to $\sim$10\% of the total.
+We also added uninfected canine cells to $\sim$5\% of the total as a control for multiplets and to estimate the background amount of viral mRNA detected in truly uninfected cells.
 
 %%% start workflow figure
 \begin{figure}
@@ -181,14 +192,6 @@ The result is a matrix giving the expression of each gene in each cell, as well 
 \end{fullwidth}
 \end{figure}
 %%% end workflow figure
-
-We developed the approach in \FIG{workflow} to obtain the entire transcriptome \emph{and} the full sequences of all viral genes in single cells.
-First, we generated a stock of virus that consisted of a mix of wild-type WSN and a ``synonymously barcoded'' variant that contained two engineered synonymous mutations near each termini of each gene (\SUPPFILE{virus_seqs}).
-These viral barcodes allow us to identify co-infections from single-cell transcriptomic data~\cite{russell2018extreme}, and provide a control for PCR artifacts during full-length sequencing of viral transcripts (see below).
-We used this viral stock to infect A549 IFN reporter cells (\FIG{workflow}A) at a dose that led to detectable viral transcription in $\sim$25\% of cells.
-From 12 to 13 hours post-infection, we used MACS to enrich cells that activated the IFN reporter.
-To ensure the presence of IFN- cells, we added back non-enriched cells to $\sim$10\% of the total.
-We also added uninfected canine cells to $\sim$5\% of the total as a control for multiplets and to estimate the background amount of viral mRNA detected in truly uninfected cells.
 
 We processed the cells on a commercially available platform~\cite{zheng2017massively} that isolates cells in droplets and reverse transcribes polyadenylated mRNAs to append a unique cell barcode to all cDNAs in each droplet, and a unique molecular identifier (UMI) to each cDNA molecule (\FIG{workflow}B).
 Because influenza virus mRNAs are polyadenylated~\cite{robertson1981polyadenylation}, this process appends cell barcodes to viral as well as cellular mRNAs.
@@ -426,7 +429,7 @@ Other defects are more surprising: for instance, it is not obvious why amino-aci
 We therefore designed experiments to interrogate some of these defects.
 
 We first focused on the PB1 mutations.
-Recent research has shown that mutations to the PB2 polymerase subunit of the WSN viral strain can enhance IFN induction by leading to production of aberrant mini viral RNAs (mvRNAs) that trigger RIG-I~\cite{velthuis2018mini}.
+Recent research has shown that mutations to the PB2 polymerase subunit of the WSN viral strain can enhance IFN induction by leading to production of aberrant RNAs that trigger RIG-I~\cite{velthuis2018mini, du2018genome}.
 To investigate if the PB1 mutations might similarly perturb polymerase activity, we examined their location in a structural model of the polymerase complex (\FIG{PB1}A).
 The IFN-enhancing PB1 mutation T677A occurs at the tip of a helix that interacts with the 3' terminus of the RNA template as it enters the channel above the active site, whereas the IFN-enhancing D27N mutation is deeper in the polymerase close to the binding pocket of the 5' terminus of the template. 
 Therefore, both mutations could plausibly alter the polymerase's interactions with the RNA template.
@@ -443,19 +446,15 @@ The PA endonuclease (green; PA endo) and PB2 cap binding domain (pink; PB2 cap) 
 Part of the fingers subdomain of PB1 is hidden to reveal the template in the entry channel. 
 (B) IFN-beta promoter activity measured using a dual luciferase reporter assay in 293T cells transfected with plasmids expressing the indicated PB1 protein, the other polymerase complex proteins (PB2, PA, and NP), and a full-length NA vRNA template.
 PB1a is a catalytically inactive PB1 active site control.
-Points show three biological replicates; ``n.d.'' indicates not detectable and points in orange were significantly greater than wild type by a two-sided t-test.
-(C) Polymerase activity in 293T cells transfected as in panel (B).
+In this panel and the next two panels, points show three biological replicates; ``n.d.'' indicates not detectable, and orange indicates a variant was significantly different than wild type by a two-sided t-test.
+(C) Polymerase activity on full-length vRNA template in 293T cells transfected as in panel (B).
 Steady-state RNA levels were measured by primer extension, denaturing PAGE, and phosphorimaging. 
 PB1a was used as negative control and background correction. 
 The 5S rRNA signal was used as loading control. 
-Other panels show Western blot analysis of PB1, NP and GAPDH protein expression. 
-Graph shows the average of three biological repeats. 
-Error bars indicate standard deviation.
-P-values were determined by two-sided t-test.
+Other panels show Western blot analysis of PB1, NP and GAPDH protein expression, and the graph at the bottom shows quantification by phosphoroimaging. 
 (D) Polymerase activity on a short 246-nucleotide vRNA template. 
 The top panel shows the steady state levels of vRNA template as determined by primer extension and denaturing PAGE. 
-The other two panels show the PB1 and tubulin expression levels analyzed by western blot. 
-Graph shows the average of three biological repeats. 
+The other two panels show the PB1 and tubulin expression levels analyzed by Western blot, and the graph shows quantification.
 }
 \label{fig:PB1}
 
@@ -467,7 +466,7 @@ Both polymerase mutations increased IFN expression in this assay (\FIG{PB1}B), i
 We next directly measured polymerase activity on the full-length vRNA template by extracting total RNA and quantifying replication (vRNA) and transcription (mRNA) products by primer extension.
 Both immunostimulatory PB1 mutations had activities that were significantly different from wild type, despite being expressed at wild-type protein levels (\FIG{PB1}B).
 Specifically, T677A had higher levels of both activities, whereas D27N had reduced levels of both---although D27N still retained activity far in excess of a control active-site mutant (\FIG{PB1}C).
-We speculated that the mutations might reduce polymerase processivity, leading to accumulation of mvRNAs~\cite{velthuis2018mini} or other aberrant short RNA products that might activate the innate immune system~\cite{baum2010preference, tapia2013defective, boergeling2015evidence, dimmock2015cloned, liu2019inhibition}.
+We speculated that the mutations might alter polymerase processivity, leading to accumulation of aberrant RNA products that might activate the innate immune system~\cite{velthuis2018mini, baum2010preference, tapia2013defective, boergeling2015evidence, dimmock2015cloned, liu2019inhibition}.
 We therefore repeated the activity assays using a short 246-nucleotide template~\cite{velthuis2018mini} in place of the full-length NA vRNA (\FIG{PB1}D).
 On this shorter template, the activity of the D27N mutant was now similar to wild type, while the activity of the T677A mutant remained higher than wildtype (although not significantly so in three biological repeats). 
 Therefore, the two immunostimulatory PB1 mutations have distinct effects on the polymerase: D27N reduces processivity thereby favoring shorter RNA products, whereas T677A increases overall activity which could also lead to accumulation of aberrant RNA products.
@@ -508,7 +507,7 @@ We identified four types of defects that we validated to increase IFN induction.
 Two types of defects---absence of the NS gene and amino-acid mutations to the NS1 protein---presumably impair NS1's well-known ability to antagonize innate immunity~\cite{garcia1998influenza, hale2008multifunctional}.
 A third type of defect, amino-acid mutations in PB1, was more surprising since this protein has not been described as a major player in innate-immune detection.
 We characterized two IFN-inducing PB1 mutations, and showed that one impaired polymerase processivity whereas the other increased overall activity.
-We speculate that these alterations increase production of aberrant immunostimulatory products such as mini-viral RNAs~\cite{velthuis2018mini} or other deleted forms of vRNAs.
+We speculate that these alterations increase production of aberrant immunostimulatory RNA products~\cite{velthuis2018mini}.
 Finally, we found an internal deletion in PB1 that enhances IFN induction, consistent with prior work showing such deletions are immunostimulatory~\cite{baum2010preference, tapia2013defective, boergeling2015evidence, dimmock2015cloned, liu2019inhibition}.
 In fact, given the extensive prior work on deletions, we were surprised not to identify more of them in our IFN+ cells.
 There may be several reasons: we used pure viral stocks~\cite{xue2016propagation} at modest MOI; our experiments preferentially captured cells with higher viral transcriptional load; and most prior studies have used techniques that can detect large deletions but not subtle point mutations.
@@ -567,6 +566,7 @@ We controlled the durations and MOI during viral passaging since these factors c
 The viruses were generated by reverse genetics in co-cultures of 293T and MDCK-SIAT1 cells in influenza growth media (Opti-MEM supplemented with 0.01\% heat-inactivated FBS, 0.3\% BSA, 100 U of penicillin/ml, 100 $\mu$g of streptomycin/ml, and 100 $\mu$g of calcium chloride/ml) and then propagated in MDCK-SIAT1 cells in influenza growth media using the same basic procedures detailed in \cite{russell2018extreme}.
 Specifically, after generation by reverse genetics, the wild-type variant was expanded at an MOI of 0.001 for 72 hours twice in MDCK-SIAT1 cells, and the synonymously barcoded variant was expanded once at an MOI of 0.01 for 60 hours.
 The MOIs for this passaging are based on titers determined using TCID50 assays via the formula of Reed and Muench~\cite{reed1938simple} as implemented at \url{https://github.com/jbloomlab/reedmuenchcalculator}.
+After being passaged independently, the two viral stocks were combined at equivalent numbers of infectious units to make the stock used in the single-cell experiments.
 
 \subsection{Flow cytometry analyses for HA expression.}
 For the single-cell experiments (which only examine the transcriptional results of a single cycle of infection), we were most interested in the titer of viral particles that are transcriptionally active for a single round of infection of A549 cells.
