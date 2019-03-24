@@ -76,7 +76,7 @@ Jesse D. Bloom\afn{a,c,d,\authfn{1}}
 \begin{abstract}
 The outcome of viral infection is extremely heterogeneous, with infected cells only sometimes activating innate immunity.
 Here we develop a new method to assess how the genetic variation in viral populations contributes to this heterogeneity.
-We do this by determining the transcriptome and full-length sequences of all viral genes in single cells infected with a well-defined stock of influenza virus.
+We do this by determining the transcriptome and full-length sequences of all viral genes in single cells infected with a nominally ``pure'' stock of influenza virus.
 Most cells are infected by virions with defects, some of which increase the frequency of innate-immune activation.
 These immunostimulatory defects are diverse, and include mutations that perturb the function of the viral polymerase protein PB1, large internal deletions in viral genes, and failure to express the virus's interferon antagonist NS1.
 However, immune activation remains stochastic in cells infected by virions with these defects, and occasionally is triggered even by virions that express unmutated copies of all genes.
@@ -424,13 +424,30 @@ But our single-cell data show that IFN induction is stochastic even for infectio
 Therefore, the experiments in this section not only validate some specific viral defects that increase IFN induction, but also show that induction remains stochastic even with these defects.
 
 \subsection{The IFN-inducing viral defects act by diverse mechanisms.}
-Some of the viral defects in IFN+ are easy to reconcile with existing knowledge: for instance, NS1 is the virus's primary IFN antagonist~\cite{garcia1998influenza, hale2008multifunctional}, and internal deletions are prevalent in immunostimulatory viral stocks~\cite{wang2018cell, baum2010preference, tapia2013defective, boergeling2015evidence, dimmock2015cloned, liu2019inhibition}.
+Some of the viral defects in IFN+ cells are easy to reconcile with existing knowledge: for instance, NS1 is the virus's primary IFN antagonist~\cite{garcia1998influenza, hale2008multifunctional}, and internal deletions are prevalent in immunostimulatory viral stocks~\cite{wang2018cell, baum2010preference, tapia2013defective, boergeling2015evidence, dimmock2015cloned, liu2019inhibition}.
 Other defects are more surprising: for instance, it is not obvious why amino-acid mutations in PB1 increase IFN induction.
-We therefore designed experiments to interrogate some of these defects.
+We therefore designed experiments to interrogate some of these defects in more detail.
 
-We first focused on the PB1 mutations.
-Recent research has shown that mutations to the PB2 polymerase subunit of the WSN viral strain can enhance IFN induction by leading to production of aberrant RNAs that trigger RIG-I~\cite{velthuis2018mini, du2018genome}.
-To investigate if the PB1 mutations might similarly perturb polymerase activity, we examined their location in a structural model of the polymerase complex (\FIG{PB1}A).
+%%%%% begin IFN_vs_HA figure %%%%%%%%
+\begin{figure}
+\centerline{\includegraphics[width=0.35\textwidth, valign=t]{figures/MutantComparison/p_foldchange.pdf}}
+\caption{
+Infected cells that express higher levels of HA protein are much more likely to induce IFN expression only if they are infected by virus with defects in NS1.
+The y-axis shows the ratio of the percent of IFN+ cells in the highest HA-expression quartile relative to the lowest HA-expression quartile.
+Points indicate replicates, and lines indicate the mean.
+This figure is based on joint analysis of the IFN reporter and HA staining for all infected cells in the flow cytometry data in \SUPPFIG{validationflow}; see \SUPPFIG{IFN_vs_HA} for more details.
+}
+\label{fig:IFN_vs_HA}
+\end{figure}
+%%%%% end IFN_vs_HA figure %%%%%%%%
+
+We first focused on one of the strongest trends from the single cell data: increased viral gene expression is associated with increased IFN induction when the infecting virion fails to express NS, but not otherwise (\FIG{mutations}D).
+To confirm this observation, we performed a flow cytometry analysis of the reporter cells infected by different immunostimulatory viral mutants to examine the association between expression of a viral gene product (HA protein) and IFN induction.  
+Consistent with the single-cell data, cells that expressed more HA were much more likely to turn IFN+ when infected with the NS1stop or NS1-A122V mutants, but not when infected with any of the other viral variants (\FIG{IFN_vs_HA}). 
+This fact suggests that when there are high levels of viral transcription, NS1 becomes more important as a buffer against detection of viral products.
+
+We hypothesized that the immunostimulatory mutations to PB1 might cause the viral polymerase to produce aberrant products, in line with recent work showing that mutations to PB2 can lead to the generation of aberrant RNAs that trigger RIG-I~\cite{velthuis2018mini, du2018genome}.
+To investigate if the PB1 mutations might perturb polymerase activity, we examined their location in a structural model of the polymerase complex (\FIG{PB1}A).
 The IFN-enhancing PB1 mutation T677A occurs at the tip of a helix that interacts with the 3' terminus of the RNA template as it enters the channel above the active site, whereas the IFN-enhancing D27N mutation is deeper in the polymerase close to the binding pocket of the 5' terminus of the template. 
 Therefore, both mutations could plausibly alter the polymerase's interactions with the RNA template.
 
@@ -466,31 +483,12 @@ Both polymerase mutations increased IFN expression in this assay (\FIG{PB1}B), i
 We next directly measured polymerase activity on the full-length vRNA template by extracting total RNA and quantifying replication (vRNA) and transcription (mRNA) products by primer extension.
 Both immunostimulatory PB1 mutations had activities that were significantly different from wild type, despite being expressed at wild-type protein levels (\FIG{PB1}B).
 Specifically, T677A had higher levels of both activities, whereas D27N had reduced levels of both---although D27N still retained activity far in excess of a control active-site mutant (\FIG{PB1}C).
-We speculated that the mutations might alter polymerase processivity, leading to accumulation of aberrant RNA products that might activate the innate immune system~\cite{velthuis2018mini, baum2010preference, tapia2013defective, boergeling2015evidence, dimmock2015cloned, liu2019inhibition}.
+We speculated that the mutations might alter polymerase processivity, leading to accumulation of aberrant RNA products that activate the innate immune system~\cite{velthuis2018mini, baum2010preference, tapia2013defective, boergeling2015evidence, dimmock2015cloned, liu2019inhibition}.
 We therefore repeated the activity assays using a short 246-nucleotide template~\cite{velthuis2018mini} in place of the full-length NA vRNA (\FIG{PB1}D).
 On this shorter template, the activity of the D27N mutant was now similar to wild type, while the activity of the T677A mutant remained higher than wildtype (although not significantly so in three biological repeats). 
 Therefore, the two immunostimulatory PB1 mutations have distinct effects on the polymerase: D27N reduces processivity thereby favoring shorter RNA products, whereas T677A increases overall activity which could also lead to accumulation of aberrant RNA products.
 
-%%%%% begin IFN_vs_HA figure %%%%%%%%
-\begin{figure}
-\centerline{\includegraphics[width=0.35\textwidth, valign=t]{figures/MutantComparison/p_foldchange.pdf}}
-\caption{
-Infected cells that express higher levels of HA protein are much more likely to induce IFN expression only if they are infected by virus with defects in NS1.
-The y-axis shows the ratio of the percent of IFN+ cells in the highest HA-expression quartile relative to the lowest HA-expression quartile among infected cells as determined by flow cytometry.
-Points indicate replicates, and lines indicate the mean.
-This figure is based on joint analysis of the IFN reporter and HA staining for all infected cells in the flow cytometry data in \SUPPFIG{validationflow}; see \SUPPFIG{IFN_vs_HA} for a more detailed breakdown of the frequency of IFN induction as a function of HA expression.
-}
-\label{fig:IFN_vs_HA}
-\end{figure}
-%%%%% end IFN_vs_HA figure %%%%%%%%
-
-The diversity of mechanisms of IFN induction extends to other types of viral defects.
-For instance, the single-cell data indicates that increased viral gene expression is only associated with increased IFN induction when the infecting virion fails to express NS (\FIG{mutations}D).
-To confirm this observation by an independent method, we performed a detailed analysis of the flow cytometry underlying \FIG{validation} to determine relationship between IFN induction and expression of the viral HA protein.
-\FIG{IFN_vs_HA} shows that cells that express more HA are much more likely to turn IFN+ if they are infected with the NS1stop or NS1-A122V mutants, but not if they are infected with any of the other viral variants. 
-Taken together with the single-cell data, this observation suggests that only in the absence of functional NS1 does higher viral gene expression predispose an infected cell to induce IFN.
-Therefore, the diverse range of viral defects that induce IFN act by diverse processes, showing that viral variation influences not only the rate of IFN induction but also the factors that contribute to this induction.
-
+Overall, the results in this section show that the diverse range immunostimulatory viral defects identified in single cells act by diverse processes, showing that viral variation influences not only the rate of IFN induction but also the factors that contribute to this induction.
 
 \section{Discussion}
 We have determined the full sequences of all viral genes in single influenza-infected cells.
