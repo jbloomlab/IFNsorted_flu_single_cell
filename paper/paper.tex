@@ -387,8 +387,8 @@ The numbers indicate the median of four measurements for each viral mutant.
 The limit of detection of 0.05\% is indicated with a dashed green line, and the median value for wild type is indicated with a dashed blue line.
 Points are colored orange if the mutant virus stock induces IFN more frequently than the wild-type viral stock (one-sided t-test, $P < 0.01$), and blue otherwise.
 (B)
-Similar to the first panel, but validates the increased IFN induction for a large internal deletion in the PB1 gene.
-See \SUPPFIG{validationflow} and \SUPPFIG{delqPCR} for more detailed experimental data.
+Similar to the first panel, but validates increased IFN induction for a large internal deletion in the PB1 gene, and normalizes infecting virion dose rather than calling IFN+ percentage only among infected cells.
+See \SUPPFIG{validationflow} and \SUPPFIG{delqPCR} for details.
 The experiments in the two panels were performed on different days, and so numerical values can be reliably compared within panels but not between panels.
 }
 \label{fig:validation}
@@ -926,7 +926,7 @@ Note that since the rate of homologous recombination in influenza virus in negli
 Number of cells for which we could determine the full sequences of all genes expressed by the infecting virion(s).
 (A) We could call the complete genotypes of the infecting virion(s) for the majority of cells infected with just a single viral barcode variant, but only a minority of cells co-infected with both viral barcodes.
 (B) The cells for which we could call complete viral genotypes tended to have higher expression of viral mRNA than cells for which we could not call complete genotypes.
-Both facts makes sense.
+Both facts make sense.
 Cells with more viral mRNA are more likely to have their viral cDNA captured in the PacBio sequencing, which is only captures a small fraction of the total transcripts identified by the 3'-end sequencing transcriptomic sequencing.
 The lower calling rate for dual-barcode co-infections is probably because these co-infections have more viral genes that must be sequenced (potentially a copy of each viral gene from each viral variant), increasing the chances that one of these genes is missed by the PacBio sequencing. 
 An important implication of this plot is that the cells for which we call complete viral genotypes are \emph{not} a random subsampling of all infected cells in the experiment, but are rather enriched for cells that have high levels of viral mRNA and do not have dual-barcode viral infections.
@@ -984,7 +984,7 @@ A more detailed version of the data summarized in \FIG{IFN_vs_HA}.
 For each virus and replicate, we binned the infected cells in \SUPPFIG{validationflow} into HA expression quartiles based on the flow cytometry measurements.
 We then calculated the percent of cells that were IFN+ in each quartile.
 The plots show the mean HA expression of the quartile versus the precent of cells that are IFN+.
-The results clearly show that for the NS1stop and to a lesser extend the NS1-A122V variants, more viral protein (higher HA signal) correlations with IFN induction.
+The results clearly show that for the NS1stop and to a lesser extent the NS1-A122V variants, more viral protein (higher HA signal) correlates with IFN induction.
 \FIG{IFN_vs_HA} summarizes these same data by simply showing the ratio of percent IFN+ between the highest and lowest quartile.
 }
 \label{suppfig:IFN_vs_HA}
