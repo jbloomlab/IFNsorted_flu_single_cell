@@ -74,19 +74,19 @@ Jesse D. Bloom\afn{a,c,d,\authfn{1}}
 \maketitle
 
 \begin{abstract}
-The outcome of viral infection is extremely heterogeneous, with infected cells only sometimes activating innate immunity.
+Influenza-infected cells vary widely in their expression of viral genes, and only occasionally activate innate immunity.
 Here we develop a new method to assess how the genetic variation in viral populations contributes to this heterogeneity.
 We do this by determining the transcriptome and full-length sequences of all viral genes in single cells infected with a nominally ``pure'' stock of influenza virus.
 Most cells are infected by virions with defects, some of which increase the frequency of innate-immune activation.
 These immunostimulatory defects are diverse, and include mutations that perturb the function of the viral polymerase protein PB1, large internal deletions in viral genes, and failure to express the virus's interferon antagonist NS1.
 However, immune activation remains stochastic in cells infected by virions with these defects, and occasionally is triggered even by virions that express unmutated copies of all genes.
-Our work shows that the diverse spectrum of defects in influenza virus populations contributes to---but does not completely explain---the heterogeneity in infection outcome and immune activation in single infected cells.
+Our work shows that the diverse spectrum of defects in influenza virus populations contributes to---but does not completely explain---the heterogeneity in viral gene expression and immune activation in single infected cells.
 
 \begin{importance}
 Because influenza virus has a high mutation rate, many cells are infected by mutated virions.
 But so far, it has been impossible to fully characterize the sequence of the virion infecting any given cell, since conventional techniques like flow cytometry and single-cell RNA-seq only detect if a protein or transcript is present---not its sequence.
 Here we develop a new approach that uses long-read PacBio sequencing to determine the sequences of virions infecting single cells.
-We show that viral genetic variation explains some but not all of the cell-to-cell variability in infection outcome.
+We show that viral genetic variation explains some but not all of the cell-to-cell variability in viral gene expression and innate-immune induction.
 Overall, our study provides the first complete picture of how viral mutations affect the course of infection in single cells.
 \end{importance}
 
@@ -102,13 +102,14 @@ If innate immunity is activated sufficiently rapidly, it can reduce viral replic
 
 Unfortunately for the host, influenza initially only rarely triggers IFN production by infected cells~\cite{kallfass2013visualizing, killip2017single}.
 This rareness of IFN induction is just one form of the extreme cell-to-cell heterogeneity that characterizes infection: cells also vary widely in their production of viral mRNA, proteins, and progeny virions~\cite{russell2018extreme,steuerman2018dissection,sjaastad2018distinct,heldt2015single,wang2018cell}.
-Because viral growth and the IFN response are both feed-forward processes, early cell-to-cell heterogeneity could have significant downstream consequences for the race between virus and immune system---especially since natural human infections are typically initiated by just a few virions entering a few cells~\cite{mccrone2018stochastic, xue2018reconciling, varble2014influenza}.
+Because viral growth and the IFN response are both feed-forward processes that amplify themselves, early variation in the initiation of these events could have significant downstream consequences for the race between virus and immune system---especially since natural human infections are typically founded by just a few virions entering a few cells~\cite{mccrone2018stochastic, xue2018reconciling, varble2014influenza}.
 
 It is unclear why only some infected cells trigger innate-immune responses.
 Two possible contributors are pure stochasticity and pre-existing variation in cellular state.
 For instance, only some cells induce IFN even upon treatment with synthetic innate-immune ligands~\cite{shalek2013single, shalek2014single, wimmers2018single}, and the frequency of IFN induction may depend on a cell's pre-existing chromatin state~\cite{bhushal2017cell}.
 But for influenza, a third possible contributor also looms large: viral genetic diversity.
-Because influenza has a high mutation rate, individual virions often have genetic defects~\cite{parvin1986measurement, suarez1992heterogeneity, suarez1994estimation, bloom2014experimentally, pauly2017novel}.
+The virus has evolved mechanisms to avoid IFN induction, including expressing proteins that interfere with innate-immune induction~\cite{garcia1998influenza, hale2008multifunctional,hayashi2015influenza,vreede2010mechanisms,dudek2011influenza} and sequestering immunogenic viral RNA~\cite{killip2015influenza}.
+However, because influenza has a high mutation rate~\cite{parvin1986measurement, suarez1992heterogeneity, suarez1994estimation, bloom2014experimentally, pauly2017novel}, individual virions often have genetic defects that could impair these immune-evasion strategies.
 Indeed, many studies have identified mutations that increase IFN induction when engineered into a viral population~\cite{killip2017single, velthuis2018mini, du2018genome, perez2014unbiased}, and viral stocks that are rich in internal deletions in the polymerase genes induce more IFN~\cite{wang2018cell, baum2010preference, tapia2013defective, boergeling2015evidence, dimmock2015cloned, liu2019inhibition}.
 
 However, existing techniques are inadequate to determine how viral genetic diversity contributes to cell-to-cell heterogeneity during infection.
@@ -164,7 +165,7 @@ First, we generated the viral stock described in the previous subsection, which 
 These viral barcodes allow us to identify co-infections from single-cell transcriptomic data~\cite{russell2018extreme}, and provide a control for PCR artifacts during full-length sequencing of viral transcripts (see below).
 We used this viral stock to infect A549 IFN reporter cells (\FIG{workflow}A) at a dose that led to detectable viral transcription in $\sim$25\% of cells.
 From 12 to 13 hours post-infection, we used MACS to enrich cells that activated the IFN reporter.
-To ensure the presence of IFN- cells, we added back non-enriched cells to $\sim$10\% of the total.
+To ensure the presence of IFN-negative cells, we added back non-enriched cells to $\sim$10\% of the total.
 We also added uninfected canine cells to $\sim$5\% of the total as a control for multiplets and to estimate the background amount of viral mRNA detected in truly uninfected cells.
 
 %%% start workflow figure
@@ -263,14 +264,17 @@ By examining the synonymous viral barcodes near the 3' termini of transcripts, w
 From \FIG{transcriptomics}F, we estimate~\cite{bloom2018estimating} that 63\% of infected cells are co-infected, implying that 25\% are co-infected with two virions with the same viral barcode (such co-infections cannot be identified from transcriptomic data).
 Interestingly, this co-infection rate is higher than expected from the relative numbers of infected and uninfected cells (\FIG{transcriptomics}C) if infection is Poisson.
 This discrepancy could arise if the MACS for IFN+ cells also enriches co-infected cells, if infection is not truly Poisson, or if co-infection increases the likelihood that we identify a cell as infected given the thresholds in \FIG{transcriptomics}C.
-This moderately high rate of co-infection may also explain why more cells in our experiment express all eight viral genes compared to some prior studies, as a co-infecting virion can complement a missing viral gene. 
+The first explanation seems unlikely, as there is no tendency for co-infected cells to express more IFN (\SUPPFIG{coinf_IFN}); therefore we favor the latter two explanations.
+The moderately high rate of co-infection may also explain why more cells in our experiment express all eight viral genes compared to some prior studies, as a co-infecting virion can complement a missing viral gene. 
 
 We next examined expression of IFN and ISGs (\FIG{transcriptomics}G and \SUPPFIG{ISG}).
 Over 20\% of infected cells were IFN+, indicating that the MACS successfully enriched IFN+ cells far beyond their initial frequency.
-Few ($\sim$1.3\%) uninfected cells were IFN+; the few that were present might be because the MACS enriched for rare cells that spontaneously activated IFN, or because some cells that we classified as uninfected were actually infected at low levels.
+The expression of type I and type III IFN was highly correlated in single cells, justifying our decision to collapse both classes under the single label of ``IFN'' in the analyses that follow (\SUPPFIG{type_I_III_correlation}).
+Few ($\sim$1.3\%) uninfected cells were IFN+; the few that were present might be because the MACS enriched for rare cells that activated IFN in response to non-viral ligands~\cite{dhir2018mitochondrial, benitez2015vivo, chiang2018viral} or because some cells that we classified as uninfected were actually infected at low levels.
+The difference in the frequency of IFN positivity among infected and uninfected cells in \FIG{transcriptomics}G was highly significant ($P < 10^{-5}$, Fisher's exact test).
 Many more cells expressed ISGs than IFN itself (\SUPPFIG{ISG}A).
 The IFN+ cells were a subset of the ISG+ cells: IFN+ cells always expressed ISGs, but many ISG+ cells did not express IFN (\SUPPFIG{ISG}B).
-These results are consistent with the established knowledge that IFN is expressed only in cells that directly detect infection, but that ISGs are also expressed via paracrine signaling in other cells~\cite{stetson2006type,honda2006type}.
+These results are consistent with the established knowledge that IFN is expressed primarily in cells that directly detect infection, but that ISGs are also expressed via paracrine signaling in other cells~\cite{stetson2006type,honda2006type}.
 
 Finally, we qualitatively examined how expression of viral genes, IFN, and ISGs relate to the overall structure of the high-dimensional transcriptomic data.
 \SUPPFIG{tSNE} shows unsupervised t-SNE clustering~\cite{maaten2008visualizing} of the cells.
@@ -324,11 +328,11 @@ Many other IFN+ cells had different defects such as large internal deletions (e.
 
 However, \FIG{genotypes} also reveals stochasticity that is independent of viral genotype.
 This stochasticity sometimes acts to the detriment of the virus, and sometimes to the detriment of the cell.
-As an example of the former case, expressing unmutated copies of all eight genes did not guarantee a favorable outcome for the virus: for instance, the unmutated virion that infected \textit{cell 139} only managed to express viral mRNA to 6\% of the total transcriptome, and the unmutated virion that infected \textit{cell 105} still induced IFN.
+As an example of the former case, expressing unmutated copies of all eight genes did not guarantee high viral gene expression and successful innate-immune evasion: for instance, the unmutated virion that infected \textit{cell 139} only managed to express viral mRNA to 6\% of the total transcriptome, and the unmutated virion that infected \textit{cell 105} still induced IFN.
 But in other cases, the stochasticity allows a defective virus to still escape immune recognition.
 For instance, there are a number of cells (e.g., \textit{cell 62} and \textit{cell 78}) that do not activate IFN despite being infected by virions that fail to express NS.
 
-\subsection{Viral defects associated with infection outcome in single cells.}
+\subsection{Viral defects associated with viral gene expression and IFN induction in single cells.}
 
 %%% begin mutations figure %%%
 \begin{figure}
@@ -362,8 +366,9 @@ To systematically assess viral features associated with infection outcome, we di
 \FIG{mutations}A shows that the 49 cells infected by full unmutated virions had a significantly tighter distribution of the amount of viral mRNA per cell than the other 101 cells as quantified by the Gini index~\cite{gini1921measurement}.
 Therefore, viral defects are a major contributor to the heterogeneity in viral transcriptional burden.
 
-Cells infected by incomplete or mutated virions also expressed IFN more frequently than cells infected by full wild-type virions (\FIG{mutations}B), although this difference was not statistically significant ($P = 0.12$, Fisher's exact test).
-However, some specific viral defects were significantly associated with IFN induction: absence of NS and amino-acid mutations in PB1 were significantly enriched in IFN+ cells, and amino-acid mutations in NS and deletions in HA were weakly enriched (\FIG{mutations}C).
+Some viral defects also contribute to IFN induction.
+Specifically, cells infected by incomplete or mutated virions expressed IFN more frequently than cells infected by virions that expressed unmutated copies of all genes (\FIG{mutations}B), although this difference was not statistically significant ($P = 0.12$, Fisher's exact test).
+However, the association was significant for certain classes of viral defects: absence of NS and amino-acid mutations in PB1 were significantly enriched in IFN+ cells, and amino-acid mutations in NS and deletions in HA were weakly enriched (\FIG{mutations}C).
 The only trend that remained significant at a false discovery rate (FDR) of 10\% was absence of NS.
 This lack of statistical significance after FDR correction could be due to the relatively modest number of fully sequenced infected cells (just 150).
 The validation experiments in the next section show that many of the viral mutations in IFN+ cells do in fact increase the rate of IFN induction.
@@ -384,7 +389,7 @@ Validation that IFN induction is increased by some of the mutations identified i
 (A)
 Percent of infected cells that become IFN+ after infection with a bulk stock of the indicated viral mutant, as determined using a reporter cell line.
 The numbers indicate the median of four measurements for each viral mutant.
-The limit of detection of 0.05\% is indicated with a dashed green line, and the median value for wild type is indicated with a dashed blue line.
+The limit of detection of 0.05\% is indicated with a dashed green line, and the median value for the wild type viral stock is indicated with a dashed blue line.
 Points are colored orange if the mutant virus stock induces IFN more frequently than the wild-type viral stock (one-sided t-test, $P < 0.01$), and blue otherwise.
 (B)
 Similar to the first panel, but validates increased IFN induction for a large internal deletion in the PB1 gene, and normalizes infecting virion dose rather than calling IFN+ percentage only among infected cells.
@@ -496,13 +501,14 @@ Methodologically, our major advance is to measure the \emph{genotypes} of viruse
 Our method builds on the observation that fragmentary viral genetic information can be obtained by more standard single-cell transcriptomic techniques~\cite{wang2018cell, zanini2018virus, saikia2018simultaneous}.
 To make this information complete, we have coupled single-cell transcriptomics with long-read PacBio sequencing of viral genes, a strategy analogous to that used by \cite{gupta2018single} to obtain full-length isoforms of some cellular genes in single cells.
 
-This viral genetic information is crucial for understanding infection outcome and innate-immune induction.
+This viral genetic information helps explain cell-to-cell variation in viral gene expression and innate-immune induction.
 Despite the fact that we used a low-passage viral stock generated from plasmids, most infected cells do not express unmutated copies of all viral genes.
 Although our study is certainly not the first to note that influenza has a high mutation rate~\cite{parvin1986measurement, suarez1992heterogeneity, suarez1994estimation, bloom2014experimentally, pauly2017novel} and sometimes fails to express genes~\cite{russell2018extreme, heldt2015single, brooke2013most, dou2017analysis, jacobs2019incomplete}, it is the first to directly observe the full spectrum of these defects across single cells.
 Visual inspection of \FIG{genotypes} shows how any experiment that does not sequence viral genes in single cells is averaging across a diverse spectrum of viral defects.
 
 We identified four types of defects that we validated to increase IFN induction. 
 Two types of defects---absence of the NS gene and amino-acid mutations to the NS1 protein---presumably impair NS1's well-known ability to antagonize innate immunity~\cite{garcia1998influenza, hale2008multifunctional}.
+But although the general role of NS in innate-immune antagonism has long been appreciated, our work represents the first direct demonstration that stochastic absence and mutations to this gene are a major contributor to IFN induction in single cells.
 A third type of defect, amino-acid mutations in PB1, was more surprising since this protein has not been described as a major player in innate-immune detection.
 We characterized two IFN-inducing PB1 mutations, and showed that one impaired polymerase processivity whereas the other increased overall activity.
 We speculate that these alterations increase production of aberrant immunostimulatory RNA products~\cite{velthuis2018mini}.
@@ -515,15 +521,15 @@ However, the greatest value of our work is not as a screen for IFN-inducing defe
 This survey shows that no single type of viral defect determines whether a cell induces IFN: even the most immunostimulatory defect (absence of NS) occurs in only about a quarter of IFN+ cells.
 Therefore, innate-immune detection of influenza is a multi-faceted process that cannot be ascribed a single dominant viral genetic cause.   
 
-Our results further show that viral genetic defects only partially explain the heterogeneity among influenza-infected cells.
+Our results further show that viral genetic defects do not fully explain the heterogeneity among influenza-infected cells.
 There is substantial breadth in viral transcriptional burden and occasional IFN induction even among cells infected with unmutated virions.
 Additionally, no viral defect induces IFN deterministically: every type of immunostimulatory defect that we characterize is also observed in IFN- cells in our single-cell dataset.
-This fact shows that stochasticity or pre-existing cellular states play a major role in affecting the outcome of infection---a finding that concords with the fact that IFN induction is heterogeneous even among cells treated with synthetic innate-immune ligands~\cite{shalek2013single, shalek2014single, wimmers2018single, bhushal2017cell}, as well as for other viruses~\cite{oneal2018west}.
+Therefore, stochasticity or pre-existing cellular states also play a major role in affecting innate-immune induction---a finding that concords with the fact that IFN induction is heterogeneous even among cells treated with synthetic innate-immune ligands~\cite{shalek2013single, shalek2014single, wimmers2018single, bhushal2017cell}, as well as for other viruses~\cite{oneal2018west}.
 
 Perhaps the most intriguing question is how the heterogeneity that we have described ultimately affects the macroscopic outcome of infection.
 Natural human influenza infections are established by just a handful of virions~\cite{mccrone2018stochastic, xue2018reconciling, varble2014influenza} that then undergo exponential growth, and early IFN responses are amplified by paracrine signaling~\cite{stetson2006type,honda2006type}.
-It is therefore plausible that early heterogeneity could affect downstream events.
-Extending our approaches to more complex systems could shed further light on how viral genetic variation interacts with cell-to-cell heterogeneity to shape the race between virus and immune system.
+It is therefore plausible that early heterogeneity in innate-immune induction could affect the entire course of infection.
+Extending our approaches to more complex systems could shed further light on how viral genetic variation and stochasticity interact to shape the race between virus and immune system.
 
 
 \section{Materials and Methods}
@@ -848,14 +854,14 @@ The much higher frequency of detecting NP could reflect a biological phenomenon,
 \end{suppfig}
 
 \begin{suppfig}
-\includegraphics[width=0.7\textwidth]{figures/single_cell_figures/p_ifn_genes_corr.pdf}
+\includegraphics[width=0.5\textwidth]{figures/single_cell_figures/p_frac_ifn_coinfect.pdf}
 \caption{
-The correlation between the fraction of cellular mRNA derived from type I and type III IFN in the A549 cells in our single-cell transcriptomics.
-Each point represents one cell.
-The plots are faceted by whether the cells are called as infected, and the Pearson correlation coefficient is shown.
-Because type I and type III IFN expression are highly correlated, for the remainder of the paper we group them together and refer to their combined expression as the level of IFN.
+There is no association between viral co-infection and expression of IFN in our experiments using low MOI infections with a relatively ``pure'' viral stock.
+Histograms show the fraction of all cellular mRNA derived from IFN among cells expressing viral mRNA from just a single viral barcode variant, or cells expressing viral mRNA from both the wildtype and synonymously barcoded viral variants.
+The dual-barcode cells represent known co-infections, whereas the single-barcode cells represent a mix of singly infected cells and co-infections with the same viral barcode.
+There is no significant difference in the frequency of IFN induction among the two classes of cells ($P = 0.53$, Fisher's exact test). 
 }
-\label{suppfig:type_I_III_correlation}
+\label{suppfig:coinf_IFN}
 \end{suppfig}
 
 \begin{suppfig}
@@ -873,6 +879,17 @@ IFN and ISG expression are more correlated for infected than uninfected cells, p
 Among both the infected and uninfected populations, there are many cells with high expression of ISGs and little expression of IFN, but no cells that express high levels of IFN without also substantially expressing ISGs.
 }
 \label{suppfig:ISG}
+\end{suppfig}
+
+\begin{suppfig}
+\includegraphics[width=0.7\textwidth]{figures/single_cell_figures/p_ifn_genes_corr.pdf}
+\caption{
+The correlation between the fraction of cellular mRNA derived from type I and type III IFN in the A549 cells in our single-cell transcriptomics.
+Each point represents one cell.
+The plots are faceted by whether the cells are called as infected, and the Pearson correlation coefficient is shown.
+Because type I and type III IFN expression are highly correlated, for the remainder of the paper we group them together and refer to their combined expression as the level of IFN.
+}
+\label{suppfig:type_I_III_correlation}
 \end{suppfig}
 
 \begin{suppfig}
