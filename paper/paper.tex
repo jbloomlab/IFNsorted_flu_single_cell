@@ -163,7 +163,7 @@ We also validated that MACS for the cell-surface protein driven by the IFN repor
 We developed the approach in \FIG{workflow} to obtain the entire transcriptome \emph{and} the full sequences of all viral genes in single cells.
 First, we generated the viral stock described in the previous subsection, which consisted of a mix of wild-type WSN and a ``synonymously barcoded'' variant that contained two engineered synonymous mutations near each termini of each gene (\SUPPFILE{virus_seqs}).
 These viral barcodes allow us to identify co-infections from single-cell transcriptomic data~\cite{russell2018extreme}, and provide a control for PCR artifacts during full-length sequencing of viral transcripts (see below).
-We used this viral stock to infect A549 IFN reporter cells (\FIG{workflow}A) at a dose that led to detectable viral transcription in $\sim$25\% of cells.
+We used this viral stock to infect A549 IFN reporter cells (\FIG{workflow}A) at a dose that led to detectable viral transcription in $\sim$25\% of cells (this moderately low MOI reasonably balances our desire to limit the number of co-infections with the cost of performing transcriptomics on uninfected cells).
 From 12 to 13 hours post-infection, we used MACS to enrich cells that activated the IFN reporter.
 To ensure the presence of IFN-negative cells, we added back non-enriched cells to $\sim$10\% of the total.
 We also added uninfected canine cells to $\sim$5\% of the total as a control for multiplets and to estimate the background amount of viral mRNA detected in truly uninfected cells.
@@ -261,10 +261,11 @@ However, viral burden remained highly variable even after conditioning on the nu
 Consistent with our prior work~\cite{russell2018extreme}, despite the wide variation in absolute expression of viral genes, their \emph{relative} expression was fairly consistent (\FIG{transcriptomics}E) and generally matched values from older bulk studies~\cite{hatada1989control}.
 
 By examining the synonymous viral barcodes near the 3' termini of transcripts, we determined that 38\% of cells were co-infected with wild-type and synonymously barcoded virions (\FIG{transcriptomics}F; cells called as co-infected if a binomial test rejected null hypothesis that $\ge$95\% of viral mRNA is from one viral barcode variant).
-From \FIG{transcriptomics}F, we estimate~\cite{bloom2018estimating} that 63\% of infected cells are co-infected, implying that 25\% are co-infected with two virions with the same viral barcode (such co-infections cannot be identified from transcriptomic data).
+From \FIG{transcriptomics}F, we estimate~\cite{bloom2018estimating} that 63\% of infected cells are co-infected.
 Interestingly, this co-infection rate is higher than expected from the relative numbers of infected and uninfected cells (\FIG{transcriptomics}C) if infection is Poisson.
-This discrepancy could arise if the MACS for IFN+ cells also enriches co-infected cells, if infection is not truly Poisson, or if co-infection increases the likelihood that we identify a cell as infected given the thresholds in \FIG{transcriptomics}C.
-The first explanation seems unlikely, as there is no tendency for co-infected cells to express more IFN (\SUPPFIG{coinf_IFN}); therefore we favor the latter two explanations.
+This discrepancy could arise if the MACS for IFN+ cells also enriches co-infected cells, if infection is not truly Poisson, or if co-infection complements otherwise transcriptionally defective virions to increase the likelihood that we identify a cell as infected.
+The first explanation seems unlikely, as there is no tendency for co-infected cells to express more IFN (\SUPPFIG{coinf_IFN}). 
+Therefore we favor the latter two explanations, both of which have been demonstrated for other viruses~\cite{aguilera2017plaques, combe2015single}.
 The moderately high rate of co-infection may also explain why more cells in our experiment express all eight viral genes compared to some prior studies, as a co-infecting virion can complement a missing viral gene. 
 
 We next examined expression of IFN and ISGs (\FIG{transcriptomics}G and \SUPPFIG{ISG}).
@@ -374,9 +375,9 @@ This lack of statistical significance after FDR correction could be due to the r
 The validation experiments in the next section show that many of the viral mutations in IFN+ cells do in fact increase the rate of IFN induction.
 
 One other interesting trend emerges from the single-cell data.
-There is no difference in the amount of viral mRNA between IFN+ and IFN- cells that express NS.
-But among cells that lack NS, cells with more viral mRNA are significantly more likely to be IFN+ (\FIG{mutations}D).
-This finding is elaborated on in the validation experiments below.
+There is no difference in the amount of viral mRNA between IFN+ and IFN- cells that express NS (\FIG{mutations}D).
+But among cells that lack NS, cells with more viral mRNA are significantly more likely to be IFN+ (\FIG{mutations}D); this finding is elaborated on in the validation experiments below.
+Overall, the lack of reduced viral gene expression in IFN+ cells suggests that autocrine IFN signaling typically occurs too late to suppress viral transcription, and the well-known inhibitory effect of IFN against influenza depends mainly on paracrine signaling.
 
 \subsection{Validation that viral defects in single IFN+ cells often increase IFN induction.}
 
