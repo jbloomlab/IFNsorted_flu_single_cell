@@ -1,0 +1,141 @@
+%%%
+%% asm-biblatex.tex
+%% Copyright 2017 A. Succurro
+%
+% This work may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3
+% of this license or (at your option) any later version.
+% The latest version of this license is in
+%   http://www.latex-project.org/lppl.txt
+% and version 1.3 or later is part of all distributions of LaTeX
+% version 2005/12/01 or later.
+%
+% This work has the LPPL maintenance status `unmaintained'.
+%
+% The Current Maintainer of this work is A. Succurro
+%
+% This work consists of the file asm-biblatex.tex
+%%%
+%% Description: 
+%%%
+%%% This file provides the biblatex style for the format of journals of
+%%% American Society for Microbiology (ASM)
+%%% http://jb.asm.org/site/misc/journal-ita_org.xhtml#04
+%%% This work builds on the input from:
+%%% http://tex.stackexchange.com/questions/156094/biblatex-citation-style-asm
+%%%
+%% Usage:
+%%%
+%% in the main document add the lines in the preamble:
+%%%  \input{asm-biblatex.tex}
+%%%  \bibliography{yourbibfile}
+%% compile as:
+%%%  pdflatex yourmainfile.tex
+%%%  biber yourmainfile
+%%%  pdflatex yourmainfile.tex
+%%%
+
+\usepackage[style=numeric, subentry, sorting=none, backend=biber, firstinits=true, terseinits=true, url=false, doi=true, isbn=false, maxbibnames=999, eprint=false]{biblatex}
+
+\DeclareFieldFormat{labelnumberwidth}{#1\adddot}
+\DeclareNameAlias{default}{family-given}
+\renewcommand*{\revsdnamepunct}{}
+\renewcommand*{\finalnamedelim}{\multinamedelim}
+
+%Get rid of quotation marks around titles
+\DeclareFieldFormat[article, book, patent, thesis, unpublished]{title}{#1\isdot}
+\DeclareFieldFormat[inbook, incollection, inproceedings]{title}{#1\addcomma}
+\DeclareFieldFormat{booktitle}{#1}
+
+%have vol:pag for article
+\DeclareFieldFormat[article]{pages}{#1}
+\DeclareFieldFormat[inbook, incollection, inproceedings]{pages}{p #1}
+\renewcommand*{\bibpagespunct}{\ifentrytype{article}{\addcolon}{\addcomma\space}}
+
+%No ``in'' for articles, italic In for the rest
+\renewcommand*{\intitlepunct}{\space}
+\renewbibmacro{in:}{
+ \ifentrytype{article}{}{\printtext[emph]{\bibstring{in}\intitlepunct}}
+}
+
+% Append the year to the author/editor macros
+\usepackage{xpatch}
+\xapptobibmacro{author}
+               {\printtext[]{\addperiod\addspace}\printfield{year}}
+               {\typeout{successfully patched bibmacro{author} to include year}}
+               {\typeout{failed to patch bibmacro{author} to include year}}
+\xapptobibmacro{editor}
+               {\printtext[]{\addperiod\addspace}\printfield{year}}
+               {\typeout{successfully patched bibmacro{editor} to include year}}
+               {\typeout{failed to patch bibmacro{editor} to include year}}
+%and remove date at end
+\renewbibmacro*{date}{}
+
+\renewbibmacro*{issue+date}{%
+  \iffieldundef{issue}
+               {}
+               {\printtext[parens]{\printfield{issue}}}%
+               \newunit}
+
+%remove the number, only volume (format is VOL:Pin-Pfin)
+\renewbibmacro*{volume+number+eid}{%
+  \printfield{volume}
+}
+
+%no editors for articles
+\renewbibmacro*{byeditor+others}{%
+}
+
+% want full doi url
+% http://latex-community.org/forum/viewtopic.php?t=28552
+\DeclareFieldFormat{doi}{%
+  \ifhyperref
+      {\href{https://doi.org/#1}{\nolinkurl{https://doi.org/#1}}}
+      {\nolinkurl{#1}}
+}
+
+%redefine book and incollection formats
+\DeclareBibliographyDriver{incollection}{%
+    \usebibmacro{author}%
+    \newunit\newblock
+    \printfield{title}%
+    \newunit\newblock
+    \printfield{pages}
+    \newunit\newblock
+    \usebibmacro{byeditor+booktitle}%
+    \newunit\newblock
+    \usebibmacro{publisher+location}%
+    \finentry}
+
+\DeclareBibliographyDriver{book}{%
+    \usebibmacro{author}%
+    \newunit\newblock
+    \printfield{title}%
+    \newunit\newblock
+    \usebibmacro{publisher+location}%
+    \finentry}
+
+\renewbibmacro*{byeditor+booktitle}{
+    \ifentrytype{book}{
+        \usebibmacro{in:}\ifnameundef{editor}{}{\printnames{editor}\space(ed),\space}%
+        \printfield{booktitle}\adddot\space%
+    }{}
+    \ifentrytype{incollection}{
+        \usebibmacro{in:}\ifnameundef{editor}{}{\printnames{editor}\space(ed),\space}%
+        \printfield{booktitle}\adddot\space%
+    }{}
+}
+               
+\renewbibmacro*{publisher+location}{
+    \ifentrytype{book}{
+        \printlist{publisher}%
+        \iflistundef{location}{\adddot}{\addcomma\space}%
+        \printlist{location}%
+    }{}
+    \ifentrytype{incollection}{
+        \printlist{publisher}%
+        \iflistundef{location}{\adddot}{\addcomma\space}%
+        \printlist{location}%
+    }{}
+}
+               
