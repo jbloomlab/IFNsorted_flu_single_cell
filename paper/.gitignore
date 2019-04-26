@@ -5,8 +5,8 @@
 *.suppinfo
 *.synctex.gz
 paper.pdf
-paper_JVI_orig_submission.pdf
+paper_*.pdf
 *$*
 CoverLetter.*
 track_changes.*
-!final_version/track_changes.pdf
+!final_version_for_JVI/*

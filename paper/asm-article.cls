@@ -121,7 +121,7 @@ marginparwidth=2.15in,marginparsep=0.2in]{geometry}
  innerbottommargin=1em]%
 \setlength{\parskip}{0.5em}%
 \textbf{Compiled} \today\\
-This is a draft manuscript, pre-submission\par
+%This is a draft manuscript, pre-submission\par
 Address correspondence to \@corraddress.\par
 \ifdefstring{\@presentaddress}{}{}{\@presentaddress\par}
 \ifdefstring{\@equalcontrib}{}{}{\@equalcontrib\ contributed equally to this work.\par}
