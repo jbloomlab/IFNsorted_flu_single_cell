@@ -161,7 +161,7 @@ Cells expressing high levels of viral genes, IFN, and ISGs cluster together---an
 
 \subsection*{Full genotypes of viruses infecting single IFN+ and IFN- cells.}
 
-We next used PacBio sequencing (Fig. 2D) to determine the full sequences of the viral genes in single infected cells.
+We next used PacBio sequencing (Fig. 2D, File S3) to determine the full sequences of the viral genes in single infected cells.
 We obtained $>$200,000 high-quality PacBio CCSs that mapped to an influenza gene and contained a cell barcode and UMI (Fig. S9).
 The synonymous viral barcodes at both termini of each gene enabled us to confirm that PCR strand exchange was rare (Fig. S10), meaning that the vast majority of CCSs correctly link the sequence of the transcript to cell barcodes and UMIs that identify the cell and molecule of origin.
 
@@ -175,7 +175,7 @@ We could call the sequences of all expressed viral genes in the majority of infe
 We were most effective at calling full viral genotypes in cells that expressed high amounts of viral mRNA and were infected by only one viral barcode variant (Fig. S11).
 But we also called full genotypes for many cells that had low viral burden or were co-infected by both viral barcode variants.
 
-The 150 cells for which we called the full viral genotypes are shown in Fig. 4.
+The 150 cells for which we called the full viral genotypes are shown in Fig. 4 (see also File S4).
 Visual inspection of this figure reveals a wealth of information.
 For instance, the cell with the highest viral burden (\textit{cell 1} in Fig. 4, which has 65\% of its mRNA from virus) was infected by a virion that expressed unmutated copies all eight genes and did not induce detectable IFN.
 But 12 of the other 13 cells with at least 50\% of their mRNA from virus were infected by virions that had a mutation or failed to express a gene, and five of these cells produced IFN.
@@ -192,7 +192,7 @@ For instance, there are a number of cells (e.g., \textit{cell 62} and \textit{ce
 \subsection*{Viral defects associated with viral gene expression and IFN induction in single cells.}
 
 To systematically assess viral features associated with infection outcome, we divided the 150 cells in Fig. 4 into those that expressed unmutated copies of all eight genes (disregarding synonymous mutations) and those that did not.
-Fig. 5A shows that the 49 cells infected by full unmutated virions had a significantly tighter distribution of the amount of viral mRNA per cell than the other 101 cells as quantified by the Gini index~\cite{gini1921measurement}.
+Fig. 5A shows that the 49 cells infected by full unmutated virions had a significantly tighter distribution of the amount of viral mRNA per cell than the other 101 cells as quantified by the Gini index~\cite{gini1921measurement} (see also File S5).
 Therefore, viral defects are a major contributor to the heterogeneity in viral transcriptional burden.
 
 Some viral defects also contribute to IFN induction.
@@ -506,6 +506,7 @@ We called IFN+ and ISG+ cells using the heuristic thresholds shown in Fig. 3G an
 We counted IFN mRNAs as any IFN-$\alpha$, IFN-$\beta$, or IFN-$\lambda$ transcripts.
 We counted ISG mRNAs as any of CCL5, IFIT1, ISG15, or Mx1.
 The plot in Fig. 4 summarizes all of the genotypic information, and was created in substantial part using \texttt{gggenes} (https://github.com/wilkox/gggenes).
+The raw data are in File S4 and File S5.
 
 \subsection*{Structural analysis of PB1 mutants.}
 To locate the PB1 mutations in the influenza A virus RNA polymerase structure relative to the template and active site in Fig. 8A, we superposed the bat influenza A virus RNA polymerase structure (PDB 4WSB)~\cite{reich2014structural}, which shows the 3' terminus of the template on the surface of the RNA polymerase, with the influenza B virus transcription initiation complex (PDB 5MSG)~\cite{reich2017vitro}, which shows the 3' terminus of the template in the template entry channel that leads towards the active site.
